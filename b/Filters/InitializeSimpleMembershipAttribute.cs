@@ -25,11 +25,11 @@ namespace b.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<bDBContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new bDBContext())
                     {
                         if (!context.Database.Exists())
                         {
@@ -38,11 +38,11 @@ namespace b.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("bDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
-                    throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+                    throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized.", ex);
                 }
             }
         }
