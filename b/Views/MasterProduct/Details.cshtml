@@ -1,0 +1,64 @@
+﻿@model b.Models.Product
+
+@{
+    ViewBag.Title = "Master Product Details";
+}
+
+<h2>Master Product Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Category)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UoM)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UoM)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.RoL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoL)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.RoQ)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoQ)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Remarks)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Remarks)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

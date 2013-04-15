@@ -10,5 +10,7 @@ namespace b.Models
     {
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
