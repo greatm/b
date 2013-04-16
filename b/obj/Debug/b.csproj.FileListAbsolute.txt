@@ -80,7 +80,6 @@ F:\work\b\b\bin\ko\System.Spatial.resources.dll
 F:\work\b\b\bin\ru\System.Spatial.resources.dll
 F:\work\b\b\bin\zh-Hans\System.Spatial.resources.dll
 F:\work\b\b\bin\zh-Hant\System.Spatial.resources.dll
-F:\work\b\b\obj\Debug\b.csprojResolveAssemblyReference.cache
 F:\work\b\b\obj\Debug\b.Migrations.start.resources
 F:\work\b\b\obj\Debug\b.csproj.GenerateResource.Cache
 F:\work\b\b\obj\Debug\b.dll
