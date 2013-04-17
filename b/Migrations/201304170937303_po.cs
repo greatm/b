@@ -2,7 +2,7 @@ namespace b.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class po : DbMigration
     {
         public override void Up()
@@ -19,9 +19,9 @@ namespace b.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Vendors", t => t.Vendor_ID)
                 .Index(t => t.Vendor_ID);
-            
+
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.PurchaseOrders", new[] { "Vendor_ID" });
