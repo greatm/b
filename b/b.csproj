@@ -190,7 +190,6 @@
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
-    <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +197,10 @@
     <Compile Include="Migrations\201304201106046_mig_start.cs" />
     <Compile Include="Migrations\201304201106046_mig_start.Designer.cs">
       <DependentUpon>201304201106046_mig_start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304201312148_mig_polist.cs" />
+    <Compile Include="Migrations\201304201312148_mig_polist.Designer.cs">
+      <DependentUpon>201304201312148_mig_polist.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -353,6 +356,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201304201106046_mig_start.resx">
       <DependentUpon>201304201106046_mig_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304201312148_mig_polist.resx">
+      <DependentUpon>201304201312148_mig_polist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

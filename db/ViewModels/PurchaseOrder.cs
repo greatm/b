@@ -13,6 +13,6 @@ namespace db.ViewModels
         public int VendorID { get; set; }
         public IEnumerable<Vendor> Vendors { get; set; }
         public string Remarks { get; set; }
-        public IEnumerable<POItem> POItems { get; set; }
+        public IList<POItem> POItems { get; set; }
     }
 }
