@@ -22,11 +22,11 @@
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Master", "Index", "Master")</li>
-                        <li>@Html.ActionLink("Purchase", "Index", "Purchase")</li>
-                        <li>@Html.ActionLink("Sales", "Index", "Sales")</li>
-                        <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                        <li>@Html.ActionLink("Purchase", "Index", "Purchase", new { Area = "Purchase" }, null)</li>
+                        <li>@Html.ActionLink("Sales", "Index", "Sales", new { Area = "Sales" }, null)</li>
+                        <li>@Html.ActionLink("Reports", "Index", "Reports", new { Area = "Reports" }, null)</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, null)</li>
                     </ul>
                 </nav>
             </div>

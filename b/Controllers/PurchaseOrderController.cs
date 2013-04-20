@@ -1,124 +1,129 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using b.ViewModels;
-using b.Models;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Data;
+//using System.Data.Entity;
+//using System.Linq;
+//using System.Web;
+//using System.Web.Mvc;
+//using b.ViewModels;
+//using b.Models;
 
-namespace b.Controllers
-{
-    public class PurchaseOrderController : Controller
-    {
-        private bDBContext db = new bDBContext();
+//namespace b.Controllers
+//{
+//    public class PurchaseOrderController : Controller
+//    {
+//        private bDBContext db = new bDBContext();
 
-        //
-        // GET: /PurchaseOrder/
+//        //
+//        // GET: /PurchaseOrder/
 
-        public ActionResult Index()
-        {
-            return View(db.PurchaseOrders.ToList());
-        }
+//        public ActionResult Index()
+//        {
+//            PurchaseOrder _order = new PurchaseOrder { VendorID = 1, Date = DateTime.Now, ID = 1 };
+//            _order.POItems = new List<POItem> { new POItem { ProductID = 1, Qty = 3 }, new POItem { ProductID = 2, Qty = 56 } };
+//            //_order.Vendors  = Session[_customerKey] as List<Vendor >;
+//            return View(_order);
 
-        //
-        // GET: /PurchaseOrder/Details/5
+//            //return View(db.PurchaseOrders.ToList());
+//        }
 
-        public ActionResult Details(int id = 0)
-        {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            if (purchaseorder == null)
-            {
-                return HttpNotFound();
-            }
-            return View(purchaseorder);
-        }
+//        //
+//        // GET: /PurchaseOrder/Details/5
 
-        //
-        // GET: /PurchaseOrder/Create
+//        public ActionResult Details(int id = 0)
+//        {
+//            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+//            if (purchaseorder == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(purchaseorder);
+//        }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+//        //
+//        // GET: /PurchaseOrder/Create
 
-        //
-        // POST: /PurchaseOrder/Create
+//        public ActionResult Create()
+//        {
+//            return View();
+//        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(PurchaseOrder purchaseorder)
-        {
-            if (ModelState.IsValid)
-            {
-                db.PurchaseOrders.Add(purchaseorder);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+//        //
+//        // POST: /PurchaseOrder/Create
 
-            return View(purchaseorder);
-        }
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Create(PurchaseOrder purchaseorder)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                db.PurchaseOrders.Add(purchaseorder);
+//                db.SaveChanges();
+//                return RedirectToAction("Index");
+//            }
 
-        //
-        // GET: /PurchaseOrder/Edit/5
+//            return View(purchaseorder);
+//        }
 
-        public ActionResult Edit(int id = 0)
-        {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            if (purchaseorder == null)
-            {
-                return HttpNotFound();
-            }
-            return View(purchaseorder);
-        }
+//        //
+//        // GET: /PurchaseOrder/Edit/5
 
-        //
-        // POST: /PurchaseOrder/Edit/5
+//        public ActionResult Edit(int id = 0)
+//        {
+//            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+//            if (purchaseorder == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(purchaseorder);
+//        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(PurchaseOrder purchaseorder)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(purchaseorder).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(purchaseorder);
-        }
+//        //
+//        // POST: /PurchaseOrder/Edit/5
 
-        //
-        // GET: /PurchaseOrder/Delete/5
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Edit(PurchaseOrder purchaseorder)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                db.Entry(purchaseorder).State = EntityState.Modified;
+//                db.SaveChanges();
+//                return RedirectToAction("Index");
+//            }
+//            return View(purchaseorder);
+//        }
 
-        public ActionResult Delete(int id = 0)
-        {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            if (purchaseorder == null)
-            {
-                return HttpNotFound();
-            }
-            return View(purchaseorder);
-        }
+//        //
+//        // GET: /PurchaseOrder/Delete/5
 
-        //
-        // POST: /PurchaseOrder/Delete/5
+//        public ActionResult Delete(int id = 0)
+//        {
+//            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+//            if (purchaseorder == null)
+//            {
+//                return HttpNotFound();
+//            }
+//            return View(purchaseorder);
+//        }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            db.PurchaseOrders.Remove(purchaseorder);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+//        //
+//        // POST: /PurchaseOrder/Delete/5
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-    }
-}
+//        [HttpPost, ActionName("Delete")]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult DeleteConfirmed(int id)
+//        {
+//            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+//            db.PurchaseOrders.Remove(purchaseorder);
+//            db.SaveChanges();
+//            return RedirectToAction("Index");
+//        }
+
+//        protected override void Dispose(bool disposing)
+//        {
+//            db.Dispose();
+//            base.Dispose(disposing);
+//        }
+//    }
+//}

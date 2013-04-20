@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using db.Models;
 using b.Models;
 
 namespace b.Controllers

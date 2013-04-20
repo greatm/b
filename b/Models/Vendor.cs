@@ -5,7 +5,7 @@ using System.Web;
 
 namespace b.Models
 {
-    public class Vendor
+    public class Vendor1
     {
         public int ID { get; set; }
         public string Name { get; set; }

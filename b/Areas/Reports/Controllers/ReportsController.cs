@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace b.Controllers
+namespace Reports.Controllers
 {
-    public class PurchaseController : Controller
+    public class ReportsController : Controller
     {
         //
-        // GET: /Purchase/
+        // GET: /Reports/
 
         public ActionResult Index()
         {

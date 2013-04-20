@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="db">
+      <HintPath>..\db\bin\Debug\db.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -187,10 +190,9 @@
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
-    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\ReportCustomerController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
-    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,10 +205,13 @@
     <Compile Include="Migrations\201304170937303_po.Designer.cs">
       <DependentUpon>201304170937303_po.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304191046430_multitable.cs" />
+    <Compile Include="Migrations\201304191046430_multitable.Designer.cs">
+      <DependentUpon>201304191046430_multitable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\POItem.cs" />
@@ -286,7 +291,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -337,7 +344,6 @@
     <Content Include="Views\MasterProduct\Edit.cshtml" />
     <Content Include="Views\MasterProduct\Delete.cshtml" />
     <Content Include="Views\Purchase\Index.cshtml" />
-    <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\PurchaseOrder\Index.cshtml" />
     <Content Include="Views\PurchaseOrder\Details.cshtml" />
@@ -345,9 +351,12 @@
     <Content Include="Views\PurchaseOrder\Edit.cshtml" />
     <Content Include="Views\PurchaseOrder\Delete.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\ReportCustomer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -360,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304170937303_po.resx">
       <DependentUpon>201304170937303_po.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304191046430_multitable.resx">
+      <DependentUpon>201304191046430_multitable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
