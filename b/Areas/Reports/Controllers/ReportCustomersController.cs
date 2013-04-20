@@ -16,6 +16,8 @@ namespace Reports.Controllers
         {
             return View();
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult ViewReport()
         {
             ViewData["ReportModel"] = this.GetModel();
