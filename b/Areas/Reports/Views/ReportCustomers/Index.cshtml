@@ -10,6 +10,7 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title>ViewReport</title>
+
     <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/MicrosoftAjax.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/MicrosoftMvcAjax.js")" type="text/javascript"></script>
@@ -18,7 +19,7 @@
 <body>
     @{
         ViewBag.Title = "Report Customers";
-    }
+        Layout = "~/Views/Shared/_Layout.cshtml";}
 
     <h2>Report Customers</h2>
 

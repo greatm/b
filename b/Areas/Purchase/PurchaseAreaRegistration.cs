@@ -17,7 +17,7 @@ namespace b
             context.MapRoute(
                 "Purchase_default",
                 "Purchase/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { action = "Index", id = UrlParameter.Optional, Controller = "PurchaseHome" },
                 new string[] { "Purchase.Controllers" }
             );
         }

@@ -50,6 +50,8 @@
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\POItem.cs" />
+    <Compile Include="ViewModels\Purchase.cs" />
+    <Compile Include="ViewModels\PurchaseItem.cs" />
     <Compile Include="ViewModels\PurchaseOrder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

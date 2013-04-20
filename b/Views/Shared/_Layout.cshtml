@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@*@using Syncfusion.Mvc.Shared;
+@using Syncfusion.ReportViewer.Mvc;
+@using Syncfusion.Core;*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,6 +11,11 @@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftAjax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MicrosoftMvcAjax.js")" type="text/javascript"></script>
+
 </head>
 <body>
     <header>
@@ -22,7 +31,7 @@
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Master", "Index", "Master")</li>
-                        <li>@Html.ActionLink("Purchase", "Index", "Purchase", new { Area = "Purchase" }, null)</li>
+                        <li>@Html.ActionLink("Purchase", "Index", "PurchaseHome", new { Area = "Purchase" }, null)</li>
                         <li>@Html.ActionLink("Sales", "Index", "Sales", new { Area = "Sales" }, null)</li>
                         <li>@Html.ActionLink("Reports", "Index", "Reports", new { Area = "Reports" }, null)</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
