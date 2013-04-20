@@ -191,8 +191,6 @@
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
-    <Compile Include="Controllers\ReportCustomerController.cs" />
-    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -345,7 +343,6 @@
     <Content Include="Views\MasterProduct\Edit.cshtml" />
     <Content Include="Views\MasterProduct\Delete.cshtml" />
     <Content Include="Views\Purchase\Index.cshtml" />
-    <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\PurchaseOrder\Index.cshtml" />
     <Content Include="Views\PurchaseOrder\Details.cshtml" />
     <Content Include="Views\PurchaseOrder\Create.cshtml" />
@@ -353,7 +350,6 @@
     <Content Include="Views\PurchaseOrder\Delete.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
-    <Content Include="Views\ReportCustomer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

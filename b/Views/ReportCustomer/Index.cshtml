@@ -1,9 +1,0 @@
-﻿@{
-    ViewBag.Title = "Report Customer";
-}
-
-<h2>Report Customer</h2>
-
-<div style="width: 95%; height: 400px;">
-    @{Html.Syncfusion().ReportViewer("report", (ReportViewerModel)ViewData["ReportModel"]).Render();}
-</div>
