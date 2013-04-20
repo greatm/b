@@ -2,8 +2,8 @@ namespace b.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class start : DbMigration
+    
+    public partial class mig_start : DbMigration
     {
         public override void Up()
         {
@@ -15,7 +15,7 @@ namespace b.Migrations
                         UserName = c.String(),
                     })
                 .PrimaryKey(t => t.UserId);
-
+            
             CreateTable(
                 "dbo.Vendors",
                 c => new
@@ -35,7 +35,7 @@ namespace b.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
-
+            
             CreateTable(
                 "dbo.Products",
                 c => new
@@ -50,11 +50,23 @@ namespace b.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
-
+            
+            CreateTable(
+                "dbo.PurchaseOrders",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Date = c.DateTime(nullable: false),
+                        VendorID = c.Int(nullable: false),
+                        Remarks = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
         }
-
+        
         public override void Down()
         {
+            DropTable("dbo.PurchaseOrders");
             DropTable("dbo.Products");
             DropTable("dbo.Vendors");
             DropTable("dbo.UserProfile");

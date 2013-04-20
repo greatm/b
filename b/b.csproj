@@ -195,22 +195,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304151123037_start.cs" />
-    <Compile Include="Migrations\201304151123037_start.Designer.cs">
-      <DependentUpon>201304151123037_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304170937303_po.cs" />
-    <Compile Include="Migrations\201304170937303_po.Designer.cs">
-      <DependentUpon>201304170937303_po.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304191046430_multitable.cs" />
-    <Compile Include="Migrations\201304191046430_multitable.Designer.cs">
-      <DependentUpon>201304191046430_multitable.cs</DependentUpon>
+    <Compile Include="Migrations\201304201106046_mig_start.cs" />
+    <Compile Include="Migrations\201304201106046_mig_start.Designer.cs">
+      <DependentUpon>201304201106046_mig_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
-    <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\POItem.cs" />
     <Compile Include="ViewModels\PurchaseOrder.cs" />
@@ -360,14 +351,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201304151123037_start.resx">
-      <DependentUpon>201304151123037_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304170937303_po.resx">
-      <DependentUpon>201304170937303_po.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304191046430_multitable.resx">
-      <DependentUpon>201304191046430_multitable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201304201106046_mig_start.resx">
+      <DependentUpon>201304201106046_mig_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
