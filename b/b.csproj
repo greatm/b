@@ -272,7 +272,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="App_Data\employee.rdl" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\biosg.jpg" />
@@ -352,6 +351,7 @@
     <Content Include="Views\Error\ServerError.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
   </ItemGroup>
   <ItemGroup>

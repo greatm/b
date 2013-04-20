@@ -17,12 +17,17 @@ namespace Reports.Controllers
             return View();
         }
 
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult ViewReport()
+        //{
+        //    ViewData["ReportModel"] = this.GetModel();
+        //    ViewData["ProductName"] = "ReportViewer";
+        //    return View();
+        //}
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ViewReport()
+        public ActionResult ViewReport(ReportViewerParams param)
         {
-            ViewData["ReportModel"] = this.GetModel();
-            ViewData["ProductName"] = "ReportViewer";
-            return View();
+            return new ReportViewerHtmlActionResult(this.GetModel(), param);
         }
         ReportViewerModel GetModel()
         {
