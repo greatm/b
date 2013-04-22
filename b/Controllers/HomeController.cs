@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using b.Models;
 
 namespace b.Controllers
 {
@@ -18,7 +19,7 @@ namespace b.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "us";
-
+            db_bDBContext ddd = new db_bDBContext();
             return View();
         }
 

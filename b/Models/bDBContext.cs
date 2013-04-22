@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using b.ViewModels;
 using db.Models;
 
 //namespace b.Models
@@ -22,5 +21,11 @@ using db.Models;
 namespace b.Models
 {
     public class db_bDBContext : bDBContext
-    { }
+    {
+        public DbSet<dummy> dummys { get; set; }
+    }
+    public class dummy
+    {
+        public string Dummy { get; set; }
+    }
 }
