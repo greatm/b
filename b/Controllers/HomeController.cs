@@ -19,7 +19,7 @@ namespace b.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "us";
-            db_bDBContext ddd = new db_bDBContext();
+            //db_bDBContext ddd = new db_bDBContext();
             return View();
         }
 

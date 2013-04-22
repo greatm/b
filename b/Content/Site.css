@@ -403,12 +403,17 @@ aside {
 }
 
 /* forms */
-fieldset {
+/*fieldset {
     border: none;
     margin: 0;
     padding: 0;
+}*/
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
 }
-
     fieldset legend {
         display: none;
     }

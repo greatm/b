@@ -166,6 +166,7 @@
     <Content Include="Views\PurchaseOrder\Edit.cshtml" />
     <Content Include="Views\PurchaseOrder\Delete.cshtml" />
     <Content Include="Views\PurchaseHome\Index.cshtml" />
+    <Content Include="Views\PurchaseOrder\PoEntryEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

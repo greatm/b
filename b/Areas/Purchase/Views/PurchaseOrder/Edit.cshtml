@@ -46,7 +46,7 @@
 
         @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
         {
-            <p>None. or empty</p>
+            <p>None.</p>
         }
         else
         {
@@ -54,7 +54,7 @@
                 @for (int i = 0; i < Model.POItems.Count; i++)
                 {
                     <li style="padding-bottom: 15px">
-                        <img src="@Url.Content("~/Content/images/draggable-icon.png")" style="cursor: move" alt=""/>
+                        <img src="@Url.Content("~/Content/images/draggable-icon.png")" style="cursor: move" alt="drag"/>
 
                         @Html.LabelFor(model => model.POItems[i].Rate)
                         @Html.EditorFor(model => model.POItems[i].Rate)
@@ -75,6 +75,16 @@
             $(function () {
                 $("#movieEditor").sortable();
             });
+        </script>
+         <script type="text/javascript">
+             $(function () {
+                 $("#movieEditor").sortable();
+                 $("#addAnother").click(function () {
+                     $.get('/User/MovieEntryRow', function (template) {
+                         $("#movieEditor").append(template);
+                     });
+                 });
+             });
         </script>
     </fieldset>
     <p>

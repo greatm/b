@@ -22,10 +22,10 @@ namespace b.Models
 {
     public class db_bDBContext : bDBContext
     {
-        public DbSet<dummy> dummys { get; set; }
+        //public DbSet<dummy> dummys { get; set; }
     }
-    public class dummy
-    {
-        public string Dummy { get; set; }
-    }
+    //public class dummy
+    //{
+    //    public string Dummy { get; set; }
+    //}
 }
