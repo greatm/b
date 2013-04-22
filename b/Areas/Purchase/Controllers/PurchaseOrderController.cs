@@ -40,6 +40,7 @@ namespace Purchase.Controllers
 
         public ActionResult Create()
         {
+
             return View();
         }
 
