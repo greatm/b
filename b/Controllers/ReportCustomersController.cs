@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Syncfusion.ReportViewer.Mvc;
 
-namespace Reports.Controllers
+namespace b.Controllers
 {
     public class ReportCustomersController : Controller
     {
