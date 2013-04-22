@@ -165,7 +165,7 @@
       <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <Private>False</Private>
       <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
     <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -202,9 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304221021289_InitialCreate.cs" />
-    <Compile Include="Migrations\201304221021289_InitialCreate.Designer.cs">
-      <DependentUpon>201304221021289_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201304221037165_mig_start.cs" />
+    <Compile Include="Migrations\201304221037165_mig_start.Designer.cs">
+      <DependentUpon>201304221037165_mig_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -365,8 +365,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201304221021289_InitialCreate.resx">
-      <DependentUpon>201304221021289_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201304221037165_mig_start.resx">
+      <DependentUpon>201304221037165_mig_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
