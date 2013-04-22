@@ -1,12 +1,13 @@
 ﻿@model db.ViewModels.PurchaseOrder
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Purchase Order Edit";
 }
 
-<h2>Edit</h2>
+<h2>Purchase Order Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -39,10 +40,48 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
     </fieldset>
+    <fieldset>
+        <legend>Purchase Order Items</legend>
+
+        @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
+        {
+            <p>None. or empty</p>
+        }
+        else
+        {
+            <ul id="movieEditor" style="list-style-type: none">
+                @for (int i = 0; i < Model.POItems.Count; i++)
+                {
+                    <li style="padding-bottom: 15px">
+                        <img src="@Url.Content("~/Content/images/draggable-icon.png")" style="cursor: move" alt=""/>
+
+                        @Html.LabelFor(model => model.POItems[i].Rate)
+                        @Html.EditorFor(model => model.POItems[i].Rate)
+                        @Html.ValidationMessageFor(model => model.POItems[i].Rate)
+
+                        @Html.LabelFor(model => model.POItems[i].Qty)
+                        @Html.EditorFor(model => model.POItems[i].Qty)
+                        @Html.ValidationMessageFor(model => model.POItems[i].Qty)
+
+                        <a href="#" onclick="$(this).parent().remove();">Delete</a>
+                    </li>
+                }
+            </ul>
+            <a href="#">Add another</a>
+        }
+
+        <script type="text/javascript">
+            $(function () {
+                $("#movieEditor").sortable();
+            });
+        </script>
+    </fieldset>
+    <p>
+        <input type="submit" value="Save" />
+        <a href="/">Cancel</a>
+    </p>
+  
 }
 
 <div>
