@@ -267,7 +267,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
-    <None Include="Properties\PublishProfiles\db_b.esamadhan.net.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\biosg.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />

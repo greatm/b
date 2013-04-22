@@ -42,7 +42,7 @@
     <fieldset>
         <legend>Purchase Order Items</legend>
 
-        @if (Model.POItems == null || Model.POItems.Count == 0)
+        @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
         {
             <p>None.</p>
         }
