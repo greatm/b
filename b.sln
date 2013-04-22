@@ -3,22 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "b", "b\b.csproj", "{85D3DDF0-9C9E-4544-AD4C-555F50D083A1}"
 	ProjectSection(ProjectDependencies) = postProject
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9} = {5D1CBA4B-F363-4A07-AA71-23399143B0D9}
 		{0BB05C6A-2BEC-449F-81CF-3AF775DA1B7B} = {0BB05C6A-2BEC-449F-81CF-3AF775DA1B7B}
 		{5810EACD-DB20-4258-A73F-85341E0B0D96} = {5810EACD-DB20-4258-A73F-85341E0B0D96}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purchase", "b\Areas\Purchase\Purchase.csproj", "{0BB05C6A-2BEC-449F-81CF-3AF775DA1B7B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9} = {5D1CBA4B-F363-4A07-AA71-23399143B0D9}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db", "db\db.csproj", "{5D1CBA4B-F363-4A07-AA71-23399143B0D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "b\Areas\Reports\Reports.csproj", "{5810EACD-DB20-4258-A73F-85341E0B0D96}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9} = {5D1CBA4B-F363-4A07-AA71-23399143B0D9}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +25,6 @@ Global
 		{0BB05C6A-2BEC-449F-81CF-3AF775DA1B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BB05C6A-2BEC-449F-81CF-3AF775DA1B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BB05C6A-2BEC-449F-81CF-3AF775DA1B7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D1CBA4B-F363-4A07-AA71-23399143B0D9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5810EACD-DB20-4258-A73F-85341E0B0D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5810EACD-DB20-4258-A73F-85341E0B0D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5810EACD-DB20-4258-A73F-85341E0B0D96}.Release|Any CPU.ActiveCfg = Release|Any CPU

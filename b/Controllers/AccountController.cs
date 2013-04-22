@@ -9,7 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using b.Filters;
-using db.Models;
+using b.Models;
 
 namespace b.Controllers
 {

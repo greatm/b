@@ -3,29 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using db.Models;
-
-//namespace b.Models
-//{
-//public class bDBContext1 : DbContext
-//{
-//    public DbSet<UserProfile> UserProfiles { get; set; }
-
-//    public DbSet<Vendor> Vendors { get; set; }
-//    public DbSet<Product> Products { get; set; }
-
-//    //public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
-//}
-//}
+using b.ViewModels ;
 
 namespace b.Models
 {
-    public class db_bDBContext : bDBContext
+    public class bDBContext : DbContext
     {
-        //public DbSet<dummy> dummys { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
     }
-    //public class dummy
-    //{
-    //    public string Dummy { get; set; }
-    //}
 }
+
+//namespace b.Models
+//{
+//    public class db_bDBContext : bDBContext
+//    {
+//    }
+//}

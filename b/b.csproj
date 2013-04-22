@@ -40,9 +40,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="db">
-      <HintPath>..\db\bin\Debug\db.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -191,22 +188,22 @@
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\PurchaseHomeController.cs" />
+    <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304201106046_mig_start.cs" />
-    <Compile Include="Migrations\201304201106046_mig_start.Designer.cs">
-      <DependentUpon>201304201106046_mig_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304201312148_mig_polist.cs" />
-    <Compile Include="Migrations\201304201312148_mig_polist.Designer.cs">
-      <DependentUpon>201304201312148_mig_polist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\POItem.cs" />
+    <Compile Include="ViewModels\Purchase.cs" />
+    <Compile Include="ViewModels\PurchaseItem.cs" />
+    <Compile Include="ViewModels\PurchaseOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -342,6 +339,7 @@
     <Content Include="Views\PurchaseOrder\Delete.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\PurchaseHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,14 +349,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201304201106046_mig_start.resx">
-      <DependentUpon>201304201106046_mig_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304201312148_mig_polist.resx">
-      <DependentUpon>201304201312148_mig_polist.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

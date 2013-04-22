@@ -5,111 +5,113 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using b.ViewModels;
 using b.Models;
 
 namespace b.Controllers
 {
-    public class MasterVendorController : Controller
+    public class PurchaseOrderController : Controller
     {
         private bDBContext db = new bDBContext();
 
         //
-        // GET: /MasterVendor/
+        // GET: /PurchaseOrder/
 
         public ActionResult Index()
         {
-            return View(db.Vendors.ToList());
+            return View(db.PurchaseOrders.ToList());
         }
 
         //
-        // GET: /MasterVendor/Details/5
+        // GET: /PurchaseOrder/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
-            if (vendor == null)
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            if (purchaseorder == null)
             {
                 return HttpNotFound();
             }
-            return View(vendor);
+            return View(purchaseorder);
         }
 
         //
-        // GET: /MasterVendor/Create
+        // GET: /PurchaseOrder/Create
 
         public ActionResult Create()
         {
+
             return View();
         }
 
         //
-        // POST: /MasterVendor/Create
+        // POST: /PurchaseOrder/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Vendor vendor)
+        public ActionResult Create(PurchaseOrder purchaseorder)
         {
             if (ModelState.IsValid)
             {
-                db.Vendors.Add(vendor);
+                db.PurchaseOrders.Add(purchaseorder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(vendor);
+            return View(purchaseorder);
         }
 
         //
-        // GET: /MasterVendor/Edit/5
+        // GET: /PurchaseOrder/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
-            if (vendor == null)
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            if (purchaseorder == null)
             {
                 return HttpNotFound();
             }
-            return View(vendor);
+            return View(purchaseorder);
         }
 
         //
-        // POST: /MasterVendor/Edit/5
+        // POST: /PurchaseOrder/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Vendor vendor)
+        public ActionResult Edit(PurchaseOrder purchaseorder)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vendor).State = EntityState.Modified;
+                db.Entry(purchaseorder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vendor);
+            return View(purchaseorder);
         }
 
         //
-        // GET: /MasterVendor/Delete/5
+        // GET: /PurchaseOrder/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
-            if (vendor == null)
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            if (purchaseorder == null)
             {
                 return HttpNotFound();
             }
-            return View(vendor);
+            return View(purchaseorder);
         }
 
         //
-        // POST: /MasterVendor/Delete/5
+        // POST: /PurchaseOrder/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vendor vendor = db.Vendors.Find(id);
-            db.Vendors.Remove(vendor);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            db.PurchaseOrders.Remove(purchaseorder);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
