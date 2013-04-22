@@ -198,6 +198,7 @@
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\ReportCustomersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SalesHomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,6 +217,8 @@
     <Compile Include="ViewModels\Purchase.cs" />
     <Compile Include="ViewModels\PurchaseItem.cs" />
     <Compile Include="ViewModels\PurchaseOrder.cs" />
+    <Compile Include="ViewModels\SaleItem.cs" />
+    <Compile Include="ViewModels\Sales.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -355,6 +358,7 @@
     <Content Include="Views\PurchaseHome\Index.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\ReportCustomers\Index.cshtml" />
+    <Content Include="Views\SalesHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

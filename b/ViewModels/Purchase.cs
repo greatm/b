@@ -13,8 +13,10 @@ namespace b.ViewModels
         public DateTime Date { get; set; }
         public int POID { get; set; }
         public int VendorID { get; set; }
-        public IEnumerable<Vendor> Vendors { get; set; }
+        public string VendorInvoice { get; set; }
         public string Remarks { get; set; }
         public IEnumerable<PurchaseItem> PurchaseItems { get; set; }
+
+        public IEnumerable<Vendor> Vendors { get; set; }
     }
 }
