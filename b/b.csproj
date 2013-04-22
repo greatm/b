@@ -345,7 +345,7 @@
     <Content Include="Views\MasterProduct\Edit.cshtml" />
     <Content Include="Views\MasterProduct\Delete.cshtml" />
     <Content Include="Views\Purchase\Index.cshtml" />
-    <Content Include="Views\PurchaseOrder\Index.cshtml" />
+    <Content Include="Views\PurchaseOrder\Index1.cshtml" />
     <Content Include="Views\PurchaseOrder\Details.cshtml" />
     <Content Include="Views\PurchaseOrder\Create.cshtml" />
     <Content Include="Views\PurchaseOrder\Edit.cshtml" />

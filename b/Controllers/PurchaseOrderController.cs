@@ -17,11 +17,14 @@ namespace b.Controllers
         //
         // GET: /PurchaseOrder/
 
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.PurchaseOrders.ToList());
+        //}
+        public string Index()
         {
-            return View(db.PurchaseOrders.ToList());
+            return "hi";
         }
-
         //
         // GET: /PurchaseOrder/Details/5
 
