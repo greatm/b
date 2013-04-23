@@ -198,6 +198,7 @@
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\ReportCustomersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SalesHomeController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -211,6 +212,10 @@
     <Compile Include="Migrations\201304230154141_mig_salesorder.cs" />
     <Compile Include="Migrations\201304230154141_mig_salesorder.Designer.cs">
       <DependentUpon>201304230154141_mig_salesorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304230233097_mig_sales.cs" />
+    <Compile Include="Migrations\201304230233097_mig_sales.Designer.cs">
+      <DependentUpon>201304230233097_mig_sales.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -371,6 +376,11 @@
     <Content Include="Views\SalesOrder\Create.cshtml" />
     <Content Include="Views\SalesOrder\Edit.cshtml" />
     <Content Include="Views\SalesOrder\Delete.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\Details.cshtml" />
+    <Content Include="Views\Sales\Create.cshtml" />
+    <Content Include="Views\Sales\Edit.cshtml" />
+    <Content Include="Views\Sales\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304230154141_mig_salesorder.resx">
       <DependentUpon>201304230154141_mig_salesorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304230233097_mig_sales.resx">
+      <DependentUpon>201304230233097_mig_sales.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
