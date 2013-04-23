@@ -1,4 +1,5 @@
 ﻿@model b.ViewModels.PurchaseOrder
+@using b.ViewModels;
 
 @{
     ViewBag.Title = "Purchase Order Create";
@@ -43,12 +44,12 @@
     <fieldset>
         <legend>POItems</legend>
 
-        @if (Model.POItems == null || Model.POItems.Count == 0)
+        @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
         {
             <p>None.</p>
         }
         <ul id="movieEditor" style="list-style-type: none">
-            @if (Model.POItems != null)
+            @if (Model != null && Model.POItems != null)
             {
                 foreach (POItem poitem in Model.POItems)
                 {
@@ -62,13 +63,14 @@
             $(function () {
                 $("#movieEditor").sortable();
                 $("#addAnother").click(function () {
-                    $.get('/User/MovieEntryRow', function (template) {
+                    $.get('/PurchaseOrder/POItemEntry', function (template) {
                         $("#movieEditor").append(template);
                     });
                 });
             });
         </script>
     </fieldset>
+ 
     <p>
         <input type="submit" value="Create" />
         <a href="/">Cancel</a>

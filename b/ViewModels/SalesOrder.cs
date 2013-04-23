@@ -11,6 +11,6 @@ namespace b.ViewModels
         public DateTime Date { get; set; }
         public int CustomerID { get; set; }
         public string Remarks { get; set; }
-        public IEnumerable<SalesOrderItem> PurchaseItems { get; set; }
+        public IList<SalesOrderItem> SalesOrderItems { get; set; }
     }
 }

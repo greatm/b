@@ -1,4 +1,5 @@
 ﻿@model b.ViewModels.SalesOrder
+@using b.ViewModels
 
 @{
     ViewBag.Title = "Sales Order Create";
@@ -38,6 +39,36 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
+    </fieldset>
+  
+    <fieldset>
+        <legend>Sales Order Items</legend>
+
+        @if (Model == null || Model.SalesOrderItems == null || Model.SalesOrderItems.Count == 0)
+        {
+            <p>None.</p>
+        }
+        <ul id="movieEditor" style="list-style-type: none">
+            @if (Model != null && Model.SalesOrderItems != null)
+            {
+                foreach (SalesOrderItem soitem in Model.SalesOrderItems)
+                {
+                    Html.RenderPartial("SOItemEntry", soitem);
+                }
+            }
+        </ul>
+        <a id="addAnother" href="#">Add another</a>
+
+        <script type="text/javascript">
+            $(function () {
+                $("#movieEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/PurchaseOrder/POItemEntry', function (template) {
+                        $("#movieEditor").append(template);
+                    });
+                });
+            });
+        </script>
     </fieldset>
  
     <p>

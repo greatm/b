@@ -13,6 +13,6 @@ namespace b.ViewModels
         public int CustomerID { get; set; }
         public string Invoice { get; set; }
         public string Remarks { get; set; }
-        public IEnumerable<SalesItem> PurchaseItems { get; set; }
+        public IList<SalesItem> SalesItems { get; set; }
     }
 }
