@@ -28,7 +28,7 @@ namespace b.Controllers
         public ActionResult ReportAction(ReportViewerParams parameter)
         {
             model = new ReportViewerModel();
-            model.ReportPath = Server.MapPath("~/App_Data/ParameterReport.rdl");
+            //model.ReportPath = Server.MapPath("~/App_Data/ParameterReport.rdl");
             if (Session["InvoiceID"] != null)
             {
                 List<ReportParameter> parameters = new List<ReportParameter>();

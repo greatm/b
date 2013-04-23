@@ -44,7 +44,13 @@
     <Reference Include="Syncfusion.Core, Version=11.104.0.21, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.Linq.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="Syncfusion.ReportViewer.Mvc, Version=11.144.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
@@ -53,7 +59,12 @@
     <Reference Include="Syncfusion.Shared.Mvc, Version=11.144.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Theme.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Theme.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -232,9 +243,18 @@
     <Compile Include="Migrations\201304230742402_mig_po_model.Designer.cs">
       <DependentUpon>201304230742402_mig_po_model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304231224207_mig_purchase.cs" />
+    <Compile Include="Migrations\201304231224207_mig_purchase.Designer.cs">
+      <DependentUpon>201304231224207_mig_purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304231255248_mig_product_model.cs" />
+    <Compile Include="Migrations\201304231255248_mig_product_model.Designer.cs">
+      <DependentUpon>201304231255248_mig_product_model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
+    <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -376,7 +396,6 @@
     <Content Include="Views\MasterProduct\Create.cshtml" />
     <Content Include="Views\MasterProduct\Edit.cshtml" />
     <Content Include="Views\MasterProduct\Delete.cshtml" />
-    <Content Include="Views\Purchase\Index.cshtml" />
     <Content Include="Views\PurchaseOrder\Index.cshtml" />
     <Content Include="Views\PurchaseOrder\Details.cshtml" />
     <Content Include="Views\PurchaseOrder\Create.cshtml" />
@@ -405,6 +424,11 @@
     <Content Include="Views\PurchaseOrder\POItemEntry.cshtml" />
     <Content Include="Views\ReportSales\ViewReport.cshtml" />
     <Content Include="Views\ReportSales\View.cshtml" />
+    <Content Include="Views\Purchase\Index.cshtml" />
+    <Content Include="Views\Purchase\Details.cshtml" />
+    <Content Include="Views\Purchase\Create.cshtml" />
+    <Content Include="Views\Purchase\Edit.cshtml" />
+    <Content Include="Views\Purchase\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -424,6 +448,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304230742402_mig_po_model.resx">
       <DependentUpon>201304230742402_mig_po_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304231224207_mig_purchase.resx">
+      <DependentUpon>201304231224207_mig_purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304231255248_mig_product_model.resx">
+      <DependentUpon>201304231255248_mig_product_model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

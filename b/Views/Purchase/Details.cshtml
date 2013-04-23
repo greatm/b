@@ -1,0 +1,50 @@
+﻿@model b.ViewModels.Purchase
+
+@{
+    ViewBag.Title = "Purchase Details";
+}
+
+<h2>Purchase Details</h2>
+
+<fieldset>
+    <legend>Purchase</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.POID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.VendorID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VendorID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.VendorInvoice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VendorInvoice)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Remarks)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Remarks)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

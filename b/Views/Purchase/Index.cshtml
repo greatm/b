@@ -1,16 +1,58 @@
-﻿@{
-    ViewBag.Title = "Purchase";
+﻿@model IEnumerable<b.ViewModels.Purchase>
+
+@{
+    ViewBag.Title = "Purchases";
 }
 
-<h2>Purchase</h2>
-
-<hr />
+<h2>Purchases</h2>
 
 <p>
-    @Html.ActionLink("Purchase Order", "Index", "PurchaseOrder")
+    @Html.ActionLink("Create New", "Create")
 </p>
-<p>
-    @Html.ActionLink("Purchase", "Index", "Purchase")
-</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorInvoice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th></th>
+    </tr>
 
-<hr />
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.POID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorInvoice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

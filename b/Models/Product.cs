@@ -18,10 +18,10 @@ namespace b.Models
         public string UoM { get; set; }
 
         [Display(Name = "Re Order Level")]
-        public string RoL { get; set; }
+        public int RoL { get; set; }
 
         [Display(Name = "Re Order Quantity")]
-        public string RoQ { get; set; }
+        public int RoQ { get; set; }
         public string Remarks { get; set; }
     }
 }
