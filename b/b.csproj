@@ -206,6 +206,7 @@
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\ReportCustomersController.cs" />
     <Compile Include="Controllers\ReportPurchaseController.cs" />
+    <Compile Include="Controllers\ReportSalesController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ReportUsersController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -303,6 +304,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="App_Data\ParameterReport.rdl" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
     <Content Include="RDL\employee.rdl" />
     <Content Include="RDL\ReportPurchase.rdl" />
@@ -401,10 +403,9 @@
     <Content Include="Views\ReportUsers\ViewReport.cshtml" />
     <Content Include="Views\ReportPurchase\ViewReport.cshtml" />
     <Content Include="Views\PurchaseOrder\POItemEntry.cshtml" />
+    <Content Include="Views\ReportSales\ViewReport.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

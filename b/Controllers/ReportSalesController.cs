@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Syncfusion.ReportViewer.Mvc;
+//using MvcReportViewer.Models;
 using Syncfusion.Reports.Mvc;
 
 namespace b.Controllers
 {
-    public class ReportUsersController : Controller
+    public class ReportSalesController : Controller
     {
-        ReportViewerModel model { get; set; }
-
+        ReportViewerModel model;
         public ActionResult ViewReport()
         {
             ViewData["ReportModel"] = this.GetModel();
@@ -25,22 +25,18 @@ namespace b.Controllers
             return new ReportViewerHtmlActionResult(this.GetModel(), param);
         }
 
-        public ActionResult Index()
+        ReportViewerModel GetModel()
         {
-            return View();
-        }
-
-        public ActionResult View(ReportViewerParams parameter)
-        {
-            //this.Session["InvoiceID"] = parameter.InvoiceID;
-            return View(model);
+            ReportViewerModel reportModel = new ReportViewerModel();
+            reportModel.ReportPath = Server.MapPath("~/App_Data/ParameterReport.rdl");
+            return reportModel;
         }
 
         [HttpPost]
         public ActionResult ReportAction(ReportViewerParams parameter)
         {
             model = new ReportViewerModel();
-            model.ReportPath = Server.MapPath("~/RDL/employee.rdl");
+            model.ReportPath = Server.MapPath("~/App_Data/ParameterReport.rdl");
             if (Session["InvoiceID"] != null)
             {
                 List<ReportParameter> parameters = new List<ReportParameter>();
@@ -52,12 +48,6 @@ namespace b.Controllers
                 model.Parameters = parameters;
             }
             return new ReportViewerHtmlActionResult(model, parameter);
-        }
-        ReportViewerModel GetModel()
-        {
-            model = new ReportViewerModel();
-            model.ReportPath = Server.MapPath("~/RDL/employee1.rdl");
-            return model;
         }
     }
 }
