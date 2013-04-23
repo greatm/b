@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using b.ViewModels ;
+using b.ViewModels;
 
 namespace b.Models
 {
@@ -17,10 +17,3 @@ namespace b.Models
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
     }
 }
-
-//namespace b.Models
-//{
-//    public class db_bDBContext : bDBContext
-//    {
-//    }
-//}

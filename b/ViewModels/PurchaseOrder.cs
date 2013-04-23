@@ -11,8 +11,9 @@ namespace b.ViewModels
         public int ID { get; set; }
         public DateTime Date { get; set; }
         public int VendorID { get; set; }
-        public IEnumerable<Vendor> Vendors { get; set; }
         public string Remarks { get; set; }
         public IList<POItem> POItems { get; set; }
+
+        public IEnumerable<Vendor> Vendors { get; set; }
     }
 }

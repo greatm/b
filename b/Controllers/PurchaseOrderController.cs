@@ -12,8 +12,13 @@ namespace b.Controllers
 {
     public class PurchaseOrderController : Controller
     {
+        #region var
+
         private bDBContext db = new bDBContext();
 
+        #endregion
+
+        #region action
         //
         // GET: /PurchaseOrder/
 
@@ -40,7 +45,7 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-
+            CreateVendorsList();
             return View();
         }
 
@@ -121,5 +126,24 @@ namespace b.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        #endregion
+
+        #region function
+        private void CreateVendorsList()
+        {
+            var vendors = db.Vendors;
+            List<object> newList = new List<object>();
+            foreach (var vendor in vendors)
+                newList.Add(new
+                {
+                    Id = vendor.ID,
+                    Name = vendor.Name + " : " + vendor.Person
+                });
+            this.ViewData["Vendors"] = new SelectList(newList, "Id", "Name");
+
+        }
+        #endregion
+
     }
 }
