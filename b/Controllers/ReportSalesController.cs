@@ -11,25 +11,17 @@ namespace b.Controllers
 {
     public class ReportSalesController : Controller
     {
-        ReportViewerModel model;
-        public ActionResult ViewReport()
+        ReportViewerModel model { get; set; }
+
+        public ActionResult Index()
         {
-            ViewData["ReportModel"] = this.GetModel();
-            ViewData["ProductName"] = "ReportViewer";
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ViewReport(ReportViewerParams param)
+        public ActionResult View(InvoiceParamModel parameter)
         {
-            return new ReportViewerHtmlActionResult(this.GetModel(), param);
-        }
-
-        ReportViewerModel GetModel()
-        {
-            ReportViewerModel reportModel = new ReportViewerModel();
-            reportModel.ReportPath = Server.MapPath("~/App_Data/ParameterReport.rdl");
-            return reportModel;
+            this.Session["InvoiceID"] = parameter.InvoiceID;
+            return View(model);
         }
 
         [HttpPost]
@@ -48,6 +40,14 @@ namespace b.Controllers
                 model.Parameters = parameters;
             }
             return new ReportViewerHtmlActionResult(model, parameter);
+        }
+    }
+    public class InvoiceParamModel
+    {
+        public string InvoiceID
+        {
+            get;
+            set;
         }
     }
 }

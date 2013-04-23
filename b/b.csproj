@@ -404,6 +404,7 @@
     <Content Include="Views\ReportPurchase\ViewReport.cshtml" />
     <Content Include="Views\PurchaseOrder\POItemEntry.cshtml" />
     <Content Include="Views\ReportSales\ViewReport.cshtml" />
+    <Content Include="Views\ReportSales\View.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

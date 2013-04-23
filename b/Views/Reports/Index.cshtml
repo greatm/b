@@ -19,3 +19,9 @@
 </p>
 
 <hr />
+
+ @using (Html.BeginForm("View", "ReportSales", FormMethod.Post, new { target = "_blank" }))
+ {
+  <h2>Provide invoice number to view the Report:</h2><input type="text" name="InvoiceID" />     
+  <input type="submit" value="Submit"/>   
+ }
