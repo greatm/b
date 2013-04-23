@@ -13,6 +13,6 @@
 
 <h2>here</h2>
 <div style="width:100%;height:800px;">       
-@*@{Html.Syncfusion().ReportViewer("Reports", Model).ShowParametersBlock(false).RequestMap(Url.Action("ReportAction", "ReportSales")).Render();}*@
+@{Html.Syncfusion().ReportViewer("Reports", Model).ShowParametersBlock(false).RequestMap(Url.Action("ReportAction", "ReportSales")).Render();}
 </div>
     @{Html.Syncfusion().ScriptManager().EnableGlobalization().Render();}
