@@ -12,6 +12,19 @@ namespace b.Controllers
     {
         ReportViewerModel model { get; set; }
 
+        public ActionResult ViewReport()
+        {
+            ViewData["ReportModel"] = this.GetModel();
+            ViewData["ProductName"] = "ReportViewer";
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ViewReport(ReportViewerParams param)
+        {
+            return new ReportViewerHtmlActionResult(this.GetModel(), param);
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -23,11 +36,6 @@ namespace b.Controllers
             return View(model);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ViewReport(ReportViewerParams param)
-        {
-            return new ReportViewerHtmlActionResult(this.GetModel(), param);
-        }
         [HttpPost]
         public ActionResult ReportAction(ReportViewerParams parameter)
         {
