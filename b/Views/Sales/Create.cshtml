@@ -1,12 +1,13 @@
 ﻿@model b.ViewModels.Sales
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Sales Create";
 }
 
-<h2>Create</h2>
+<h2>Sales Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

@@ -1,12 +1,13 @@
 ﻿@model b.ViewModels.Sales
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Sales Edit";
 }
 
-<h2>Edit</h2>
+<h2>Sales Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

@@ -1,54 +1,56 @@
 ﻿@model b.ViewModels.Sales
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Sales Delete";
 }
 
-<h2>Delete</h2>
+<h2>Sales Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
     <legend>Sales</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Date)
+        @Html.DisplayNameFor(model => model.Date)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Date)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.SOID)
+        @Html.DisplayNameFor(model => model.SOID)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.SOID)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CustomerID)
+        @Html.DisplayNameFor(model => model.CustomerID)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CustomerID)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Invoice)
+        @Html.DisplayNameFor(model => model.Invoice)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Invoice)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Remarks)
+        @Html.DisplayNameFor(model => model.Remarks)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Remarks)
     </div>
 </fieldset>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
+        <input type="submit" value="Delete" />
+        |
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
