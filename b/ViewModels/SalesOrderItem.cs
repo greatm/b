@@ -5,7 +5,7 @@ using System.Web;
 
 namespace b.ViewModels
 {
-    public class SaleItem
+    public class SalesOrderItem
     {
         public int ProductID { get; set; }
         public int Qty { get; set; }

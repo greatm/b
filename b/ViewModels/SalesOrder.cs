@@ -5,14 +5,12 @@ using System.Web;
 
 namespace b.ViewModels
 {
-    public class Sales
+    public class SalesOrder
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }
-        public int SOID { get; set; }
         public int CustomerID { get; set; }
-        public string Invoice { get; set; }
         public string Remarks { get; set; }
-        public IEnumerable<SalesItem> PurchaseItems { get; set; }
+        public IEnumerable<SalesOrderItem> PurchaseItems { get; set; }
     }
 }
