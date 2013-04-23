@@ -4,7 +4,9 @@
 
 # bin/
 obj/
-app_data/
+# app_data/
+*.mdf
+*.ldf
 
 
 #b/bin/
