@@ -198,6 +198,7 @@
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\ReportCustomersController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\ReportUsersController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SalesHomeController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
@@ -381,6 +382,8 @@
     <Content Include="Views\Sales\Create.cshtml" />
     <Content Include="Views\Sales\Edit.cshtml" />
     <Content Include="Views\Sales\Delete.cshtml" />
+    <Content Include="Views\ReportUsers\View.cshtml" />
+    <Content Include="Views\ReportUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
