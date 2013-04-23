@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201304230233097_mig_sales.Designer.cs">
       <DependentUpon>201304230233097_mig_sales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304230742402_mig_po_model.cs" />
+    <Compile Include="Migrations\201304230742402_mig_po_model.Designer.cs">
+      <DependentUpon>201304230742402_mig_po_model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -396,6 +400,7 @@
     <Content Include="Views\ReportUsers\Index.cshtml" />
     <Content Include="Views\ReportUsers\ViewReport.cshtml" />
     <Content Include="Views\ReportPurchase\ViewReport.cshtml" />
+    <Content Include="Views\PurchaseOrder\POItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304230233097_mig_sales.resx">
       <DependentUpon>201304230233097_mig_sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304230742402_mig_po_model.resx">
+      <DependentUpon>201304230742402_mig_po_model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

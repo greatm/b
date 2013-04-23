@@ -1,36 +1,36 @@
 ﻿@model b.ViewModels.SalesOrder
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Sales Order Details";
 }
 
-<h2>Details</h2>
+<h2>Sales Order Details</h2>
 
 <fieldset>
     <legend>SalesOrder</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Date)
+        @Html.DisplayNameFor(model => model.Date)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Date)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CustomerID)
+        @Html.DisplayNameFor(model => model.CustomerID)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CustomerID)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Remarks)
+        @Html.DisplayNameFor(model => model.Remarks)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Remarks)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

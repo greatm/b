@@ -38,10 +38,42 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
     </fieldset>
+    
+    <fieldset>
+        <legend>POItems</legend>
+
+        @if (Model.POItems == null || Model.POItems.Count == 0)
+        {
+            <p>None.</p>
+        }
+        <ul id="movieEditor" style="list-style-type: none">
+            @if (Model.POItems != null)
+            {
+                foreach (POItem poitem in Model.POItems)
+                {
+                    Html.RenderPartial("POItemEntry", poitem);
+                }
+            }
+        </ul>
+        <a id="addAnother" href="#">Add another</a>
+
+        <script type="text/javascript">
+            $(function () {
+                $("#movieEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/User/MovieEntryRow', function (template) {
+                        $("#movieEditor").append(template);
+                    });
+                });
+            });
+        </script>
+    </fieldset>
+    <p>
+        <input type="submit" value="Create" />
+        <a href="/">Cancel</a>
+    </p>
+   
 }
 
 <div>
