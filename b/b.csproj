@@ -340,8 +340,8 @@
     <Content Include="Global.asax" />
     <Content Include="App_Data\ParameterReport.rdl" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
-    <Content Include="RDL\employee.rdl" />
-    <Content Include="RDL\ReportPurchase.rdl" />
+    <Content Include="App_Data\employee.rdl" />
+    <Content Include="App_Data\ReportPurchase.rdl" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\biosg.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -357,6 +357,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -32,7 +32,7 @@ namespace b.Controllers
         ReportViewerModel GetModel()
         {
             ReportViewerModel reportModel = new ReportViewerModel();
-            reportModel.ReportPath = Server.MapPath("~/RDL/employee.rdl");
+            reportModel.ReportPath = Server.MapPath("~/App_Data/employee.rdl");
             return reportModel;
         }
     }
