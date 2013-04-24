@@ -56,7 +56,7 @@ namespace b.Controllers
         ReportViewerModel GetModel()
         {
             model = new ReportViewerModel();
-            model.ReportPath = Server.MapPath("~/RDL/employee1.rdl");
+            model.ReportPath = Server.MapPath("~/App_Data/employee.rdl");
             return model;
         }
     }
