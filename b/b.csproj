@@ -344,7 +344,9 @@
     <Content Include="App_Data\ReportPurchase.rdl" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\biosg.jpg" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
