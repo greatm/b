@@ -20,10 +20,9 @@ namespace b.Controllers
         {
             ViewBag.Message = "us";
 
-            //bDBContext db = new bDBContext();
-            //db.whatsnews.LastOrDefault()
-            //ViewBag.UpdateTime = DateTime.Now;
-            return View();
+            bDBContext db = new bDBContext();
+            var whats = db.whatsnews.OrderByDescending(t => t.WorkTime).ToList();
+            return View(whats);
         }
 
         public ActionResult Contact()

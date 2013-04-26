@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<b.Models.whatsnew>
+
+@{
     ViewBag.Title = "About";
 }
 
@@ -15,10 +17,13 @@
 </article>
 
 <aside>
-    <h3>What's new : @ViewBag.UpdateTime</h3>
+    <h3>What's new </h3>
 
-    <p>add master product</p>
-    <p>add master vendor</p>
-    <p>add logo</p>
-
+    @foreach (var whats in Model)
+    { 
+        <p>@whats.WorkTime
+            <br />
+            @whats.Work
+        </p>
+    }
 </aside>

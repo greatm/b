@@ -4,6 +4,7 @@ namespace b.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using b.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<b.Models.bDBContext>
     {
@@ -12,7 +13,7 @@ namespace b.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(b.Models.bDBContext context)
+        protected override void Seed(bDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -26,6 +27,14 @@ namespace b.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.whatsnews.AddOrUpdate(
+                p => p.WorkTime,
+
+                new whatsnew { WorkTime = new DateTime(2013, 4, 26, 10, 30, 0), Work = "add master product" },
+                new whatsnew { WorkTime = new DateTime(2013, 4, 26, 10, 20, 0), Work = "add master vendor" },
+                new whatsnew { WorkTime = new DateTime(2013, 4, 26, 10, 10, 0), Work = "add logo" }
+                );
         }
     }
 }
