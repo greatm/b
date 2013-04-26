@@ -19,6 +19,10 @@ namespace b.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "us";
+
+            //bDBContext db = new bDBContext();
+            //db.whatsnews.LastOrDefault()
+            //ViewBag.UpdateTime = DateTime.Now;
             return View();
         }
 

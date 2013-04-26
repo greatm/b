@@ -20,7 +20,7 @@ namespace b.Models
         [Display(Name = "Re Order Level")]
         public int RoL { get; set; }
 
-        [Display(Name = "Re Order Quantity" )]
+        [Display(Name = "Re Order Quantity")]
         public int RoQ { get; set; }
         public string Remarks { get; set; }
     }

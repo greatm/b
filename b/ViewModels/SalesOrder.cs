@@ -11,6 +11,7 @@ namespace b.ViewModels
         public DateTime Date { get; set; }
         public int CustomerID { get; set; }
         public string Remarks { get; set; }
-        public IList<SalesOrderItem> SalesOrderItems { get; set; }
+        public IEnumerable<SalesOrderItem> SalesOrderItems { get; set; }
+        public decimal TotalAmount { get; set; }
     }
 }
