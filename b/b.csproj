@@ -275,6 +275,7 @@
     <Compile Include="Models\bDBContext.cs" />
     <Compile Include="Models\BOM.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\PackingList.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Models\whatsnew.cs" />
@@ -489,6 +490,7 @@
     <Content Include="Views\Purchase\Create.cshtml" />
     <Content Include="Views\Purchase\Edit.cshtml" />
     <Content Include="Views\Purchase\Delete.cshtml" />
+    <Content Include="Views\MasterCustomer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

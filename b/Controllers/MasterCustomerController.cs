@@ -13,7 +13,8 @@ namespace b.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return JavaScript("function hello(){alert(hello, world from js);}");
+            //return View();
         }
 
     }
