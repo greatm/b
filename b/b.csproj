@@ -274,6 +274,10 @@
     <Compile Include="Migrations\201304261246285_mig_product.Designer.cs">
       <DependentUpon>201304261246285_mig_product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304270836532_mig_so_validate.cs" />
+    <Compile Include="Migrations\201304270836532_mig_so_validate.Designer.cs">
+      <DependentUpon>201304270836532_mig_so_validate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -496,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304261246285_mig_product.resx">
       <DependentUpon>201304261246285_mig_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304270836532_mig_so_validate.resx">
+      <DependentUpon>201304270836532_mig_so_validate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
