@@ -13,7 +13,6 @@ namespace b.Models
         public string Company { get; set; }
         public bool Active { get; set; }
         public ServiceLevel ServiceLevel { get; set; }
-        //public IEnumerable< { get; set; }
     }
     public enum ServiceLevel
     {
