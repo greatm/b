@@ -1,4 +1,4 @@
-﻿@model IEnumerable<b.Models.whatsnew>
+﻿@model IEnumerable<whatsnew>
 
 @{
     ViewBag.Title = "About";
@@ -25,6 +25,21 @@
             $("#helloButton").click(doSomething);
         });
     </script>
+
+
+    @{
+string message = "<script>alert('haacked!');</script>";
+}
+<span>@message</span>
+    <span>@Html.Raw(message)</span>
+
+
+    <script type="text/javascript">
+        $(function () {
+            var message = 'Hello @ViewBag.Username';
+    $("#message").html(message).show('slow');
+});
+</script>
 
 </article>
 
