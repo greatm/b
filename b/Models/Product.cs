@@ -22,6 +22,8 @@ namespace b.Models
 
         [Display(Name = "Re Order Quantity")]
         public int RoQ { get; set; }
+        public string Color { get; set; }
+        public string Picture { get; set; }
         public string Remarks { get; set; }
     }
 }
