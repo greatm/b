@@ -22,7 +22,7 @@ namespace b.Controllers
 
             bDBContext db = new bDBContext();
             var whats = db.whatsnews.OrderByDescending(t => t.WorkTime).ToList();
-            return PartialView(whats);
+            return View(whats);
         }
 
         public ActionResult Contact()

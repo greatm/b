@@ -15,32 +15,6 @@
     </p>
     create <b>custom</b> software.
 
-
-    <input id="helloButton" value="Click Me">
-    <script type="text/javascript">
-        function doSomething() {
-            alert("hello events!");
-        }
-        $(function () {
-            $("#helloButton").click(doSomething);
-        });
-    </script>
-
-
-    @{
-string message = "<script>alert('haacked!');</script>";
-}
-<span>@message</span>
-    <span>@Html.Raw(message)</span>
-
-
-    <script type="text/javascript">
-        $(function () {
-            var message = 'Hello @ViewBag.Username';
-    $("#message").html(message).show('slow');
-});
-</script>
-
 </article>
 
 <aside>
