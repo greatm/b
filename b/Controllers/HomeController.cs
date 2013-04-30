@@ -15,7 +15,7 @@ namespace b.Controllers
 
             return View();
         }
-                public ActionResult About()
+        public ActionResult About()
         {
             ViewBag.Message = "us";
 
@@ -23,13 +23,13 @@ namespace b.Controllers
             var whats = db.whatsnews.OrderByDescending(t => t.WorkTime).ToList();
             return View(whats);
         }
-                public ActionResult Contact()
+        public ActionResult Contact()
         {
             ViewBag.Message = "info";
 
             return View();
         }
-    
+
         public ActionResult DailyDeal()
         {
             var album = GetDailyDeal();
@@ -46,12 +46,12 @@ namespace b.Controllers
         public ActionResult ProductSearch(string q)
         {
             var artists = GetArtists(q);
-            return PartialView("/MasterProduct/Index",artists);
+            return PartialView("/MasterProduct/Index", artists);
         }
         private List<Product> GetArtists(string searchString)
         {
             bDBContext db = new bDBContext();
-            return db.Products 
+            return db.Products
             .Where(a => a.Name.Contains(searchString))
             .ToList();
         }

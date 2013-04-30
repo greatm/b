@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using b.Validations;
 
 namespace b.Models
 {
@@ -26,6 +27,8 @@ namespace b.Models
         public int RoQ { get; set; }
         public string Color { get; set; }
         public string Picture { get; set; }
+
+        [MaxWords(10)]
         public string Remarks { get; set; }
     }
 }
