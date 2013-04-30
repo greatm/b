@@ -15,7 +15,7 @@ namespace b.ViewModels
         public DateTime Date { get; set; }
         public int CustomerID { get; set; }
 
-        [StringLength (5,ErrorMessage="always keep remarks short and simple")]
+        [StringLength(5, ErrorMessage = "always keep remarks short and simple")]
         public string Remarks { get; set; }
         public IEnumerable<SalesOrderItem> SalesOrderItems { get; set; }
         public decimal TotalAmount { get; set; }

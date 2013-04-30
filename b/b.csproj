@@ -278,6 +278,10 @@
     <Compile Include="Migrations\201304270836532_mig_so_validate.Designer.cs">
       <DependentUpon>201304270836532_mig_so_validate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201304291338510_mig_product_changes.cs" />
+    <Compile Include="Migrations\201304291338510_mig_product_changes.Designer.cs">
+      <DependentUpon>201304291338510_mig_product_changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -377,6 +381,7 @@
     <Content Include="Scripts\MicrosoftAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyScript.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -464,6 +469,7 @@
     <Content Include="Views\Purchase\Edit.cshtml" />
     <Content Include="Views\Purchase\Delete.cshtml" />
     <Content Include="Views\MasterCustomer\Index.cshtml" />
+    <Content Include="Views\Home\_DailyDeal.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -504,6 +510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304270836532_mig_so_validate.resx">
       <DependentUpon>201304270836532_mig_so_validate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304291338510_mig_product_changes.resx">
+      <DependentUpon>201304291338510_mig_product_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

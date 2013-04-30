@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width" />
 
     @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
 
 </head>
 <body>

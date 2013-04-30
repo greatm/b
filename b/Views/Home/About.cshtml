@@ -15,6 +15,16 @@
     </p>
     create <b>custom</b> software.
 
+    <div id="dailydeal">
+        @Ajax.ActionLink("Click here to see today's special!",
+"DailyDeal",
+new AjaxOptions
+{
+    UpdateTargetId = "dailydeal",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "GET"
+})
+    </div>
 
 </article>
 
@@ -29,3 +39,5 @@
         </p>
     }
 </aside>
+
+

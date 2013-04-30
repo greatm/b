@@ -27,8 +27,7 @@
             @Html.LabelFor(model => model.Vendors)
         </div>
         <div class="editor-field">
-            @Html .DropDownList("Vendors", String.Empty)
-            @*@Html.DropDownList("Vendors", String.Empty)*@
+            @Html.DropDownList("Vendors", String.Empty)
             @Html.ValidationMessageFor(model => model.VendorID)
         </div>
 
@@ -60,16 +59,6 @@
         </ul>
         <a id="addAnother" href="#">Add another</a>
 
-        <script type="text/javascript">
-            $(function () {
-                $("#movieEditor").sortable();
-                $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntry', function (template) {
-                        $("#movieEditor").append(template);
-                    });
-                });
-            });
-        </script>
     </fieldset>
  
     <p>
@@ -84,5 +73,15 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(function () {
+            $("#movieEditor").sortable();
+            $("#addAnother").click(function () {
+                $.get('/PurchaseOrder/POItemEntry', function (template) {
+                    $("#movieEditor").append(template);
+                });
+            });
+        });
+    </script>
 }
