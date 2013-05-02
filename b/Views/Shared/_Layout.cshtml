@@ -10,7 +10,7 @@
     <header>
         <div class="content-wrapper">
             <div class="float-left">
-                <p class="site-title">@Html.ActionLink("b", "Index", "Home", new { Area = "" }, new { @class = "site-logo" })</p>
+                <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
             </div>
             <div class="float-right">
                 <section id="login">
@@ -30,6 +30,15 @@
             </div>
         </div>
     </header>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/ajax")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
@@ -45,19 +54,6 @@
     </footer>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-    <script src="~/Scripts/MyScript.js"></script>
-    @RenderSection("scripts", required: false)
-
-    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
 
 </body>
 </html>

@@ -286,6 +286,10 @@
     <Compile Include="Migrations\201305021245419_mig_packinglist.Designer.cs">
       <DependentUpon>201305021245419_mig_packinglist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305021304478_mig_customer.cs" />
+    <Compile Include="Migrations\201305021304478_mig_customer.Designer.cs">
+      <DependentUpon>201305021304478_mig_customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -475,6 +479,10 @@
     <Content Include="Views\Purchase\Delete.cshtml" />
     <Content Include="Views\MasterCustomer\Index.cshtml" />
     <Content Include="Views\Home\_DailyDeal.cshtml" />
+    <Content Include="Views\MasterCustomer\Details.cshtml" />
+    <Content Include="Views\MasterCustomer\Create.cshtml" />
+    <Content Include="Views\MasterCustomer\Edit.cshtml" />
+    <Content Include="Views\MasterCustomer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -521,6 +529,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305021245419_mig_packinglist.resx">
       <DependentUpon>201305021245419_mig_packinglist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305021304478_mig_customer.resx">
+      <DependentUpon>201305021304478_mig_customer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

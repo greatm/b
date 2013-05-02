@@ -1,5 +1,6 @@
-﻿@model b.ViewModels.SalesOrder
-@using b.ViewModels
+﻿@using b.ViewModels
+
+@model SalesOrder
 
 @{
     ViewBag.Title = "Sales Order Create";
@@ -44,7 +45,7 @@
     <fieldset>
         <legend>Sales Order Items</legend>
 
-        @if (Model == null || Model.SalesOrderItems == null || Model.SalesOrderItems.Count == 0)
+        @if (Model == null || Model.SalesOrderItems == null || Model.SalesOrderItems.Count() == 0)
         {
             <p>None.</p>
         }

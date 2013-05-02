@@ -21,5 +21,7 @@ namespace b.Models
         public DbSet<SalesOrder> SalesOrders { get; set; }
         public DbSet<Sales> Sales { get; set; }
 
+        public DbSet<Customer> Customers { get; set; }
+
     }
 }

@@ -1,10 +1,16 @@
-﻿@model IEnumerable<b.ViewModels.CustomerSummary>
+﻿@using b.Models;
+@using b.ViewModels;
+
+@model IEnumerable<CustomerSummary>
 
 @{
     ViewBag.Title = "Master Customers";
 }
 
 <h2>Master Customers</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
 <table>
     <tr>

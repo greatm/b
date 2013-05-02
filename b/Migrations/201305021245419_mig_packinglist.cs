@@ -2,7 +2,7 @@ namespace b.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class mig_packinglist : DbMigration
     {
         public override void Up()
@@ -15,7 +15,7 @@ namespace b.Migrations
             AddColumn("dbo.Sales", "PackingList_QtyPerCase", c => c.Int(nullable: false));
             AddColumn("dbo.Sales", "PackingList_TotalQty", c => c.Int(nullable: false));
         }
-        
+
         public override void Down()
         {
             DropColumn("dbo.Sales", "PackingList_TotalQty");

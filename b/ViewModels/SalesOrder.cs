@@ -12,6 +12,7 @@ namespace b.ViewModels
         public int ID { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public int CustomerID { get; set; }
 
