@@ -45,10 +45,10 @@ namespace b.Controllers
 
         public ActionResult ProductSearch(string q)
         {
-            var artists = GetArtists(q);
-            return PartialView("/MasterProduct/Index", artists);
+            var products = GetProducts(q);
+            return PartialView("/MasterProduct/Index", products);
         }
-        private List<Product> GetArtists(string searchString)
+        private List<Product> GetProducts(string searchString)
         {
             bDBContext db = new bDBContext();
             return db.Products
