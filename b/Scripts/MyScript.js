@@ -1,6 +1,5 @@
 ﻿
 if ($.validator && $.validator.unobtrusive) {
-
     $.validator.unobtrusive.adapters.addSingleVal("maxwords", "maxwords");
     $.validator.addMethod("maxwords", function (value, element, maxwords) {
         if (value) {
