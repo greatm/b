@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using b.Models;
 
 namespace b.ViewModels
 {
@@ -14,5 +15,6 @@ namespace b.ViewModels
         public string Invoice { get; set; }
         public string Remarks { get; set; }
         public IList<SalesItem> SalesItems { get; set; }
+        public PackingList PackingList { get; set; }
     }
 }
