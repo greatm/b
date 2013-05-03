@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width" />
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/ajax")
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/MyScript.js"></script>
-    @RenderSection("scripts", required: false)
+    @*@Scripts.Render("~/bundles/ajax")*@
+    @*<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />*@
+    @*<script src="~/Scripts/MyScript.js"></script>*@
+    @*@RenderSection("scripts", required: false)*@
 
 </head>
 <body>
@@ -42,6 +42,7 @@
     </header>
 
     @Styles.Render("~/Content/css")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 
     <div id="body">
         @RenderSection("featured", required: false)
@@ -56,6 +57,9 @@
             </div>
         </div>
     </footer>
+
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>
