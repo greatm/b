@@ -7,7 +7,6 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
 
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/ajax")
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -23,7 +22,7 @@
                 <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
             </div>
             <div class="float-right">
-                <div class="status-message">  </div>
+                <div class="status-message"></div>
                 <section id="login">
                     @Html.Partial("_LoginPartial")
                 </section>
@@ -41,6 +40,8 @@
             </div>
         </div>
     </header>
+
+    @Styles.Render("~/Content/css")
 
     <div id="body">
         @RenderSection("featured", required: false)
