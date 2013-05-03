@@ -31,5 +31,10 @@ namespace b.Models
 
         [MaxWords(10)]
         public string Remarks { get; set; }
+
+        public Product()
+        {
+            RoL = 10;
+        }
     }
 }

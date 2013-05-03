@@ -40,7 +40,7 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Product());
         }
 
         //
