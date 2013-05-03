@@ -5,6 +5,12 @@
     <title>b @ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/ajax")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <header>
@@ -31,12 +37,13 @@
         </div>
     </header>
 
-    @Styles.Render("~/Content/css")
+    @*  @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/ajax")
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/MyScript.js"></script>
     @RenderSection("scripts", required: false)
+   *@
     @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 
     <div id="body">
