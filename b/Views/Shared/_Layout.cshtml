@@ -1,18 +1,35 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8" />
     <title>b @ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/ajax")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+
 </head>
 <body>
+
     <header>
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
             </div>
+            @* <div class="float-right">
+                <p class="status_message">here goes the message </p>
+            </div>*@
             <div class="float-right">
+                @*<section id="status_message">
+                <p >here goes the message </p>
+                </section>*@
                 <section id="login">
                     @Html.Partial("_LoginPartial")
                 </section>
@@ -31,15 +48,6 @@
         </div>
     </header>
 
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/ajax")
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/MyScript.js"></script>
-    @RenderSection("scripts", required: false)
-
-    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
-
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
@@ -49,13 +57,10 @@
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - great</p>
+                <p>&copy; @DateTime.Now.Year - great.</p>
             </div>
         </div>
-        <div id="status_message">here goes the message</div>
     </footer>
-
-
 
 </body>
 </html>
