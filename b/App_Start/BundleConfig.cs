@@ -23,7 +23,7 @@ namespace b
 
               ));
 
-            bundles.Add(new StyleBundle("~/Content/ajax").Include("~/Scripts/Microsoft*"));
+            bundles.Add(new StyleBundle("~/bundles/ajax").Include("~/Scripts/Microsoft*"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
