@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using b.Models;
+using System.IO;
 
 namespace b.Controllers
 {
@@ -47,8 +48,14 @@ namespace b.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase ImageFile)
         {
+            using (var ms = new MemoryStream())
+            {
+                //var files = Request.Files;
+                ImageFile.InputStream.CopyTo(ms);
+                product.Image = ms.ToArray();
+            }
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);

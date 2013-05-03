@@ -6,7 +6,7 @@
 
 <h2>Master Product Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new {enctype="multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -74,7 +74,7 @@
             @Html.LabelFor(model => model.Image)
         </div>
         <div class="editor-field">
-            <input name="Image" type="file" />
+            <input name="ImageFile" type="file" />
             @*@Html.EditorFor(model => model.Image)*@
             @Html.ValidationMessageFor(model => model.Image)
         </div>
