@@ -18,7 +18,7 @@ namespace b.Models
         public string Category { get; set; }
         public string Description { get; set; }
 
-        [Display(Name = "Unit of Measurement")]
+        [Display(Name = "Unit of Measurement", Prompt = "Enter here")]
         public string UoM { get; set; }
 
         [Display(Name = "Re Order Level")]
@@ -30,11 +30,13 @@ namespace b.Models
         public byte[] Image { get; set; }
 
         [MaxWords(10)]
+        [Display( Prompt = "any thing about this product")]
         public string Remarks { get; set; }
 
         public Product()
         {
             RoL = 10;
+            RoQ = 20;
         }
     }
 }

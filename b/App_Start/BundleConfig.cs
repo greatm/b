@@ -20,7 +20,6 @@ namespace b
               "~/Scripts/jquery.validate*",
               "~/Scripts/modernizr-*"
 
-
               ));
 
             bundles.Add(new StyleBundle("~/bundles/ajax").Include("~/Scripts/Microsoft*"));

@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using b.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.ViewModels
 {
     public class Sales
     {
         public int ID { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+
+        [Display(Name="Sale Order Reference")]
         public int SOID { get; set; }
         public int CustomerID { get; set; }
+
+        [Display(Name = "Invoice Number")]
         public string Invoice { get; set; }
         public string Remarks { get; set; }
         public IList<SalesItem> SalesItems { get; set; }
