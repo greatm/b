@@ -51,11 +51,9 @@ mark {
 }
 
 .status_message {
-    vertical-align: top;
-    float: right;
-    display: block;
+    /*vertical-align: top;*/
+    /*display: block;*/
     font-size: .85em;
-    margin: 0 0 10px;
     text-align: right;
 }
 
