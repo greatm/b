@@ -7,11 +7,13 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
 
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     @Scripts.Render("~/bundles/jquery")
-    @*@Scripts.Render("~/bundles/ajax")*@
-    @*<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />*@
- @*   <script src="~/Scripts/MyScript.js"></script>
-    @RenderSection("scripts", required: false)*@
+    @Scripts.Render("~/bundles/ajax")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/MyScript.js"></script>
+    @RenderSection("scripts", required: false)
 
 </head>
 <body>
@@ -41,15 +43,13 @@
         </div>
     </header>
 
-    @Styles.Render("~/Content/css")
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
             @RenderBody()
         </section>
     </div>
+
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
@@ -57,10 +57,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="~/Scripts/MyScript.js"></script>
-    @RenderSection("scripts", required: false)
-    @Scripts.Render("~/bundles/ajax")
 
 </body>
 </html>
