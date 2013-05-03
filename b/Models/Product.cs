@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using b.Validations;
+using System.Drawing;
 
 namespace b.Models
 {
@@ -26,7 +27,7 @@ namespace b.Models
         [Display(Name = "Re Order Quantity")]
         public int RoQ { get; set; }
         public string Color { get; set; }
-        public string Picture { get; set; }
+        public byte[] Image { get; set; }
 
         [MaxWords(10)]
         public string Remarks { get; set; }

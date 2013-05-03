@@ -50,7 +50,7 @@ mark {
     float: right;
 }
 
-.status_message {
+.status-message {
     /*vertical-align: top;*/
     /*display: block;*/
     font-size: .85em;
