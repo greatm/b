@@ -214,11 +214,17 @@ ul#menu {
             text-decoration: none;
         }
 
-            ul#menu li a:hover {
+            .select, ul#menu li a:hover {
                 color: #333;
                 text-decoration: none;
             }
 
+.select {
+    color: #333;
+    background-color: red;
+    text-decoration: none;
+    padding-left: 0px;
+}
 
 /* page elements
 ----------------------------------------------------------*/
@@ -773,4 +779,9 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+}
+
+.water {
+    font-family: Tahoma, Arial, sans-serif;
+    color: gray;
 }

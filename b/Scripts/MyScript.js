@@ -33,6 +33,30 @@ function searchFailed() {
 }
 
 $(function () {
+
+    $(".water").each(function () {
+        $tb = $(this);
+        if ($tb.val() != this.title) {
+            $tb.removeClass("water");
+        }
+    });
+
+    $(".water").focus(function () {
+        $tb = $(this);
+        if ($tb.val() == this.title) {
+            $tb.val("");
+            $tb.removeClass("water");
+        }
+    });
+
+    $(".water").blur(function () {
+        $tb = $(this);
+        if ($.trim($tb.val()) == "") {
+            $tb.val(this.title);
+            $tb.addClass("water");
+        }
+    });
+
     //$(".title").animate({ height: '+=25', width: '+=25' })
     //.animate({ height: '-=25', width: '-=25' })
     //.size(200)
