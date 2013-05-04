@@ -15,7 +15,7 @@ namespace b.ViewModels
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name="Sale Order Reference")]
+        [Display(Name = "Sale Order Reference")]
         public int SOID { get; set; }
         public int CustomerID { get; set; }
 

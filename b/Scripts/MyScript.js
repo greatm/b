@@ -1,4 +1,21 @@
 ﻿
+
+//call it onblur = "WaterMark(this, event);" onfocus = "WaterMark(this, event);"
+function WaterMark(txtName, event) {
+    var defaultText = "Enter " + txtName + " Here";
+    // Condition to check textbox length and event type
+    if (txtName.value.length == 0 & event.type == "blur") {
+        //if condition true then setting text color and default text in textbox
+        txtName.style.color = "Gray";
+        txtName.value = defaultText;
+    }
+    // Condition to check textbox value and event type
+    if (txtName.value == defaultText & event.type == "focus") {
+        txtName.style.color = "black";
+        txtName.value = "";
+    }
+}
+
 if ($.validator && $.validator.unobtrusive) {
     $.validator.unobtrusive.adapters.addSingleVal("maxwords", "maxwords");
     $.validator.addMethod("maxwords", function (value, element, maxwords) {

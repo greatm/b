@@ -9,8 +9,10 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/ajax")
+    @*@Scripts.Render("~/bundles/ajax")*@
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/MicrosoftAjax.js"></script>
+    <script src="~/Scripts/MicrosoftMvcAjax.js"></script>
     <script src="~/Scripts/MyScript.js"></script>
     @RenderSection("scripts", required: false)
 
