@@ -8,7 +8,7 @@ namespace b
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 
@@ -22,7 +22,12 @@ namespace b
 
               ));
 
-            bundles.Add(new StyleBundle("~/bundles/ajax").Include("~/Scripts/Microsoft*"));
+            bundles.Add(new StyleBundle("~/bundles/ajax").Include(
+
+                "~/Scripts/MicrosoftAjax.js",
+                "~/Scripts/MicrosoftMvcAjax.js"
+
+                ));
 
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
