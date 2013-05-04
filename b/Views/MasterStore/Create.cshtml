@@ -1,12 +1,13 @@
 ﻿@model b.Models.Store
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Master Store Create";
 }
 
-<h2>Create</h2>
+<h2>Master Store Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 

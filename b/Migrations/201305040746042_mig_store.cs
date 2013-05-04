@@ -2,7 +2,7 @@ namespace b.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class mig_store : DbMigration
     {
         public override void Up()
@@ -17,9 +17,9 @@ namespace b.Migrations
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
-            
+
         }
-        
+
         public override void Down()
         {
             DropTable("dbo.Stores");

@@ -46,7 +46,7 @@ namespace b.Controllers
         public ActionResult Create()
         {
             CreateVendorsList();
-            return View();
+            return View(new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem> { new POItem { ProductID = 1, Qty = 1, Rate = 100 } } });
         }
 
         //
