@@ -30,7 +30,7 @@ namespace b.Models
         public byte[] Image { get; set; }
 
         [MaxWords(10)]
-        [Display( Prompt = "any thing about this product")]
+        [Display(Prompt = "any thing about this product")]
         public string Remarks { get; set; }
 
         public Product()

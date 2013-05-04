@@ -6,41 +6,6 @@
 
 <h2>Master Product Create</h2>
 
-
-@*<script type="text/javascript">
-    $(document).ready(function () {
-        $('#cmdWaterMark').click(function (event) {
-            // Disable Postback
-            event.preventDefault();
-            // Loop Through textBoxes and Get Values
-            $('input[type="text"]').each(function () {
-                if ($(this).val() != $(this).attr('title')) {
-                    $(this).addClass("waterMark");
-                    $(this).val($(this).attr('title'));
-                }
-                //
-                $(this).focus(function () {
-                    if ($(this).val() == $(this).attr('title')) {
-                        $(this).removeClass("waterMark");
-                        $(this).val('');
-                    }
-                });
-                //
-                $(this).blur(function () {
-                    if ($(this).val() == '') {
-                        $(this).addClass("waterMark");
-                        $(this).val($(this).attr('title'));
-                    }
-                    else {
-                        $(this).removeClass("waterMark");
-                    }
-                });
-            });
-        });
-    });
-</script>
-<input ID="cmdWaterMark" type="button" title="Set Watermark" />*@
-
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
