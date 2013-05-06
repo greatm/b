@@ -523,6 +523,7 @@
     <Content Include="Views\MasterStore\Edit.cshtml" />
     <Content Include="Views\MasterStore\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
+    <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

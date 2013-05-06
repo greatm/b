@@ -24,7 +24,7 @@
             @Html.ValidationMessageFor(model => model.Date)
         </div>
 
-          @*<div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.PurchaseOrders)
         </div>
         <div class="editor-field">
@@ -32,7 +32,7 @@
             @Html.ValidationMessageFor(model => model.VendorID)
         </div>*@
 
-<div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.POID)
         </div>
         <div class="editor-field">
@@ -40,7 +40,7 @@
             @Html.ValidationMessageFor(model => model.POID)
         </div>
 
-         <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.Vendors)
         </div>
         <div class="editor-field">
@@ -64,10 +64,33 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-        <p>
+     </fieldset> 
+    
+    <fieldset>
+        <legend>Purchase Items</legend>
+
+        @if (Model == null || Model.PurchaseItems  == null || Model.PurchaseItems.Count()== 0)
+        {
+            <p>None.</p>
+        }
+        <ul id="itemEditor" style="list-style-type: none">
+            @if (Model != null && Model.PurchaseItems != null)
+            {
+                foreach (PurchaseItem purchaseItem in Model.PurchaseItems)
+                {
+                    Html.RenderPartial("PurchaseItemEntry", purchaseItem);
+                }
+            }
+        </ul>
+        <a id="addAnother" href="#">Add another</a>
+      
+
+    </fieldset>
+    
+       <p>
             <input type="submit" value="Create" />
         </p>
-    </fieldset>
+   
 }
 
 <div>
@@ -75,5 +98,14 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+     <script type="text/javascript">
+            $(function () {
+                $("#itemEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/PurchaseOrder/POItemEntry', function (template) {
+                        $("#itemEditor").append(template);
+                    });
+                });
+            });
+        </script>
 }

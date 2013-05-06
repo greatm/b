@@ -12,7 +12,6 @@
     @Scripts.Render("~/bundles/ajax")
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/MyScript.js"></script>
-    @RenderSection("scripts", required: false)
 
 </head>
 <body>
@@ -57,6 +56,8 @@
             </div>
         </div>
     </footer>
+
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>
