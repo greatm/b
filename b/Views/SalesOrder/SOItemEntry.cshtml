@@ -1,0 +1,23 @@
+﻿@model b.ViewModels.SalesOrderItem
+
+<li style="padding-bottom: 15px">
+    @using (Html.BeginCollectionItem("POItems"))
+    {
+        <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
+
+        @Html.LabelFor(model => model.ProductID)
+        @Html.EditorFor(model => model.ProductID)
+        @Html.ValidationMessageFor(model => model.ProductID)
+
+        
+        @Html.LabelFor(model => model.Price)
+        @Html.EditorFor(model => model.Price)
+        @Html.ValidationMessageFor(model => model.Price)
+
+        @Html.LabelFor(model => model.Qty)
+        @Html.EditorFor(model => model.Qty)
+        @Html.ValidationMessageFor(model => model.Qty)
+
+        <a href="#" onclick="$(this).parent().remove();">Delete</a>
+    }
+</li>

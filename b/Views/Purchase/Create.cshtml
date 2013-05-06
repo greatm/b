@@ -64,12 +64,12 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-     </fieldset> 
+    </fieldset> 
     
     <fieldset>
         <legend>Purchase Items</legend>
 
-        @if (Model == null || Model.PurchaseItems  == null || Model.PurchaseItems.Count()== 0)
+        @if (Model == null || Model.PurchaseItems == null || Model.PurchaseItems.Count() == 0)
         {
             <p>None.</p>
         }
@@ -83,13 +83,15 @@
             }
         </ul>
         <a id="addAnother" href="#">Add another</a>
-      
+        <div>
+            @(Html.Syncfusion().g
+        </div>
 
     </fieldset>
     
-       <p>
-            <input type="submit" value="Create" />
-        </p>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
    
 }
 
@@ -98,14 +100,14 @@
 </div>
 
 @section Scripts {
-     <script type="text/javascript">
-            $(function () {
-                $("#itemEditor").sortable();
-                $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntry', function (template) {
-                        $("#itemEditor").append(template);
-                    });
+    <script type="text/javascript">
+        $(function () {
+            $("#itemEditor").sortable();
+            $("#addAnother").click(function () {
+                $.get('/PurchaseOrder/POItemEntry', function (template) {
+                    $("#itemEditor").append(template);
                 });
             });
-        </script>
+        });
+    </script>
 }

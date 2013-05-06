@@ -66,6 +66,11 @@ namespace b.Controllers
             return View(purchaseorder);
         }
 
+        public ActionResult POItemEntryRow()
+        {
+            return PartialView("POItemEntry");
+        }
+        
         //
         // GET: /PurchaseOrder/Edit/5
 

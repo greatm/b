@@ -40,7 +40,7 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new SalesOrder { Date = DateTime.Today, SalesOrderItems = new List<SalesOrderItem> { new SalesOrderItem { Qty = 10 } } });
         }
 
         //

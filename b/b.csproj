@@ -70,6 +70,9 @@
     <Reference Include="Syncfusion.DocIO.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.Grid.Mvc, Version=11.144.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.Linq.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -524,6 +527,7 @@
     <Content Include="Views\MasterStore\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
     <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
+    <Content Include="Views\SalesOrder\SOItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

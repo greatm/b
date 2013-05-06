@@ -63,7 +63,7 @@
             $(function () {
                 $("#itemEditor").sortable();
                 $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntry', function (template) {
+                    $.get('/PurchaseOrder/POItemEntryRow', function (template) {
                         $("#itemEditor").append(template);
                     });
                 });
