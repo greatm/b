@@ -1,4 +1,6 @@
-﻿@model b.ViewModels.Purchase
+﻿@using b.ViewModels;
+
+@model Purchase
 
 @{
     ViewBag.Title = "Purchase Create";
@@ -22,7 +24,15 @@
             @Html.ValidationMessageFor(model => model.Date)
         </div>
 
-        <div class="editor-label">
+          @*<div class="editor-label">
+            @Html.LabelFor(model => model.PurchaseOrders)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PurchaseOrders", String.Empty)
+            @Html.ValidationMessageFor(model => model.VendorID)
+        </div>*@
+
+<div class="editor-label">
             @Html.LabelFor(model => model.POID)
         </div>
         <div class="editor-field">
@@ -30,11 +40,11 @@
             @Html.ValidationMessageFor(model => model.POID)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VendorID)
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Vendors)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VendorID)
+            @Html.DropDownList("Vendors", String.Empty)
             @Html.ValidationMessageFor(model => model.VendorID)
         </div>
 

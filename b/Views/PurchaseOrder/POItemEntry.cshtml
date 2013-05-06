@@ -8,7 +8,7 @@
 <li style="padding-bottom: 15px">
     @using (Html.BeginCollectionItem("POItems"))
     {
-        <img src="@Url.Content("~/Content/images/draggable-icon.png")" style="cursor: move" alt="drag"/>
+        <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
 
         @Html.LabelFor(model => model.ProductID)
         @Html.EditorFor(model => model.ProductID)

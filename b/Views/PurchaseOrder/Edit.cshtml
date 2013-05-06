@@ -1,10 +1,12 @@
-﻿@model b.ViewModels.PurchaseOrder
+﻿@using b.ViewModels;
+
+@model PurchaseOrder
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Purchase Order Edit";
 }
 
-<h2>Edit</h2>
+<h2>Purchase Order Edit</h2>
 
 @using (Html.BeginForm())
 {
@@ -25,6 +27,14 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Vendors)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Vendors", String.Empty)
+            @Html.ValidationMessageFor(model => model.VendorID)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Remarks)
         </div>
         <div class="editor-field">
@@ -32,10 +42,41 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
     </fieldset>
+    
+    <fieldset>
+        <legend>POItems</legend>
+
+        @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
+        {
+            <p>None.</p>
+        }
+        <ul id="itemEditor" style="list-style-type: none">
+            @if (Model != null && Model.POItems != null)
+            {
+                foreach (POItem poitem in Model.POItems)
+                {
+                    Html.RenderPartial("POItemEntry", poitem);
+                }
+            }
+        </ul>
+        <a id="addAnother" href="#">Add another</a>
+        <script type="text/javascript">
+            $(function () {
+                $("#itemEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/PurchaseOrder/POItemEntry', function (template) {
+                        $("#itemEditor").append(template);
+                    });
+                });
+            });
+        </script>
+
+    </fieldset>
+    
+    <p>
+        <input type="submit" value="Save" />
+    </p>
 }
 
 <div>
@@ -43,5 +84,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }

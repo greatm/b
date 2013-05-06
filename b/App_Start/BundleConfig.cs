@@ -24,8 +24,9 @@ namespace b
 
             bundles.Add(new StyleBundle("~/bundles/ajax").Include(
 
-                "~/Scripts/MicrosoftAjax.js",
-                "~/Scripts/MicrosoftMvcAjax.js"
+                "~/Scripts/Microsoft*"
+                //,
+                //"~/Scripts/MicrosoftMvcAjax.js"
 
                 ));
 
