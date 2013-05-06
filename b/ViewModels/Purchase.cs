@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using b.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.ViewModels
 {
     public class Purchase
     {
         public int ID { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public int POID { get; set; }
         public int VendorID { get; set; }
