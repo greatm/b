@@ -70,7 +70,7 @@ namespace b.Controllers
         {
             return PartialView("POItemEntry");
         }
-        
+
         //
         // GET: /PurchaseOrder/Edit/5
 

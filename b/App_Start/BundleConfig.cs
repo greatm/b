@@ -30,7 +30,7 @@ namespace b
             //"~/Scripts/jquery.jgrowl.min.js"
 
             //));
-            
+
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
 

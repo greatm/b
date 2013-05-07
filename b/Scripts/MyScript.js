@@ -1,8 +1,12 @@
 ﻿
 
 function statusMessage(msg) {
-    $.jGrowl(msg);
-
+    statusMessage(msg, 1);
+}
+function statusMessage(msg, life) {
+    //$.jGrowl(msg, { position: bottom - right });
+    //$.jGrowl(msg, { life: (life * 1000), position: bottom - left });
+    $.jGrowl(msg, { life: (life * 1000) });
 }
 
 //call it onblur = "WaterMark(this, event);" onfocus = "WaterMark(this, event);"

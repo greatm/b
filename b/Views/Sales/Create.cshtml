@@ -6,7 +6,6 @@
 }
 
 <h2>Sales Create</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -55,7 +54,7 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
-     <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.BoxNumber)
         </div>
         <div class="editor-field">
@@ -63,7 +62,7 @@
             @Html.ValidationMessageFor(model => model.BoxNumber)
         </div>
 
- </fieldset>
+    </fieldset>
     
     <fieldset>
         <legend>Sales Items</legend>
@@ -72,7 +71,7 @@
         {
             <p>None.</p>
         }
-        <ul id="movieEditor" style="list-style-type: none">
+        <ul id="movieEditor" style="list-style-type: square">
             @if (Model != null && Model.SalesItems != null)
             {
                 foreach (SalesItem soitem in Model.SalesItems)
@@ -112,5 +111,5 @@
         //    });
         //})(jQuery);
         statusMessage("hi");
-        </script>
+    </script>
 }
