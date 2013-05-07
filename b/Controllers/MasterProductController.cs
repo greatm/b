@@ -91,7 +91,7 @@ namespace b.Controllers
             WebImage image = new WebImage(product.Image);
             return File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
         }
-     
+
         //
         // POST: /MasterProduct/Edit/5
 

@@ -85,6 +85,7 @@ namespace b.Controllers
 
         public ActionResult Edit(int id = 0)
         {
+            CreateVendorsList();
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
             if (purchaseorder == null)
             {
