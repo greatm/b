@@ -321,6 +321,10 @@
     <Compile Include="Migrations\201305040746042_mig_store.Designer.cs">
       <DependentUpon>201305040746042_mig_store.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305061224536_mig_sales_box.cs" />
+    <Compile Include="Migrations\201305061224536_mig_sales_box.Designer.cs">
+      <DependentUpon>201305061224536_mig_sales_box.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -583,6 +587,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305040746042_mig_store.resx">
       <DependentUpon>201305040746042_mig_store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305061224536_mig_sales_box.resx">
+      <DependentUpon>201305061224536_mig_sales_box.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

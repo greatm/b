@@ -56,6 +56,14 @@
             @Html.ValidationMessageFor(model => model.Remarks)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BoxNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BoxNumber)
+            @Html.ValidationMessageFor(model => model.BoxNumber)
+        </div>
+
         <p>
             <input type="submit" value="Save" />
         </p>

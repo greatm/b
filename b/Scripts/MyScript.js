@@ -1,5 +1,10 @@
 ﻿
 
+function statusMessage(msg) {
+    $.jGrowl(msg);
+
+}
+
 //call it onblur = "WaterMark(this, event);" onfocus = "WaterMark(this, event);"
 function WaterMark(txtName, event) {
     var defaultText = "Enter " + txtName + " Here";

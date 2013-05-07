@@ -24,6 +24,13 @@ namespace b
 
             bundles.Add(new StyleBundle("~/bundles/ajax").Include("~/Scripts/Microsoft*"));
 
+            //bundles.Add(new ScriptBundle("~/bundles/jgrowl").Include(
+
+            //"~/Content/jquery.jgrowl.min.css",
+            //"~/Scripts/jquery.jgrowl.min.js"
+
+            //));
+            
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
 

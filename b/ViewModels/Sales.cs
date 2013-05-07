@@ -24,5 +24,6 @@ namespace b.ViewModels
         public string Remarks { get; set; }
         public IList<SalesItem> SalesItems { get; set; }
         public PackingList PackingList { get; set; }
+        public string BoxNumber { get; set; }
     }
 }
