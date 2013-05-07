@@ -59,6 +59,9 @@
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\microsoft-web-helpers.2.1.20710.2\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="MvcJqGrid">
       <HintPath>..\packages\MvcJqGrid.1.0.9\lib\net40\MvcJqGrid.dll</HintPath>
     </Reference>

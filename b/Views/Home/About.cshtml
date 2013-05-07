@@ -1,4 +1,6 @@
-﻿@model IEnumerable<whatsnew>
+﻿@using Microsoft.Web.Helpers;
+
+@model IEnumerable<whatsnew>
 
 @{
     ViewBag.Title = "About";
@@ -27,7 +29,9 @@ new AjaxOptions
     HttpMethod = "GET"
 })
     </div>
-
+    <p>
+        @Twitter.Search("manojgreat")
+    </p>
 </article>
 
 <aside>
