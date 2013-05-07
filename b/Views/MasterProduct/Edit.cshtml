@@ -65,9 +65,18 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Color)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Color)
+            @Html.ValidationMessageFor(model => model.Color)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Image)
         </div>
         <div class="editor-field">
+            <img alt="product image" src="@Url.Action("GetProductImage", new { product = Model })" />
             <input name="ImageFile" type="file" />
             @Html.ValidationMessageFor(model => model.Image)
         </div>

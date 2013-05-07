@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using b.Models;
 using System.IO;
+using System.Web.Helpers;
 
 namespace b.Controllers
 {
@@ -76,16 +77,33 @@ namespace b.Controllers
             {
                 return HttpNotFound();
             }
+
+            WebImage image = new WebImage(product.Image);
+            ViewData["image"] = File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
+
             return View(product);
         }
+        public FileContentResult GetProductImage(int id = 0)
+        {
+            Product product = db.Products.Find(id);
+            if (product == null) return null;
 
+            WebImage image = new WebImage(product.Image);
+            return File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
+        }
+     
         //
         // POST: /MasterProduct/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase ImageFile)
         {
+            using (var ms = new MemoryStream())
+            {
+                ImageFile.InputStream.CopyTo(ms);
+                product.Image = ms.ToArray();
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;

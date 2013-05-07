@@ -1,6 +1,34 @@
 ﻿@model b.ViewModels.POItem
 
-<li style="padding-bottom: 15px">
+<tr style="padding-bottom: 15px">
+    @using (Html.BeginCollectionItem("POItems"))
+    {
+        <td>
+            <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
+        </td>    
+
+        <td>
+            @Html.EditorFor(model => model.ProductID)
+            @Html.ValidationMessageFor(model => model.ProductID)
+        </td>
+
+        <td>
+            @Html.EditorFor(model => model.Rate)
+            @Html.ValidationMessageFor(model => model.Rate)
+        </td>
+
+        <td>
+            @Html.EditorFor(model => model.Qty)
+            @Html.ValidationMessageFor(model => model.Qty)
+        </td>  
+
+        <td>
+            <a href="#" onclick="$(this).parent().remove();">Delete</a>
+        </td>
+    }
+</tr>
+
+@*<li style="padding-bottom: 15px">
     @using (Html.BeginCollectionItem("POItems"))
     {
         <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
@@ -8,7 +36,6 @@
         @Html.EditorFor(model => model.ProductID)
         @Html.ValidationMessageFor(model => model.ProductID)
 
-        
         @Html.EditorFor(model => model.Rate)
         @Html.ValidationMessageFor(model => model.Rate)
 
@@ -17,9 +44,9 @@
 
         <a href="#" onclick="$(this).parent().remove();">Delete</a>
     }
-</li>
+</li>*@
 
- @*@Html.LabelFor(model => model.ProductID) 
+@*@Html.LabelFor(model => model.ProductID) 
         @Html.EditorFor(model => model.ProductID)
         @Html.ValidationMessageFor(model => model.ProductID)
 

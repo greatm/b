@@ -26,6 +26,7 @@ namespace b.Models
 
         [Display(Name = "Re Order Quantity")]
         public int RoQ { get; set; }
+        public decimal LastPurchaseRate { get; set; }
         public string Color { get; set; }
         public byte[] Image { get; set; }
 

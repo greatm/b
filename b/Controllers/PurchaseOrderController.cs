@@ -46,7 +46,16 @@ namespace b.Controllers
         public ActionResult Create()
         {
             CreateVendorsList();
-            return View(new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem> { new POItem { ProductID = 1, Qty = 1, Rate = 100 } } });
+            //PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem> { new POItem { ProductID = 1, Qty = 1, Rate = 100 } } };
+            PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
+            foreach (Product prd in db.Products)
+            {
+                if (prd.RoL > 5)
+                {
+                    newPO.POItems.Add(new POItem { ProductID = prd.ID, Qty = prd.RoQ });
+                }
+            }
+            return View(newPO);
         }
 
         //

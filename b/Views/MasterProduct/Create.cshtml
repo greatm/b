@@ -74,7 +74,8 @@
             @Html.LabelFor(model => model.Image)
         </div>
         <div class="editor-field">
-            <input name="ImageFile" type="file" title="file" class="water" />
+            <img src="@ViewData["image"]" />
+            @*<input name="ImageFile" type="file" title="file" class="water" />*@
             @*@Html.EditorFor(model => model.Image)*@
             @Html.ValidationMessageFor(model => model.Image)
         </div>

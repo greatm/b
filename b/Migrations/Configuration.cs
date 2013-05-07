@@ -31,6 +31,7 @@ namespace b.Migrations
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
+                new whatsnew { WorkTime = new DateTime(2013, 5, 4, 10, 30, 0), Work = "add this update time in site" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 3, 10, 30, 0), Work = "use jquery in site" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 2, 10, 30, 0), Work = "add master customer" },
                 new whatsnew { WorkTime = new DateTime(2013, 4, 26, 10, 30, 0), Work = "add master product" },
