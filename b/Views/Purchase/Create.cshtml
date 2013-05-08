@@ -1,4 +1,8 @@
 ﻿@using b.ViewModels;
+@using MvcContrib;
+@using MvcContrib.UI;
+@using MvcContrib.UI.Grid;
+@using MvcContrib.Sorting;
 
 @model Purchase
 
@@ -84,7 +88,10 @@
         </ul>
         <a id="addAnother" href="#">Add another</a>
         <div>
-            @(Html.Syncfusion().g
+
+            @Html.Grid(Model.PurchaseItems ).AutoGenerateColumns()
+
+
         </div>
 
     </fieldset>
