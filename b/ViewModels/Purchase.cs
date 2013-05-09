@@ -12,6 +12,8 @@ namespace b.ViewModels
     public class Purchase
     {
         public int ID { get; set; }
+        [Timestamp]
+        public Byte[] Timestamp { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }

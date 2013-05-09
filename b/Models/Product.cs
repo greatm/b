@@ -12,6 +12,8 @@ namespace b.Models
     public class Product
     {
         public int ID { get; set; }
+        [Timestamp]
+        public Byte[] Timestamp { get; set; }
 
         [Required]
         public string Name { get; set; }

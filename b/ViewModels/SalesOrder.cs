@@ -10,6 +10,8 @@ namespace b.ViewModels
     public class SalesOrder
     {
         public int ID { get; set; }
+        [Timestamp]
+        public Byte[] Timestamp { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
