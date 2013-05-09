@@ -89,7 +89,13 @@
         <a id="addAnother" href="#">Add another</a>
         <div>
 
-            @Html.Grid(Model.PurchaseItems ).AutoGenerateColumns()
+            @Html.Grid(Model.PurchaseItems).Columns(column =>
+       {
+           column.For(t => t.ProductID);
+           column.For(t => t.Qty);
+           column.For(t => t.Rate);
+           column.For(t => @Html.ActionLink("Delete",  "$(this).parent().remove();"));
+       })
 
 
         </div>
