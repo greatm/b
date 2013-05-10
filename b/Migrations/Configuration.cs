@@ -31,6 +31,9 @@ namespace b.Migrations
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
+                new whatsnew { WorkTime = new DateTime(2013, 5, 9, 10, 30, 0), Work = "add master store" },
+                new whatsnew { WorkTime = new DateTime(2013, 5, 8, 10, 30, 0), Work = "add IsPostedFromThisSite Attribute" },
+                new whatsnew { WorkTime = new DateTime(2013, 5, 7, 10, 30, 0), Work = "install package AntiXSS" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 6, 10, 30, 0), Work = "product add color and pic" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 4, 10, 30, 0), Work = "add this update time in site" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 3, 10, 30, 0), Work = "use jquery in site" },

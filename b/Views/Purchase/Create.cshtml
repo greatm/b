@@ -77,7 +77,13 @@
         {
             <p>None.</p>
         }
-        <ul id="itemEditor" style="list-style-type: none">
+        else{
+            Html.RenderPartial("PurchaseItemEntry", Model.PurchaseItems);
+        }
+
+
+        
+      @*  <ul id="itemEditor" style="list-style-type: none">
             @if (Model != null && Model.PurchaseItems != null)
             {
                 foreach (PurchaseItem purchaseItem in Model.PurchaseItems)
@@ -86,8 +92,8 @@
                 }
             }
         </ul>
-        <a id="addAnother" href="#">Add another</a>
-        <div>
+        <a id="addAnother" href="#">Add another</a>*@
+    @*    <div>
 
             @Html.Grid(Model.PurchaseItems).Columns(column =>
        {
@@ -98,7 +104,7 @@
        })
 
 
-        </div>
+        </div>*@
 
     </fieldset>
     

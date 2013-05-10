@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using b.ViewModels;
 using b.Models;
+using b.Filters;
 
 namespace b.Controllers
 {
@@ -63,6 +64,7 @@ namespace b.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [IsPostedFromThisSite]
         public ActionResult Create(PurchaseOrder purchaseorder)
         {
             if (ModelState.IsValid)

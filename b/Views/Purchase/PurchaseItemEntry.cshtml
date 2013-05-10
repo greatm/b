@@ -1,4 +1,13 @@
-﻿@model b.ViewModels.PurchaseItem
+﻿@using b.ViewModels
+@model IEnumerable< PurchaseItem>
+
+<div>
+    @(Html.Syncfusion().Grid<PurchaseItem>("PiList"))
+</div>
+
+
+
+@*@model b.ViewModels.PurchaseItem
 
 <li style="padding-bottom: 15px">
     @using (Html.BeginCollectionItem("PurchaseItems"))
@@ -20,4 +29,4 @@
 
         <a href="#" onclick="$(this).parent().remove();">Delete</a>
     }
-</li>
+</li>*@
