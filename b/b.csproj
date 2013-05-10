@@ -261,6 +261,7 @@
     <Compile Include="Controllers\MasterCustomerController.cs" />
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterStoreController.cs" />
+    <Compile Include="Controllers\MasterSubloactionController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\PurchaseHomeController.cs" />
@@ -281,6 +282,10 @@
     <Compile Include="Migrations\201305100731512_mig_start.Designer.cs">
       <DependentUpon>201305100731512_mig_start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305101329264_mig_sublocation.cs" />
+    <Compile Include="Migrations\201305101329264_mig_sublocation.Designer.cs">
+      <DependentUpon>201305101329264_mig_sublocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -289,6 +294,7 @@
     <Compile Include="Models\PackingList.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\Sublocation.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Models\whatsnew.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -491,6 +497,11 @@
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
     <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
     <Content Include="Views\SalesOrder\SOItemEntry.cshtml" />
+    <Content Include="Views\MasterSubloaction\Index.cshtml" />
+    <Content Include="Views\MasterSubloaction\Details.cshtml" />
+    <Content Include="Views\MasterSubloaction\Create.cshtml" />
+    <Content Include="Views\MasterSubloaction\Edit.cshtml" />
+    <Content Include="Views\MasterSubloaction\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -500,6 +511,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305100731512_mig_start.resx">
       <DependentUpon>201305100731512_mig_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305101329264_mig_sublocation.resx">
+      <DependentUpon>201305101329264_mig_sublocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

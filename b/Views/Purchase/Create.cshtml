@@ -11,11 +11,7 @@
 }
 
 <h2>Purchase Create</h2>
-@(Html.Syncfusion().StyleManager().Combine(true).Minify(true)
-        .Register(component =>
-            {
-                component.Add(ComponentType.Grid);
-            }))
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -124,7 +120,6 @@
 </div>
 
 @section Scripts {
-    @{Html.Syncfusion().ScriptManager().Combine(true).Minify(true).Render();}
     <script type="text/javascript">
         $(function () {
             $("#itemEditor").sortable();

@@ -47,6 +47,14 @@
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
+            @(Html.Syncfusion().StyleManager().Combine(true).Minify(true)
+        .Register(component =>
+            {
+                component.Add(ComponentType.Grid);
+            }))
+
+            @{Html.Syncfusion().ScriptManager().Combine(true).Minify(true).Render();}
+
             @RenderBody()
         </section>
     </div>
