@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/jquery")
     <link rel="stylesheet" href="~/Content/jquery.jgrowl.min.css" />
     <script src="~/Scripts/jquery.jgrowl.min.js"></script>
-    <script type="text/javascript">statusMessage("Loading header scripts");</script>
+    @*<script type="text/javascript">statusMessage("Loading header scripts");</script>*@
     @Scripts.Render("~/bundles/ajax")
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/MyScript.js"></script>
@@ -19,6 +19,7 @@
 <body>
 
     <header>
+    <script type="text/javascript">m("Loading @ViewBag.Title");</script>
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
