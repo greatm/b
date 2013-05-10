@@ -17,7 +17,10 @@ namespace b.Migrations
         {
             context.whatsnews.AddOrUpdate(
                     p => p.WorkTime,
-
+                    
+                    
+                    new whatsnew { WorkTime = new DateTime(2013, 5, 10, 12, 0, 0), Work = "add status message" },
+                    new whatsnew { WorkTime = new DateTime(2013, 5, 10, 10, 30, 0), Work = "sale create – add box number" },
                     new whatsnew { WorkTime = new DateTime(2013, 5, 9, 10, 30, 0), Work = "add master store" },
                     new whatsnew { WorkTime = new DateTime(2013, 5, 8, 10, 30, 0), Work = "add IsPostedFromThisSite Attribute" },
                     new whatsnew { WorkTime = new DateTime(2013, 5, 7, 10, 30, 0), Work = "install package AntiXSS" },

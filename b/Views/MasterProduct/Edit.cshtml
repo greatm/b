@@ -64,7 +64,15 @@
             @Html.ValidationMessageFor(model => model.RoQ)
         </div>
 
-        <div class="editor-label">
+       <div class="editor-label">
+            @Html.LabelFor(model => model.LastPurchaseRate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastPurchaseRate)
+            @Html.ValidationMessageFor(model => model.LastPurchaseRate)
+        </div>
+
+         <div class="editor-label">
             @Html.LabelFor(model => model.Color)
         </div>
         <div class="editor-field">
