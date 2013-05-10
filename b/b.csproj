@@ -266,81 +266,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304221037165_mig_start.cs" />
-    <Compile Include="Migrations\201304221037165_mig_start.Designer.cs">
-      <DependentUpon>201304221037165_mig_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304230154141_mig_salesorder.cs" />
-    <Compile Include="Migrations\201304230154141_mig_salesorder.Designer.cs">
-      <DependentUpon>201304230154141_mig_salesorder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304230233097_mig_sales.cs" />
-    <Compile Include="Migrations\201304230233097_mig_sales.Designer.cs">
-      <DependentUpon>201304230233097_mig_sales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304230742402_mig_po_model.cs" />
-    <Compile Include="Migrations\201304230742402_mig_po_model.Designer.cs">
-      <DependentUpon>201304230742402_mig_po_model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304231224207_mig_purchase.cs" />
-    <Compile Include="Migrations\201304231224207_mig_purchase.Designer.cs">
-      <DependentUpon>201304231224207_mig_purchase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304231255248_mig_product_model.cs" />
-    <Compile Include="Migrations\201304231255248_mig_product_model.Designer.cs">
-      <DependentUpon>201304231255248_mig_product_model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304231354087_mig_soitem.cs" />
-    <Compile Include="Migrations\201304231354087_mig_soitem.Designer.cs">
-      <DependentUpon>201304231354087_mig_soitem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304240437128_mig_saleschange.cs" />
-    <Compile Include="Migrations\201304240437128_mig_saleschange.Designer.cs">
-      <DependentUpon>201304240437128_mig_saleschange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304260442444_mig_whatsnew.cs" />
-    <Compile Include="Migrations\201304260442444_mig_whatsnew.Designer.cs">
-      <DependentUpon>201304260442444_mig_whatsnew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304261246285_mig_product.cs" />
-    <Compile Include="Migrations\201304261246285_mig_product.Designer.cs">
-      <DependentUpon>201304261246285_mig_product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304270836532_mig_so_validate.cs" />
-    <Compile Include="Migrations\201304270836532_mig_so_validate.Designer.cs">
-      <DependentUpon>201304270836532_mig_so_validate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201304291338510_mig_product_changes.cs" />
-    <Compile Include="Migrations\201304291338510_mig_product_changes.Designer.cs">
-      <DependentUpon>201304291338510_mig_product_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305021245419_mig_packinglist.cs" />
-    <Compile Include="Migrations\201305021245419_mig_packinglist.Designer.cs">
-      <DependentUpon>201305021245419_mig_packinglist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305021304478_mig_customer.cs" />
-    <Compile Include="Migrations\201305021304478_mig_customer.Designer.cs">
-      <DependentUpon>201305021304478_mig_customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305030514455_mig_product_pic.cs" />
-    <Compile Include="Migrations\201305030514455_mig_product_pic.Designer.cs">
-      <DependentUpon>201305030514455_mig_product_pic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305040746042_mig_store.cs" />
-    <Compile Include="Migrations\201305040746042_mig_store.Designer.cs">
-      <DependentUpon>201305040746042_mig_store.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305061224536_mig_sales_box.cs" />
-    <Compile Include="Migrations\201305061224536_mig_sales_box.Designer.cs">
-      <DependentUpon>201305061224536_mig_sales_box.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305070815394_mig_product_lastpurchaserate.cs" />
-    <Compile Include="Migrations\201305070815394_mig_product_lastpurchaserate.Designer.cs">
-      <DependentUpon>201305070815394_mig_product_lastpurchaserate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305090953196_mig_timestamp.cs" />
-    <Compile Include="Migrations\201305090953196_mig_timestamp.Designer.cs">
-      <DependentUpon>201305090953196_mig_timestamp.cs</DependentUpon>
+    <Compile Include="Migrations\201305100731512_mig_start.cs" />
+    <Compile Include="Migrations\201305100731512_mig_start.Designer.cs">
+      <DependentUpon>201305100731512_mig_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -553,69 +481,14 @@
     <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
     <Content Include="Views\SalesOrder\SOItemEntry.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201304221037165_mig_start.resx">
-      <DependentUpon>201304221037165_mig_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304230154141_mig_salesorder.resx">
-      <DependentUpon>201304230154141_mig_salesorder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304230233097_mig_sales.resx">
-      <DependentUpon>201304230233097_mig_sales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304230742402_mig_po_model.resx">
-      <DependentUpon>201304230742402_mig_po_model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304231224207_mig_purchase.resx">
-      <DependentUpon>201304231224207_mig_purchase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304231255248_mig_product_model.resx">
-      <DependentUpon>201304231255248_mig_product_model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304231354087_mig_soitem.resx">
-      <DependentUpon>201304231354087_mig_soitem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304240437128_mig_saleschange.resx">
-      <DependentUpon>201304240437128_mig_saleschange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304260442444_mig_whatsnew.resx">
-      <DependentUpon>201304260442444_mig_whatsnew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304261246285_mig_product.resx">
-      <DependentUpon>201304261246285_mig_product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304270836532_mig_so_validate.resx">
-      <DependentUpon>201304270836532_mig_so_validate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201304291338510_mig_product_changes.resx">
-      <DependentUpon>201304291338510_mig_product_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305021245419_mig_packinglist.resx">
-      <DependentUpon>201305021245419_mig_packinglist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305021304478_mig_customer.resx">
-      <DependentUpon>201305021304478_mig_customer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305030514455_mig_product_pic.resx">
-      <DependentUpon>201305030514455_mig_product_pic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305040746042_mig_store.resx">
-      <DependentUpon>201305040746042_mig_store.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305061224536_mig_sales_box.resx">
-      <DependentUpon>201305061224536_mig_sales_box.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305070815394_mig_product_lastpurchaserate.resx">
-      <DependentUpon>201305070815394_mig_product_lastpurchaserate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305090953196_mig_timestamp.resx">
-      <DependentUpon>201305090953196_mig_timestamp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201305100731512_mig_start.resx">
+      <DependentUpon>201305100731512_mig_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
