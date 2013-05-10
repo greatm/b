@@ -1,7 +1,7 @@
 ﻿
 
 function m(msg) {
-    $.jGrowl(msg);
+    $.jGrowl("great > "+msg, { position: bottom - left });
     //statusMessage(msg, 1);
 }
 function statusMessage(msg, life) {
