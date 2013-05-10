@@ -342,10 +342,6 @@
     <Compile Include="Migrations\201305090953196_mig_timestamp.Designer.cs">
       <DependentUpon>201305090953196_mig_timestamp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201305090956084_mig_packing_ts_remove.cs" />
-    <Compile Include="Migrations\201305090956084_mig_packing_ts_remove.Designer.cs">
-      <DependentUpon>201305090956084_mig_packing_ts_remove.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -620,9 +616,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305090953196_mig_timestamp.resx">
       <DependentUpon>201305090953196_mig_timestamp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305090956084_mig_packing_ts_remove.resx">
-      <DependentUpon>201305090956084_mig_packing_ts_remove.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
