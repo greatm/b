@@ -56,6 +56,10 @@ namespace b.Controllers
                     newPO.POItems.Add(new POItem { ProductID = prd.ID, Qty = prd.RoQ });
                 }
             }
+            if (newPO.POItems.Count < 1)
+            {
+                newPO.POItems.Add(new POItem());
+            }
             return View(newPO);
         }
 

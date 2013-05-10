@@ -1,8 +1,19 @@
 ﻿@using b.ViewModels
 @model IEnumerable<PurchaseItem>
 
-<div>
-    @(Html.Syncfusion().Grid<PurchaseItem>("PiList"))
+<div style="width: 95%;">
+    @(Html.Syncfusion().Grid<PurchaseItem>("GenericListGrid")
+    .Datasource(Model)
+    .Caption("hi")
+    .EnablePaging()
+    .EnableSorting()
+    .Column(cols =>
+    {
+        cols.Add(c => c.ProductID);
+        cols.Add(c => c.Qty);
+        cols.Add(c => c.Rate);
+    })
+    )
 </div>
 
 
