@@ -58,9 +58,9 @@ namespace b.Controllers
             {
                 newPO.POItems.Add(new POItem());
             }
-            CreateVendorsList( newPO);
+            CreateVendorsList(newPO);
             CreateProductsList();
-           return View(newPO);
+            return View(newPO);
         }
 
         //
@@ -166,7 +166,7 @@ namespace b.Controllers
                     Id = vendor.ID,
                     Name = vendor.Name + " : " + vendor.Person
                 });
-            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name",workPO.VendorID );
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
 
         }
         private void CreateProductsList()

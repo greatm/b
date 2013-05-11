@@ -39,6 +39,7 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
+            this.ViewData["StoreID"] = new SelectList(db.Stores , "Id", "Name");
             return View();
         }
 
@@ -56,6 +57,7 @@ namespace b.Controllers
                 return RedirectToAction("Index");
             }
 
+            this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
             return View(sublocation);
         }
 
