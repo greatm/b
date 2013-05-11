@@ -15,6 +15,7 @@ namespace b.ViewModels
         public Byte[] Timestamp { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         public int VendorID { get; set; }
         public int StoreID { get; set; }

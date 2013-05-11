@@ -46,9 +46,6 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            CreateVendorsList();
-            CreateProductsList();
-            //PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem> { new POItem { ProductID = 1, Qty = 1, Rate = 100 } } };
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
             foreach (Product prd in db.Products)
             {
@@ -61,7 +58,9 @@ namespace b.Controllers
             {
                 newPO.POItems.Add(new POItem());
             }
-            return View(newPO);
+            CreateVendorsList( newPO);
+            CreateProductsList();
+           return View(newPO);
         }
 
         //
@@ -98,7 +97,7 @@ namespace b.Controllers
                 return HttpNotFound();
             }
 
-            CreateVendorsList();
+            CreateVendorsList(purchaseorder);
             CreateProductsList();
 
             return View(purchaseorder);
@@ -117,7 +116,7 @@ namespace b.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            CreateVendorsList();
+            CreateVendorsList(purchaseorder);
             CreateProductsList();
             return View(purchaseorder);
         }
@@ -157,7 +156,7 @@ namespace b.Controllers
         #endregion
 
         #region function
-        private void CreateVendorsList()
+        private void CreateVendorsList(PurchaseOrder workPO)
         {
             var vendors = db.Vendors;
             List<object> newList = new List<object>();
@@ -167,7 +166,7 @@ namespace b.Controllers
                     Id = vendor.ID,
                     Name = vendor.Name + " : " + vendor.Person
                 });
-            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name");
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name",workPO.VendorID );
 
         }
         private void CreateProductsList()
