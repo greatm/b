@@ -29,7 +29,7 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.Vendors)
         </div>
-        <div class="editor-field">
+        <div class="editor-field" id="combobox">
             @Html.DropDownList("VendorID", String.Empty)
             @Html.ValidationMessageFor(model => model.VendorID)
         </div>
@@ -103,4 +103,7 @@
 
 @section Scripts {
     @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script type="text/javascript">
+        $("#VendorID").combobox();
+    </script>
 }
