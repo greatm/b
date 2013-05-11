@@ -18,7 +18,7 @@
 <body>
 
     <header>
-        <script type="text/javascript">m("Loading @ViewBag.Title ");</script>
+        <script type="text/javascript">m("Preparing menu");</script>
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
@@ -46,15 +46,17 @@
 
     <div id="body">
         @RenderSection("featured", required: false)
+        <script type="text/javascript">m("Preparing syncfusion");</script>
         <section class="content-wrapper main-content clear-fix">
             @(Html.Syncfusion().StyleManager().Combine(true).Minify(true)
-        .Register(component =>
+            .Register(component =>
             {
                 component.Add(ComponentType.Grid);
             }))
 
             @{Html.Syncfusion().ScriptManager().Combine(true).Minify(true).Render();}
 
+            <script type="text/javascript">m("u r in @ViewBag.Title ");</script>
             @RenderBody()
         </section>
     </div>

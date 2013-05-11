@@ -11,7 +11,7 @@ namespace b.Models
     {
         public int ID { get; set; }
         public string Store { get; set; }
-       
+
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
