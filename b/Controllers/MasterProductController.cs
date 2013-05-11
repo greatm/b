@@ -94,6 +94,14 @@ namespace b.Controllers
             WebImage image = new WebImage(product.Image);
             return File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
         }
+        //public FileContentResult GetProductImage(Product product)
+        //{
+        //    //Product product = db.Products.Find(id);
+        //    if (product == null) return null;
+
+        //    WebImage image = new WebImage(product.Image);
+        //    return File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
+        //}
 
         //
         // POST: /MasterProduct/Edit/5
