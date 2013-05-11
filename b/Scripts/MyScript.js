@@ -1,7 +1,7 @@
 ﻿
 
 function m(msg) {
-    $.jGrowl(msg);
+    $.jGrowl(msg, { pool: 2 });
     //statusMessage(msg, 1);
 }
 function statusMessage(msg, life) {

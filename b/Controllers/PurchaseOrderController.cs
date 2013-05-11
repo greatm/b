@@ -47,6 +47,7 @@ namespace b.Controllers
         public ActionResult Create()
         {
             CreateVendorsList();
+            CreateProductsList();
             //PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem> { new POItem { ProductID = 1, Qty = 1, Rate = 100 } } };
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
             foreach (Product prd in db.Products)
@@ -91,12 +92,15 @@ namespace b.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            CreateVendorsList();
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
             }
+
+            CreateVendorsList();
+            CreateProductsList();
+
             return View(purchaseorder);
         }
 
@@ -113,6 +117,8 @@ namespace b.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            CreateVendorsList();
+            CreateProductsList();
             return View(purchaseorder);
         }
 
@@ -161,7 +167,21 @@ namespace b.Controllers
                     Id = vendor.ID,
                     Name = vendor.Name + " : " + vendor.Person
                 });
-            this.ViewData["Vendors"] = new SelectList(newList, "Id", "Name");
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name");
+
+        }
+        private void CreateProductsList()
+        {
+            //var products = db.Products;
+            //List<object> newList = new List<object>();
+            //foreach (var vendor in products)
+            //    newList.Add(new
+            //    {
+            //        Id = vendor.ID,
+            //        Name = vendor.Name + " : " + vendor.Person
+            //    });
+            //this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");
+            this.ViewData["Products"] = new SelectList(db.Products, "Id", "Name");
 
         }
         #endregion

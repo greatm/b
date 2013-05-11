@@ -17,6 +17,7 @@ namespace b.ViewModels
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public int VendorID { get; set; }
+        public int StoreID { get; set; }
 
         public string Remarks { get; set; }
         public IList<POItem> POItems { get; set; }

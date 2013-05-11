@@ -30,7 +30,7 @@
             @Html.LabelFor(model => model.Vendors)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("Vendors", String.Empty)
+            @Html.DropDownList("VendorID", String.Empty)
             @Html.ValidationMessageFor(model => model.VendorID)
         </div>
 
@@ -51,7 +51,7 @@
         {
             <p>None.</p>
         }
-        <ul id="itemEditor" style="list-style-type: none">
+       @* <ul id="itemEditor" style="list-style-type: none">
             @if (Model != null && Model.POItems != null)
             {
                 foreach (POItem poitem in Model.POItems)
@@ -59,7 +59,25 @@
                     Html.RenderPartial("POItemEntry", poitem);
                 }
             }
-        </ul>
+        </ul>*@
+        <table id="itemEditor">
+            <tr>
+                <th></th>
+                <th style="width:100px">Product</th>
+                <th style="width:100px">Rate</th>
+                <th style="width:100px">Quantity</th>
+                <th style="width:100px">Amount</th>
+                <th style="width:100px"></th>
+            </tr>
+
+            @if (Model != null && Model.POItems != null)
+            {
+                foreach (POItem poitem in Model.POItems)
+                {
+                    Html.RenderPartial("POItemEntry", poitem);
+                }
+            }
+        </table>
         <a id="addAnother" href="#">Add another</a>
         <script type="text/javascript">
             $(function () {

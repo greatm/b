@@ -290,6 +290,10 @@
     <Compile Include="Migrations\201305110243132_mig_poitem_amount.Designer.cs">
       <DependentUpon>201305110243132_mig_poitem_amount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305110504166_mig_po_store.cs" />
+    <Compile Include="Migrations\201305110504166_mig_po_store.Designer.cs">
+      <DependentUpon>201305110504166_mig_po_store.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -521,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305110243132_mig_poitem_amount.resx">
       <DependentUpon>201305110243132_mig_poitem_amount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305110504166_mig_po_store.resx">
+      <DependentUpon>201305110504166_mig_po_store.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
