@@ -20,17 +20,10 @@ namespace b.Controllers
         #endregion
 
         #region action
-        //
-        // GET: /PurchaseOrder/
-
         public ActionResult Index()
         {
             return View(db.PurchaseOrders.ToList());
         }
-
-        //
-        // GET: /PurchaseOrder/Details/5
-
         public ActionResult Details(int id = 0)
         {
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
@@ -40,10 +33,6 @@ namespace b.Controllers
             }
             return View(purchaseorder);
         }
-
-        //
-        // GET: /PurchaseOrder/Create
-
         public ActionResult Create()
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
@@ -62,10 +51,6 @@ namespace b.Controllers
             CreateProductsList();
             return View(newPO);
         }
-
-        //
-        // POST: /PurchaseOrder/Create
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [IsPostedFromThisSite]
@@ -80,19 +65,13 @@ namespace b.Controllers
 
             return View(purchaseorder);
         }
-
         public ActionResult POItemEntryRow()
         {
             CreateProductsList();
             return PartialView("POItemEntry");
         }
-
-        //
-        // GET: /PurchaseOrder/Edit/5
-
         public ActionResult Edit(int id = 0)
         {
-            //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
             PurchaseOrder purchaseorder = db.PurchaseOrders.Include(t => t.POItems).FirstOrDefault(t => t.ID == id);
             if (purchaseorder == null)
             {
@@ -104,10 +83,6 @@ namespace b.Controllers
 
             return View(purchaseorder);
         }
-
-        //
-        // POST: /PurchaseOrder/Edit/5
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PurchaseOrder purchaseorder)
@@ -122,10 +97,9 @@ namespace b.Controllers
             CreateProductsList();
             return View(purchaseorder);
         }
-
-        //
-        // GET: /PurchaseOrder/Delete/5
-
+        //public ActionResult PrintPO() {
+        //return new 
+        //}
         public ActionResult Delete(int id = 0)
         {
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
@@ -135,10 +109,6 @@ namespace b.Controllers
             }
             return View(purchaseorder);
         }
-
-        //
-        // POST: /PurchaseOrder/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -148,7 +118,6 @@ namespace b.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
