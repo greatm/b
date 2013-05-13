@@ -45,19 +45,21 @@
     <fieldset>
         <legend>POItems</legend>
 
+        <style type="text/css">
+            input {
+                border: 1px solid #e2e2e2;
+                background: #fff;
+                color: #333;
+                font-size: 1.2em;
+                margin: 5px 0 6px 0;
+                padding: 5px;
+                width: 150px;
+            }
+        </style>
         @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
         {
             <p>None.</p>
         }
-@* <ul id="itemEditor" style="list-style-type: none">
-            @if (Model != null && Model.POItems != null)
-            {
-                foreach (POItem poitem in Model.POItems)
-                {
-                    Html.RenderPartial("POItemEntry", poitem);
-                }
-            }
-        </ul>*@
         <table id="itemEditor">
             <tr>
                 <th></th>
@@ -103,15 +105,7 @@
 </div>
 
 @section Scripts {
-
-    @*<script type="text/javascript">
-        $(function () {
-            $("#itemEditor").sortable();
-            $("#addAnother").click(function () {
-                $.get('/PurchaseOrder/POItemEntry', function (template) {
-                    $("#itemEditor").append(template);
-                });
-            });
-        });
-    </script>*@
+    <script type="text/javascript">
+        $("#VendorID").combobox();
+    </script>
 }

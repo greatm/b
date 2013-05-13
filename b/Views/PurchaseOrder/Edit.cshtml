@@ -51,15 +51,6 @@
         {
             <p>None.</p>
         }
-@* <ul id="itemEditor" style="list-style-type: none">
-            @if (Model != null && Model.POItems != null)
-            {
-                foreach (POItem poitem in Model.POItems)
-                {
-                    Html.RenderPartial("POItemEntry", poitem);
-                }
-            }
-        </ul>*@
         <table id="itemEditor">
             <tr>
                 <th></th>
@@ -102,7 +93,6 @@
 </div>
 
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
     <script type="text/javascript">
         $("#VendorID").combobox();
     </script>

@@ -51,7 +51,7 @@ namespace b.Controllers
             {
                 if (prd.RoL > 5)
                 {
-                    newPO.POItems.Add(new POItem { ProductID = prd.ID, Qty = prd.RoQ });
+                    newPO.POItems.Add(new POItem { ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ });
                 }
             }
             if (newPO.POItems.Count < 1)
@@ -83,6 +83,7 @@ namespace b.Controllers
 
         public ActionResult POItemEntryRow()
         {
+            CreateProductsList();
             return PartialView("POItemEntry");
         }
 
@@ -180,8 +181,8 @@ namespace b.Controllers
             //        Id = vendor.ID,
             //        Name = vendor.Name + " : " + vendor.Person
             //    });
-            //this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");
-            this.ViewData["Products"] = new SelectList(db.Products, "Id", "Name");
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");
+            // this.ViewData["Products"] = new SelectList(db.Products, "Id", "Name");
 
         }
         #endregion

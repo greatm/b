@@ -1,4 +1,6 @@
-﻿@model b.ViewModels.POItem
+﻿@using b.ViewModels;
+
+@model POItem
 
 <tr style="padding-bottom: 15px">
     @using (Html.BeginCollectionItem("POItems"))
@@ -7,9 +9,8 @@
             <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
         </td>    
 
-        <td style="width: 100px">
-            @Html.DropDownList("Products", String.Empty)
-            @*@Html.EditorFor(model => model.ProductID)*@
+        <td style="width: 100px" class="combo">
+            @Html.DropDownList("ProductID", String.Empty)
             @Html.ValidationMessageFor(model => model.ProductID)
         </td>
 
@@ -29,38 +30,11 @@
         </td>  
 
         <td>
-            <a href="#" onclick="$(this).parent().remove();">Delete</a>
+            <a href="#" onclick="$(this).parent().parent().remove();">Delete</a>
         </td>
     }
 </tr>
 
-@*<li style="padding-bottom: 15px">
-    @using (Html.BeginCollectionItem("POItems"))
-    {
-        <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
-
-        @Html.EditorFor(model => model.ProductID)
-        @Html.ValidationMessageFor(model => model.ProductID)
-
-        @Html.EditorFor(model => model.Rate)
-        @Html.ValidationMessageFor(model => model.Rate)
-
-        @Html.EditorFor(model => model.Qty)
-        @Html.ValidationMessageFor(model => model.Qty)
-
-        <a href="#" onclick="$(this).parent().remove();">Delete</a>
-    }
-</li>*@
-
-@*@Html.LabelFor(model => model.ProductID) 
-        @Html.EditorFor(model => model.ProductID)
-        @Html.ValidationMessageFor(model => model.ProductID)
-
-        
-        @Html.LabelFor(model => model.Rate)
-        @Html.EditorFor(model => model.Rate)
-        @Html.ValidationMessageFor(model => model.Rate)
-
-        @Html.LabelFor(model => model.Qty)
-        @Html.EditorFor(model => model.Qty)
-        @Html.ValidationMessageFor(model => model.Qty)*@
+<script type="text/javascript">
+    $(".combo > select").combobox();
+</script>
