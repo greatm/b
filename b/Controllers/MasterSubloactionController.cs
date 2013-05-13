@@ -39,7 +39,7 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            this.ViewData["StoreID"] = new SelectList(db.Stores , "Id", "Name");
+            this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
             return View();
         }
 
