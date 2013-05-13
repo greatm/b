@@ -19,6 +19,7 @@ namespace b.Migrations
                     p => p.WorkTime,
 
 
+                    new whatsnew { WorkTime = new DateTime(2013, 5, 11, 12, 00, 0), Work = "add purchase po" },
                     new whatsnew { WorkTime = new DateTime(2013, 5, 10, 12, 00, 0), Work = "add status message" },
                     new whatsnew { WorkTime = new DateTime(2013, 5, 10, 10, 30, 0), Work = "sale create – add box number" },
                     new whatsnew { WorkTime = new DateTime(2013, 5, 09, 10, 30, 0), Work = "add master store" },

@@ -92,7 +92,7 @@ namespace b.Controllers
         public ActionResult Edit(int id = 0)
         {
             //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Include(t=>t.POItems ).FirstOrDefault(t=>t.ID== id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Include(t => t.POItems).FirstOrDefault(t => t.ID == id);
             if (purchaseorder == null)
             {
                 return HttpNotFound();

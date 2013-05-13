@@ -7,8 +7,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.Models
 {
-    public class Repository
+    public class Repository : IDisposable
     {
-        //public void 
+        private readonly bDBContext db = new bDBContext();
+        public void Dispose()
+        {
+            db.Dispose();
+        }
     }
 }

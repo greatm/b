@@ -25,4 +25,11 @@ namespace b.ViewModels
 
         public IEnumerable<Vendor> Vendors { get; set; }
     }
+
+    public class PagedPurchaseModel
+    {
+        public int TotalRows { get; set; }
+        public IEnumerable<PurchaseItem> PurchaseItems { get; set; }
+        public int PageSize { get; set; }
+    }
 }

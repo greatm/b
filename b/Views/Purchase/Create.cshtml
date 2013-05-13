@@ -79,7 +79,7 @@
         }
         else
         {
-            Html.RenderPartial("PurchaseItemEntry", Model.PurchaseItems);
+            Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
         }
 
 

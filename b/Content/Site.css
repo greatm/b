@@ -808,3 +808,32 @@ tr.pager td {
     padding: 0.3em;
 }
 /*custom combo box end*/
+
+
+/*grid start*/
+
+#grid {
+    clear: both;
+    width: 80%;
+    margin: 0px;
+    border: 1px solid #c7c5c7;
+}
+
+    #grid thead, #grid tfoot td {
+        text-align: left;
+        font-weight: bold;
+        height: 35px;
+        color: #000;
+        background-color: #d2d0d2;
+        border-bottom: 1px solid #e2e2e2;
+    }
+
+    #grid td {
+        padding: 4px 6px 0px 4px;
+        vertical-align: top;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #e2e2e2;
+    }
+
+
+/*grid end*/
