@@ -42,7 +42,7 @@ namespace b.Controllers
             {
                 if (prd.RoL > 5)
                 {
-                    newPO.POItems.Add(new POItem { ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ });
+                    newPO.POItems.Add(new POItem { ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ,Amount=prd.LastPurchaseRate * prd.RoQ  });
                 }
             }
             if (newPO.POItems.Count < 1)

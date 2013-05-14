@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using b.Models;
 
 namespace b.ViewModels
 {
@@ -13,6 +14,7 @@ namespace b.ViewModels
         [Timestamp]
         public Byte[] Timestamp { get; set; }
         public int ProductID { get; set; }
+        public Product Product { get; set; }
         public int Qty { get; set; }
         public Decimal Rate { get; set; }
         public Decimal Amount { get; set; }

@@ -99,9 +99,12 @@ namespace b.Migrations
                         Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Date = c.DateTime(nullable: false),
                         VendorID = c.Int(nullable: false),
+                        StoreID = c.Int(nullable: false),
                         Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Vendors", t => t.VendorID, cascadeDelete: true)
+                .Index(t => t.VendorID);
 
             CreateTable(
                 "dbo.POItems",
@@ -112,10 +115,13 @@ namespace b.Migrations
                         ProductID = c.Int(nullable: false),
                         Qty = c.Int(nullable: false),
                         Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PurchaseOrder_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
                 .ForeignKey("dbo.PurchaseOrders", t => t.PurchaseOrder_ID)
+                .Index(t => t.ProductID)
                 .Index(t => t.PurchaseOrder_ID);
 
             CreateTable(
@@ -182,14 +188,31 @@ namespace b.Migrations
                 .ForeignKey("dbo.Sales", t => t.Sales_ID)
                 .Index(t => t.Sales_ID);
 
+            CreateTable(
+                "dbo.Sublocations",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Store = c.String(),
+                        Name = c.String(nullable: false),
+                        Description = c.String(),
+                        Remarks = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+
         }
 
         public override void Down()
         {
             DropIndex("dbo.SalesItems", new[] { "Sales_ID" });
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID" });
+            DropIndex("dbo.POItems", new[] { "ProductID" });
+            DropIndex("dbo.PurchaseOrders", new[] { "VendorID" });
             DropForeignKey("dbo.SalesItems", "Sales_ID", "dbo.Sales");
             DropForeignKey("dbo.POItems", "PurchaseOrder_ID", "dbo.PurchaseOrders");
+            DropForeignKey("dbo.POItems", "ProductID", "dbo.Products");
+            DropForeignKey("dbo.PurchaseOrders", "VendorID", "dbo.Vendors");
+            DropTable("dbo.Sublocations");
             DropTable("dbo.SalesItems");
             DropTable("dbo.Sales");
             DropTable("dbo.SalesOrders");
