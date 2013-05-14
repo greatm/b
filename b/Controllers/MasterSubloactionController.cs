@@ -11,7 +11,7 @@ namespace b.Controllers
         private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            return View(db.Sublocations.Include(t => t.Store).ToList());
+            return View(db.Sublocations.ToList());
         }
         public ActionResult Details(int id = 0)
         {
@@ -22,15 +22,11 @@ namespace b.Controllers
             }
             return View(sublocation);
         }
-
-        //
-        // GET: /MasterSubloaction/Create
-
         public ActionResult Create()
         {
-            CreateStoreDDitems(new Sublocation());
-            //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
-            return View();
+            Sublocation newSloc = new Sublocation();
+            CreateStoreDDitems(newSloc);
+            return View(newSloc);
         }
 
         //
@@ -48,7 +44,6 @@ namespace b.Controllers
             }
 
             CreateStoreDDitems(sublocation);
-            //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
             return View(sublocation);
         }
 
@@ -68,7 +63,8 @@ namespace b.Controllers
 
         private void CreateStoreDDitems(Sublocation sublocation)
         {
-            this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
+            ViewBag.StoreID = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
+            //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
         }
 
         //

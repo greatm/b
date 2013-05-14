@@ -65,6 +65,8 @@ namespace b.Controllers
                 return RedirectToAction("Index");
             }
 
+            CreateVendorsList(purchaseorder);
+            foreach (POItem poitem in purchaseorder.POItems) CreateProductsList(poitem);
             return View(purchaseorder);
         }
         public ActionResult POItemEntryRow()

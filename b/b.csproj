@@ -281,17 +281,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201305140727558_mig_start.cs" />
-    <Compile Include="Migrations\201305140727558_mig_start.Designer.cs">
-      <DependentUpon>201305140727558_mig_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305141101316_mig_subloaction_store.cs" />
-    <Compile Include="Migrations\201305141101316_mig_subloaction_store.Designer.cs">
-      <DependentUpon>201305141101316_mig_subloaction_store.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305141111101_mig_subloaction_store_store.cs" />
-    <Compile Include="Migrations\201305141111101_mig_subloaction_store_store.Designer.cs">
-      <DependentUpon>201305141111101_mig_subloaction_store_store.cs</DependentUpon>
+    <Compile Include="Migrations\201305141237555_mig_start.cs" />
+    <Compile Include="Migrations\201305141237555_mig_start.Designer.cs">
+      <DependentUpon>201305141237555_mig_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -525,14 +517,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201305140727558_mig_start.resx">
-      <DependentUpon>201305140727558_mig_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305141101316_mig_subloaction_store.resx">
-      <DependentUpon>201305141101316_mig_subloaction_store.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305141111101_mig_subloaction_store_store.resx">
-      <DependentUpon>201305141111101_mig_subloaction_store_store.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201305141237555_mig_start.resx">
+      <DependentUpon>201305141237555_mig_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

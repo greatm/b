@@ -193,21 +193,25 @@ namespace b.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Store = c.String(),
+                        StoreID = c.Int(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(),
                         Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Stores", t => t.StoreID, cascadeDelete: true)
+                .Index(t => t.StoreID);
 
         }
 
         public override void Down()
         {
+            DropIndex("dbo.Sublocations", new[] { "StoreID" });
             DropIndex("dbo.SalesItems", new[] { "Sales_ID" });
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID" });
             DropIndex("dbo.POItems", new[] { "ProductID" });
             DropIndex("dbo.PurchaseOrders", new[] { "VendorID" });
+            DropForeignKey("dbo.Sublocations", "StoreID", "dbo.Stores");
             DropForeignKey("dbo.SalesItems", "Sales_ID", "dbo.Sales");
             DropForeignKey("dbo.POItems", "PurchaseOrder_ID", "dbo.PurchaseOrders");
             DropForeignKey("dbo.POItems", "ProductID", "dbo.Products");
