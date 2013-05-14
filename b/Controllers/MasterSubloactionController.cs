@@ -1,29 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using b.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using b.Models;
 
 namespace b.Controllers
 {
     public class MasterSubloactionController : Controller
     {
         private bDBContext db = new bDBContext();
-
-        //
-        // GET: /MasterSubloaction/
-
         public ActionResult Index()
         {
-            return View(db.Sublocations.ToList());
+            return View(db.Sublocations.Include(t => t.Store).ToList());
         }
-
-        //
-        // GET: /MasterSubloaction/Details/5
-
         public ActionResult Details(int id = 0)
         {
             Sublocation sublocation = db.Sublocations.Find(id);
@@ -39,7 +28,8 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
+            CreateStoreDDitems(new Sublocation());
+            //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
             return View();
         }
 
@@ -57,7 +47,8 @@ namespace b.Controllers
                 return RedirectToAction("Index");
             }
 
-            this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
+            CreateStoreDDitems(sublocation);
+            //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
             return View(sublocation);
         }
 
@@ -71,7 +62,13 @@ namespace b.Controllers
             {
                 return HttpNotFound();
             }
+            CreateStoreDDitems(sublocation);
             return View(sublocation);
+        }
+
+        private void CreateStoreDDitems(Sublocation sublocation)
+        {
+            this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
         }
 
         //
@@ -87,6 +84,8 @@ namespace b.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            CreateStoreDDitems(sublocation);
+            //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name");
             return View(sublocation);
         }
 

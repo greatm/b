@@ -10,7 +10,8 @@ namespace b.Models
     public class Sublocation
     {
         public int ID { get; set; }
-        public string Store { get; set; }
+        public int StoreID { get; set; }
+        public Store Store { get; set; }
 
         [Required]
         public string Name { get; set; }

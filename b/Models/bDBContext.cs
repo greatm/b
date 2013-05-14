@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using b.ViewModels;
+﻿using b.ViewModels;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using System.Linq;
 
 namespace b.Models
 {
@@ -39,7 +33,7 @@ namespace b.Models
                 p => p.WorkTime,
 
 
-                //new whatsnew { WorkTime = new DateTime(2013, 5, 14, 10, 30, 0), Work = "add master store" },
+                new whatsnew { WorkTime = new DateTime(2013, 5, 14, 10, 30, 0), Work = "po auto fill – all quantities" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 13, 10, 30, 0), Work = "add purchase po" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 11, 10, 30, 0), Work = "add status message" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 10, 10, 30, 0), Work = "sale create – add box number" },

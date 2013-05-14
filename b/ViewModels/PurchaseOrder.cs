@@ -1,10 +1,7 @@
-﻿using System;
+﻿using b.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using b.Models;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.ViewModels
 {

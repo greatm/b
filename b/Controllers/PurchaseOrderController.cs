@@ -1,14 +1,13 @@
-﻿using System;
+﻿using b.Filters;
+using b.Models;
+using b.ViewModels;
+using Rotativa;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using b.ViewModels;
-using b.Models;
-using b.Filters;
-using Rotativa;
 
 namespace b.Controllers
 {
@@ -37,12 +36,14 @@ namespace b.Controllers
         public ActionResult Create()
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
-            CreateProductsList();
             foreach (Product prd in db.Products)
             {
+                POItem poitem = null;
                 if (prd.RoL > 5)
                 {
-                    newPO.POItems.Add(new POItem { ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ,Amount=prd.LastPurchaseRate * prd.RoQ  });
+                    poitem = new POItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
+                    CreateProductsList(poitem);
+                    newPO.POItems.Add(poitem);
                 }
             }
             if (newPO.POItems.Count < 1)
@@ -68,7 +69,7 @@ namespace b.Controllers
         }
         public ActionResult POItemEntryRow()
         {
-            CreateProductsList();
+            CreateProductsList(new POItem());
             return PartialView("POItemEntry");
         }
         public ActionResult Edit(int id = 0)
@@ -80,7 +81,11 @@ namespace b.Controllers
             }
 
             CreateVendorsList(purchaseorder);
-            CreateProductsList();
+
+            foreach (POItem poitem in purchaseorder.POItems)
+            {
+                CreateProductsList(poitem);
+            }
 
             return View(purchaseorder);
         }
@@ -95,7 +100,7 @@ namespace b.Controllers
                 return RedirectToAction("Index");
             }
             CreateVendorsList(purchaseorder);
-            CreateProductsList();
+            //CreateProductsList();
             return View(purchaseorder);
         }
         public ActionResult PrintPO(int id = 0)
@@ -142,7 +147,7 @@ namespace b.Controllers
             this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
 
         }
-        private void CreateProductsList()
+        private void CreateProductsList(POItem poitem)
         {
             //var products = db.Products;
             //List<object> newList = new List<object>();
@@ -152,7 +157,7 @@ namespace b.Controllers
             //        Id = vendor.ID,
             //        Name = vendor.Name + " : " + vendor.Person
             //    });
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name");
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", poitem.ProductID);
             // this.ViewData["Products"] = new SelectList(db.Products, "Id", "Name");
 
         }
