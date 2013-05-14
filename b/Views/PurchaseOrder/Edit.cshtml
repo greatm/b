@@ -85,11 +85,13 @@
     
     <p>
         <input type="submit" value="Save" />
+        @Html.ActionLink("Print", "PrintPO", new {id=Model.ID  })
+        @Html.ActionLink("Back to List", "Index")
     </p>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @* @Html.ActionLink("Back to List", "Index")*@
 </div>
 
 @section Scripts {

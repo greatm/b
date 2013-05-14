@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using b.ViewModels;
 using b.Models;
 using b.Filters;
+using Rotativa;
 
 namespace b.Controllers
 {
@@ -36,6 +37,7 @@ namespace b.Controllers
         public ActionResult Create()
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
+            CreateProductsList();
             foreach (Product prd in db.Products)
             {
                 if (prd.RoL > 5)
@@ -48,7 +50,6 @@ namespace b.Controllers
                 newPO.POItems.Add(new POItem());
             }
             CreateVendorsList(newPO);
-            CreateProductsList();
             return View(newPO);
         }
         [HttpPost]
@@ -97,9 +98,10 @@ namespace b.Controllers
             CreateProductsList();
             return View(purchaseorder);
         }
-        //public ActionResult PrintPO() {
-        //return new 
-        //}
+        public ActionResult PrintPO(int id = 0)
+        {
+            return new ActionAsPdf("Edit", new { id = id }) { FileName = "po_1.pdf" };
+        }
         public ActionResult Delete(int id = 0)
         {
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
