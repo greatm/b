@@ -68,9 +68,10 @@ function searchFailed() {
                   minLength: 0,
                   source: $.proxy(this, "_source")
               })
-              .tooltip({
-                  tooltipClass: "ui-state-highlight"
-              });
+            .tooltip({
+                tooltipClass: "ui-state-highlight"
+            })
+            ;
 
             this._on(this.input, {
                 autocompleteselect: function (event, ui) {
