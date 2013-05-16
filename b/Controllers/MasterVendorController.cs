@@ -39,7 +39,7 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Vendor {Version=1 });
         }
 
         //

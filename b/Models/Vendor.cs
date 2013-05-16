@@ -9,7 +9,11 @@ namespace b.Models
 {
     public class Vendor
     {
+        [Key][Column(Order=0)]
         public int ID { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int Version { get; set; }
         [Timestamp]
         public Byte[] Timestamp { get; set; }
         public string Name { get; set; }

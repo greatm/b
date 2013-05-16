@@ -268,6 +268,7 @@
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterStoreController.cs" />
     <Compile Include="Controllers\MasterSubloactionController.cs" />
+    <Compile Include="Controllers\MasterVendor2Controller.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\PurchaseHomeController.cs" />
@@ -291,6 +292,10 @@
     <Compile Include="Migrations\201305160423472_mig_so_list.cs" />
     <Compile Include="Migrations\201305160423472_mig_so_list.Designer.cs">
       <DependentUpon>201305160423472_mig_so_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305161100588_mig_vendor_version.cs" />
+    <Compile Include="Migrations\201305161100588_mig_vendor_version.Designer.cs">
+      <DependentUpon>201305161100588_mig_vendor_version.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -525,6 +530,11 @@
     <Content Include="Views\MasterSubloaction\Create.cshtml" />
     <Content Include="Views\MasterSubloaction\Edit.cshtml" />
     <Content Include="Views\MasterSubloaction\Delete.cshtml" />
+    <Content Include="Views\MasterVendor2\Index.cshtml" />
+    <Content Include="Views\MasterVendor2\Details.cshtml" />
+    <Content Include="Views\MasterVendor2\Create.cshtml" />
+    <Content Include="Views\MasterVendor2\Edit.cshtml" />
+    <Content Include="Views\MasterVendor2\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -537,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305160423472_mig_so_list.resx">
       <DependentUpon>201305160423472_mig_so_list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305161100588_mig_vendor_version.resx">
+      <DependentUpon>201305161100588_mig_vendor_version.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

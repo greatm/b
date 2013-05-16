@@ -38,3 +38,7 @@
 <script type="text/javascript">
     $(".combo > select").combobox();
 </script>
+
+@Ajax.ActionLink("ajax", "Edit", "PurchaseOrder", new { id = 2 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ajaxDiv" })
+
+<div id="ajaxDiv"></div>
