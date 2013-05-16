@@ -284,19 +284,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201305141237555_mig_start.cs" />
-    <Compile Include="Migrations\201305141237555_mig_start.Designer.cs">
-      <DependentUpon>201305141237555_mig_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305160423472_mig_so_list.cs" />
-    <Compile Include="Migrations\201305160423472_mig_so_list.Designer.cs">
-      <DependentUpon>201305160423472_mig_so_list.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305161100588_mig_vendor_version.cs" />
-    <Compile Include="Migrations\201305161100588_mig_vendor_version.Designer.cs">
-      <DependentUpon>201305161100588_mig_vendor_version.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
     <Compile Include="Models\BOM.cs" />
@@ -534,17 +521,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201305141237555_mig_start.resx">
-      <DependentUpon>201305141237555_mig_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305160423472_mig_so_list.resx">
-      <DependentUpon>201305160423472_mig_so_list.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305161100588_mig_vendor_version.resx">
-      <DependentUpon>201305161100588_mig_vendor_version.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
