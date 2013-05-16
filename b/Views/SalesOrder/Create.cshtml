@@ -28,7 +28,7 @@
             @Html.LabelFor(model => model.CustomerID)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CustomerID)
+            @Html.DropDownList("CustomerID", String.Empty)
             @Html.ValidationMessageFor(model => model.CustomerID)
         </div>
 
@@ -45,31 +45,52 @@
     <fieldset>
         <legend>Sales Order Items</legend>
 
+        <style type="text/css">
+            input {
+                border: 1px solid #e2e2e2;
+                background: #fff;
+                color: #333;
+                font-size: 1.2em;
+                margin: 5px 0 6px 0;
+                padding: 5px;
+                width: 150px;
+            }
+        </style>
         @if (Model == null || Model.SalesOrderItems == null || Model.SalesOrderItems.Count() == 0)
         {
             <p>None.</p>
         }
-        <ul id="movieEditor" style="list-style-type: none">
+        <table id="itemEditor">
+            <tr>
+                <th></th>
+                <th style="width: 100px">Product</th>
+                <th style="width: 100px">Rate</th>
+                <th style="width: 100px">Quantity</th>
+                <th style="width: 100px">Amount</th>
+                <th style="width: 100px"></th>
+            </tr>
+
             @if (Model != null && Model.SalesOrderItems != null)
             {
-                foreach (SalesOrderItem soitem in Model.SalesOrderItems)
+                foreach (SalesOrderItem poitem in Model.SalesOrderItems)
                 {
-                    Html.RenderPartial("SOItemEntry", soitem);
+                    Html.RenderPartial("SOItemEntry", poitem);
                 }
             }
-        </ul>
-        <a id="addAnother" href="#">Add another</a>
+        </table>
 
+        <a id="addAnother" href="#">Add another</a>
         <script type="text/javascript">
             $(function () {
-                $("#movieEditor").sortable();
+                $("#itemEditor").sortable();
                 $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntry', function (template) {
-                        $("#movieEditor").append(template);
+                    $.get('/PurchaseOrder/SOItemEntryRow', function (template) {
+                        $("#itemEditor").append(template);
                     });
                 });
             });
         </script>
+
     </fieldset>
  
     <p>
@@ -82,5 +103,7 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $("#CustomerID").combobox();
+    </script>
 }

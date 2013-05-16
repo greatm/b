@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8" />
     <title>b @ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -18,8 +17,7 @@
 <body>
 
     <header>
-        <script type="text/javascript">m("u r now in: @ViewBag.Title ");</script>
-        <script type="text/javascript">            //m("Preparing menu");</script>
+        <script type="text/javascript">m("u r in: @ViewBag.Title ");</script>
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
@@ -74,6 +72,6 @@
     </footer>
 
     @RenderSection("scripts", required: false)
-
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
 </body>
 </html>

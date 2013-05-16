@@ -13,18 +13,10 @@ namespace b.Controllers
     public class SalesOrderController : Controller
     {
         private bDBContext db = new bDBContext();
-
-        //
-        // GET: /SalesOrder/
-
         public ActionResult Index()
         {
             return View(db.SalesOrders.ToList());
         }
-
-        //
-        // GET: /SalesOrder/Details/5
-
         public ActionResult Details(int id = 0)
         {
             SalesOrder salesorder = db.SalesOrders.Find(id);
@@ -34,19 +26,13 @@ namespace b.Controllers
             }
             return View(salesorder);
         }
-
-        //
-        // GET: /SalesOrder/Create
-
         public ActionResult Create()
         {
-            return View(new SalesOrder { Date = DateTime.Today, SalesOrderItems = new List<SalesOrderItem> { new SalesOrderItem { Qty = 10 } } });
+            SalesOrder newSO = new SalesOrder { Date = DateTime.Today, SalesOrderItems = new List<SalesOrderItem> { new SalesOrderItem { Qty = 10 } } };
+            CreateCustomersList(newSO);
+            return View(newSO);
         }
-
-        //
-        // POST: /SalesOrder/Create
-
-        [HttpPost]
+ [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(SalesOrder salesorder)
         {
@@ -57,13 +43,10 @@ namespace b.Controllers
                 return RedirectToAction("Index");
             }
 
+            CreateCustomersList(salesorder);
             return View(salesorder);
         }
-
-        //
-        // GET: /SalesOrder/Edit/5
-
-        public ActionResult Edit(int id = 0)
+  public ActionResult Edit(int id = 0)
         {
             SalesOrder salesorder = db.SalesOrders.Find(id);
             if (salesorder == null)
@@ -72,11 +55,7 @@ namespace b.Controllers
             }
             return View(salesorder);
         }
-
-        //
-        // POST: /SalesOrder/Edit/5
-
-        [HttpPost]
+   [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SalesOrder salesorder)
         {
@@ -88,11 +67,7 @@ namespace b.Controllers
             }
             return View(salesorder);
         }
-
-        //
-        // GET: /SalesOrder/Delete/5
-
-        public ActionResult Delete(int id = 0)
+  public ActionResult Delete(int id = 0)
         {
             SalesOrder salesorder = db.SalesOrders.Find(id);
             if (salesorder == null)
@@ -101,11 +76,7 @@ namespace b.Controllers
             }
             return View(salesorder);
         }
-
-        //
-        // POST: /SalesOrder/Delete/5
-
-        [HttpPost, ActionName("Delete")]
+   [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -114,11 +85,24 @@ namespace b.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private void CreateCustomersList(SalesOrder workSO)
+        {
+            var customers = db.Customers ;
+            List<object> newList = new List<object>();
+            foreach (var customer in customers)
+                newList.Add(new
+                {
+                    Id = customer.ID,
+                    Name = customer.FirstName + " "+customer.LastName 
+                });
+            this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSO.CustomerID);
+
         }
     }
 }
