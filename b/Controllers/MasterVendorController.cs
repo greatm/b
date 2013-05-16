@@ -51,6 +51,7 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
+                vendor.Version = 1;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");

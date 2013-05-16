@@ -268,7 +268,6 @@
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterStoreController.cs" />
     <Compile Include="Controllers\MasterSubloactionController.cs" />
-    <Compile Include="Controllers\MasterVendor2Controller.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\PurchaseHomeController.cs" />
@@ -530,11 +529,6 @@
     <Content Include="Views\MasterSubloaction\Create.cshtml" />
     <Content Include="Views\MasterSubloaction\Edit.cshtml" />
     <Content Include="Views\MasterSubloaction\Delete.cshtml" />
-    <Content Include="Views\MasterVendor2\Index.cshtml" />
-    <Content Include="Views\MasterVendor2\Details.cshtml" />
-    <Content Include="Views\MasterVendor2\Create.cshtml" />
-    <Content Include="Views\MasterVendor2\Edit.cshtml" />
-    <Content Include="Views\MasterVendor2\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
