@@ -84,7 +84,7 @@
             $(function () {
                 $("#itemEditor").sortable();
                 $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/SOItemEntryRow', function (template) {
+                    $.get('/SalesOrder/SOItemEntryRow', function (template) {
                         $("#itemEditor").append(template);
                     });
                 });
