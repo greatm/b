@@ -20,7 +20,7 @@ namespace b.ViewModels
 
         [StringLength(5, ErrorMessage = "always keep remarks short and simple")]
         public string Remarks { get; set; }
-        public IEnumerable<SalesOrderItem> SalesOrderItems { get; set; }
+        public IList<SalesOrderItem> SalesOrderItems { get; set; }
         public decimal TotalAmount { get; set; }
     }
 }

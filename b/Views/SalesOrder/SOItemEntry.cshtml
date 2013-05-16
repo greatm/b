@@ -1,23 +1,44 @@
-﻿@model b.ViewModels.SalesOrderItem
+﻿@using b.ViewModels;
 
-<li style="padding-bottom: 15px">
-    @using (Html.BeginCollectionItem("POItems"))
+@model SalesOrderItem
+
+<tr style="padding-bottom: 15px">
+    @using (Html.BeginCollectionItem("SalesOrderItems"))
     {
-        <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
+        <td>
+            <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
+        </td>    
 
-        @Html.LabelFor(model => model.ProductID)
-        @Html.EditorFor(model => model.ProductID)
-        @Html.ValidationMessageFor(model => model.ProductID)
+        <td style="width: 100px" class="combo">
+            @Html.DropDownList("ProductID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductID)
+        </td>
 
-        
-        @Html.LabelFor(model => model.Price)
-        @Html.EditorFor(model => model.Price)
-        @Html.ValidationMessageFor(model => model.Price)
+        <td>
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </td>
 
-        @Html.LabelFor(model => model.Qty)
-        @Html.EditorFor(model => model.Qty)
-        @Html.ValidationMessageFor(model => model.Qty)
+        <td>
+            @Html.EditorFor(model => model.Qty)
+            @Html.ValidationMessageFor(model => model.Qty)
+        </td>  
 
-        <a href="#" onclick="$(this).parent().remove();">Delete</a>
+        <td>
+            @* @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)*@
+        </td>  
+
+        <td>
+            <a href="#" onclick="$(this).parent().parent().remove();">Delete</a>
+        </td>
     }
-</li>
+</tr>
+
+<script type="text/javascript">
+    $(".combo > select").combobox();
+
+    $("input").change(function () {
+        alert("hi");
+    });
+</script>
