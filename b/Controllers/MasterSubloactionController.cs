@@ -11,7 +11,7 @@ namespace b.Controllers
         private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            return View(db.Sublocations.ToList());
+            return View(db.Sublocations.Include(t => t.Store).ToList());
         }
         public ActionResult Details(int id = 0)
         {

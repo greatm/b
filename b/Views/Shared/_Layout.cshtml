@@ -45,7 +45,6 @@
 
     <div id="body">
         @RenderSection("featured", required: false)
-        <script type="text/javascript">            //m("Preparing syncfusion");</script>
         <section class="content-wrapper main-content clear-fix">
             @(Html.Syncfusion().StyleManager().Combine(true).Minify(true)
             .Register(component =>
@@ -55,7 +54,6 @@
 
             @{Html.Syncfusion().ScriptManager().Combine(true).Minify(true).Render();}
 
-            <script type="text/javascript">                //m("u r now in: @ViewBag.Title ");</script>
             @RenderBody()
         </section>
     </div>
@@ -65,9 +63,6 @@
             <div class="float-left">
                 <p>&copy; @DateTime.Now.Year - great.</p>
             </div>
-            @*<div class="float-right">
-                hi
-            </div>*@
         </div>
     </footer>
 
