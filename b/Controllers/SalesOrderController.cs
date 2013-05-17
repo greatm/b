@@ -26,7 +26,6 @@ namespace b.Controllers
         }
         public ActionResult Create()
         {
-            //SalesOrder newSO = new SalesOrder { Date = DateTime.Today, SalesOrderItems = new List<SalesOrderItem> { new SalesOrderItem { Qty = 10 } } };
             SalesOrder newSO = new SalesOrder { Date = DateTime.Today, SalesOrderItems = new List<SalesOrderItem>() };
             SalesOrderItem soItem = new SalesOrderItem();
             CreateProductsList(soItem);
@@ -104,7 +103,6 @@ namespace b.Controllers
                     Name = customer.FirstName + " " + customer.LastName
                 });
             this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSO.CustomerID);
-
         }
         private void CreateProductsList(SalesOrderItem workSOitem)
         {

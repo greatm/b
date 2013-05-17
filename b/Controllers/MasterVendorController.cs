@@ -39,7 +39,8 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            return View(new Vendor { Version = 1 });
+            return View();
+            //return View(new Vendor { Version = 1 });
         }
 
         //
@@ -51,7 +52,6 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                vendor.Version = 1;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");

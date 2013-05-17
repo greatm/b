@@ -16,10 +16,10 @@ namespace b.ViewModels
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+        public int CustomerID { get; set; }
 
         [Display(Name = "Sale Order Reference")]
         public int SOID { get; set; }
-        public int CustomerID { get; set; }
 
         [Display(Name = "Invoice Number")]
         public string Invoice { get; set; }

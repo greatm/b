@@ -13,18 +13,10 @@ namespace b.Controllers
     public class SalesController : Controller
     {
         private bDBContext db = new bDBContext();
-
-        //
-        // GET: /Sales/
-
         public ActionResult Index()
         {
             return View(db.Sales.ToList());
         }
-
-        //
-        // GET: /Sales/Details/5
-
         public ActionResult Details(int id = 0)
         {
             Sales sales = db.Sales.Find(id);
@@ -34,18 +26,17 @@ namespace b.Controllers
             }
             return View(sales);
         }
-
-        //
-        // GET: /Sales/Create
-
         public ActionResult Create()
         {
-            return View();
+            Sales newSales = new Sales { Date = DateTime.Today, SalesItems = new List<SalesItem>() };
+            SalesItem soItem = new SalesItem();
+            CreateProductsList(soItem);
+            newSales.SalesItems.Add(soItem);
+            CreateCustomersList(newSales);
+            return View(newSales);
+
+            //return View();
         }
-
-        //
-        // POST: /Sales/Create
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Sales sales)
@@ -119,6 +110,23 @@ namespace b.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private void CreateCustomersList(Sales workSales)
+        {
+            var customers = db.Customers;
+            List<object> newList = new List<object>();
+            foreach (var customer in customers)
+                newList.Add(new
+                {
+                    Id = customer.ID,
+                    Name = customer.FirstName + " " + customer.LastName
+                });
+            this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSales.CustomerID);
+        }
+        private void CreateProductsList(SalesItem workSalesItem)
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workSalesItem.ProductID);
         }
     }
 }

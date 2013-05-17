@@ -521,6 +521,7 @@
     <Content Include="Views\MasterSubloaction\Create.cshtml" />
     <Content Include="Views\MasterSubloaction\Edit.cshtml" />
     <Content Include="Views\MasterSubloaction\Delete.cshtml" />
+    <Content Include="Views\Sales\SalesItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

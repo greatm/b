@@ -1,0 +1,40 @@
+﻿@using b.ViewModels;
+
+@model SalesItem
+
+<tr style="padding-bottom: 15px">
+    @using (Html.BeginCollectionItem("SalesItems"))
+    {
+        <td>
+            <img src="@Url.Content("~/Images/draggable-icon.png")" style="cursor: move" alt="drag"/>
+        </td>    
+
+        <td style="width: 100px" class="combo">
+            @Html.DropDownList("ProductID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductID)
+        </td>
+
+        <td>
+            @Html.EditorFor(model => model.Rate )
+            @Html.ValidationMessageFor(model => model.Rate )
+        </td>
+
+        <td>
+            @Html.EditorFor(model => model.Qty)
+            @Html.ValidationMessageFor(model => model.Qty)
+        </td>  
+
+        <td>
+            @* @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)*@
+        </td>  
+
+        <td>
+            <a href="#" onclick="$(this).parent().parent().remove();">Delete</a>
+        </td>
+    }
+</tr>
+
+<script type="text/javascript">
+    $(".combo > select").combobox();
+</script>
