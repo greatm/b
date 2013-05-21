@@ -112,8 +112,11 @@ namespace b.Controllers
         {
             using (var ms = new MemoryStream())
             {
-                ImageFile.InputStream.CopyTo(ms);
-                product.Image = ms.ToArray();
+                if (ImageFile != null)
+                {
+                    ImageFile.InputStream.CopyTo(ms);
+                    product.Image = ms.ToArray();
+                }
             }
             if (ModelState.IsValid)
             {
