@@ -36,9 +36,9 @@ namespace b.Controllers
         public ActionResult Create()
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
+            POItem poitem = null;
             foreach (Product prd in db.Products)
             {
-                POItem poitem = null;
                 if (prd.RoL > 5)
                 {
                     poitem = new POItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
