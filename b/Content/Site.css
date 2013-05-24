@@ -36,6 +36,24 @@ nav, section {
     display: block;
 }
 
+
+#accordionMenu {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+    top: 105px;
+    height: 100%;
+}
+
+    #accordionMenu > h3 {
+        /*background-color:lightsteelblue;*/
+        background: lightsteelblue;
+    }
+
+    #accordionMenu > div {
+        background: lightskyblue;
+    }
+
 mark {
     background-color: #a6dbed;
     padding-left: 5px;

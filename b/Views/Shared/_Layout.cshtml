@@ -42,7 +42,20 @@
             </div>
         </div>
     </header>
-
+    <div id="accordionMenu">
+        <h3>Home</h3>
+        <div>
+            <p>@Html.ActionLink("Home", "Index", "Home")</p>
+            <p>@Html.ActionLink("About", "About", "Home")</p>
+            <p>@Html.ActionLink("Contact", "Contact", "Home")</p>
+        </div>
+        <h3>Master</h3>
+        <div>
+            <p>@Html.ActionLink("Vendor", "Index", "MasterVendor")</p>
+            <p>@Html.ActionLink("Product", "Index", "MasterProduct")</p>
+            <p>@Html.ActionLink("Store", "Index", "MasterStore")</p>
+        </div>
+    </div>
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">

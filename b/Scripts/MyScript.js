@@ -174,6 +174,14 @@ function searchFailed() {
 })(jQuery);
 
 $(function () {
+    var accordionMenuIndex = parseInt(sessionStorage.getItem("accordionMenuIndex"));
+    $("#accordionMenu").accordion({
+        active: accordionMenuIndex,
+        activate: function (event, ui) {
+            var accordionMenuIndex = $("#accordionMenu").accordion("option", "active");
+            sessionStorage.setItem("accordionMenuIndex", accordionMenuIndex);
+        }
+    });
 
     $(".water").each(function () {
         $tb = $(this);
