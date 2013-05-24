@@ -53,7 +53,29 @@
         <div>
             <p>@Html.ActionLink("Vendor", "Index", "MasterVendor")</p>
             <p>@Html.ActionLink("Product", "Index", "MasterProduct")</p>
+            <hr />
             <p>@Html.ActionLink("Store", "Index", "MasterStore")</p>
+            <p>@Html.ActionLink("Sub Location", "Index", "MasterSubloaction")            </p>
+            <hr />
+            <p>@Html.ActionLink("Customers", "Index", "MasterCustomer")            </p>
+        </div>
+        <h3>Purchase</h3>
+        <div>
+            <p>@Html.ActionLink("Purchase Order", "Index", "PurchaseOrder")</p>
+            <p>@Html.ActionLink("Purchase", "Index", "Purchase")</p>
+        </div>
+        <h3>Sales</h3>
+        <div>
+            <p>@Html.ActionLink("Sales Order", "Index", "SalesOrder")</p>
+            <p>@Html.ActionLink("Sales", "Index", "Sales")</p>
+            <p>@Html.ActionLink("Packing List", "Index", "PackingList")</p>
+        </div>
+        <h3>Reports</h3>
+        <div>
+            <p>@Html.ActionLink("Users", "ViewReport", "ReportUsers")</p>
+            <hr />
+            <p>@Html.ActionLink("Purchase", "ViewReport", "ReportPurchase")</p>
+            <p>@Html.ActionLink("Sales", "ViewReport", "ReportSales")</p>
         </div>
     </div>
     <div id="body">
