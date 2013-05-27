@@ -104,5 +104,13 @@
 @section Scripts {
     <script type="text/javascript">
         $("#VendorID").combobox();
+        $(function () {
+            $("#itemEditor").sortable();
+            $("#addAnother").click(function () {
+                $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+                    $("#itemEditor").append(template);
+                });
+            });
+        });
     </script>
 }

@@ -20,15 +20,19 @@ namespace b.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Vendors.ToList());
+            var lastVersionVendors = from n in db.Vendors
+                                     group n by n.ID into g
+                                     select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersionVendors.ToList());
+            //return View(db.Vendors.ToList());
         }
 
         //
         // GET: /MasterVendor/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -36,17 +40,11 @@ namespace b.Controllers
             return View(vendor);
         }
 
-        //
-        // GET: /MasterVendor/Create
-
         public ActionResult Create()
         {
             return View();
             //return View(new Vendor { Version = 1 });
         }
-
-        //
-        // POST: /MasterVendor/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,6 +52,15 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Vendors.Max(t => t.ID) + 1;
+                }
+                catch { }
+                vendor.ID = iId;
+                vendor.Version = 1;
+                vendor.EntryDate = DateTime.Now;
                 db.Vendors.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,9 +72,9 @@ namespace b.Controllers
         //
         // GET: /MasterVendor/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -84,7 +91,10 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vendor).State = EntityState.Modified;
+                Vendor newItem = vendor;
+                newItem.Version = vendor.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Vendors.Add(newItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -94,9 +104,9 @@ namespace b.Controllers
         //
         // GET: /MasterVendor/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -109,9 +119,9 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id);
+            Vendor vendor = db.Vendors.Find(id, version);
             db.Vendors.Remove(vendor);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -2,6 +2,8 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.Models
 {
@@ -13,6 +15,7 @@ namespace b.Models
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Store> Stores { get; set; }
+        public DbSet<Sublocation> Sublocations { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
@@ -20,18 +23,28 @@ namespace b.Models
 
         public DbSet<SalesOrder> SalesOrders { get; set; }
         public DbSet<Sales> Sales { get; set; }
-
-        public DbSet<Sublocation> Sublocations { get; set; }
-
     }
+    public class VersionTable
+    {
+        [Key, Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
 
+        [Key, Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Version { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime EntryDate { get; set; }
+
+        public string Remarks { get; set; }
+    }
     public static class Updater
     {
         public static void AddorUpdate(bDBContext context)
         {
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
-
 
                 new whatsnew { WorkTime = new DateTime(2013, 5, 14, 10, 30, 0), Work = "po auto fill – all quantities" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 13, 10, 30, 0), Work = "add purchase po" },
