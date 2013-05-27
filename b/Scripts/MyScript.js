@@ -1,4 +1,12 @@
 ﻿
+function CalculateAmount(rate, qty) {
+    var iRate = rate.val();
+    var quantity = qty.val();
+
+    var amount = quantity * iRate;
+
+    return amount;
+}
 
 function m(msg) {
     $.jGrowl(msg, { pool: 2 });

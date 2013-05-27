@@ -60,7 +60,7 @@
         {
             <p>None.</p>
         }
-        <table>
+        <table id="tblPoItems">
             <thead>
                 <tr>
                     <th></th>
@@ -86,6 +86,8 @@
         <a id="addAnother" href="#">Add another</a>
         <script type="text/javascript">
             $(function () {
+                //var tblPI = $("#tblPoItems").datatable();
+                //tblPI.fnDraw();
                 $("#itemEditor").sortable();
                 $("#addAnother").click(function () {
                     $.get('/PurchaseOrder/POItemEntryRow', function (template) {

@@ -231,7 +231,7 @@ htmlAttributes: new { id = "grid" },
         grid.Column("ProductID",header: "ID", canSort: false),
        // grid.Column(header: "Name",format: @<span> <span id="spanName_@item.ProductID">@item.Name</span> @Html.TextBox("Name_"+(int)item.ProductID,(string)item.Name,new{@style="display:none"})</span>),
       
-        grid.Column(header: "Quantity",format: @<span> <span id="spanQuantity_@item.ProductID">@item.Quantity</span> @Html.TextBox("Quantity_"+(int)item.ProductID,(int)item.Quantity,new{@style="display:none"})</span>),
+        //grid.Column(header: "Quantity",format: @<span> <span id="spanQuantity_@item.ProductID">@item.qty</span> @Html.TextBox("Quantity_"+(int)item.ProductID,(int)item.Quantity,new{@style="display:none"})</span>),
         
 //grid.Column(header: "Contact No",format: @<span> <span id="spanContactNo_@item.CustID">@item.ContactNo</span> @Html.TextBox("ContactNo_"+(int)item.CustID,(string)item.ContactNo,new{@style="display:none"})</span>),
         grid.Column(header: "Action",format:@<text> <a href="#" id="Edit_@item.ProductID" class="edit">Edit</a><a href="#" id="Update_@item.ProductID" style="display:none" class="update">Update</a><a href="#" id="Cancel_@item.ProductID" style="display:none"  class="cancel">Cancel</a><a href="#" id="Delete_@item.ProductID"  class="delete">Delete</a></text>)

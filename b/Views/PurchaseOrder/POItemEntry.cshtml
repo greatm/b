@@ -15,7 +15,7 @@
         </td>
 
         <td>
-            @Html.EditorFor(model => model.Rate)
+            @Html.EditorFor(model => model.Rate, new {@class="crate" })
             @Html.ValidationMessageFor(model => model.Rate)
         </td>
 
@@ -37,4 +37,14 @@
 
 <script type="text/javascript">
     $(".combo > select").combobox();
+    $(function () {  //  In jQuery 1.6+ this is same as $(document).ready(function(){})
+        $('.crate, .cqty')  //  jQuery CSS selector grabs elements with the ID's "quantity" & "item_price"
+            .on('change', function (e) {  //  jQuery 1.6+ replcement for .live (dynamically asigns event, see jQuery API)
+                //  in this case, our event is "change" which works on inputs and selects to let us know when a value is changed
+                //  below i use inline if statements to assure the values i get are "Real"
+                var quan = $("#quantity").val() != "" ? parseFloat($("#quantity").val()) : 1,  //  Get quantity value
+                    pric = $("#item_price").val() != "" ? parseFloat($("#item_price").val()) : 0;  //  Get price value
+                $('#total_price').val(pric * quan); // show total
+            });
+    });
 </script>
