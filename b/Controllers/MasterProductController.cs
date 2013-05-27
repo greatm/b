@@ -15,20 +15,17 @@ namespace b.Controllers
     {
         private bDBContext db = new bDBContext();
 
-        //
-        // GET: /MasterProduct/
-
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
         }
 
-        //
-        // GET: /MasterProduct/Details/5
-
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Find(id, version);
             if (product == null)
             {
                 return HttpNotFound();
@@ -53,7 +50,6 @@ namespace b.Controllers
         {
             using (var ms = new MemoryStream())
             {
-                //var files = Request.Files;
                 if (ImageFile != null)
                 {
                     ImageFile.InputStream.CopyTo(ms);
@@ -62,6 +58,14 @@ namespace b.Controllers
             }
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Products.Max(t => t.ID) + 1;
+                }
+                catch { }
+                product.ID = iId;
+                product.Version = 1;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -73,9 +77,9 @@ namespace b.Controllers
         //
         // GET: /MasterProduct/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Find(id, version);
             if (product == null)
             {
                 return HttpNotFound();
@@ -120,7 +124,10 @@ namespace b.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                Product newItem = product;
+                newItem.Version = product.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Products.Add(newItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -130,9 +137,9 @@ namespace b.Controllers
         //
         // GET: /MasterProduct/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Find(id, version);
             if (product == null)
             {
                 return HttpNotFound();
@@ -145,9 +152,9 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Find(id, version);
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");

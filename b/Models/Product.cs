@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace b.Models
 {
-    public class Product
+    public class Product : VersionTable
     {
-        public int ID { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        //public int ID { get; set; }
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -27,9 +27,9 @@ namespace b.Models
         public string Color { get; set; }
         public byte[] Image { get; set; }
 
-        [MaxWords(10)]
-        [Display(Prompt = "any thing about this product")]
-        public string Remarks { get; set; }
+        //[MaxWords(10)]
+        //[Display(Prompt = "any thing about this product")]
+        //public string Remarks { get; set; }
 
         public Product()
         {
