@@ -60,23 +60,27 @@
         {
             <p>None.</p>
         }
-        <table id="itemEditor">
-            <tr>
-                <th></th>
-                <th style="width: 100px">Product</th>
-                <th style="width: 100px">Rate</th>
-                <th style="width: 100px">Quantity</th>
-                <th style="width: 100px">Amount</th>
-                <th style="width: 100px"></th>
-            </tr>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th style="width: 100px">Product</th>
+                    <th style="width: 100px">Rate</th>
+                    <th style="width: 100px">Quantity</th>
+                    <th style="width: 100px">Amount</th>
+                    <th style="width: 100px"></th>
+                </tr>
+            </thead>
 
-            @if (Model != null && Model.POItems != null)
-            {
-                foreach (POItem poitem in Model.POItems)
+            <tbody id="itemEditor">
+                @if (Model != null && Model.POItems != null)
                 {
-                    Html.RenderPartial("POItemEntry", poitem);
+                    foreach (POItem poitem in Model.POItems)
+                    {
+                        Html.RenderPartial("POItemEntry", poitem);
+                    }
                 }
-            }
+            </tbody>
         </table>
 
         <a id="addAnother" href="#">Add another</a>
