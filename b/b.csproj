@@ -284,17 +284,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201305170212555_mig_start.cs" />
-    <Compile Include="Migrations\201305170212555_mig_start.Designer.cs">
-      <DependentUpon>201305170212555_mig_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305271121532_mig_vendor_version.cs" />
-    <Compile Include="Migrations\201305271121532_mig_vendor_version.Designer.cs">
-      <DependentUpon>201305271121532_mig_vendor_version.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305271204258_mig_product_version.cs" />
-    <Compile Include="Migrations\201305271204258_mig_product_version.Designer.cs">
-      <DependentUpon>201305271204258_mig_product_version.cs</DependentUpon>
+    <Compile Include="Migrations\201305271239430_mig_start.cs" />
+    <Compile Include="Migrations\201305271239430_mig_start.Designer.cs">
+      <DependentUpon>201305271239430_mig_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -538,14 +530,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201305170212555_mig_start.resx">
-      <DependentUpon>201305170212555_mig_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305271121532_mig_vendor_version.resx">
-      <DependentUpon>201305271121532_mig_vendor_version.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305271204258_mig_product_version.resx">
-      <DependentUpon>201305271204258_mig_product_version.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201305271239430_mig_start.resx">
+      <DependentUpon>201305271239430_mig_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

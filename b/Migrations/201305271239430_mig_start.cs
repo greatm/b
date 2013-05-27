@@ -31,7 +31,6 @@ namespace b.Migrations
                     {
                         ID = c.Int(nullable: false),
                         Version = c.Int(nullable: false),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Name = c.String(),
                         Person = c.String(),
                         Address = c.String(),
@@ -43,6 +42,7 @@ namespace b.Migrations
                         Phone = c.String(),
                         eMail = c.String(),
                         WebSite = c.String(),
+                        EntryDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
                     })
                 .PrimaryKey(t => new { t.ID, t.Version });
@@ -51,8 +51,8 @@ namespace b.Migrations
                 "dbo.Products",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         Name = c.String(nullable: false),
                         Category = c.String(),
                         Description = c.String(),
@@ -62,21 +62,39 @@ namespace b.Migrations
                         LastPurchaseRate = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Color = c.String(),
                         Image = c.Binary(),
+                        EntryDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => new { t.ID, t.Version });
 
             CreateTable(
                 "dbo.Stores",
                 c => new
                     {
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
+                        Name = c.String(nullable: false),
+                        Description = c.String(),
+                        EntryDate = c.DateTime(nullable: false),
+                        Remarks = c.String(),
+                    })
+                .PrimaryKey(t => new { t.ID, t.Version });
+
+            CreateTable(
+                "dbo.Sublocations",
+                c => new
+                    {
                         ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        StoreID = c.Int(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(),
                         Remarks = c.String(),
+                        Store_ID = c.Int(),
+                        Store_Version = c.Int(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Stores", t => new { t.Store_ID, t.Store_Version })
+                .Index(t => new { t.Store_ID, t.Store_Version });
 
             CreateTable(
                 "dbo.Customers",
@@ -119,12 +137,14 @@ namespace b.Migrations
                         Qty = c.Int(nullable: false),
                         Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Product_ID = c.Int(),
+                        Product_Version = c.Int(),
                         PurchaseOrder_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
+                .ForeignKey("dbo.Products", t => new { t.Product_ID, t.Product_Version })
                 .ForeignKey("dbo.PurchaseOrders", t => t.PurchaseOrder_ID)
-                .Index(t => t.ProductID)
+                .Index(t => new { t.Product_ID, t.Product_Version })
                 .Index(t => t.PurchaseOrder_ID);
 
             CreateTable(
@@ -176,8 +196,8 @@ namespace b.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         Date = c.DateTime(nullable: false),
-                        SOID = c.Int(nullable: false),
                         CustomerID = c.Int(nullable: false),
+                        SOID = c.Int(nullable: false),
                         Invoice = c.String(),
                         Remarks = c.String(),
                         PackingList_Item = c.String(),
@@ -206,37 +226,22 @@ namespace b.Migrations
                 .ForeignKey("dbo.Sales", t => t.Sales_ID)
                 .Index(t => t.Sales_ID);
 
-            CreateTable(
-                "dbo.Sublocations",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        StoreID = c.Int(nullable: false),
-                        Name = c.String(nullable: false),
-                        Description = c.String(),
-                        Remarks = c.String(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Stores", t => t.StoreID, cascadeDelete: true)
-                .Index(t => t.StoreID);
-
         }
 
         public override void Down()
         {
-            DropIndex("dbo.Sublocations", new[] { "StoreID" });
             DropIndex("dbo.SalesItems", new[] { "Sales_ID" });
             DropIndex("dbo.SalesOrderItems", new[] { "SalesOrder_ID" });
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID" });
-            DropIndex("dbo.POItems", new[] { "ProductID" });
+            DropIndex("dbo.POItems", new[] { "Product_ID", "Product_Version" });
             DropIndex("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" });
-            DropForeignKey("dbo.Sublocations", "StoreID", "dbo.Stores");
+            DropIndex("dbo.Sublocations", new[] { "Store_ID", "Store_Version" });
             DropForeignKey("dbo.SalesItems", "Sales_ID", "dbo.Sales");
             DropForeignKey("dbo.SalesOrderItems", "SalesOrder_ID", "dbo.SalesOrders");
             DropForeignKey("dbo.POItems", "PurchaseOrder_ID", "dbo.PurchaseOrders");
-            DropForeignKey("dbo.POItems", "ProductID", "dbo.Products");
+            DropForeignKey("dbo.POItems", new[] { "Product_ID", "Product_Version" }, "dbo.Products");
             DropForeignKey("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" }, "dbo.Vendors");
-            DropTable("dbo.Sublocations");
+            DropForeignKey("dbo.Sublocations", new[] { "Store_ID", "Store_Version" }, "dbo.Stores");
             DropTable("dbo.SalesItems");
             DropTable("dbo.Sales");
             DropTable("dbo.SalesOrderItems");
@@ -245,6 +250,7 @@ namespace b.Migrations
             DropTable("dbo.POItems");
             DropTable("dbo.PurchaseOrders");
             DropTable("dbo.Customers");
+            DropTable("dbo.Sublocations");
             DropTable("dbo.Stores");
             DropTable("dbo.Products");
             DropTable("dbo.Vendors");

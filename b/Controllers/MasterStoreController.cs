@@ -18,15 +18,18 @@ namespace b.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Stores.ToList());
+            var lastVersions = from n in db.Stores
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
         }
 
         //
         // GET: /MasterStore/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             if (store == null)
             {
                 return HttpNotFound();
@@ -62,9 +65,9 @@ namespace b.Controllers
         //
         // GET: /MasterStore/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             if (store == null)
             {
                 return HttpNotFound();
@@ -91,9 +94,9 @@ namespace b.Controllers
         //
         // GET: /MasterStore/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Store store = db.Stores.Find(id);
+            Store store = db.Stores.Find(id, version);
             if (store == null)
             {
                 return HttpNotFound();
@@ -106,10 +109,15 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version)
         {
-            Store store = db.Stores.Find(id);
-            db.Stores.Remove(store);
+            //Store store = db.Stores.Find(id, version);
+            //db.Stores.Remove(store);
+            var itemsToDelete = db.Stores.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.Stores.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,15 +7,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.Models
 {
-    public class Store
+    public class Store : VersionTable
     {
-        public int ID { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        //public int ID { get; set; }
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
 
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Remarks { get; set; }
+        //public string Remarks { get; set; }
     }
 }

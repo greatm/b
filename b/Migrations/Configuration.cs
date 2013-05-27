@@ -13,7 +13,7 @@ namespace b.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(bDBContext context)
+        protected override void Seed(b.Models.bDBContext context)
         {
             Updater.AddorUpdate(context);
             //  This method will be called after migrating to the latest version.
