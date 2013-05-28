@@ -3,7 +3,7 @@ namespace b.Migrations
     using System;
     using System.Data.Entity.Migrations;
 
-    public partial class mig_start : DbMigration
+    public partial class mig_initial : DbMigration
     {
         public override void Up()
         {
@@ -84,15 +84,17 @@ namespace b.Migrations
                 "dbo.Sublocations",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         StoreID = c.Int(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(),
+                        EntryDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
                         Store_ID = c.Int(),
                         Store_Version = c.Int(),
                     })
-                .PrimaryKey(t => t.ID)
+                .PrimaryKey(t => new { t.ID, t.Version })
                 .ForeignKey("dbo.Stores", t => new { t.Store_ID, t.Store_Version })
                 .Index(t => new { t.Store_ID, t.Store_Version });
 
@@ -100,30 +102,33 @@ namespace b.Migrations
                 "dbo.Customers",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         FirstName = c.String(),
                         LastName = c.String(),
                         Company = c.String(),
                         Active = c.Boolean(nullable: false),
                         ServiceLevel = c.Int(nullable: false),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        EntryDate = c.DateTime(nullable: false),
+                        Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => new { t.ID, t.Version });
 
             CreateTable(
                 "dbo.PurchaseOrders",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
                         VendorID = c.Int(nullable: false),
                         StoreID = c.Int(nullable: false),
+                        EntryDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
                         Vendor_ID = c.Int(),
                         Vendor_Version = c.Int(),
                     })
-                .PrimaryKey(t => t.ID)
+                .PrimaryKey(t => new { t.ID, t.Version })
                 .ForeignKey("dbo.Vendors", t => new { t.Vendor_ID, t.Vendor_Version })
                 .Index(t => new { t.Vendor_ID, t.Vendor_Version });
 
@@ -140,12 +145,13 @@ namespace b.Migrations
                         Product_ID = c.Int(),
                         Product_Version = c.Int(),
                         PurchaseOrder_ID = c.Int(),
+                        PurchaseOrder_Version = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Products", t => new { t.Product_ID, t.Product_Version })
-                .ForeignKey("dbo.PurchaseOrders", t => t.PurchaseOrder_ID)
+                .ForeignKey("dbo.PurchaseOrders", t => new { t.PurchaseOrder_ID, t.PurchaseOrder_Version })
                 .Index(t => new { t.Product_ID, t.Product_Version })
-                .Index(t => t.PurchaseOrder_ID);
+                .Index(t => new { t.PurchaseOrder_ID, t.PurchaseOrder_Version });
 
             CreateTable(
                 "dbo.Purchases",
@@ -232,13 +238,13 @@ namespace b.Migrations
         {
             DropIndex("dbo.SalesItems", new[] { "Sales_ID" });
             DropIndex("dbo.SalesOrderItems", new[] { "SalesOrder_ID" });
-            DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID" });
+            DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" });
             DropIndex("dbo.POItems", new[] { "Product_ID", "Product_Version" });
             DropIndex("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" });
             DropIndex("dbo.Sublocations", new[] { "Store_ID", "Store_Version" });
             DropForeignKey("dbo.SalesItems", "Sales_ID", "dbo.Sales");
             DropForeignKey("dbo.SalesOrderItems", "SalesOrder_ID", "dbo.SalesOrders");
-            DropForeignKey("dbo.POItems", "PurchaseOrder_ID", "dbo.PurchaseOrders");
+            DropForeignKey("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" }, "dbo.PurchaseOrders");
             DropForeignKey("dbo.POItems", new[] { "Product_ID", "Product_Version" }, "dbo.Products");
             DropForeignKey("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" }, "dbo.Vendors");
             DropForeignKey("dbo.Sublocations", new[] { "Store_ID", "Store_Version" }, "dbo.Stores");

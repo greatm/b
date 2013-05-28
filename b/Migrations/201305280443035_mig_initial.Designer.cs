@@ -5,13 +5,13 @@ namespace b.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class mig_po_version : IMigrationMetadata
+    public sealed partial class mig_initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mig_po_version));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(mig_initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201305271408106_mig_po_version"; }
+            get { return "201305280443035_mig_initial"; }
         }
         
         string IMigrationMetadata.Source
