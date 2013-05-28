@@ -30,7 +30,7 @@ namespace b.Controllers
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id,version );
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -126,7 +126,7 @@ namespace b.Controllers
         }
         public ActionResult PrintPO(int id = 0, int version = 0)
         {
-            return new ActionAsPdf("Edit", new { id = id }) { FileName = "po_1.pdf" };
+            return new ActionAsPdf("Edit", new { id = id, version = version }) { FileName = "po_1.pdf" };
         }
         public ActionResult Delete(int id = 0, int version = 0)
         {
