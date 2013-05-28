@@ -13,9 +13,6 @@ namespace b.Controllers
     {
         private bDBContext db = new bDBContext();
 
-        //
-        // GET: /MasterStore/
-
         public ActionResult Index()
         {
             var lastVersions = from n in db.Stores
@@ -23,9 +20,6 @@ namespace b.Controllers
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersions.ToList());
         }
-
-        //
-        // GET: /MasterStore/Details/5
 
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -37,12 +31,12 @@ namespace b.Controllers
             return View(store);
         }
 
-                public ActionResult Create()
+        public ActionResult Create()
         {
             return View();
         }
 
-                [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Store store)
         {
@@ -65,7 +59,7 @@ namespace b.Controllers
             return View(store);
         }
 
-                public ActionResult Edit(int id = 0, int version = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
             Store store = db.Stores.Find(id, version);
             if (store == null)
@@ -75,7 +69,7 @@ namespace b.Controllers
             return View(store);
         }
 
-                [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Store store)
         {
@@ -92,7 +86,7 @@ namespace b.Controllers
             return View(store);
         }
 
-                public ActionResult Delete(int id = 0, int version = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
             Store store = db.Stores.Find(id, version);
             if (store == null)

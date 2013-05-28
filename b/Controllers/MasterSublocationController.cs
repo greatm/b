@@ -7,15 +7,15 @@ using System;
 
 namespace b.Controllers
 {
-    public class MasterSubloactionController : Controller
+    public class MasterSublocationController : Controller
     {
         private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            var lastVersions = from n in db.Sublocations
+            var lastVersions = from n in db.Sublocations.Include(t => t.Store)
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            return View(lastVersions.ToList());
+            return View(lastVersions.Include(t => t.Store).ToList());
             //return View(db.Sublocations.Include(t => t.Store).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
@@ -90,7 +90,8 @@ namespace b.Controllers
                 Sublocation newItem = sublocation;
                 newItem.Version = sublocation.Version + 1;
                 newItem.EntryDate = DateTime.Now;
-                db.Entry(sublocation).State = EntityState.Modified;
+                db.Sublocations.Add(newItem);
+                //db.Entry(sublocation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -126,8 +127,8 @@ namespace b.Controllers
             {
                 if (item != null) db.Sublocations.Remove(item);
             }
-                        db.SaveChanges();
-            
+            db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

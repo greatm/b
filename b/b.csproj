@@ -267,7 +267,7 @@
     <Compile Include="Controllers\MasterCustomerController.cs" />
     <Compile Include="Controllers\MasterProductController.cs" />
     <Compile Include="Controllers\MasterStoreController.cs" />
-    <Compile Include="Controllers\MasterSubloactionController.cs" />
+    <Compile Include="Controllers\MasterSublocationController.cs" />
     <Compile Include="Controllers\MasterVendorController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\PurchaseHomeController.cs" />
@@ -517,11 +517,11 @@
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
     <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
     <Content Include="Views\SalesOrder\SOItemEntry.cshtml" />
-    <Content Include="Views\MasterSubloaction\Index.cshtml" />
-    <Content Include="Views\MasterSubloaction\Details.cshtml" />
-    <Content Include="Views\MasterSubloaction\Create.cshtml" />
-    <Content Include="Views\MasterSubloaction\Edit.cshtml" />
-    <Content Include="Views\MasterSubloaction\Delete.cshtml" />
+    <Content Include="Views\MasterSublocation\Index.cshtml" />
+    <Content Include="Views\MasterSublocation\Details.cshtml" />
+    <Content Include="Views\MasterSublocation\Create.cshtml" />
+    <Content Include="Views\MasterSublocation\Edit.cshtml" />
+    <Content Include="Views\MasterSublocation\Delete.cshtml" />
     <Content Include="Views\Sales\SalesItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>

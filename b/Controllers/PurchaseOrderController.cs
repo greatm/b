@@ -22,11 +22,15 @@ namespace b.Controllers
         #region action
         public ActionResult Index()
         {
-            return View(db.PurchaseOrders.ToList());
+            var lastVersions = from n in db.PurchaseOrders
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
+            //return View(db.PurchaseOrders.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id,version );
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -60,6 +64,15 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.PurchaseOrders.Max(t => t.ID) + 1;
+                }
+                catch { }
+                purchaseorder.ID = iId;
+                purchaseorder.Version = 1;
+                purchaseorder.EntryDate = DateTime.Now;
                 db.PurchaseOrders.Add(purchaseorder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -77,7 +90,7 @@ namespace b.Controllers
         public ActionResult Edit(int id = 0, int version = 0)
         {
             //PurchaseOrder purchaseorder = db.PurchaseOrders.Include(t => t.POItems).FirstOrDefault(t => t.ID == id);
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -99,7 +112,11 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(purchaseorder).State = EntityState.Modified;
+                PurchaseOrder newItem = purchaseorder;
+                newItem.Version = purchaseorder.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.PurchaseOrders.Add(newItem);
+                //db.Entry(purchaseorder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -113,7 +130,7 @@ namespace b.Controllers
         }
         public ActionResult Delete(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -124,8 +141,13 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            db.PurchaseOrders.Remove(purchaseorder);
+            //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
+            //db.PurchaseOrders.Remove(purchaseorder);
+            var itemsToDelete = db.PurchaseOrders.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.PurchaseOrders.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

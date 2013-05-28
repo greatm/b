@@ -9,13 +9,11 @@ namespace b.Models
 {
     public class Sublocation : VersionTable
     {
-        //public int ID { get; set; }
-        public Store Store { get; set; }
-        public int StoreID { get; set; }
+        public virtual Store Store { get; set; }
+        public virtual int StoreID { get; set; }
 
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        //public string Remarks { get; set; }
     }
 }
