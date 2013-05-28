@@ -10,7 +10,7 @@
         </td>    
 
         <td style="width: 100px" class="combo">
-            @Html.DropDownList("ProductID", String.Empty)
+            @Html.DropDownList("ProductID", ViewData["Products"] as SelectList)
             @Html.ValidationMessageFor(model => model.ProductID)
         </td>
 

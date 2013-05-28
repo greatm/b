@@ -28,16 +28,16 @@ namespace b.Models
     {
         [Key, Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        public virtual int ID { get; set; }
 
         [Key, Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Version { get; set; }
+        public virtual int Version { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime EntryDate { get; set; }
+        public virtual DateTime EntryDate { get; set; }
 
-        public string Remarks { get; set; }
+        public virtual string Remarks { get; set; }
     }
     public static class Updater
     {
@@ -46,7 +46,8 @@ namespace b.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                //new whatsnew { WorkTime = new DateTime(2013, 5, 27, 10, 30, 0), Work = "mvc 4 key multiple" },
+                //new whatsnew { WorkTime = new DateTime(2013, 5, 27, 10, 30, 0), Work = "A B One screen multiple person – versions difirent - vendor" },
+                new whatsnew { WorkTime = new DateTime(2013, 5, 27, 11, 30, 0), Work = "One screen multiple person – versions difirent - vendor" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 27, 10, 30, 0), Work = "mvc 4 key multiple" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 14, 10, 30, 0), Work = "po auto fill – all quantities" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 13, 10, 30, 0), Work = "add purchase po" },
