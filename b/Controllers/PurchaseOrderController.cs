@@ -36,14 +36,14 @@ namespace b.Controllers
         public ActionResult Create()
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
-             CreateProductsList();
-                  POItem poitem = null;
+            CreateProductsList();
+            POItem poitem = null;
             foreach (Product prd in db.Products)
             {
                 if (prd.RoL > 5)
                 {
                     poitem = new POItem { Product = prd, ProductID = prd.ID, Rate = prd.LastPurchaseRate, Qty = prd.RoQ, Amount = prd.LastPurchaseRate * prd.RoQ };
-                     newPO.POItems.Add(poitem);
+                    newPO.POItems.Add(poitem);
                 }
             }
             if (newPO.POItems.Count < 1)
@@ -66,7 +66,7 @@ namespace b.Controllers
             }
 
             CreateVendorsList(purchaseorder);
-            foreach (POItem  poItem in purchaseorder.POItems ) CreateProductsList(poItem );
+            foreach (POItem poItem in purchaseorder.POItems) CreateProductsList(poItem);
             return View(purchaseorder);
         }
         public ActionResult POItemEntryRow()
@@ -151,12 +151,12 @@ namespace b.Controllers
             this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
 
         }
-        private void CreateProductsList(POItem  poItem)
+        private void CreateProductsList(POItem poItem)
         {
             var lastVersions = from n in db.Products
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", poItem .ProductID);
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", poItem.ProductID);
         }
         private void CreateProductsList()
         {

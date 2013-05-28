@@ -84,8 +84,7 @@
             @Html.LabelFor(model => model.Image)
         </div>
         <div class="editor-field">
-            <img alt="product image" src="@Url.Action("GetProductImage", new { id = Model.ID })" />
-            @*<img alt="product image" src="@Url.Action("GetProductImage", new { product = Model })" />*@
+            <img alt="product image" src="@Url.Action("GetProductImage", new { id = Model.ID, version = Model.Version })" />
             <input name="ImageFile" type="file" />
             @Html.ValidationMessageFor(model => model.Image)
         </div>

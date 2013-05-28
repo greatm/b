@@ -66,6 +66,7 @@ namespace b.Controllers
                 catch { }
                 product.ID = iId;
                 product.Version = 1;
+                product.EntryDate = DateTime.Now;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,17 +86,20 @@ namespace b.Controllers
                 return HttpNotFound();
             }
 
-            WebImage image = new WebImage(product.Image);
-            ViewData["image"] = File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
-
+            if (product.Image != null)
+            {
+                WebImage image = new WebImage(product.Image);
+                ViewData["image"] = File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
+            }
             return View(product);
         }
-        public FileContentResult GetProductImage(int id = 0)
+        public FileContentResult GetProductImage(int id = 0, int version = 0)
         {
-            Product product = db.Products.Find(id);
-            if (product == null) return null;
+            Product product = db.Products.Find(id, version);
+            if (product == null || product.Image == null) return null;
 
             WebImage image = new WebImage(product.Image);
+            if (image == null) return null;
             return File(image.GetBytes(), "image/" + image.ImageFormat, image.FileName);
         }
         //public FileContentResult GetProductImage(Product product)

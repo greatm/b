@@ -37,23 +37,26 @@ namespace b.Controllers
             return View(store);
         }
 
-        //
-        // GET: /MasterStore/Create
-
-        public ActionResult Create()
+                public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /MasterStore/Create
-
-        [HttpPost]
+                [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Store store)
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Stores.Max(t => t.ID) + 1;
+                }
+                catch { }
+                store.ID = iId;
+                store.Version = 1;
+                store.EntryDate = DateTime.Now;
                 db.Stores.Add(store);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,10 +65,7 @@ namespace b.Controllers
             return View(store);
         }
 
-        //
-        // GET: /MasterStore/Edit/5
-
-        public ActionResult Edit(int id = 0, int version = 0)
+                public ActionResult Edit(int id = 0, int version = 0)
         {
             Store store = db.Stores.Find(id, version);
             if (store == null)
@@ -75,26 +75,24 @@ namespace b.Controllers
             return View(store);
         }
 
-        //
-        // POST: /MasterStore/Edit/5
-
-        [HttpPost]
+                [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Store store)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(store).State = EntityState.Modified;
+                Store newItem = store;
+                newItem.Version = store.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Stores.Add(newItem);
+                //db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(store);
         }
 
-        //
-        // GET: /MasterStore/Delete/5
-
-        public ActionResult Delete(int id = 0, int version = 0)
+                public ActionResult Delete(int id = 0, int version = 0)
         {
             Store store = db.Stores.Find(id, version);
             if (store == null)

@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using System;
 
 namespace b.Controllers
 {
@@ -11,11 +12,15 @@ namespace b.Controllers
         private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            return View(db.Sublocations.Include(t => t.Store).ToList());
+            var lastVersions = from n in db.Sublocations
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
+            //return View(db.Sublocations.Include(t => t.Store).ToList());
         }
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Sublocation sublocation = db.Sublocations.Find(id);
+            Sublocation sublocation = db.Sublocations.Find(id, version);
             if (sublocation == null)
             {
                 return HttpNotFound();
@@ -29,15 +34,21 @@ namespace b.Controllers
             return View(newSloc);
         }
 
-        //
-        // POST: /MasterSubloaction/Create
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Sublocation sublocation)
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Sublocations.Max(t => t.ID) + 1;
+                }
+                catch { }
+                sublocation.ID = iId;
+                sublocation.Version = 1;
+                sublocation.EntryDate = DateTime.Now;
                 db.Sublocations.Add(sublocation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -50,9 +61,9 @@ namespace b.Controllers
         //
         // GET: /MasterSubloaction/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Sublocation sublocation = db.Sublocations.Find(id);
+            Sublocation sublocation = db.Sublocations.Find(id, version);
             if (sublocation == null)
             {
                 return HttpNotFound();
@@ -76,6 +87,9 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
+                Sublocation newItem = sublocation;
+                newItem.Version = sublocation.Version + 1;
+                newItem.EntryDate = DateTime.Now;
                 db.Entry(sublocation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,9 +102,9 @@ namespace b.Controllers
         //
         // GET: /MasterSubloaction/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Sublocation sublocation = db.Sublocations.Find(id);
+            Sublocation sublocation = db.Sublocations.Find(id, version);
             if (sublocation == null)
             {
                 return HttpNotFound();
@@ -103,11 +117,17 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version)
         {
-            Sublocation sublocation = db.Sublocations.Find(id);
-            db.Sublocations.Remove(sublocation);
-            db.SaveChanges();
+            //Sublocation sublocation = db.Sublocations.Find(id);
+            //db.Sublocations.Remove(sublocation);
+            var itemsToDelete = db.Sublocations.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.Sublocations.Remove(item);
+            }
+                        db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 
