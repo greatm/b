@@ -9,18 +9,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.ViewModels
 {
-    public class Purchase
+    public class Purchase : VersionTable
     {
-        public int ID { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        //public int ID { get; set; }
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         public int POID { get; set; }
         public int VendorID { get; set; }
         public string VendorInvoice { get; set; }
-        public string Remarks { get; set; }
+        //public string Remarks { get; set; }
         public IEnumerable<PurchaseItem> PurchaseItems { get; set; }
 
         public IEnumerable<Vendor> Vendors { get; set; }

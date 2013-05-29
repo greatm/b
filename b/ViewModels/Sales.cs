@@ -8,13 +8,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace b.ViewModels
 {
-    public class Sales
+    public class Sales : VersionTable
     {
-        public int ID { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        //public int ID { get; set; }
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         public int CustomerID { get; set; }
 
@@ -23,7 +24,7 @@ namespace b.ViewModels
 
         [Display(Name = "Invoice Number")]
         public string Invoice { get; set; }
-        public string Remarks { get; set; }
+        //public string Remarks { get; set; }
         public IList<SalesItem> SalesItems { get; set; }
         public PackingList PackingList { get; set; }
         public string BoxNumber { get; set; }
