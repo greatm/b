@@ -86,7 +86,7 @@
             </tbody>
         </table>
         <a id="addAnother" href="#">Add another</a>
-        <script type="text/javascript">
+        @*<script type="text/javascript">
             $(function () {
                 $("#itemEditor").sortable();
                 $("#addAnother").click(function () {
@@ -95,7 +95,7 @@
                     });
                 });
             });
-        </script>
+        </script>*@
 
     </fieldset>
     
@@ -108,8 +108,8 @@
 
 @section Scripts {
     <script type="text/javascript">
-        $("#VendorID").combobox();
         $(function () {
+            $("#VendorID").combobox();
             $("#itemEditor").sortable();
             $("#addAnother").click(function () {
                 $.get('/PurchaseOrder/POItemEntryRow', function (template) {

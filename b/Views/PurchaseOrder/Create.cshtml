@@ -85,17 +85,7 @@
         </table>
 
         <a id="addAnother" href="#">Add another</a>
-        <script type="text/javascript">
-            $(function () {
-                $("#VendorID").combobox();
-                $("#itemEditor").sortable();
-                $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntryRow', function (template) {
-                        $("#itemEditor").append(template);
-                    });
-                });
-            });
-        </script>
+
     </fieldset>
  
     <p>
@@ -111,12 +101,14 @@
 
 @section Scripts {
     <script type="text/javascript">
-        //$("#VendorID").combobox();
-        //$("#itemEditor").sortable();
-        //$("#addAnother").click(function () {
-        //    $.get('/PurchaseOrder/POItemEntryRow', function (template) {
-        //        $("#itemEditor").append(template);
-        //    });
-        //});
+        $(function () {
+            $("#VendorID").combobox();
+            $("#itemEditor").sortable();
+            $("#addAnother").click(function () {
+                $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+                    $("#itemEditor").append(template);
+                });
+            });
+        });
     </script>
 }
