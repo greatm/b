@@ -46,7 +46,8 @@ namespace b.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                //new whatsnew { WorkTime = new DateTime(2013, 5, 27, 10, 30, 0), Work = "A B One screen multiple person – versions difirent - vendor" },
+                //new whatsnew { WorkTime = new DateTime(2013, 5, 29, 10, 30, 0), Work = "A B menu – left accordion" },
+                new whatsnew { WorkTime = new DateTime(2013, 5, 29, 10, 30, 0), Work = "A B menu – left accordion" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 27, 11, 30, 0), Work = "One screen multiple person – versions difirent - vendor" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 27, 10, 30, 0), Work = "mvc 4 key multiple" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 14, 10, 30, 0), Work = "po auto fill – all quantities" },
