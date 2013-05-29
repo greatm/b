@@ -56,10 +56,6 @@
                 width: 150px;
             }
         </style>
-        @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
-        {
-            <p>None.</p>
-        }
         <table id="tblPoItems">
             <thead>
                 <tr>
@@ -73,6 +69,11 @@
             </thead>
 
             <tbody id="itemEditor">
+                @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
+                {
+                    <tr>
+                        <td>None.</td>
+                    </tr>  }
                 @if (Model != null && Model.POItems != null)
                 {
                     foreach (POItem poitem in Model.POItems)
@@ -84,7 +85,17 @@
         </table>
 
         <a id="addAnother" href="#">Add another</a>
-
+        <script type="text/javascript">
+            $(function () {
+                $("#VendorID").combobox();
+                $("#itemEditor").sortable();
+                $("#addAnother").click(function () {
+                    $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+                        $("#itemEditor").append(template);
+                    });
+                });
+            });
+        </script>
     </fieldset>
  
     <p>
@@ -100,12 +111,12 @@
 
 @section Scripts {
     <script type="text/javascript">
-        $("#VendorID").combobox();
-        $("#itemEditor").sortable();
-        $("#addAnother").click(function () {
-            $.get('/PurchaseOrder/POItemEntryRow', function (template) {
-                $("#itemEditor").append(template);
-            });
-        });
+        //$("#VendorID").combobox();
+        //$("#itemEditor").sortable();
+        //$("#addAnother").click(function () {
+        //    $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+        //        $("#itemEditor").append(template);
+        //    });
+        //});
     </script>
 }
