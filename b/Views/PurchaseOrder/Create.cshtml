@@ -84,18 +84,6 @@
         </table>
 
         <a id="addAnother" href="#">Add another</a>
-        <script type="text/javascript">
-            $(function () {
-                //var tblPI = $("#tblPoItems").datatable();
-                //tblPI.fnDraw();
-                $("#itemEditor").sortable();
-                $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntryRow', function (template) {
-                        $("#itemEditor").append(template);
-                    });
-                });
-            });
-        </script>
 
     </fieldset>
  
@@ -113,5 +101,11 @@
 @section Scripts {
     <script type="text/javascript">
         $("#VendorID").combobox();
+        $("#itemEditor").sortable();
+        $("#addAnother").click(function () {
+            $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+                $("#itemEditor").append(template);
+            });
+        });
     </script>
 }

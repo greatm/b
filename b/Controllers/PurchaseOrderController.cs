@@ -92,7 +92,6 @@ namespace b.Controllers
         }
         public ActionResult Edit(int id = 0, int version = 0)
         {
-            //PurchaseOrder purchaseorder = db.PurchaseOrders.Include(t => t.POItems).FirstOrDefault(t => t.ID == id);
             PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {

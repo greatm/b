@@ -58,27 +58,32 @@
                 width: 150px;
             }
         </style>
-        @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
-        {
-            <p>None.</p>
-        }
-        <table id="itemEditor">
-            <tr>
-                <th></th>
-                <th style="width: 100px">Product</th>
-                <th style="width: 100px">Rate</th>
-                <th style="width: 100px">Quantity</th>
-                <th style="width: 100px">Amount</th>
-                <th style="width: 100px"></th>
-            </tr>
-
-            @if (Model != null && Model.POItems != null)
-            {
-                foreach (POItem poitem in Model.POItems)
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th style="width: 100px">Product</th>
+                    <th style="width: 100px">Rate</th>
+                    <th style="width: 100px">Quantity</th>
+                    <th style="width: 100px">Amount</th>
+                    <th style="width: 100px"></th>
+                </tr>
+            </thead>
+            <tbody id="itemEditor">
+                @if (Model == null || Model.POItems == null || Model.POItems.Count == 0)
                 {
-                    Html.RenderPartial("POItemEntry", poitem);
+                    <tr>
+                        <td>None.</td>
+                    </tr>
                 }
-            }
+                @if (Model != null && Model.POItems != null)
+                {
+                    foreach (POItem poitem in Model.POItems)
+                    {
+                        Html.RenderPartial("POItemEntry", poitem);
+                    }
+                }
+            </tbody>
         </table>
         <a id="addAnother" href="#">Add another</a>
         <script type="text/javascript">
