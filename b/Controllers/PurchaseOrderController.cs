@@ -42,7 +42,10 @@ namespace b.Controllers
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
             CreateProductsList();
             POItem poitem = null;
-            foreach (Product prd in db.Products)
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            foreach (Product prd in lastVersions)
             {
                 if (prd.RoL > 5)
                 {
@@ -162,7 +165,9 @@ namespace b.Controllers
         #region function
         private void CreateVendorsList(PurchaseOrder workPO)
         {
-            var vendors = db.Vendors;
+            var vendors = from n in db.Vendors
+                          group n by n.ID into g
+                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
             List<object> newList = new List<object>();
             foreach (var vendor in vendors)
                 newList.Add(new
