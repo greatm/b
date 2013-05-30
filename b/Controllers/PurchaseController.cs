@@ -29,9 +29,9 @@ namespace b.Controllers
         //
         // GET: /Purchase/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = db.Purchases.Find(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -44,9 +44,10 @@ namespace b.Controllers
 
         public ActionResult Create()
         {
-            CreateVendorsList();
             Purchase newPurchase = new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> { new PurchaseItem { ProductID = 1, Qty = 1, Rate = 1 } } };
             //return View(new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> { new PurchaseItem { ProductID = 1, Qty = 1, Rate = 1 } } });
+            CreatePoList(newPurchase);
+            CreateVendorsList(newPurchase);
 
             return View(newPurchase);
         }
@@ -72,9 +73,9 @@ namespace b.Controllers
         //
         // GET: /Purchase/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = db.Purchases.Find(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -101,9 +102,9 @@ namespace b.Controllers
         //
         // GET: /Purchase/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = db.Purchases.Find(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -116,7 +117,7 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
             Purchase purchase = db.Purchases.Find(id);
             db.Purchases.Remove(purchase);
@@ -132,9 +133,38 @@ namespace b.Controllers
         #endregion
 
         #region function
-        private void CreateVendorsList()
+        //private void CreateVendorsList()
+        //{
+        //    var vendors = db.Vendors;
+        //    List<object> newList = new List<object>();
+        //    foreach (var vendor in vendors)
+        //        newList.Add(new
+        //        {
+        //            Id = vendor.ID,
+        //            Name = vendor.Name + " : " + vendor.Person
+        //        });
+        //    this.ViewData["Vendors"] = new SelectList(newList, "Id", "Name");
+
+        //}
+        private void CreatePoList(Purchase purchase)
         {
-            var vendors = db.Vendors;
+            var poes = from n in db.PurchaseOrders
+                       group n by n.ID into g
+                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            List<object> newList = new List<object>();
+            foreach (var po in poes)
+                newList.Add(new
+                {
+                    Id = po.ID,
+                    Name = po.Vendor.Name + " : " + po.ID
+                });
+            this.ViewData["POID"] = new SelectList(newList, "Id", "Name", purchase.POID);
+        }
+        private void CreateVendorsList(Purchase purchase)
+        {
+            var vendors = from n in db.Vendors
+                          group n by n.ID into g
+                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
             List<object> newList = new List<object>();
             foreach (var vendor in vendors)
                 newList.Add(new
@@ -142,8 +172,7 @@ namespace b.Controllers
                     Id = vendor.ID,
                     Name = vendor.Name + " : " + vendor.Person
                 });
-            this.ViewData["Vendors"] = new SelectList(newList, "Id", "Name");
-
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", purchase.VendorID);
         }
         #endregion
     }

@@ -8,7 +8,7 @@ using b.Models;
 
 namespace b.ViewModels
 {
-    public class SalesOrder:VersionTable
+    public class SalesOrder : VersionTable
     {
         //public int ID { get; set; }
         //[Timestamp]

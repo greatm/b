@@ -25,9 +25,9 @@ namespace b.Controllers
         //
         // GET: /MasterCustomer/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id, version);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -52,6 +52,15 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Customers.Max(t => t.ID) + 1;
+                }
+                catch { }
+                customer.ID = iId;
+                customer.Version = 1;
+                customer.EntryDate = DateTime.Now;
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,9 +72,9 @@ namespace b.Controllers
         //
         // GET: /MasterCustomer/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id, version);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -82,7 +91,11 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                Customer newItem = customer;
+                newItem.Version = customer.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Customers.Add(newItem);
+                //db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -92,9 +105,9 @@ namespace b.Controllers
         //
         // GET: /MasterCustomer/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id, version);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -107,9 +120,9 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Find(id, version);
             db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");

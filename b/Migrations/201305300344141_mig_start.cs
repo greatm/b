@@ -3,7 +3,7 @@ namespace b.Migrations
     using System;
     using System.Data.Entity.Migrations;
 
-    public partial class mig_initial : DbMigration
+    public partial class mig_start : DbMigration
     {
         public override void Up()
         {
@@ -157,28 +157,30 @@ namespace b.Migrations
                 "dbo.Purchases",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
                         POID = c.Int(nullable: false),
                         VendorID = c.Int(nullable: false),
                         VendorInvoice = c.String(),
+                        EntryDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => new { t.ID, t.Version });
 
             CreateTable(
                 "dbo.SalesOrders",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
                         CustomerID = c.Int(nullable: false),
-                        Remarks = c.String(maxLength: 5),
                         TotalAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        EntryDate = c.DateTime(nullable: false),
+                        Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => new { t.ID, t.Version });
 
             CreateTable(
                 "dbo.SalesOrderItems",
@@ -190,22 +192,22 @@ namespace b.Migrations
                         Qty = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         SalesOrder_ID = c.Int(),
+                        SalesOrder_Version = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.SalesOrders", t => t.SalesOrder_ID)
-                .Index(t => t.SalesOrder_ID);
+                .ForeignKey("dbo.SalesOrders", t => new { t.SalesOrder_ID, t.SalesOrder_Version })
+                .Index(t => new { t.SalesOrder_ID, t.SalesOrder_Version });
 
             CreateTable(
                 "dbo.Sales",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        ID = c.Int(nullable: false),
+                        Version = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
                         CustomerID = c.Int(nullable: false),
                         SOID = c.Int(nullable: false),
                         Invoice = c.String(),
-                        Remarks = c.String(),
                         PackingList_Item = c.String(),
                         PackingList_Code = c.String(),
                         PackingList_Description = c.String(),
@@ -214,8 +216,10 @@ namespace b.Migrations
                         PackingList_QtyPerCase = c.Int(nullable: false),
                         PackingList_TotalQty = c.Int(nullable: false),
                         BoxNumber = c.String(),
+                        EntryDate = c.DateTime(nullable: false),
+                        Remarks = c.String(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => new { t.ID, t.Version });
 
             CreateTable(
                 "dbo.SalesItems",
@@ -227,23 +231,24 @@ namespace b.Migrations
                         Qty = c.Int(nullable: false),
                         Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Sales_ID = c.Int(),
+                        Sales_Version = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Sales", t => t.Sales_ID)
-                .Index(t => t.Sales_ID);
+                .ForeignKey("dbo.Sales", t => new { t.Sales_ID, t.Sales_Version })
+                .Index(t => new { t.Sales_ID, t.Sales_Version });
 
         }
 
         public override void Down()
         {
-            DropIndex("dbo.SalesItems", new[] { "Sales_ID" });
-            DropIndex("dbo.SalesOrderItems", new[] { "SalesOrder_ID" });
+            DropIndex("dbo.SalesItems", new[] { "Sales_ID", "Sales_Version" });
+            DropIndex("dbo.SalesOrderItems", new[] { "SalesOrder_ID", "SalesOrder_Version" });
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" });
             DropIndex("dbo.POItems", new[] { "Product_ID", "Product_Version" });
             DropIndex("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" });
             DropIndex("dbo.Sublocations", new[] { "Store_ID", "Store_Version" });
-            DropForeignKey("dbo.SalesItems", "Sales_ID", "dbo.Sales");
-            DropForeignKey("dbo.SalesOrderItems", "SalesOrder_ID", "dbo.SalesOrders");
+            DropForeignKey("dbo.SalesItems", new[] { "Sales_ID", "Sales_Version" }, "dbo.Sales");
+            DropForeignKey("dbo.SalesOrderItems", new[] { "SalesOrder_ID", "SalesOrder_Version" }, "dbo.SalesOrders");
             DropForeignKey("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" }, "dbo.PurchaseOrders");
             DropForeignKey("dbo.POItems", new[] { "Product_ID", "Product_Version" }, "dbo.Products");
             DropForeignKey("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" }, "dbo.Vendors");
