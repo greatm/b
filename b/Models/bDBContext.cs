@@ -46,7 +46,8 @@ namespace b.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                //new whatsnew { WorkTime = new DateTime(2013, 5, 29, 18, 00, 0), Work = "A B master vendor – save error" },
+                //new whatsnew { WorkTime = new DateTime(2013, 5, 30, 12, 00, 0), Work = "A B po items drag working" },
+                new whatsnew { WorkTime = new DateTime(2013, 5, 30, 12, 00, 0), Work = "A B po items drag working" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 29, 17, 00, 0), Work = "A B master vendor – save error" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 29, 16, 00, 0), Work = "A B add version in masters" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 29, 15, 00, 0), Work = "A B add version table" },

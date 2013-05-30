@@ -86,22 +86,12 @@
             </tbody>
         </table>
         <a id="addAnother" href="#">Add another</a>
-        @*<script type="text/javascript">
-            $(function () {
-                $("#itemEditor").sortable();
-                $("#addAnother").click(function () {
-                    $.get('/PurchaseOrder/POItemEntry', function (template) {
-                        $("#itemEditor").append(template);
-                    });
-                });
-            });
-        </script>*@
 
     </fieldset>
     
     <p>
         <input type="submit" value="Save" />
-        @Html.ActionLink("Print", "PrintPO", new { id = Model.ID })
+        @Html.ActionLink("Print", "PrintPO", new { id = Model.ID, version = Model.Version })
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
