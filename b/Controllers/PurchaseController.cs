@@ -54,11 +54,21 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
+                int iId = 1;
+                try
+                {
+                    iId = db.Purchases.Max(t => t.ID) + 1;
+                }
+                catch { }
+                purchase.ID = iId;
+                purchase.Version = 1;
+                purchase.EntryDate = DateTime.Now;
                 db.Purchases.Add(purchase);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            CreatePoList(purchase);
             return View(purchase);
         }
 
