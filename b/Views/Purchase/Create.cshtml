@@ -49,7 +49,7 @@
         </div>
         <div class="editor-field">
             @Html.DropDownList("VendorID", String.Empty)
-            @Html.ValidationMessageFor(model => model.VendorID)
+            @*@Html.ValidationMessageFor(model => model.VendorID)*@
         </div>
 
         <div class="editor-label">
@@ -129,6 +129,16 @@
                 $.get('/PurchaseOrder/POItemEntry', function (template) {
                     $("#itemEditor").append(template);
                 });
+            });
+            $("#POID").change(function () {
+                // read po_id
+                var po_id = $(this).val();
+
+                // read purchase order record to viewdata["curPO"]
+
+                // update vendor name from curpo to vendor box
+
+
             });
         });
     </script>
