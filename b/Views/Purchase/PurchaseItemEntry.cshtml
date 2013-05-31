@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 
-    $(".add").live("click", function () {
+    $(".add").on("click", function () {
 
         var existrow = $('.save').length;
         if (existrow == 0) {
@@ -46,7 +46,7 @@
 
     });
 
-    $(".icancel").live("click", function () {
+    $(".icancel").on("click", function () {
         var flag = confirm('Are you sure to cancel');
         if (flag) {
             $(this).parents("tr").remove();
@@ -54,7 +54,7 @@
 
     });
 
-    $(".save").live("click", function () {
+    $(".save").on("click", function () {
         var id = $("#grid tbody tr").length;
         var Name = $("#Name_" + id).val();
         var Address = $("#Quantity_" + id).val();
@@ -84,7 +84,7 @@
         }
     });
 
-    $(".edit").live("click", function () {
+    $(".edit").on("click", function () {
         var str = $(this).attr("id").split("_");
         id = str[1];
 
@@ -107,7 +107,7 @@
         $("#Cancel_" + id).show();
     });
 
-    $(".cancel").live("click", function () {
+    $(".cancel").on("click", function () {
         var str = $(this).attr("id").split("_");
         id = str[1];
 
@@ -131,7 +131,7 @@
         $("#Edit_" + id).show();
     });
 
-    $(".update").live("click", function () {
+    $(".update").on("click", function () {
         var str = $(this).attr("id").split("_");
         id = str[1];
 
@@ -185,7 +185,7 @@
         }
     });
 
-    $(".delete").live("click", function () {
+    $(".delete").on("click", function () {
         var str = $(this).attr("id").split("_");
         id = str[1];
 

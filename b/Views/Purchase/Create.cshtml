@@ -37,7 +37,7 @@
         </div>*@
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.POID)
+            @Html.LabelFor(model => model.PO)
         </div>
         <div class="editor-field">
             @Html.DropDownList("POID", String.Empty)
@@ -45,10 +45,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Vendors)
+            @Html.LabelFor(model => model.PO.Vendor)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("VendorID", String.Empty)
+            @Html.DisplayFor(model => model.PO.Vendor.Name)
+            @*@Html.DropDownList("VendorID", String.Empty)*@
             @*@Html.ValidationMessageFor(model => model.VendorID)*@
         </div>
 
@@ -135,7 +136,27 @@
                 var po_id = $(this).val();
 
                 // read purchase order record to viewdata["curPO"]
+                alert(po_id);
+                // update vendor name from curpo to vendor box
 
+
+            });
+            $("#POID").click(function () {
+                // read po_id
+                var po_id = $(this).val();
+
+                // read purchase order record to viewdata["curPO"]
+                alert(po_id);
+                // update vendor name from curpo to vendor box
+
+
+            });
+            $("#POID").select(function () {
+                // read po_id
+                var po_id = $(this).val();
+
+                // read purchase order record to viewdata["curPO"]
+                alert(po_id);
                 // update vendor name from curpo to vendor box
 
 

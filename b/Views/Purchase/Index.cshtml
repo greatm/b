@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.POID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VendorID)
+            @Html.DisplayNameFor(model => model.PO.Vendor)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VendorInvoice)
@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.POID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.VendorID)
+                @Html.DisplayFor(modelItem => item.PO.Vendor.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VendorInvoice)
