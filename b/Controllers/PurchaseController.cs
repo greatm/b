@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using b.ViewModels;
 using b.Models;
 using b.Filters;
+using MvcJqGrid;
 
 namespace b.Controllers
 {
@@ -127,10 +128,37 @@ namespace b.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        public ActionResult GridDataBasic(GridSettings grid)
         {
-            db.Dispose();
-            base.Dispose(disposing);
+            IRepositoryUser _repository = new IRepositoryUser();
+            var query = _repository.Users();
+
+            //sorting
+            query = query.OrderBy<User>(grid.SortColumn, grid.SortOrder);
+
+            //count
+            var count = query.Count();
+
+            //paging
+            var data = query.Skip((grid.PageIndex - 1) * grid.PageSize).Take(grid.PageSize).ToArray();
+
+            var result = new
+            {
+                total = (int)Math.Ceiling((double)count / grid.PageSize),
+                page = grid.PageIndex,
+                records = count,
+                rows = (from UserInfo in data
+                        select new
+                        {
+                            AdminID = UserInfo.AdminID.ToString(),
+                            Email = UserInfo.Email,
+                            NoTel = UserInfo.Tel,
+                            Role = UserInfo.Role,
+                            Active = UserInfo.Active,
+                        }).ToArray()
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

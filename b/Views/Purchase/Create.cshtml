@@ -3,6 +3,7 @@
 @using MvcContrib.UI;
 @using MvcContrib.UI.Grid;
 @using MvcContrib.Sorting;
+@using MvcJqGrid
 
 @model Purchase
 
@@ -80,7 +81,33 @@
         }
         else
         {
-            Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
+            MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
+            jsonReader.RepeatItems = false;
+            jsonReader.Id = "dataJson";
+            
+            @(Html.Grid("GridDataBasic")
+                .SetCaption("List Of User")
+                .AddColumn(new Column("AdminID"))
+                .AddColumn(new Column("Email"))
+                .AddColumn(new Column("Tel"))
+                .AddColumn(new Column("Role"))
+                .AddColumn(new Column("Active"))
+                .SetUrl("/Home/GridDataBasic")
+                .SetAutoEncode(true)
+                .SetDataType(MvcJqGrid.Enums.DataType.Json)
+                .SetAutoWidth(false)
+                .SetWidth(650)
+                .SetRowNum(10)
+                .SetJsonReader(jsonReader)
+                .SetLoadUi(MvcJqGrid.Enums.LoadUi.Block)
+                .SetRowList(new int[] { 10, 15, 20, 50 })
+                .SetViewRecords(true)
+                .SetGridView(true)
+                .SetEmptyRecords("No record Found")
+                .SetShowAllSortIcons(true)
+                .SetShrinkToFit(true)
+                .SetPager("pager"))
+            //Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
         }
 
 
