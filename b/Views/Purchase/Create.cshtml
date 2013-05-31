@@ -92,7 +92,7 @@
                 .AddColumn(new Column("Tel"))
                 .AddColumn(new Column("Role"))
                 .AddColumn(new Column("Active"))
-                .SetUrl("/Home/GridDataBasic")
+                .SetUrl("/Purchase/GridDataBasic")
                 .SetAutoEncode(true)
                 .SetDataType(MvcJqGrid.Enums.DataType.Json)
                 .SetAutoWidth(false)
@@ -106,34 +106,12 @@
                 .SetEmptyRecords("No record Found")
                 .SetShowAllSortIcons(true)
                 .SetShrinkToFit(true)
-                .SetPager("pager"))
+                .SetPager("pager")
+                .RenderHtmlElements()
+                )
             //Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
         }
 
-
-
-        @*  <ul id="itemEditor" style="list-style-type: none">
-            @if (Model != null && Model.PurchaseItems != null)
-            {
-                foreach (PurchaseItem purchaseItem in Model.PurchaseItems)
-                {
-                    Html.RenderPartial("PurchaseItemEntry", purchaseItem);
-                }
-            }
-        </ul>
-        <a id="addAnother" href="#">Add another</a>*@
-        @*    <div>
-
-            @Html.Grid(Model.PurchaseItems).Columns(column =>
-       {
-           column.For(t => t.ProductID);
-           column.For(t => t.Qty);
-           column.For(t => t.Rate);
-           column.For(t => @Html.ActionLink("Delete", "$(this).parent().remove();"));
-       })
-
-
-        </div>*@
 
     </fieldset>
     
@@ -154,7 +132,7 @@
             $("#VendorID").combobox();
             $("#itemEditor").sortable();
             $("#addAnother").click(function () {
-                $.get('/PurchaseOrder/POItemEntry', function (template) {
+                $.get('/Purchase/PurchaseItemEntry', function (template) {
                     $("#itemEditor").append(template);
                 });
             });

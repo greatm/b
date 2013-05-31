@@ -1,5 +1,6 @@
 ﻿using b.Models;
 using System.Data;
+using System.Data.Objects;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,9 +13,37 @@ namespace b.Controllers
         private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            var lastVersions = from n in db.Sublocations.Include(t => t.Store)
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            //var lastVersions = ((from n in db.Sublocations//.Include(t => t.Store).ToList()
+            //                     group n by n.ID into g
+            //                     select g.OrderByDescending(t => t.Version).FirstOrDefault())
+            //                   as ObjectQuery<Sublocation>)
+            //                   .Include(t => t.Store)
+            //                   ;
+            //var lastVersions = from n in db.Sublocations
+            //                   group n by n.ID into g
+            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            var lastVersions = from a in
+                                   (from n in db.Sublocations//.ToList()
+                                    group n by n.ID into g
+                                    select g.OrderByDescending(t => t.Version).FirstOrDefault()
+                                       )
+                               select new Sublocation
+                               {
+                                   ID = a.ID,
+                                   Store = a.Store,
+                                   Name = a.Name,
+                                   Description = a.Description,
+                                   StoreID = a.StoreID,
+
+                               }
+                                  ;
+            //var lastVersions1 =                                             lastVersions
+            //                   as ObjectQuery<Sublocation>
+            //                   ;
+            //var lastVersions2 = lastVersions1
+            //                   .Include(t => t.Store)
+            //                   ;
+            //var lastVersions3 = lastVersions2.ToList();
             return View(lastVersions.Include(t => t.Store).ToList());
             //return View(db.Sublocations.Include(t => t.Store).ToList());
         }
