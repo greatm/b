@@ -49,7 +49,8 @@
             @Html.LabelFor(model => model.PO.Vendor)
         </div>
         <div class="editor-field">
-            @Html.DisplayFor(model => model.PO.Vendor.Name)
+            @*@Html.LabelFor(model => model.PO.Vendor.Name)*@
+            @Html.EditorFor(model => model.PO.Vendor.Name)
             @*@Html.DropDownList("VendorID", String.Empty)*@
             @*@Html.ValidationMessageFor(model => model.VendorID)*@
         </div>
@@ -128,43 +129,26 @@
 @section Scripts {
     <script type="text/javascript">
         $(function () {
-            $("#POID").combobox();
+            $("#PO_Vendor_Name").attr("disabled", "disabled");
+            $("#POID").combobox({
+                select: function (event, ui) {
+                    var po_id = $(this).val();
+
+                    // read purchase order record to viewdata["curPO"]
+                    //alert("loading po " + po_id);
+                    $.getJSON("ChangePO", id = po_id, function (curPO) {
+                        // update vendor name from curpo to vendor box
+                        $("#PO_Vendor_Name").val(curPO.Name);
+
+                    });
+                }
+            });
             $("#VendorID").combobox();
             $("#itemEditor").sortable();
             $("#addAnother").click(function () {
                 $.get('/Purchase/PurchaseItemEntry', function (template) {
                     $("#itemEditor").append(template);
                 });
-            });
-            $("#POID").change(function () {
-                // read po_id
-                var po_id = $(this).val();
-
-                // read purchase order record to viewdata["curPO"]
-                alert(po_id);
-                // update vendor name from curpo to vendor box
-
-
-            });
-            $("#POID").click(function () {
-                // read po_id
-                var po_id = $(this).val();
-
-                // read purchase order record to viewdata["curPO"]
-                alert(po_id);
-                // update vendor name from curpo to vendor box
-
-
-            });
-            $("#POID").select(function () {
-                // read po_id
-                var po_id = $(this).val();
-
-                // read purchase order record to viewdata["curPO"]
-                alert(po_id);
-                // update vendor name from curpo to vendor box
-
-
             });
         });
     </script>

@@ -37,6 +37,21 @@ namespace b.Controllers
         //    this.ViewData["Vendors"] = new SelectList(newList, "Id", "Name");
 
         //}
+        protected void CreateVendorsList(Purchase purchase)
+        {
+            var vendors = from n in db.Vendors
+                          group n by n.ID into g
+                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            List<object> newList = new List<object>();
+            foreach (var vendor in vendors)
+                newList.Add(new
+                {
+                    Id = vendor.ID,
+                    Name = vendor.Name + " : " + vendor.Person
+                });
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name");
+            //this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", purchase.VendorID);
+        }
         protected void CreatePoList(Purchase purchase)
         {
             var poes = from n in db.PurchaseOrders
@@ -56,21 +71,6 @@ namespace b.Controllers
             PurchaseOrder po = null;
             po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
             return po;
-        }
-        protected void CreateVendorsList(Purchase purchase)
-        {
-            var vendors = from n in db.Vendors
-                          group n by n.ID into g
-                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            List<object> newList = new List<object>();
-            foreach (var vendor in vendors)
-                newList.Add(new
-                {
-                    Id = vendor.ID,
-                    Name = vendor.Name + " : " + vendor.Person
-                });
-            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name");
-            //this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", purchase.VendorID);
         }
 
         protected void CreateCustomersList(Sales workSales)

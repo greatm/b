@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace b.ASPX {
-    
-    
-    public partial class ReportPO {
-        
+namespace b.ASPX
+{
+
+
+    public partial class ReportPO
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace b.ASPX {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// ddlCategory control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace b.ASPX {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
-        
+
         /// <summary>
         /// ddlSupplier control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace b.ASPX {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSupplier;
-        
+
         /// <summary>
         /// rvProducts control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace b.ASPX {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Microsoft.Reporting.WebForms.ReportViewer rvProducts;
-        
+
         /// <summary>
         /// odsProducts control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace b.ASPX {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource odsProducts;
-        
+
         /// <summary>
         /// odsCategories control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace b.ASPX {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource odsCategories;
-        
+
         /// <summary>
         /// odsSuppliers control.
         /// </summary>

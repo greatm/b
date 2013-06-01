@@ -17,6 +17,7 @@ namespace b.Controllers
 {
     public class PurchaseController : BaseController
     {
+        protected PurchaseOrder curPO;
         public ActionResult Index()
         {
             var lastVersions = from n in db.Purchases
@@ -25,10 +26,6 @@ namespace b.Controllers
             return View(lastVersions.ToList());
             //return View(db.Purchases.ToList());
         }
-
-        //
-        // GET: /Purchase/Details/5
-
         public ActionResult Details(int id = 0, int version = 0)
         {
             Purchase purchase = db.Purchases.Find(id, version);
@@ -38,10 +35,6 @@ namespace b.Controllers
             }
             return View(purchase);
         }
-
-        //
-        // GET: /Purchase/Create
-
         public ActionResult Create()
         {
             Purchase newPurchase = new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> { new PurchaseItem { ProductID = 1, Qty = 1, Rate = 1 } } };
@@ -51,9 +44,6 @@ namespace b.Controllers
 
             return View(newPurchase);
         }
-
-        //
-        // POST: /Purchase/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -80,9 +70,6 @@ namespace b.Controllers
             return View(purchase);
         }
 
-        //
-        // GET: /Purchase/Edit/5
-
         public ActionResult Edit(int id = 0, int version = 0)
         {
             Purchase purchase = db.Purchases.Find(id, version);
@@ -92,9 +79,6 @@ namespace b.Controllers
             }
             return View(purchase);
         }
-
-        //
-        // POST: /Purchase/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -134,7 +118,11 @@ namespace b.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public JsonResult ChangePO(int id)
+        {
+            curPO = GetPO(id);
+            return Json(curPO, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult GridDataBasic(GridSettings grid)
         {
             IRepositoryUser _repository = new IRepositoryUser();
