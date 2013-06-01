@@ -122,8 +122,13 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Customer customer = db.Customers.Find(id, version);
-            db.Customers.Remove(customer);
+            //Customer customer = db.Customers.Find(id, version);
+            //db.Customers.Remove(customer);
+            var itemsToDelete = db.Customers.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.Customers.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

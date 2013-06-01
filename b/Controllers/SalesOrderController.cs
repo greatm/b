@@ -81,8 +81,13 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SalesOrder salesorder = db.SalesOrders.Find(id);
-            db.SalesOrders.Remove(salesorder);
+            //SalesOrder salesorder = db.SalesOrders.Find(id);
+            //db.SalesOrders.Remove(salesorder);
+            var itemsToDelete = db.SalesOrders.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.SalesOrders.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
