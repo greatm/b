@@ -10,16 +10,19 @@ using b.Models;
 
 namespace b.Controllers
 {
-    public class SalesController : Controller
+    public class SalesController : BaseController
     {
-        private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            return View(db.Sales.ToList());
+            var lastVersions = from n in db.Sales
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
+            //return View(db.Sales.ToList());
         }
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int version = 0)
         {
-            Sales sales = db.Sales.Find(id);
+            Sales sales = db.Sales.Find(id, version);
             if (sales == null)
             {
                 return HttpNotFound();
@@ -54,9 +57,9 @@ namespace b.Controllers
         //
         // GET: /Sales/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id = 0, int version = 0)
         {
-            Sales sales = db.Sales.Find(id);
+            Sales sales = db.Sales.Find(id, version);
             if (sales == null)
             {
                 return HttpNotFound();
@@ -83,9 +86,9 @@ namespace b.Controllers
         //
         // GET: /Sales/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id = 0, int version = 0)
         {
-            Sales sales = db.Sales.Find(id);
+            Sales sales = db.Sales.Find(id, version);
             if (sales == null)
             {
                 return HttpNotFound();
@@ -98,35 +101,18 @@ namespace b.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            Sales sales = db.Sales.Find(id);
-            db.Sales.Remove(sales);
+            //Sales sales = db.Sales.Find(id, version);
+            //db.Sales.Remove(sales);
+            var itemsToDelete = db.Sales.Where(t => t.ID == id);
+            foreach (var item in itemsToDelete)
+            {
+                if (item != null) db.Sales.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-        private void CreateCustomersList(Sales workSales)
-        {
-            var customers = db.Customers;
-            List<object> newList = new List<object>();
-            foreach (var customer in customers)
-                newList.Add(new
-                {
-                    Id = customer.ID,
-                    Name = customer.FirstName + " " + customer.LastName
-                });
-            this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSales.CustomerID);
-        }
-        private void CreateProductsList(SalesItem workSalesItem)
-        {
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workSalesItem.ProductID);
-        }
     }
 }

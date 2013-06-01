@@ -72,6 +72,23 @@ namespace b.Controllers
             this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name");
             //this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", purchase.VendorID);
         }
+
+        protected void CreateCustomersList(Sales workSales)
+        {
+            var customers = db.Customers;
+            List<object> newList = new List<object>();
+            foreach (var customer in customers)
+                newList.Add(new
+                {
+                    Id = customer.ID,
+                    Name = customer.FirstName + " " + customer.LastName
+                });
+            this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSales.CustomerID);
+        }
+        protected void CreateProductsList(SalesItem workSalesItem)
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workSalesItem.ProductID);
+        }
         #endregion
     }
 }

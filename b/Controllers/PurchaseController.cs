@@ -19,7 +19,11 @@ namespace b.Controllers
     {
         public ActionResult Index()
         {
-            return View(db.Purchases.ToList());
+            var lastVersions = from n in db.Purchases
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return View(lastVersions.ToList());
+            //return View(db.Purchases.ToList());
         }
 
         //
@@ -102,15 +106,11 @@ namespace b.Controllers
                 newItem.Version = purchase.Version + 1;
                 newItem.EntryDate = DateTime.Now;
                 db.Purchases.Add(newItem);
-                //db.Entry(purchase).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(purchase);
         }
-
-        //
-        // GET: /Purchase/Delete/5
 
         public ActionResult Delete(int id = 0, int version = 0)
         {
@@ -122,15 +122,10 @@ namespace b.Controllers
             return View(purchase);
         }
 
-        //
-        // POST: /Purchase/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            //Purchase purchase = db.Purchases.Find(id);
-            //db.Purchases.Remove(purchase);
             var itemsToDelete = db.Purchases.Where(t => t.ID == id);
             foreach (var item in itemsToDelete)
             {
