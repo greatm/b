@@ -22,11 +22,10 @@ namespace b.Controllers
         #region action
         public ActionResult Index()
         {
-            var lastVersions = from n in db.PurchaseOrders
+            var lastVersions = from n in db.PurchaseOrders.Include(t => t.Vendor)
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersions.ToList());
-            //return View(db.PurchaseOrders.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
