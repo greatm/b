@@ -13,15 +13,20 @@ namespace b.Controllers
         private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
+            var lastVersions = from n in db.Sublocations
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //var lastVersions = ((from n in db.Sublocations//.Include(t => t.Store).ToList()
             //                     group n by n.ID into g
             //                     select g.OrderByDescending(t => t.Version).FirstOrDefault())
             //                   as ObjectQuery<Sublocation>)
             //                   .Include(t => t.Store)
             //                   ;
-            var lastVersions = from n in db.Sublocations
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            //var 
+            //ObjectQuery<Sublocation> lastVersions = (from n in db.Sublocations
+            //                                         group n by n.ID into g
+            //                                         select g.OrderByDescending(t => t.Version).FirstOrDefault())
+            //                     as ObjectQuery<Sublocation>;
             //var lastVersions1 = db.Sublocations
             //    .GroupBy(t => t.ID)
             //    .Select(t => t.OrderByDescending(u => u.Version))

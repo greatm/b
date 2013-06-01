@@ -1,10 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using StackExchange.Profiling;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>b @ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+    @MiniProfiler.RenderIncludes()
 
     @Styles.Render("~/bundles/css")
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css" type="text/css" />
@@ -70,7 +73,9 @@
         <div>
             <p>@Html.ActionLink("Users", "ViewReport", "ReportUsers")</p>
             <hr />
+            <p>@Html.ActionLink("Purchase Orders", "ReportPO", "ASPX")</p>
             <p>@Html.ActionLink("Purchase", "ViewReport", "ReportPurchase")</p>
+            <hr />
             <p>@Html.ActionLink("Sales", "ViewReport", "ReportSales")</p>
         </div>
     </div>
@@ -88,7 +93,6 @@
             @RenderBody()
         </section>
     </div>
-
     <footer>
         <div class="content-wrapper">
             <div class="float-left">

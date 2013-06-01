@@ -46,7 +46,9 @@ namespace b.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                //new whatsnew { WorkTime = new DateTime(2013, 6, 01, 11, 00, 0), Work = "A B version delete – all versions" },
+                //new whatsnew { WorkTime = new DateTime(2013, 6, 01, 12, 00, 0), Work = "A B install package miniprofiler" },
+                new whatsnew { WorkTime = new DateTime(2013, 6, 01, 12, 00, 0), Work = "A B install package miniprofiler" },
+                new whatsnew { WorkTime = new DateTime(2013, 6, 01, 11, 00, 0), Work = "A B po – create – server error" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 31, 16, 00, 0), Work = "A B version delete – all versions" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 31, 15, 00, 0), Work = "A B master store edit – save gives error – server error" },
                 new whatsnew { WorkTime = new DateTime(2013, 5, 31, 14, 00, 0), Work = "A B master product edit – save gives error – server error" },

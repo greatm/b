@@ -13,6 +13,13 @@ namespace b
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Custom route for reports
+            routes.MapPageRoute(
+             "ReportRoute",                         // Route name
+             "ASPX/{reportname}",                // URL
+             "~/ASPX/{reportname}.aspx"   // File
+             );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

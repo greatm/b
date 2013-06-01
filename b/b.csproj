@@ -61,6 +61,7 @@
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Helpers">
       <HintPath>..\packages\microsoft-web-helpers.2.1.20710.2\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
@@ -261,6 +262,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ASPX\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASPX\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASPX\ReportPO.aspx.cs">
+      <DependentUpon>ReportPO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASPX\ReportPO.aspx.designer.cs">
+      <DependentUpon>ReportPO.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -319,9 +334,18 @@
     <Compile Include="ViewModels\SalesOrderItem.cs" />
     <Compile Include="ViewModels\Sales.cs" />
     <Compile Include="ViewModels\SalesOrder.cs" />
+    <Compile Include="Views\Shared\Webform.Master.cs">
+      <DependentUpon>Webform.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Webform.Master.designer.cs">
+      <DependentUpon>Webform.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="ASPX\index.aspx" />
+    <Content Include="ASPX\ReportPO.aspx" />
     <Content Include="Content\jquery.jgrowl.min.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -390,6 +414,7 @@
     <Content Include="Global.asax" />
     <Content Include="App_Data\ParameterReport.rdl" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="ASPX\Report7.rdlc" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
     <Content Include="App_Data\employee.rdl" />
     <Content Include="App_Data\ReportPurchase.rdl" />
@@ -533,6 +558,7 @@
     <Content Include="Views\MasterSublocation\Edit.cshtml" />
     <Content Include="Views\MasterSublocation\Delete.cshtml" />
     <Content Include="Views\Sales\SalesItemEntry.cshtml" />
+    <Content Include="Views\Shared\Webform.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -547,6 +573,7 @@
       <DependentUpon>201305310234590_mig_purchase_c1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

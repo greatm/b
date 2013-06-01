@@ -98,7 +98,11 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(purchase).State = EntityState.Modified;
+                Purchase newItem = purchase;
+                newItem.Version = purchase.Version + 1;
+                newItem.EntryDate = DateTime.Now;
+                db.Purchases.Add(newItem);
+                //db.Entry(purchase).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

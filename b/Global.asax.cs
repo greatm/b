@@ -32,5 +32,12 @@ namespace b
                 MiniProfiler.Start();
             }
         }
+        protected void Application_EndRequest()
+        {
+            if (Request.IsLocal)
+            {
+                MiniProfiler.Stop();
+            }
+        }
     }
 }

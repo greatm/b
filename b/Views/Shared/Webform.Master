@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Webform.master.cs" Inherits="b.Views.Shared.Webform" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContentRoot" runat="server">
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContentRoot" runat="server">
+    <form id="form2" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+    </form>
+</asp:Content>
