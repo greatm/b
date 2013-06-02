@@ -11,13 +11,8 @@ using System.Threading;
 
 namespace b.Controllers
 {
-    public class MasterVendorController : Controller
+    public class MasterVendorController : BaseController
     {
-        private bDBContext db = new bDBContext();
-
-        //
-        // GET: /MasterVendor/
-
         public ActionResult Index()
         {
             var lastVersionVendors = from n in db.Vendors
@@ -26,9 +21,6 @@ namespace b.Controllers
             return View(lastVersionVendors.ToList());
             //return View(db.Vendors.ToList());
         }
-
-        //
-        // GET: /MasterVendor/Details/5
 
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -121,10 +113,6 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            //Vendor vendor = db.Vendors.Find(id, version);
-            //db.Vendors.Remove(vendor);
-
-            //Vendor vendor = null;
             var itemsToDelete = db.Vendors.Where(t => t.ID == id);
             foreach (var item in itemsToDelete)
             {
@@ -133,12 +121,6 @@ namespace b.Controllers
 
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

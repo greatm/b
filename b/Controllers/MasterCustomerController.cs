@@ -10,20 +10,12 @@ using b.ViewModels;
 
 namespace b.Controllers
 {
-    public class MasterCustomerController : Controller
+    public class MasterCustomerController : BaseController
     {
-        private bDBContext db = new bDBContext();
-
-        //
-        // GET: /MasterCustomer/
-
         public ActionResult Index()
         {
             return View(db.Customers.ToList().Select(t => new CustomerSummary { Name = t.FirstName + " " + t.LastName, Active = t.Active.ToString(), ServiceLevel = t.ServiceLevel.ToString() }));
         }
-
-        //
-        // GET: /MasterCustomer/Details/5
 
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -34,9 +26,6 @@ namespace b.Controllers
             }
             return View(customer);
         }
-
-        //
-        // GET: /MasterCustomer/Create
 
         public ActionResult Create()
         {
@@ -131,12 +120,6 @@ namespace b.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

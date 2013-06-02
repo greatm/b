@@ -8,9 +8,8 @@ using System.Web.Mvc;
 
 namespace b.Controllers
 {
-    public class SalesOrderController : Controller
+    public class SalesOrderController : BaseController
     {
-        private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
             return View(db.SalesOrders.ToList());
@@ -90,28 +89,6 @@ namespace b.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-        private void CreateCustomersList(SalesOrder workSO)
-        {
-            var customers = db.Customers;
-            List<object> newList = new List<object>();
-            foreach (var customer in customers)
-                newList.Add(new
-                {
-                    Id = customer.ID,
-                    Name = customer.FirstName + " " + customer.LastName
-                });
-            this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSO.CustomerID);
-        }
-        private void CreateProductsList(SalesOrderItem workSOitem)
-        {
-            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workSOitem.ProductID);
         }
     }
 }

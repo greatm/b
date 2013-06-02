@@ -11,15 +11,8 @@ using System.Web.Mvc;
 
 namespace b.Controllers
 {
-    public class PurchaseOrderController : Controller
+    public class PurchaseOrderController : BaseController
     {
-        #region var
-
-        private bDBContext db = new bDBContext();
-
-        #endregion
-
-        #region action
         public ActionResult Index()
         {
             var lastVersions = from n in db.PurchaseOrders.Include(t => t.Vendor)
@@ -152,44 +145,8 @@ namespace b.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
-        #endregion
-
+      
         #region function
-        private void CreateVendorsList(PurchaseOrder workPO)
-        {
-            var vendors = from n in db.Vendors
-                          group n by n.ID into g
-                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            List<object> newList = new List<object>();
-            foreach (var vendor in vendors)
-                newList.Add(new
-                {
-                    Id = vendor.ID,
-                    Name = vendor.Name + " : " + vendor.Person
-                });
-            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
-
-        }
-        private void CreateProductsList(POItem poItem)
-        {
-            var lastVersions = from n in db.Products
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", poItem.ProductID);
-        }
-        private void CreateProductsList()
-        {
-            var lastVersions = from n in db.Products
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name");
-        }
-        #endregion
+          #endregion
     }
 }

@@ -8,12 +8,11 @@ using System;
 
 namespace b.Controllers
 {
-    public class MasterSublocationController : Controller
+    public class MasterSublocationController : BaseController
     {
-        private bDBContext db = new bDBContext();
         public ActionResult Index()
         {
-            var lastVersions = from n in db.Sublocations
+            var lastVersions = from n in db.Sublocations.Include(t => t.Store)
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //var lastVersions = ((from n in db.Sublocations//.Include(t => t.Store).ToList()
@@ -32,7 +31,7 @@ namespace b.Controllers
             //    .Select(t => t.OrderByDescending(u => u.Version))
             //                    .FirstOrDefault()
             //    ;
-            return View(lastVersions.ToList());
+            return View(lastVersions.Include(t => t.Store).ToList());
             //return View(db.Sublocations.Include(t => t.Store).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
@@ -147,12 +146,6 @@ namespace b.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

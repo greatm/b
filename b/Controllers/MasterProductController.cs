@@ -11,10 +11,8 @@ using System.Web.Helpers;
 
 namespace b.Controllers
 {
-    public class MasterProductController : Controller
+    public class MasterProductController : BaseController
     {
-        private bDBContext db = new bDBContext();
-
         public ActionResult Index()
         {
             var lastVersions = from n in db.Products
@@ -33,16 +31,10 @@ namespace b.Controllers
             return View(product);
         }
 
-        //
-        // GET: /MasterProduct/Create
-
         public ActionResult Create()
         {
             return View(new Product());
         }
-
-        //
-        // POST: /MasterProduct/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,9 +66,6 @@ namespace b.Controllers
 
             return View(product);
         }
-
-        //
-        // GET: /MasterProduct/Edit/5
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
@@ -167,12 +156,6 @@ namespace b.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

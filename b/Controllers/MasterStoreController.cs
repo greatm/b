@@ -9,10 +9,8 @@ using b.Models;
 
 namespace b.Controllers
 {
-    public class MasterStoreController : Controller
+    public class MasterStoreController : BaseController
     {
-        private bDBContext db = new bDBContext();
-
         public ActionResult Index()
         {
             var lastVersions = from n in db.Stores
@@ -96,9 +94,6 @@ namespace b.Controllers
             return View(store);
         }
 
-        //
-        // POST: /MasterStore/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version)
@@ -112,12 +107,6 @@ namespace b.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

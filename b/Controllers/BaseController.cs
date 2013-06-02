@@ -11,19 +11,43 @@ namespace b.Controllers
 {
     public class BaseController : Controller
     {
-        #region var
         protected bDBContext db = new bDBContext();
-        #endregion
 
-        #region action
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
-        #endregion
 
-        #region function
+        protected void CreateVendorsList(PurchaseOrder workPO)
+        {
+            var vendors = from n in db.Vendors
+                          group n by n.ID into g
+                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            List<object> newList = new List<object>();
+            foreach (var vendor in vendors)
+                newList.Add(new
+                {
+                    Id = vendor.ID,
+                    Name = vendor.Name + " : " + vendor.Person
+                });
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
+
+        }
+        protected void CreateProductsList(POItem poItem)
+        {
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", poItem.ProductID);
+        }
+        protected void CreateProductsList()
+        {
+            var lastVersions = from n in db.Products
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name");
+        }
         //private void CreateVendorsList()
         //{
         //    var vendors = db.Vendors;
@@ -66,13 +90,30 @@ namespace b.Controllers
                 });
             this.ViewData["POID"] = new SelectList(newList, "Id", "Name", purchase.POID);
         }
-        protected PurchaseOrder GetPO(int id)
+       [OutputCache(Duration=600)]
+         protected PurchaseOrder GetPO(int id)
         {
             PurchaseOrder po = null;
             po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
             return po;
         }
 
+        protected void CreateCustomersList(SalesOrder workSO)
+        {
+            var customers = db.Customers;
+            List<object> newList = new List<object>();
+            foreach (var customer in customers)
+                newList.Add(new
+                {
+                    Id = customer.ID,
+                    Name = customer.FirstName + " " + customer.LastName
+                });
+            this.ViewData["CustomerID"] = new SelectList(newList, "Id", "Name", workSO.CustomerID);
+        }
+        protected void CreateProductsList(SalesOrderItem workSOitem)
+        {
+            this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workSOitem.ProductID);
+        }
         protected void CreateCustomersList(Sales workSales)
         {
             var customers = db.Customers;
@@ -89,6 +130,5 @@ namespace b.Controllers
         {
             this.ViewData["ProductID"] = new SelectList(db.Products, "Id", "Name", workSalesItem.ProductID);
         }
-        #endregion
     }
 }

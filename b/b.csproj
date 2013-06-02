@@ -262,13 +262,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ASPX\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ASPX\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ASPX\ReportPO.aspx.cs">
       <DependentUpon>ReportPO.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -344,7 +337,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
-    <Content Include="ASPX\index.aspx" />
     <Content Include="ASPX\ReportPO.aspx" />
     <Content Include="Content\jquery.jgrowl.min.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -415,6 +407,7 @@
     <Content Include="App_Data\ParameterReport.rdl" />
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="ASPX\Report7.rdlc" />
+    <Content Include="cache.manifest" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
     <Content Include="App_Data\employee.rdl" />
     <Content Include="App_Data\ReportPurchase.rdl" />
