@@ -7,8 +7,8 @@ namespace b.ViewModels
     public class POItem
     {
         public int ID { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        //[Timestamp]
+        //public Byte[] Timestamp { get; set; }
         public int ProductID { get; set; }
         public Product Product { get; set; }
         public int Qty { get; set; }

@@ -90,8 +90,8 @@ namespace b.Controllers
                 });
             this.ViewData["POID"] = new SelectList(newList, "Id", "Name", purchase.POID);
         }
-       [OutputCache(Duration=600)]
-         protected PurchaseOrder GetPO(int id)
+        //[OutputCache(Duration = 600)]
+        protected PurchaseOrder GetPO(int id)
         {
             PurchaseOrder po = null;
             po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);

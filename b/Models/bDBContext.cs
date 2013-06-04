@@ -19,7 +19,9 @@ namespace b.Models
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public DbSet<POItem> POItems { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<PurchaseItem> PurchaseItems { get; set; }
 
         public DbSet<SalesOrder> SalesOrders { get; set; }
         public DbSet<Sales> Sales { get; set; }

@@ -15,10 +15,11 @@ namespace b.Controllers
     {
         public ActionResult Index()
         {
-            var lastVersions = from n in db.PurchaseOrders.Include(t => t.Vendor)
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            return View(lastVersions.ToList());
+            //var lastVersions = from n in db.PurchaseOrders.Include(t => t.Vendor)
+            //                   group n by n.ID into g
+            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            //return View(lastVersions.ToList());
+            return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -110,7 +111,6 @@ namespace b.Controllers
                 newItem.Version = purchaseorder.Version + 1;
                 newItem.EntryDate = DateTime.Now;
                 db.PurchaseOrders.Add(newItem);
-                //db.Entry(purchaseorder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -135,18 +135,22 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id);
-            //db.PurchaseOrders.Remove(purchaseorder);
-            var itemsToDelete = db.PurchaseOrders.Where(t => t.ID == id);
+            var itemsToDelete = db.PurchaseOrders.Where(t => t.ID == id).ToList();
             foreach (var item in itemsToDelete)
             {
-                if (item != null) db.PurchaseOrders.Remove(item);
+                if (item != null)
+                {
+                    db.Entry(item).Collection(t => t.POItems).Load();
+                    int count=item.POItems.Count;
+                    for (int i = 0; i < count;i++ )
+                    {
+                        db.POItems.Remove(item.POItems[0]);
+                    }
+                    db.PurchaseOrders.Remove(item);
+                }
             }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-      
-        #region function
-          #endregion
     }
 }

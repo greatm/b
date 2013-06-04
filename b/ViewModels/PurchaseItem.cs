@@ -10,8 +10,7 @@ namespace b.ViewModels
 {
     public class PurchaseItem
     {
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
+        public int ID { get; set; }
         public int ProductID { get; set; }
         public int Qty { get; set; }
         public Decimal Rate { get; set; }
