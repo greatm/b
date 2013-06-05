@@ -34,7 +34,14 @@ namespace b.Controllers
             //                   group n by n.ID into g
             //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             // return View(lastVersions.Include(t => t.Store).ToList());
-            return View(db.Sublocations.Include(t => t.Store).ToList());
+            var lastVersions = //from n in 
+                                   db.Sublocations.Include(t => t.Store)
+                               //group n by n.ID into g
+                               //select g.OrderByDescending(t => t.Version).FirstOrDefault()
+                                  .ToList() 
+                                  ;
+            return View(lastVersions);
+            //return View(db.Sublocations.Include(t => t.Store).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
