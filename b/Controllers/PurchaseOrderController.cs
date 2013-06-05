@@ -141,8 +141,8 @@ namespace b.Controllers
                 if (item != null)
                 {
                     db.Entry(item).Collection(t => t.POItems).Load();
-                    int count=item.POItems.Count;
-                    for (int i = 0; i < count;i++ )
+                    int count = item.POItems.Count;
+                    for (int i = 0; i < count; i++)
                     {
                         db.POItems.Remove(item.POItems[0]);
                     }

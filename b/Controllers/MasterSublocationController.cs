@@ -28,8 +28,8 @@ namespace b.Controllers
             //    .Select(t => t.OrderByDescending(u => u.Version))
             //                    .FirstOrDefault()
             //    ;
-          
-            
+
+
             //var lastVersions = from n in db.Sublocations.Include(t => t.Store)
             //                   group n by n.ID into g
             //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
