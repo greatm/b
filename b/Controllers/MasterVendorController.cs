@@ -11,20 +11,22 @@ using System.Threading;
 
 namespace b.Controllers
 {
-    public class MasterVendorController : BaseController
+    public class MasterVendorController : BaseController2
     {
         public ActionResult Index()
         {
-            var lastVersionVendors = from n in db.Vendors
-                                     group n by n.ID into g
-                                     select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            var lastVersionVendors = rb.All<Vendor>();
+            //var lastVersionVendors = from n in db.Vendors
+            //                         group n by n.ID into g
+            //                         select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersionVendors.ToList());
             //return View(db.Vendors.ToList());
         }
 
         public ActionResult Details(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id, version);
+            //Vendor vendor = db.Vendors.Find(id, version);
+            Vendor vendor = rb.Find<Vendor>(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -44,17 +46,18 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                int iId = 1;
-                try
-                {
-                    iId = db.Vendors.Max(t => t.ID) + 1;
-                }
-                catch { }
-                vendor.ID = iId;
-                vendor.Version = 1;
-                vendor.EntryDate = DateTime.Now;
-                db.Vendors.Add(vendor);
-                db.SaveChanges();
+                //int iId = 1;
+                //try
+                //{
+                //    iId = db.Vendors.Max(t => t.ID) + 1;
+                //}
+                //catch { }
+                //vendor.ID = iId;
+                //vendor.Version = 1;
+                //vendor.EntryDate = DateTime.Now;
+                //db.Vendors.Add(vendor);
+                //db.SaveChanges();
+                rb.Create<Vendor>(vendor);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +69,8 @@ namespace b.Controllers
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id, version);
+            //Vendor vendor = db.Vendors.Find(id, version);
+            Vendor vendor = rb.Find<Vendor>(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -83,11 +87,12 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                Vendor newItem = vendor;
-                newItem.Version = vendor.Version + 1;
-                newItem.EntryDate = DateTime.Now;
-                db.Vendors.Add(newItem);
-                db.SaveChanges();
+                //Vendor newItem = vendor;
+                //newItem.Version = vendor.Version + 1;
+                //newItem.EntryDate = DateTime.Now;
+                //db.Vendors.Add(newItem);
+                //db.SaveChanges();
+                rb.Edit<Vendor>(vendor);
                 return RedirectToAction("Index");
             }
             return View(vendor);
@@ -98,7 +103,8 @@ namespace b.Controllers
 
         public ActionResult Delete(int id = 0, int version = 0)
         {
-            Vendor vendor = db.Vendors.Find(id, version);
+            //Vendor vendor = db.Vendors.Find(id, version);
+            Vendor vendor = rb.Find<Vendor>(id, version);
             if (vendor == null)
             {
                 return HttpNotFound();
@@ -113,13 +119,14 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            var itemsToDelete = db.Vendors.Where(t => t.ID == id);
-            foreach (var item in itemsToDelete)
-            {
-                if (item != null) db.Vendors.Remove(item);
-            }
+            rb.Delete<Vendor>(t => t.ID == id);
+            //var itemsToDelete = db.Vendors.Where(t => t.ID == id);
+            //foreach (var item in itemsToDelete)
+            //{
+            //    if (item != null) db.Vendors.Remove(item);
+            //}
 
-            db.SaveChanges();
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
     }

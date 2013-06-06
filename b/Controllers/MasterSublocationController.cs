@@ -8,7 +8,7 @@ using System;
 
 namespace b.Controllers
 {
-    public class MasterSublocationController : BaseController
+    public class MasterSublocationController : BaseController2
     {
         public ActionResult Index()
         {
@@ -30,10 +30,9 @@ namespace b.Controllers
             //    ;
 
 
-            var lastVersions = from n in db.Sublocations.Include(t => t.Store)
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            return View(lastVersions.Include(t => t.Store).ToList());
+            //var lastVersions = from n in db.Sublocations.Include(t => t.Store)
+            //                   group n by n.ID into g
+            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //var lastVersions = //from n in 
             //                       db.Sublocations.Include(t => t.Store)
             //                   //group n by n.ID into g
@@ -42,10 +41,13 @@ namespace b.Controllers
             //                      ;
             //return View(lastVersions);
             //return View(db.Sublocations.Include(t => t.Store).ToList());
+            var lastVersions = rb.AllV<Sublocation>();
+            return View(lastVersions.Include(t => t.Store).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
-            Sublocation sublocation = db.Sublocations.Find(id, version);
+            //Sublocation sublocation = db.Sublocations.Find(id, version);
+            Sublocation sublocation = rb.Find<Sublocation>(id, version);
             if (sublocation == null)
             {
                 return HttpNotFound();
@@ -65,17 +67,18 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                int iId = 1;
-                try
-                {
-                    iId = db.Sublocations.Max(t => t.ID) + 1;
-                }
-                catch { }
-                sublocation.ID = iId;
-                sublocation.Version = 1;
-                sublocation.EntryDate = DateTime.Now;
-                db.Sublocations.Add(sublocation);
-                db.SaveChanges();
+                //int iId = 1;
+                //try
+                //{
+                //    iId = db.Sublocations.Max(t => t.ID) + 1;
+                //}
+                //catch { }
+                //sublocation.ID = iId;
+                //sublocation.Version = 1;
+                //sublocation.EntryDate = DateTime.Now;
+                //db.Sublocations.Add(sublocation);
+                //db.SaveChanges();
+                rb.Create<Sublocation>(sublocation);
                 return RedirectToAction("Index");
             }
 
@@ -88,7 +91,8 @@ namespace b.Controllers
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
-            Sublocation sublocation = db.Sublocations.Find(id, version);
+            //Sublocation sublocation = db.Sublocations.Find(id, version);
+            Sublocation sublocation = rb.Find<Sublocation>(id, version);
             if (sublocation == null)
             {
                 return HttpNotFound();
@@ -99,7 +103,8 @@ namespace b.Controllers
 
         private void CreateStoreDDitems(Sublocation sublocation)
         {
-            ViewBag.StoreID = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
+            ViewBag.StoreID = new SelectList(rb.GetStores(), "Id", "Name", sublocation.StoreID);
+            //ViewBag.StoreID = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
             //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
         }
 
@@ -112,12 +117,12 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                Sublocation newItem = sublocation;
-                newItem.Version = sublocation.Version + 1;
-                newItem.EntryDate = DateTime.Now;
-                db.Sublocations.Add(newItem);
-                //db.Entry(sublocation).State = EntityState.Modified;
-                db.SaveChanges();
+                //Sublocation newItem = sublocation;
+                //newItem.Version = sublocation.Version + 1;
+                //newItem.EntryDate = DateTime.Now;
+                //db.Sublocations.Add(newItem);
+                //db.SaveChanges();
+                rb.Edit<Sublocation>(sublocation);
                 return RedirectToAction("Index");
             }
             CreateStoreDDitems(sublocation);
@@ -130,7 +135,8 @@ namespace b.Controllers
 
         public ActionResult Delete(int id = 0, int version = 0)
         {
-            Sublocation sublocation = db.Sublocations.Find(id, version);
+            //Sublocation sublocation = db.Sublocations.Find(id, version);
+            Sublocation sublocation = rb.Find<Sublocation>(id, version);
             if (sublocation == null)
             {
                 return HttpNotFound();
@@ -147,12 +153,14 @@ namespace b.Controllers
         {
             //Sublocation sublocation = db.Sublocations.Find(id);
             //db.Sublocations.Remove(sublocation);
-            var itemsToDelete = db.Sublocations.Where(t => t.ID == id);
-            foreach (var item in itemsToDelete)
-            {
-                if (item != null) db.Sublocations.Remove(item);
-            }
-            db.SaveChanges();
+          
+            //var itemsToDelete = db.Sublocations.Where(t => t.ID == id);
+            //foreach (var item in itemsToDelete)
+            //{
+            //    if (item != null) db.Sublocations.Remove(item);
+            //}
+            //db.SaveChanges();
+            rb.Delete<Sublocation>(t => t.ID == id);
 
             return RedirectToAction("Index");
         }
