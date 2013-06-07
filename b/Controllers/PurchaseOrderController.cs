@@ -19,7 +19,9 @@ namespace b.Controllers
             //                   group n by n.ID into g
             //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //return View(lastVersions.ToList());
+           var v1= db.PurchaseOrders.Include(t => t.Vendor).ToList();
             return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
+            //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
