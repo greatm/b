@@ -206,7 +206,8 @@ namespace b.Models
             db.SaveChanges();
         }
 
-        public IEnumerable<Store> GetStores() {
+        public IEnumerable<Store> GetStores()
+        {
             return db.Stores;
         }
 

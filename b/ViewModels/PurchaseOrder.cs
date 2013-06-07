@@ -10,9 +10,9 @@ namespace b.ViewModels
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
-        public Vendor Vendor { get; set; }
-        public int VendorID { get; set; }
-        public int StoreID { get; set; }
-        public IList<POItem> POItems { get; set; }
+        public virtual Vendor Vendor { get; set; }
+        public virtual int VendorID { get; set; }
+        public virtual int StoreID { get; set; }
+        public virtual IList<POItem> POItems { get; set; }
     }
 }

@@ -86,9 +86,6 @@ namespace b.Controllers
             return View(sublocation);
         }
 
-        //
-        // GET: /MasterSubloaction/Edit/5
-
         public ActionResult Edit(int id = 0, int version = 0)
         {
             //Sublocation sublocation = db.Sublocations.Find(id, version);
@@ -107,9 +104,6 @@ namespace b.Controllers
             //ViewBag.StoreID = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
             //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
         }
-
-        //
-        // POST: /MasterSubloaction/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -153,7 +147,7 @@ namespace b.Controllers
         {
             //Sublocation sublocation = db.Sublocations.Find(id);
             //db.Sublocations.Remove(sublocation);
-          
+
             //var itemsToDelete = db.Sublocations.Where(t => t.ID == id);
             //foreach (var item in itemsToDelete)
             //{

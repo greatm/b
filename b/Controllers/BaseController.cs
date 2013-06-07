@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using b.Models;
 using b.ViewModels;
 using b.Filters;
+using System.Data;
+using System.Data.Entity;
 
 namespace b.Controllers
 {
@@ -207,7 +209,10 @@ namespace b.Controllers
         protected PurchaseOrder GetPO(int id)
         {
             PurchaseOrder po = null;
-            po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
+            //po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
+            //po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
+            po = db.PurchaseOrders.Include(t => t.Vendor).OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
+            db.Entry(po).Reference(t => t.Vendor).Load();
             return po;
         }
 

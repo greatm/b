@@ -118,7 +118,7 @@ namespace b.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public JsonResult ChangePO(int id)
+        public ActionResult ChangePO(int id)
         {
             curPO = GetPO(id);
             return Json(curPO, JsonRequestBehavior.AllowGet);

@@ -133,13 +133,15 @@
             $("#POID").combobox({
                 select: function (event, ui) {
                     var po_id = $(this).val();
+                    //$.getJSON("ChangePO", null, function (curPO) {
+                    //    $("#PO_Vendor_Name").val(curPO.Name);
+                    //});
 
-                    // read purchase order record to viewdata["curPO"]
-                    //alert("loading po " + po_id);
-                    $.getJSON("ChangePO", id = po_id, function (curPO) {
-                        // update vendor name from curpo to vendor box
-                        $("#PO_Vendor_Name").val(curPO.Name);
-
+                    $.ajax({
+                        url: "ChangePO/" + po_id,
+                        success: function (curPO) {
+                            $("#PO_Vendor_Name").val(curPO.Vendor.Name);
+                        }
                     });
                 }
             });
