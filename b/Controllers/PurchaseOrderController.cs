@@ -19,7 +19,8 @@ namespace b.Controllers
             //                   group n by n.ID into g
             //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //return View(lastVersions.ToList());
-           var v1= db.PurchaseOrders.Include(t => t.Vendor).ToList();
+            //var v1 = db.PurchaseOrders.Include(t => t.Vendor).ToList();
+            //var v2 = db.Sublocations.Include(t => t.Store).ToList();
             return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
             //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
         }
