@@ -137,7 +137,6 @@ namespace b.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Timestamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         ProductID = c.Int(nullable: false),
                         Qty = c.Int(nullable: false),
                         Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -161,12 +160,26 @@ namespace b.Migrations
                         Version = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
                         POID = c.Int(nullable: false),
-                        VendorID = c.Int(nullable: false),
                         VendorInvoice = c.String(),
                         EntryDate = c.DateTime(nullable: false),
                         Remarks = c.String(),
+                        PO_ID = c.Int(),
+                        PO_Version = c.Int(),
                     })
-                .PrimaryKey(t => new { t.ID, t.Version });
+                .PrimaryKey(t => new { t.ID, t.Version })
+                .ForeignKey("dbo.PurchaseOrders", t => new { t.PO_ID, t.PO_Version })
+                .Index(t => new { t.PO_ID, t.PO_Version });
+
+            CreateTable(
+                "dbo.PurchaseItems",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        ProductID = c.Int(nullable: false),
+                        Qty = c.Int(nullable: false),
+                        Rate = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.ID);
 
             CreateTable(
                 "dbo.SalesOrders",
@@ -243,12 +256,14 @@ namespace b.Migrations
         {
             DropIndex("dbo.SalesItems", new[] { "Sales_ID", "Sales_Version" });
             DropIndex("dbo.SalesOrderItems", new[] { "SalesOrder_ID", "SalesOrder_Version" });
+            DropIndex("dbo.Purchases", new[] { "PO_ID", "PO_Version" });
             DropIndex("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" });
             DropIndex("dbo.POItems", new[] { "Product_ID", "Product_Version" });
             DropIndex("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" });
             DropIndex("dbo.Sublocations", new[] { "Store_ID", "Store_Version" });
             DropForeignKey("dbo.SalesItems", new[] { "Sales_ID", "Sales_Version" }, "dbo.Sales");
             DropForeignKey("dbo.SalesOrderItems", new[] { "SalesOrder_ID", "SalesOrder_Version" }, "dbo.SalesOrders");
+            DropForeignKey("dbo.Purchases", new[] { "PO_ID", "PO_Version" }, "dbo.PurchaseOrders");
             DropForeignKey("dbo.POItems", new[] { "PurchaseOrder_ID", "PurchaseOrder_Version" }, "dbo.PurchaseOrders");
             DropForeignKey("dbo.POItems", new[] { "Product_ID", "Product_Version" }, "dbo.Products");
             DropForeignKey("dbo.PurchaseOrders", new[] { "Vendor_ID", "Vendor_Version" }, "dbo.Vendors");
@@ -257,6 +272,7 @@ namespace b.Migrations
             DropTable("dbo.Sales");
             DropTable("dbo.SalesOrderItems");
             DropTable("dbo.SalesOrders");
+            DropTable("dbo.PurchaseItems");
             DropTable("dbo.Purchases");
             DropTable("dbo.POItems");
             DropTable("dbo.PurchaseOrders");
