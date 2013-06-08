@@ -557,6 +557,7 @@
     <Content Include="Views\Shared\Webform.Master" />
     <Content Include="Views\PurchaseOrder\Copy of Index.cshtml" />
     <Content Include="Views\PurchaseOrder\PrintPO.cshtml" />
+    <Content Include="Views\PurchaseOrder\pdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
