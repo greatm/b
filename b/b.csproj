@@ -410,7 +410,6 @@
     <Content Include="App_Data\ParameterReport.rdl" />
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="ASPX\Report7.rdlc" />
-    <Content Include="cache.manifest" />
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
     <Content Include="App_Data\employee.rdl" />
     <Content Include="App_Data\ReportPurchase.rdl" />

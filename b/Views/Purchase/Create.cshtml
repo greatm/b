@@ -133,10 +133,6 @@
             $("#POID").combobox({
                 select: function (event, ui) {
                     var po_id = $(this).val();
-                    //$.getJSON("ChangePO", null, function (curPO) {
-                    //    $("#PO_Vendor_Name").val(curPO.Name);
-                    //});
-
                     $.ajax({
                         url: "ChangePO/" + po_id,
                         success: function (curVendor) {

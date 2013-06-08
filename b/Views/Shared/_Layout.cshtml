@@ -1,7 +1,8 @@
 ﻿@using StackExchange.Profiling;
 
 <!DOCTYPE html>
-<html lang="en" manifest="~/cache.manifest">
+@*<html lang="en" manifest="~/cache.manifest">*@
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>b @ViewBag.Title</title>
@@ -11,24 +12,22 @@
 
     @Styles.Render("~/bundles/css")
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css" type="text/css" />
-    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="~/Content/jquery.jgrowl.min.css" />
+    <link rel="Stylesheet" href="~/Content/ui.jqgrid.css" type="text/css" />
+
+    @* @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="~/Content/jquery.jgrowl.min.css" />
     <script src="~/Scripts/jquery.jgrowl.min.js"></script>
-
-    <script type="text/javascript" src="~/Scripts/jquery.jqGrid.src.js"></script>
-    @*<script type="text/javascript" src="jquery-ui-1.10.0.js"></script>*@
-    <link href="~/Content/ui.jqgrid.css" type="text/css" rel="Stylesheet" />
-
+    <script type="text/javascript" src="~/Scripts/jquery.jqGrid.min.js"></script>
 
     <script src="~/Scripts/MyScript.js"></script>
-    @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/bundles/ajax")*@
 </head>
 <body>
     <header>
-        <script type="text/javascript">m("u r in: @ViewBag.Title ");</script>
+        <script type="text/javascript">m("welcome in: @ViewBag.Title ");</script>
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">@Html.ActionLink("b", "Index", "Home", null, new { @class = "site-logo" })</p>
@@ -100,6 +99,16 @@
             </div>
         </div>
     </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery.jgrowl.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.jqGrid.min.js"></script>
+
+    <script src="~/Scripts/MyScript.js"></script>
+    @Scripts.Render("~/bundles/ajax")
 
     @RenderSection("scripts", required: false)
     @*@StackExchange.Profiling.MiniProfiler.RenderIncludes()*@
