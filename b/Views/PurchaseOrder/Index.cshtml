@@ -1,4 +1,4 @@
-﻿@model IEnumerable<b.ViewModels.PurchaseOrder>
+﻿@model IEnumerable<b.ViewModels.POwithVendor>
 
 @{
     ViewBag.Title = "Purchase Orders";
@@ -12,13 +12,13 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PO.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Vendor)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PO.Vendor)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Remarks)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PO.Remarks)
         </th>
         <th></th>
     </tr>
@@ -27,18 +27,18 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @Html.DisplayFor(modelItem => item.PO.Date)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Vendor.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Remarks)
+                @Html.DisplayFor(modelItem => item.PO.Remarks)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID, version = item.Version }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID, version = item.Version }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID, version = item.Version })
+                @Html.ActionLink("Edit", "Edit", new { id = item.PO.ID, version = item.PO.Version }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PO.ID, version = item.PO.Version }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PO.ID, version = item.PO.Version })
             </td>
         </tr>
     }

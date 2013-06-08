@@ -26,15 +26,14 @@ namespace b.Controllers
                                     select g.OrderByDescending(t => t.Version).FirstOrDefault()
                                     )
                             on lpo.ID equals vend.ID
-                            select new PurchaseOrder
+                            select new POwithVendor//PurchaseOrder
                             {
-                                ID = lpo.ID,
-                                Date = lpo.Date,
-                                Vendor = vend,
-                                POItems = lpo.POItems
+                                PO = lpo,
+                                Vendor = vend
                             }
                               ;
-            return View(lastVersions.ToList());
+            return View(poDisplay.ToList());
+            //return View(lastVersions.ToList());
             //var v1 = db.PurchaseOrders.Include(t => t.Vendor).ToList();
             //var v2 = db.Sublocations.Include(t => t.Store).ToList();
             //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());

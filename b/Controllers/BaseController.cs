@@ -209,9 +209,15 @@ namespace b.Controllers
         {
             PurchaseOrder po = null;
             po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
-            //po = db.PurchaseOrders.Include(t => t.Vendor).OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == id);
-            db.Entry(po).Reference(t => t.Vendor).Load();
+            //db.Entry(po).Reference(t => t.Vendor).Load();
             return po;
+        }
+        protected Vendor GetPOVendor(int po_id)
+        {
+            Vendor vendor = null;
+            //PurchaseOrder po = db.PurchaseOrders.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == po_id);
+            vendor = db.Vendors.OrderByDescending(t => t.Version).FirstOrDefault(t => t.ID == po_id);
+            return vendor;
         }
 
         protected void CreateCustomersList(SalesOrder workSO)

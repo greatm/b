@@ -18,6 +18,7 @@ namespace b.Controllers
     public class PurchaseController : BaseController
     {
         protected PurchaseOrder curPO;
+        protected Vendor  curVendor;
         public ActionResult Index()
         {
             var lastVersions = from n in db.Purchases
@@ -121,7 +122,8 @@ namespace b.Controllers
         public ActionResult ChangePO(int id)
         {
             curPO = GetPO(id);
-            return Json(curPO, JsonRequestBehavior.AllowGet);
+            curVendor = GetPOVendor(id);
+            return Json(curVendor, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GridDataBasic(GridSettings grid)
         {

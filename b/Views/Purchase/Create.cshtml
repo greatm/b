@@ -139,8 +139,8 @@
 
                     $.ajax({
                         url: "ChangePO/" + po_id,
-                        success: function (curPO) {
-                            $("#PO_Vendor_Name").val(curPO.Vendor.Name);
+                        success: function (curVendor) {
+                            $("#PO_Vendor_Name").val(curVendor.Name);
                         }
                     });
                 }

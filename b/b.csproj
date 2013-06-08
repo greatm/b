@@ -316,6 +316,7 @@
     <Compile Include="Validations\MaxWordsAttribute.cs" />
     <Compile Include="ViewModels\CustomerSummary.cs" />
     <Compile Include="ViewModels\POItem.cs" />
+    <Compile Include="ViewModels\POwithVendor.cs" />
     <Compile Include="ViewModels\Purchase.cs" />
     <Compile Include="ViewModels\PurchaseItem.cs" />
     <Compile Include="ViewModels\PurchaseOrder.cs" />
@@ -548,6 +549,7 @@
     <Content Include="Views\MasterSublocation\Delete.cshtml" />
     <Content Include="Views\Sales\SalesItemEntry.cshtml" />
     <Content Include="Views\Shared\Webform.Master" />
+    <Content Include="Views\PurchaseOrder\Copy of Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
