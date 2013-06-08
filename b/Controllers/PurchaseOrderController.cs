@@ -15,13 +15,29 @@ namespace b.Controllers
     {
         public ActionResult Index()
         {
-            //var lastVersions = from n in db.PurchaseOrders.Include(t => t.Vendor)
-            //                   group n by n.ID into g
-            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            //return View(lastVersions.ToList());
+            var lastVersions = from n in db.PurchaseOrders
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            var poDisplay = from lpo in lastVersions
+                            join vend in
+                                (
+                                    from n in db.Vendors
+                                    group n by n.ID into g
+                                    select g.OrderByDescending(t => t.Version).FirstOrDefault()
+                                    )
+                            on lpo.ID equals vend.ID
+                            select new PurchaseOrder
+                            {
+                                ID = lpo.ID,
+                                Date = lpo.Date,
+                                Vendor = vend,
+                                POItems = lpo.POItems
+                            }
+                              ;
+            return View(lastVersions.ToList());
             //var v1 = db.PurchaseOrders.Include(t => t.Vendor).ToList();
             //var v2 = db.Sublocations.Include(t => t.Store).ToList();
-            return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
+            //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
             //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
