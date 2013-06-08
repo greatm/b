@@ -60,6 +60,9 @@
     <Reference Include="HtmlSanitizationLibrary">
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.4.1.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Helpers">
@@ -79,6 +82,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="RazorPDF">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+    </Reference>
     <Reference Include="Rotativa">
       <HintPath>..\packages\Rotativa.1.6.1\lib\net40\Rotativa.dll</HintPath>
     </Reference>
@@ -550,6 +556,7 @@
     <Content Include="Views\Sales\SalesItemEntry.cshtml" />
     <Content Include="Views\Shared\Webform.Master" />
     <Content Include="Views\PurchaseOrder\Copy of Index.cshtml" />
+    <Content Include="Views\PurchaseOrder\PrintPO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

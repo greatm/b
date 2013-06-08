@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using RazorPDF;
 
 namespace b.Controllers
 {
@@ -138,7 +139,8 @@ namespace b.Controllers
         }
         public ActionResult PrintPO(int id = 0, int version = 0)
         {
-            return new ActionAsPdf("Edit", new { id = id, version = version }) { FileName = "po_1.pdf" };
+            return new PdfResult();
+            //return new ActionAsPdf("Edit", new { id = id, version = version }) { FileName = "po_1.pdf" };
         }
         public ActionResult Delete(int id = 0, int version = 0)
         {

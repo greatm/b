@@ -18,7 +18,7 @@ namespace b.Controllers
     public class PurchaseController : BaseController
     {
         protected PurchaseOrder curPO;
-        protected Vendor  curVendor;
+        protected Vendor curVendor;
         public ActionResult Index()
         {
             var lastVersions = from n in db.Purchases
