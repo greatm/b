@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="~/Content/jquery.jgrowl.min.css" />
     <link rel="Stylesheet" href="~/Content/ui.jqgrid.css" type="text/css" />
 
-    @* @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery.jgrowl.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.jqGrid.min.js"></script>
 
-    <script src="~/Scripts/MyScript.js"></script>
-    @Scripts.Render("~/bundles/ajax")*@
+    @*<script src="~/Scripts/MyScript.js"></script>*@
+    @*@Scripts.Render("~/bundles/ajax")*@
 </head>
 <body>
     <header>
@@ -100,17 +100,9 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/modernizr")
-    <script src="~/Scripts/jquery.jgrowl.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.jqGrid.min.js"></script>
-
     <script src="~/Scripts/MyScript.js"></script>
     @Scripts.Render("~/bundles/ajax")
 
     @RenderSection("scripts", required: false)
-    @*@StackExchange.Profiling.MiniProfiler.RenderIncludes()*@
 </body>
 </html>
