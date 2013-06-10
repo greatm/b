@@ -73,7 +73,8 @@
                 {
                     <tr>
                         <td>None.</td>
-                    </tr>  }
+                    </tr>  
+                }
                 @if (Model != null && Model.POItems != null)
                 {
                     foreach (POItem poitem in Model.POItems)
@@ -106,6 +107,7 @@
             $("#itemEditor").sortable();
             $("#addAnother").click(function () {
                 $.get('/PurchaseOrder/POItemEntryRow', function (template) {
+                    //template.c
                     $("#itemEditor").append(template);
                 });
             });
