@@ -1,0 +1,44 @@
+﻿@using b.ViewModels;
+@model List<PurchaseOrder>
+
+@{
+    ViewBag.Title = "PrintPO";
+}
+
+<h2>PrintPO</h2>
+
+<table cellpadding="3" cellspacing="3">
+    <tr border="1" bgcolor="#777777" color="#ffffff">
+        <td width="20%" align="center">Id
+        </td>
+        <td width="50%" align="center">Date
+        </td>
+        <td width="30%" align="center"></td>
+    </tr>
+    @{
+        var OddColor = "#DDEEEE";
+        var evenColor = "#EEFFFF";
+        var Odd = OddColor;
+    }
+    @foreach (PurchaseOrder customer in Model)
+    {
+        <tr border="1" bgcolor="@Odd">
+            <td>@customer.ID
+            </td>
+            <td>@customer.Date
+            </td>
+            <td>
+                @customer.VendorID
+            </td>
+        </tr>
+        if (Odd == OddColor)
+        {
+            Odd = evenColor;
+        }
+        else
+        {
+            Odd = OddColor;
+        }
+
+    }
+</table>

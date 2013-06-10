@@ -292,6 +292,7 @@
     <Compile Include="Controllers\PurchaseHomeController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\ReportCustomersController.cs" />
+    <Compile Include="Controllers\ReportPOController.cs" />
     <Compile Include="Controllers\ReportPurchaseController.cs" />
     <Compile Include="Controllers\ReportSalesController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -561,6 +562,8 @@
     <Content Include="Views\PurchaseOrder\Copy of Index.cshtml" />
     <Content Include="Views\PurchaseOrder\PrintPO.cshtml" />
     <Content Include="Views\PurchaseOrder\pdf.cshtml" />
+    <Content Include="Views\ReportUsers\PrintUsers.cshtml" />
+    <Content Include="Views\ReportPO\PrintPO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

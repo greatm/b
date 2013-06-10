@@ -1,12 +1,24 @@
 ﻿
-function CalculateAmount(rate, qty) {
-    var iRate = rate.val();
-    var quantity = qty.val();
+function CalPOItemAmount() {
+    var nrate = $(this).attr("name");
+    //alert(nrate);
+    var nrow = nrate.split('.')[0];
+    //alert(nrow);
+    nrate = nrow + '.Rate';
+    var nqty = nrow + '.Qty';
+    //alert(nqty);
+    var namt = nrow + '.Amount';
+    var vrate = $("[name='" + nrate + "']").val();
+    //alert(vrate);
+    //alert($(this).attr("name"));
+    var vqty = $("[name='" + nqty + "']").val();
+    //alert(vqty);
+    var vamt = vrate * vqty;
+    //alert(vamt);
 
-    var amount = quantity * iRate;
-
-    return amount;
-}
+    //alert("vrate: " + vrate + " vqty: " + vqty);
+    $("[name='" + namt + "']").val(vamt);
+};
 
 function m(msg) {
     $.jGrowl(msg, { pool: 2 });

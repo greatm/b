@@ -1,0 +1,42 @@
+﻿@using b.Models;
+@model List<UserProfile>
+
+@{
+    ViewBag.Title = "PrintUsers";
+}
+
+<h2>Print Users</h2>
+
+<table cellpadding="3" cellspacing="3">
+    <tr border="1" bgcolor="#777777" color="#ffffff">
+        <td width="20%" align="center">User Id
+        </td>
+        <td width="50%" align="center">User Name
+        </td>
+        <td width="30%" align="center"></td>
+    </tr>
+    @{
+        var OddColor = "#DDEEEE";
+        var evenColor = "#EEFFFF";
+        var Odd = OddColor;
+    }
+    @foreach (UserProfile customer in Model)
+    {
+        <tr border="1" bgcolor="@Odd">
+            <td>@customer.UserId
+            </td>
+            <td>@customer.UserName
+            </td>
+            <td></td>
+        </tr>
+        if (Odd == OddColor)
+        {
+            Odd = evenColor;
+        }
+        else
+        {
+            Odd = OddColor;
+        }
+
+    }
+</table>

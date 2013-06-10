@@ -39,8 +39,8 @@ namespace b.pdf
 
         private static ViewContext CreateViewContext(TextWriter responseWriter, ControllerContext fakeControllerContext)
         {
-            return null;
-            //return new ViewContext(fakeControllerContext, new FakeView(), new ViewDataDictionary(), new TempDataDictionary(), responseWriter);
+            // return null;
+            return new ViewContext(fakeControllerContext, new FakeView(), new ViewDataDictionary(), new TempDataDictionary(), responseWriter);
         }
     }
     public class StandardPdfRenderer
@@ -147,5 +147,41 @@ namespace b.pdf
             pageNumberTemplate.ShowText(string.Empty + (writer.PageNumber - 1));
             pageNumberTemplate.EndText();
         }
+    }
+    public class BinaryContentResult : ActionResult
+    {
+        private readonly string contentType;
+        private readonly byte[] contentBytes;
+
+        public BinaryContentResult(byte[] contentBytes, string contentType)
+        {
+            this.contentBytes = contentBytes;
+            this.contentType = contentType;
+        }
+
+        public override void ExecuteResult(ControllerContext context)
+        {
+            var response = context.HttpContext.Response;
+            response.Clear();
+            response.Cache.SetCacheability(HttpCacheability.Public);
+            response.ContentType = this.contentType;
+
+            using (var stream = new MemoryStream(this.contentBytes))
+            {
+                stream.WriteTo(response.OutputStream);
+                stream.Flush();
+            }
+        }
+    }
+    public class FakeView : IView
+    {
+        #region IView Members
+
+        public void Render(ViewContext viewContext, TextWriter writer)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

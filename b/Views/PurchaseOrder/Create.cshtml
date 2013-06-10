@@ -116,28 +116,9 @@
             .tooltip()
             ;
 
-            function CalculateAmount() {
-                var nrate = $(this).attr("name");
-                //alert(nrate);
-                var nrow = nrate.split('.')[0];
-                //alert(nrow);
-                var nqty = nrow + '.Qty';
-                //alert(nqty);
-                var namt = nrow + '.Amount';
-                var vrate = $(this).val();
-                //alert(vrate);
-                //alert($(this).attr("name"));
-                var vqty = $("[name='" + nqty + "']").val();
-                //alert(vqty);
-                var vamt = vrate * vqty;
-                //alert(vamt);
-
-                //alert("vrate: " + vrate + " vqty: " + vqty);
-                $("[name='" + namt + "']").val(vamt);
-            };
             $("td input[name ^= 'POItems']").each(function (index) {
                 //$("td input[name ^= 'POItems'][name $='Rate']").each(function (index) {
-                this.onchange = CalculateAmount;
+                this.onchange = CalPOItemAmount;
             });
         });
     </script>

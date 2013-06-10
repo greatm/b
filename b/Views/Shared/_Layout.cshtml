@@ -20,10 +20,9 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery.jgrowl.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.jqGrid.min.js"></script>
-
-    @*<script src="~/Scripts/MyScript.js"></script>*@
-    @*@Scripts.Render("~/bundles/ajax")*@
+    <script src="~/Scripts/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/MyScript.js"></script>
+    @Scripts.Render("~/bundles/ajax")
 </head>
 <body>
     <header>
@@ -70,9 +69,11 @@
         </div>
         <h3>Reports</h3>
         <div>
-            <p>@Html.ActionLink("Users", "ViewReport", "ReportUsers")</p>
+            <p>@Html.ActionLink("Users", "PrintUsers", "ReportUsers")</p>
+            <p>@*@Html.ActionLink("Users", "ViewReport", "ReportUsers")*@</p>
             <hr />
-            <p>@Html.ActionLink("Purchase Orders", "ReportPO", "ASPX")</p>
+            <p>@Html.ActionLink("Purchase Orders", "PrintPO", "ReportPO")</p>
+            @*<p>@Html.ActionLink("Purchase Orders", "ReportPO", "ASPX")</p>*@
             <p>@Html.ActionLink("Purchase", "ViewReport", "ReportPurchase")</p>
             <hr />
             <p>@Html.ActionLink("Sales", "ViewReport", "ReportSales")</p>
@@ -99,9 +100,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="~/Scripts/MyScript.js"></script>
-    @Scripts.Render("~/bundles/ajax")
 
     @RenderSection("scripts", required: false)
 </body>
