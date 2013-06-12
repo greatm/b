@@ -10,10 +10,9 @@ namespace b.ViewModels
     public class SalesOrderItem
     {
         public int ID { get; set; }
-        [Timestamp]
-        public Byte[] Timestamp { get; set; }
         public int ProductID { get; set; }
         public int Qty { get; set; }
-        public decimal Price { get; set; }
+        public decimal Rate { get; set; }
+        public decimal Amount { get; set; }
     }
 }

@@ -308,6 +308,14 @@
     <Compile Include="Migrations\201306071123297_mig_start.Designer.cs">
       <DependentUpon>201306071123297_mig_start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306120414350_mig_salesorder_amount.cs" />
+    <Compile Include="Migrations\201306120414350_mig_salesorder_amount.Designer.cs">
+      <DependentUpon>201306120414350_mig_salesorder_amount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306120417313_mig_salesorder_Rate.cs" />
+    <Compile Include="Migrations\201306120417313_mig_salesorder_Rate.Designer.cs">
+      <DependentUpon>201306120417313_mig_salesorder_Rate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -573,6 +581,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201306071123297_mig_start.resx">
       <DependentUpon>201306071123297_mig_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306120414350_mig_salesorder_amount.resx">
+      <DependentUpon>201306120414350_mig_salesorder_amount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306120417313_mig_salesorder_Rate.resx">
+      <DependentUpon>201306120417313_mig_salesorder_Rate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -10,10 +10,6 @@ namespace b.ViewModels
 {
     public class SalesOrder : VersionTable
     {
-        //public int ID { get; set; }
-        //[Timestamp]
-        //public Byte[] Timestamp { get; set; }
-
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

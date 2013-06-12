@@ -104,5 +104,9 @@
 @section Scripts {
     <script type="text/javascript">
         $("#CustomerID").combobox();
+        $("td input[name ^= 'SalesOrderItems']").each(function (index) {
+            //$("td input[name ^= 'POItems'][name $='Rate']").each(function (index) {
+            this.onchange = CalPOItemAmount;
+        });
     </script>
 }
