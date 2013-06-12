@@ -5,14 +5,14 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace b.ViewModels
+namespace b.Models
 {
-    public class SalesOrderItem
+    public class SalesItem
     {
         public int ID { get; set; }
         public int ProductID { get; set; }
         public int Qty { get; set; }
-        public decimal Rate { get; set; }
-        public decimal Amount { get; set; }
+        public Decimal Rate { get; set; }
+        public Decimal Amount { get; set; }
     }
 }

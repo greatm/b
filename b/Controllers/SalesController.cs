@@ -29,6 +29,7 @@ namespace b.Controllers
             }
             return View(sales);
         }
+
         public ActionResult Create()
         {
             Sales newSales = new Sales { Date = DateTime.Today, SalesItems = new List<SalesItem>() };
@@ -37,8 +38,6 @@ namespace b.Controllers
             newSales.SalesItems.Add(soItem);
             CreateCustomersList(newSales);
             return View(newSales);
-
-            //return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,9 +53,6 @@ namespace b.Controllers
             return View(sales);
         }
 
-        //
-        // GET: /Sales/Edit/5
-
         public ActionResult Edit(int id = 0, int version = 0)
         {
             Sales sales = db.Sales.Find(id, version);
@@ -66,10 +62,6 @@ namespace b.Controllers
             }
             return View(sales);
         }
-
-        //
-        // POST: /Sales/Edit/5
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Sales sales)
@@ -83,9 +75,6 @@ namespace b.Controllers
             return View(sales);
         }
 
-        //
-        // GET: /Sales/Delete/5
-
         public ActionResult Delete(int id = 0, int version = 0)
         {
             Sales sales = db.Sales.Find(id, version);
@@ -95,10 +84,6 @@ namespace b.Controllers
             }
             return View(sales);
         }
-
-        //
-        // POST: /Sales/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
@@ -113,6 +98,5 @@ namespace b.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

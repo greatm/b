@@ -1,6 +1,6 @@
-﻿@using b.Models;
+﻿@using b.ViewModels;
 
-@model IEnumerable<Sublocation>
+@model IEnumerable<SublocationStore>
 
 @{
     ViewBag.Title = "Master Sub Locations";
@@ -17,13 +17,13 @@
             @Html.DisplayNameFor(model => model.Store)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Sublocation.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Sublocation.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Remarks)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Sublocation.Remarks)
         </th>
         <th></th>
     </tr>
@@ -35,18 +35,18 @@
                 @Html.DisplayFor(modelItem => item.Store.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Sublocation.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Sublocation.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Remarks)
+                @Html.DisplayFor(modelItem => item.Sublocation.Remarks)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID, version = item.Version }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID, version = item.Version }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID, version = item.Version })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Sublocation.ID, version = item.Sublocation.Version }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Sublocation.ID, version = item.Sublocation.Version }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Sublocation.ID, version = item.Sublocation.Version })
             </td>
         </tr>
     }

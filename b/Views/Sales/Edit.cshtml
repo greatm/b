@@ -75,5 +75,12 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $("#CustomerID").combobox();
+            $("td input[name ^= 'SalesItems']").each(function (index) {//$("td input[name ^= 'POItems'][name $='Rate']").each(function (index) {
+                this.onchange = CalPOItemAmount;
+            });
+        });
+    </script>
 }

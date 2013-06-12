@@ -127,11 +127,11 @@
 
 @section Scripts {
     <script type="text/javascript">
-        //(function ($) {
-        //    $(function () {
-        //        $.jGrowl("Hello world!");
-        //    });
-        //})(jQuery);
-        //statusMessage("hi");
+        $(function () {
+            $("#CustomerID").combobox();
+            $("td input[name ^= 'SalesItems']").each(function (index) {//$("td input[name ^= 'POItems'][name $='Rate']").each(function (index) {
+                this.onchange = CalPOItemAmount;
+            });
+        });
     </script>
 }

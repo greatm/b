@@ -321,6 +321,10 @@
     <Compile Include="Migrations\201306120552257_mig_storetransfer.Designer.cs">
       <DependentUpon>201306120552257_mig_storetransfer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306121141417_mig_salesitem.cs" />
+    <Compile Include="Migrations\201306121141417_mig_salesitem.Designer.cs">
+      <DependentUpon>201306121141417_mig_salesitem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -341,15 +345,16 @@
     <Compile Include="Repository\ModelRepository.cs" />
     <Compile Include="Validations\MaxWordsAttribute.cs" />
     <Compile Include="ViewModels\CustomerSummary.cs" />
-    <Compile Include="ViewModels\POItem.cs" />
+    <Compile Include="Models\POItem.cs" />
     <Compile Include="ViewModels\POwithVendor.cs" />
-    <Compile Include="ViewModels\Purchase.cs" />
-    <Compile Include="ViewModels\PurchaseItem.cs" />
-    <Compile Include="ViewModels\PurchaseOrder.cs" />
-    <Compile Include="ViewModels\SalesItem.cs" />
-    <Compile Include="ViewModels\SalesOrderItem.cs" />
-    <Compile Include="ViewModels\Sales.cs" />
-    <Compile Include="ViewModels\SalesOrder.cs" />
+    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseItem.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
+    <Compile Include="Models\SalesItem.cs" />
+    <Compile Include="Models\SalesOrderItem.cs" />
+    <Compile Include="Models\Sales.cs" />
+    <Compile Include="Models\SalesOrder.cs" />
+    <Compile Include="ViewModels\SublocationStore.cs" />
     <Compile Include="Views\Shared\Webform.Master.cs">
       <DependentUpon>Webform.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -602,6 +607,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306120552257_mig_storetransfer.resx">
       <DependentUpon>201306120552257_mig_storetransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306121141417_mig_salesitem.resx">
+      <DependentUpon>201306121141417_mig_salesitem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

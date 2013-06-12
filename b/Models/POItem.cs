@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace b.ViewModels
+namespace b.Models
 {
     public class POItem
     {

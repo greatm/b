@@ -1,4 +1,5 @@
 ﻿using b.Models;
+using b.ViewModels;
 using System.Data;
 using System.Data.Objects;
 using System.Data.Entity;
@@ -41,8 +42,28 @@ namespace b.Controllers
             //                      ;
             //return View(lastVersions);
             //return View(db.Sublocations.Include(t => t.Store).ToList());
+
             var lastVersions = rb.AllV<Sublocation>();
-            return View(lastVersions.Include(t => t.Store).ToList());
+            //return View(lastVersions.Include(t => t.Store).ToList());
+
+            //var lastVersions = from n in db.PurchaseOrders
+            //                   group n by n.ID into g
+            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            var DisplayItems = from lpo in lastVersions
+                               join vend in
+                                   (
+                                       from n in rb.AllV<Store>()
+                                       group n by n.ID into g
+                                       select g.OrderByDescending(t => t.Version).FirstOrDefault()
+                                       )
+                               on lpo.ID equals vend.ID
+                               select new SublocationStore
+                               {
+                                   Sublocation = lpo,
+                                   Store = vend
+                               }
+                              ;
+            return View(DisplayItems.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {

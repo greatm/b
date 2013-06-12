@@ -28,6 +28,7 @@ namespace b.Models
         public DbSet<SalesOrder> SalesOrders { get; set; }
         public DbSet<SalesOrderItem> SalesOrderItems { get; set; }
         public DbSet<Sales> Sales { get; set; }
+        public DbSet<SalesItem> SalesItems { get; set; }
     }
     public class VersionTable
     {
