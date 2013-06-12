@@ -48,7 +48,8 @@ namespace b.Models
             context.whatsnews.AddOrUpdate(
                 p => p.WorkTime,
 
-                //new whatsnew { WorkTime = new DateTime(2013, 6, 01, 14, 00, 0), Work = "A B add version in sales" },
+                //new whatsnew { WorkTime = new DateTime(2013, 6, 11, 14, 00, 0), Work = "A B version delete – all versions – po with items" },
+                new whatsnew { WorkTime = new DateTime(2013, 6, 11, 14, 00, 0), Work = "A B version delete – all versions – po with items" },
                 new whatsnew { WorkTime = new DateTime(2013, 6, 01, 14, 00, 0), Work = "A B add version in sales" },
                 new whatsnew { WorkTime = new DateTime(2013, 6, 01, 13, 00, 0), Work = "A B add version in purchase" },
                 new whatsnew { WorkTime = new DateTime(2013, 6, 01, 12, 00, 0), Work = "A B install package miniprofiler" },
