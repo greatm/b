@@ -95,16 +95,13 @@ namespace b.Models
         }
         public IQueryable<T> AllV<T>(string sIncludeTable = null) where T : VersionTable
         {
-            //var lastVersions = from n in db.Sublocations.Include(t => t.Store)
-            //                   group n by n.ID into g
-            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            var lastVersions = from n in db.Set<T>()//.Include(sIncludeTable)
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            return lastVersions;
-            //if (string.IsNullOrEmpty(sIncludeTable))
-            //    return db.Set<T>().AsQueryable();
-            //return db.Set<T>().Include(sIncludeTable).AsQueryable();
+            if (string.IsNullOrEmpty(sIncludeTable))
+                return from n in db.Set<T>()
+                       group n by n.ID into g
+                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return from n in db.Set<T>().Include(sIncludeTable)
+                   group n by n.ID into g
+                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
         }
         public virtual IQueryable<T> Filter<T>(Expression<Func<T, bool>> predicate) where T : class
         {
