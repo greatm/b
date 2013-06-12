@@ -23,7 +23,10 @@ namespace b.Models
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
 
+        public DbSet<StoreTransfer> StoreTransfers { get; set; }
+        public DbSet<StoreTransferItem> StoreTransferItems { get; set; }
         public DbSet<SalesOrder> SalesOrders { get; set; }
+        public DbSet<SalesOrderItem> SalesOrderItems { get; set; }
         public DbSet<Sales> Sales { get; set; }
     }
     public class VersionTable

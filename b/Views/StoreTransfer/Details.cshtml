@@ -1,0 +1,50 @@
+﻿@model b.Models.StoreTransfer
+
+@{
+    ViewBag.Title = "store transfer details";
+}
+
+<h2>Store Transfer Details</h2>
+
+<fieldset>
+    <legend>StoreTransfer</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FromStoreID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromStoreID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ToStoreID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToStoreID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.EntryDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EntryDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Remarks)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Remarks)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

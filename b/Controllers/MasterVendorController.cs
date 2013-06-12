@@ -15,7 +15,7 @@ namespace b.Controllers
     {
         public ActionResult Index()
         {
-            var lastVersionVendors = rb.All<Vendor>();
+            var lastVersionVendors = rb.AllV<Vendor>();
             //var lastVersionVendors = from n in db.Vendors
             //                         group n by n.ID into g
             //                         select g.OrderByDescending(t => t.Version).FirstOrDefault();
@@ -98,9 +98,6 @@ namespace b.Controllers
             return View(vendor);
         }
 
-        //
-        // GET: /MasterVendor/Delete/5
-
         public ActionResult Delete(int id = 0, int version = 0)
         {
             //Vendor vendor = db.Vendors.Find(id, version);
@@ -111,9 +108,6 @@ namespace b.Controllers
             }
             return View(vendor);
         }
-
-        //
-        // POST: /MasterVendor/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

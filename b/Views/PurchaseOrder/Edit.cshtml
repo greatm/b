@@ -106,6 +106,10 @@
                     $("#itemEditor").append(template);
                 });
             });
+            $("td input[name ^= 'POItems']").each(function (index) {
+                //$("td input[name ^= 'POItems'][name $='Rate']").each(function (index) {
+                this.onchange = CalPOItemAmount;
+            });
         });
     </script>
 }

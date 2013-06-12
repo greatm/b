@@ -300,6 +300,7 @@
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SalesHomeController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
+    <Compile Include="Controllers\StoreTransferController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,6 +317,10 @@
     <Compile Include="Migrations\201306120417313_mig_salesorder_Rate.Designer.cs">
       <DependentUpon>201306120417313_mig_salesorder_Rate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306120552257_mig_storetransfer.cs" />
+    <Compile Include="Migrations\201306120552257_mig_storetransfer.Designer.cs">
+      <DependentUpon>201306120552257_mig_storetransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -324,6 +329,8 @@
     <Compile Include="Models\PackingList.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\StoreTransfer.cs" />
+    <Compile Include="Models\StoreTransferItem.cs" />
     <Compile Include="Models\Sublocation.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Models\whatsnew.cs" />
@@ -572,6 +579,11 @@
     <Content Include="Views\PurchaseOrder\pdf.cshtml" />
     <Content Include="Views\ReportUsers\PrintUsers.cshtml" />
     <Content Include="Views\ReportPO\PrintPO.cshtml" />
+    <Content Include="Views\StoreTransfer\Index.cshtml" />
+    <Content Include="Views\StoreTransfer\Details.cshtml" />
+    <Content Include="Views\StoreTransfer\Create.cshtml" />
+    <Content Include="Views\StoreTransfer\Edit.cshtml" />
+    <Content Include="Views\StoreTransfer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -587,6 +599,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306120417313_mig_salesorder_Rate.resx">
       <DependentUpon>201306120417313_mig_salesorder_Rate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306120552257_mig_storetransfer.resx">
+      <DependentUpon>201306120552257_mig_storetransfer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

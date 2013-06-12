@@ -14,8 +14,8 @@ namespace b.Models
     #region IRepository
     public interface IRepository : IDisposable
     {
-        IQueryable<T> All<T>() where T : class;
-        IQueryable<T> AllV<T>(string sIncludeTable = null) where T : class;
+        IQueryable<T> All<T>(string sIncludeTable = null) where T : class;
+        IQueryable<T> AllV<T>(string sIncludeTable = null) where T : VersionTable;
 
         IQueryable<T> Filter<T>(Expression<Func<T, bool>> predicate) where T : class;
 
@@ -87,18 +87,24 @@ namespace b.Models
         {
             return All<T>().FirstOrDefault(expression);
         }
-        public IQueryable<T> All<T>() where T : class
+        public IQueryable<T> All<T>(string sIncludeTable = null) where T : class
         {
-            return db.Set<T>().AsQueryable();
+            if (string.IsNullOrEmpty(sIncludeTable))
+                return db.Set<T>().AsQueryable();
+            return db.Set<T>().Include(sIncludeTable).AsQueryable();
         }
-        public IQueryable<T> AllV<T>(string sIncludeTable = null) where T : class
+        public IQueryable<T> AllV<T>(string sIncludeTable = null) where T : VersionTable
         {
             //var lastVersions = from n in db.Sublocations.Include(t => t.Store)
             //                   group n by n.ID into g
             //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            if (string.IsNullOrEmpty(sIncludeTable))
-                return db.Set<T>().AsQueryable();
-            return db.Set<T>().Include(sIncludeTable).AsQueryable();
+            var lastVersions = from n in db.Set<T>()//.Include(sIncludeTable)
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            return lastVersions;
+            //if (string.IsNullOrEmpty(sIncludeTable))
+            //    return db.Set<T>().AsQueryable();
+            //return db.Set<T>().Include(sIncludeTable).AsQueryable();
         }
         public virtual IQueryable<T> Filter<T>(Expression<Func<T, bool>> predicate) where T : class
         {
