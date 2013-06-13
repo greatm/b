@@ -25,7 +25,6 @@ namespace b.Controllers
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersions.ToList());
-            //return View(db.Purchases.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -122,7 +121,7 @@ namespace b.Controllers
         public ActionResult ChangePO(int id)
         {
             curPO = GetPO(id);
-            curVendor = GetPOVendor(id);
+            curVendor = GetPOVendor(curPO.VendorID);
             return Json(curVendor, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GridDataBasic(GridSettings grid)

@@ -15,17 +15,17 @@ namespace b.Controllers
         {
             var lastVersions = rb.AllV<Sublocation>();
             var DisplayItems = from lpo in lastVersions
-                               join vend in
+                               join stor in
                                    (
                                        from n in rb.AllV<Store>()
                                        group n by n.ID into g
                                        select g.OrderByDescending(t => t.Version).FirstOrDefault()
                                        )
-                               on lpo.ID equals vend.ID
+                               on lpo.StoreID equals stor.ID
                                select new SublocationStore
                                {
                                    Sublocation = lpo,
-                                   Store = vend
+                                   Store = stor
                                }
                             ;
             return View(DisplayItems.ToList());
@@ -85,7 +85,8 @@ namespace b.Controllers
         }
         private void CreateStoreDDitems(Sublocation sublocation)
         {
-            ViewBag.StoreID = new SelectList(rb.GetStores(), "Id", "Name", sublocation.StoreID);
+            ViewBag.StoreID = new SelectList(rb.AllV<Store>(), "Id", "Name", sublocation.StoreID);
+            //ViewBag.StoreID = new SelectList(rb.GetStores(), "Id", "Name", sublocation.StoreID);
             //ViewBag.StoreID = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
             //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
         }

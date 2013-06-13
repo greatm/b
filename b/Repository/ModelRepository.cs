@@ -209,10 +209,10 @@ namespace b.Models
             db.SaveChanges();
         }
 
-        public IEnumerable<Store> GetStores()
-        {
-            return db.Stores;
-        }
+        //public IEnumerable<Store> GetStores()
+        //{
+        //    return db.Stores;
+        //}
         public void LoadCollection<T>(T obj, string sNavigationProperty) where T : class
         {
             db.Entry<T>(obj).Collection(sNavigationProperty).Load();

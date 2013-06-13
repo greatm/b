@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using RazorPDF;
+using b.pdf;
 
 namespace b.Controllers
 {
@@ -26,7 +27,7 @@ namespace b.Controllers
                                        group n by n.ID into g
                                        select g.OrderByDescending(t => t.Version).FirstOrDefault()
                                        )
-                               on lpo.ID equals vend.ID
+                               on lpo.VendorID equals vend.ID
                                select new POwithVendor
                                {
                                    PO = lpo,
