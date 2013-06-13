@@ -13,42 +13,7 @@ namespace b.Controllers
     {
         public ActionResult Index()
         {
-            //var lastVersions = ((from n in db.Sublocations//.Include(t => t.Store).ToList()
-            //                     group n by n.ID into g
-            //                     select g.OrderByDescending(t => t.Version).FirstOrDefault())
-            //                   as ObjectQuery<Sublocation>)
-            //                   .Include(t => t.Store)
-            //                   ;
-            //var 
-            //ObjectQuery<Sublocation> lastVersions = (from n in db.Sublocations
-            //                                         group n by n.ID into g
-            //                                         select g.OrderByDescending(t => t.Version).FirstOrDefault())
-            //                     as ObjectQuery<Sublocation>;
-            //var lastVersions1 = db.Sublocations
-            //    .GroupBy(t => t.ID)
-            //    .Select(t => t.OrderByDescending(u => u.Version))
-            //                    .FirstOrDefault()
-            //    ;
-
-
-            //var lastVersions = from n in db.Sublocations.Include(t => t.Store)
-            //                   group n by n.ID into g
-            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            //var lastVersions = //from n in 
-            //                       db.Sublocations.Include(t => t.Store)
-            //                   //group n by n.ID into g
-            //                   //select g.OrderByDescending(t => t.Version).FirstOrDefault()
-            //                      .ToList() 
-            //                      ;
-            //return View(lastVersions);
-            //return View(db.Sublocations.Include(t => t.Store).ToList());
-
             var lastVersions = rb.AllV<Sublocation>();
-            //return View(lastVersions.Include(t => t.Store).ToList());
-
-            //var lastVersions = from n in db.PurchaseOrders
-            //                   group n by n.ID into g
-            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             var DisplayItems = from lpo in lastVersions
                                join vend in
                                    (
@@ -62,7 +27,7 @@ namespace b.Controllers
                                    Sublocation = lpo,
                                    Store = vend
                                }
-                              ;
+                            ;
             return View(DisplayItems.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
@@ -75,13 +40,13 @@ namespace b.Controllers
             }
             return View(sublocation);
         }
+
         public ActionResult Create()
         {
             Sublocation newSloc = new Sublocation();
             CreateStoreDDitems(newSloc);
             return View(newSloc);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Sublocation sublocation)
@@ -118,14 +83,12 @@ namespace b.Controllers
             CreateStoreDDitems(sublocation);
             return View(sublocation);
         }
-
         private void CreateStoreDDitems(Sublocation sublocation)
         {
             ViewBag.StoreID = new SelectList(rb.GetStores(), "Id", "Name", sublocation.StoreID);
             //ViewBag.StoreID = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
             //this.ViewData["StoreID"] = new SelectList(db.Stores, "Id", "Name", sublocation.StoreID);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Sublocation sublocation)
@@ -145,9 +108,6 @@ namespace b.Controllers
             return View(sublocation);
         }
 
-        //
-        // GET: /MasterSubloaction/Delete/5
-
         public ActionResult Delete(int id = 0, int version = 0)
         {
             //Sublocation sublocation = db.Sublocations.Find(id, version);
@@ -158,10 +118,6 @@ namespace b.Controllers
             }
             return View(sublocation);
         }
-
-        //
-        // POST: /MasterSubloaction/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version)

@@ -12,37 +12,34 @@ using RazorPDF;
 
 namespace b.Controllers
 {
-    public class PurchaseOrderController : BaseController
+    public class PurchaseOrderController : BaseController2
     {
         public ActionResult Index()
         {
-            var lastVersions = from n in db.PurchaseOrders
+            var lastVersions = from n in rb.AllV<PurchaseOrder>()
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            var poDisplay = from lpo in lastVersions
-                            join vend in
-                                (
-                                    from n in db.Vendors
-                                    group n by n.ID into g
-                                    select g.OrderByDescending(t => t.Version).FirstOrDefault()
-                                    )
-                            on lpo.ID equals vend.ID
-                            select new POwithVendor//PurchaseOrder
-                            {
-                                PO = lpo,
-                                Vendor = vend
-                            }
+            var DisplayItems = from lpo in lastVersions
+                               join vend in
+                                   (
+                                       from n in rb.AllV<Vendor>()
+                                       group n by n.ID into g
+                                       select g.OrderByDescending(t => t.Version).FirstOrDefault()
+                                       )
+                               on lpo.ID equals vend.ID
+                               select new POwithVendor
+                               {
+                                   PO = lpo,
+                                   Vendor = vend
+                               }
                               ;
-            return View(poDisplay.ToList());
-            //return View(lastVersions.ToList());
-            //var v1 = db.PurchaseOrders.Include(t => t.Vendor).ToList();
-            //var v2 = db.Sublocations.Include(t => t.Store).ToList();
-            //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
-            //return View(db.PurchaseOrders.Include(t => t.Vendor).ToList());
+            return View(DisplayItems.ToList());
         }
+
         public ActionResult Details(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
+            //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
+            PurchaseOrder purchaseorder = rb.Find<PurchaseOrder>(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -54,9 +51,10 @@ namespace b.Controllers
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
             CreateProductsList();
             POItem poitem = null;
-            var lastVersions = from n in db.Products
-                               group n by n.ID into g
-                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            var lastVersions = rb.AllV<Product>();
+            //from n in db.Products
+            //                   group n by n.ID into g
+            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             foreach (Product prd in lastVersions)
             {
                 if (prd.RoL > 5)
@@ -79,17 +77,18 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                int iId = 1;
-                try
-                {
-                    iId = db.PurchaseOrders.Max(t => t.ID) + 1;
-                }
-                catch { }
-                purchaseorder.ID = iId;
-                purchaseorder.Version = 1;
-                purchaseorder.EntryDate = DateTime.Now;
-                db.PurchaseOrders.Add(purchaseorder);
-                db.SaveChanges();
+                //int iId = 1;
+                //try
+                //{
+                //    iId = db.PurchaseOrders.Max(t => t.ID) + 1;
+                //}
+                //catch { }
+                //purchaseorder.ID = iId;
+                //purchaseorder.Version = 1;
+                //purchaseorder.EntryDate = DateTime.Now;
+                //db.PurchaseOrders.Add(purchaseorder);
+                //db.SaveChanges();
+                rb.Create<PurchaseOrder>(purchaseorder);
                 return RedirectToAction("Index");
             }
 
@@ -104,7 +103,8 @@ namespace b.Controllers
         }
         public ActionResult Edit(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
+            PurchaseOrder purchaseorder = rb.Find<PurchaseOrder>(id, version);
+            //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -112,7 +112,8 @@ namespace b.Controllers
 
             CreateVendorsList(purchaseorder);
 
-            db.Entry(purchaseorder).Collection(t => t.POItems).Load();
+            //db.Entry(purchaseorder).Collection (t => t.POItems).Load();
+            rb.LoadCollection<PurchaseOrder>(purchaseorder, "POItems");
             foreach (POItem poitem in purchaseorder.POItems)
             {
                 CreateProductsList(poitem);
@@ -126,11 +127,12 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                PurchaseOrder newItem = purchaseorder;
-                newItem.Version = purchaseorder.Version + 1;
-                newItem.EntryDate = DateTime.Now;
-                db.PurchaseOrders.Add(newItem);
-                db.SaveChanges();
+                //PurchaseOrder newItem = purchaseorder;
+                //newItem.Version = purchaseorder.Version + 1;
+                //newItem.EntryDate = DateTime.Now;
+                //db.PurchaseOrders.Add(newItem);
+                //db.SaveChanges();
+                rb.Edit<PurchaseOrder>(purchaseorder);
                 return RedirectToAction("Index");
             }
             CreateVendorsList(purchaseorder);
@@ -144,7 +146,8 @@ namespace b.Controllers
         }
         public ActionResult Delete(int id = 0, int version = 0)
         {
-            PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
+            PurchaseOrder purchaseorder = rb.Find<PurchaseOrder>(id, version);
+            //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
             if (purchaseorder == null)
             {
                 return HttpNotFound();
@@ -155,21 +158,22 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            var itemsToDelete = db.PurchaseOrders.Where(t => t.ID == id).ToList();
-            foreach (var item in itemsToDelete)
-            {
-                if (item != null)
-                {
-                    db.Entry(item).Collection(t => t.POItems).Load();
-                    int count = item.POItems.Count;
-                    for (int i = 0; i < count; i++)
-                    {
-                        db.POItems.Remove(item.POItems[0]);
-                    }
-                    db.PurchaseOrders.Remove(item);
-                }
-            }
-            db.SaveChanges();
+            //var itemsToDelete = db.PurchaseOrders.Where(t => t.ID == id).ToList();
+            //foreach (var item in itemsToDelete)
+            //{
+            //    if (item != null)
+            //    {
+            //        db.Entry(item).Collection(t => t.POItems).Load();
+            //        int count = item.POItems.Count;
+            //        for (int i = 0; i < count; i++)
+            //        {
+            //            db.POItems.Remove(item.POItems[0]);
+            //        }
+            //        db.PurchaseOrders.Remove(item);
+            //    }
+            //}
+            //db.SaveChanges();
+            rb.Delete<PurchaseOrder>(t => t.ID == id);
             return RedirectToAction("Index");
         }
     }

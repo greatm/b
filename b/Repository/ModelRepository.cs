@@ -14,8 +14,8 @@ namespace b.Models
     #region IRepository
     public interface IRepository : IDisposable
     {
-        IQueryable<T> All<T>(string sIncludeTable = null) where T : class;
-        IQueryable<T> AllV<T>(string sIncludeTable = null) where T : VersionTable;
+        IQueryable<T> All<T>() where T : class;
+        IQueryable<T> AllV<T>() where T : VersionTable;
 
         IQueryable<T> Filter<T>(Expression<Func<T, bool>> predicate) where T : class;
 
@@ -87,21 +87,21 @@ namespace b.Models
         {
             return All<T>().FirstOrDefault(expression);
         }
-        public IQueryable<T> All<T>(string sIncludeTable = null) where T : class
+        public IQueryable<T> All<T>() where T : class
         {
-            if (string.IsNullOrEmpty(sIncludeTable))
-                return db.Set<T>().AsQueryable();
-            return db.Set<T>().Include(sIncludeTable).AsQueryable();
+            //if (string.IsNullOrEmpty(sIncludeTable))
+            return db.Set<T>().AsQueryable();
+            //return db.Set<T>().Include(sIncludeTable).AsQueryable();
         }
-        public IQueryable<T> AllV<T>(string sIncludeTable = null) where T : VersionTable
+        public IQueryable<T> AllV<T>() where T : VersionTable
         {
-            if (string.IsNullOrEmpty(sIncludeTable))
-                return from n in db.Set<T>()
-                       group n by n.ID into g
-                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            return from n in db.Set<T>().Include(sIncludeTable)
+            //if (string.IsNullOrEmpty(sSearchString))
+            return from n in db.Set<T>()
                    group n by n.ID into g
                    select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            //return from n in db.Set<T>().Where(t => t.Name.Contains(sSearchString))    //.Include(sSearchString)
+            //       group n by n.ID into g
+            //       select g.OrderByDescending(t => t.Version).FirstOrDefault();
         }
         public virtual IQueryable<T> Filter<T>(Expression<Func<T, bool>> predicate) where T : class
         {
@@ -213,7 +213,14 @@ namespace b.Models
         {
             return db.Stores;
         }
-
+        public void LoadCollection<T>(T obj, string sNavigationProperty) where T : class
+        {
+            db.Entry<T>(obj).Collection(sNavigationProperty).Load();
+        }
+        //public void LoadCollection<T>(T obj, string sNavigationProperty) where T : class
+        //{
+        //    db.Entry<T>(obj).Collection(sNavigationProperty).Load();
+        //}
         public void Dispose()
         {
             if (db != null)

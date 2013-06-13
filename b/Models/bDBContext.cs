@@ -43,6 +43,7 @@ namespace b.Models
         [DataType(DataType.Date)]
         public virtual DateTime EntryDate { get; set; }
 
+        //public virtual string Name { get; set; }
         public virtual string Remarks { get; set; }
     }
     public static class Updater

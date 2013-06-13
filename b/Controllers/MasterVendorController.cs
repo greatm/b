@@ -16,16 +16,16 @@ namespace b.Controllers
         public ActionResult Index()
         {
             var lastVersionVendors = rb.AllV<Vendor>();
-            //var lastVersionVendors = from n in db.Vendors
-            //                         group n by n.ID into g
-            //                         select g.OrderByDescending(t => t.Version).FirstOrDefault();
             return View(lastVersionVendors.ToList());
-            //return View(db.Vendors.ToList());
         }
-
+        public ActionResult Search(string q)
+        {
+            var products = rb.AllV<Vendor>().Where(t => t.Name.Contains(q));
+            return View("Index", products);
+            //return PartialView("/MasterProduct/Index", products);
+        }
         public ActionResult Details(int id = 0, int version = 0)
         {
-            //Vendor vendor = db.Vendors.Find(id, version);
             Vendor vendor = rb.Find<Vendor>(id, version);
             if (vendor == null)
             {
@@ -39,7 +39,6 @@ namespace b.Controllers
             return View();
             //return View(new Vendor { Version = 1 });
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Vendor vendor)
@@ -64,9 +63,6 @@ namespace b.Controllers
             return View(vendor);
         }
 
-        //
-        // GET: /MasterVendor/Edit/5
-
         public ActionResult Edit(int id = 0, int version = 0)
         {
             //Vendor vendor = db.Vendors.Find(id, version);
@@ -77,10 +73,6 @@ namespace b.Controllers
             }
             return View(vendor);
         }
-
-        //
-        // POST: /MasterVendor/Edit/5
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Vendor vendor)
@@ -108,7 +100,6 @@ namespace b.Controllers
             }
             return View(vendor);
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)

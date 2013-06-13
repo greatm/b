@@ -26,35 +26,35 @@ namespace b.Controllers
             }
         }
 
-        //protected void CreateVendorsList(PurchaseOrder workPO)
-        //{
-        //    var vendors = from n in db.Vendors
-        //                  group n by n.ID into g
-        //                  select g.OrderByDescending(t => t.Version).FirstOrDefault();
-        //    List<object> newList = new List<object>();
-        //    foreach (var vendor in vendors)
-        //        newList.Add(new
-        //        {
-        //            Id = vendor.ID,
-        //            Name = vendor.Name + " : " + vendor.Person
-        //        });
-        //    this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
+        protected void CreateVendorsList(PurchaseOrder workPO)
+        {
+            var vendors = from n in rb.AllV<Vendor>()
+                          group n by n.ID into g
+                          select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            List<object> newList = new List<object>();
+            foreach (var vendor in vendors)
+                newList.Add(new
+                {
+                    Id = vendor.ID,
+                    Name = vendor.Name + " : " + vendor.Person
+                });
+            this.ViewData["VendorID"] = new SelectList(newList, "Id", "Name", workPO.VendorID);
 
-        //}
-        //protected void CreateProductsList(POItem poItem)
-        //{
-        //    var lastVersions = from n in db.Products
-        //                       group n by n.ID into g
-        //                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
-        //    this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", poItem.ProductID);
-        //}
-        //protected void CreateProductsList()
-        //{
-        //    var lastVersions = from n in db.Products
-        //                       group n by n.ID into g
-        //                       select g.OrderByDescending(t => t.Version).FirstOrDefault();
-        //    this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name");
-        //}
+        }
+        protected void CreateProductsList(POItem poItem)
+        {
+            var lastVersions = from n in rb.AllV<Product>()
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name", poItem.ProductID);
+        }
+        protected void CreateProductsList()
+        {
+            var lastVersions = from n in rb.AllV<Product>()
+                               group n by n.ID into g
+                               select g.OrderByDescending(t => t.Version).FirstOrDefault();
+            this.ViewData["Products"] = new SelectList(lastVersions, "Id", "Name");
+        }
 
         //protected void CreateVendorsList(Purchase purchase)
         //{
