@@ -35,16 +35,18 @@ namespace b.Controllers
             }
             return View(purchase);
         }
+    
         public ActionResult Create()
         {
-            Purchase newPurchase = new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> { new PurchaseItem { ProductID = 1, Qty = 1, Rate = 1 } } };
+            Purchase newPurchase = new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> () };
+            //Purchase newPurchase = new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> { new PurchaseItem { ProductID = 1, Qty = 1, Rate = 1 } } };
             //return View(new Purchase { Date = DateTime.Today, PurchaseItems = new List<PurchaseItem> { new PurchaseItem { ProductID = 1, Qty = 1, Rate = 1 } } });
+            CreateProductsList();
             CreatePoList(newPurchase);
             CreateVendorsList(newPurchase);
 
             return View(newPurchase);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [IsPostedFromThisSite]
@@ -79,7 +81,6 @@ namespace b.Controllers
             }
             return View(purchase);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Purchase purchase)
@@ -105,7 +106,6 @@ namespace b.Controllers
             }
             return View(purchase);
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)

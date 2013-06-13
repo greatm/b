@@ -76,48 +76,63 @@
     <fieldset>
         <legend>Purchase Items</legend>
 
-        @if (Model == null || Model.PurchaseItems == null || Model.PurchaseItems.Count() == 0)
-        {
-            <p>None.</p>
-        }
-        else
-        {
-            MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
-            jsonReader.RepeatItems = false;
-            jsonReader.Id = "dataJson";
-            
-            @(Html.Grid("GridDataBasic")
-                .SetCaption("List Of User")
-                .AddColumn(new Column("AdminID"))
-                .AddColumn(new Column("Email"))
-                .AddColumn(new Column("Tel"))
-                .AddColumn(new Column("Role"))
-                .AddColumn(new Column("Active"))
-                .SetUrl("/Purchase/GridDataBasic")
-                .SetAutoEncode(true)
-                .SetDataType(MvcJqGrid.Enums.DataType.Json)
-                .SetAutoWidth(false)
-                .SetWidth(650)
-                .SetRowNum(10)
-                .SetJsonReader(jsonReader)
-                .SetLoadUi(MvcJqGrid.Enums.LoadUi.Block)
-                .SetRowList(new int[] { 10, 15, 20, 50 })
-                .SetViewRecords(true)
-                .SetGridView(true)
-                .SetEmptyRecords("No record Found")
-                .SetShowAllSortIcons(true)
-                .SetShrinkToFit(true)
-                .SetPager("pager")
-                .RenderHtmlElements()
-                )
-            //Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
-        }
+        <style type="text/css">
+            input {
+                border: 1px solid #e2e2e2;
+                background: #fff;
+                color: #333;
+                font-size: 1.2em;
+                margin: 5px 0 6px 0;
+                padding: 5px;
+                width: 150px;
+            }
+        </style>
 
+        <table id="tblPurchaseItems">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th style="width: 100px">Product</th>
+                    <th style="width: 100px">Rate</th>
+                    <th style="width: 100px">Quantity</th>
+                    <th style="width: 100px">Amount</th>
+                    <th style="width: 100px"></th>
+                </tr>
+            </thead>
+
+            <tbody id="itemEditor">
+                @if (Model == null || Model.PurchaseItems == null || Model.PurchaseItems.Count() == 0)
+                {
+                    <tr>
+                        <td>None.</td>
+                    </tr>  
+                }
+                @if (Model != null && Model.PurchaseItems != null)
+                {
+                    foreach (PurchaseItem poitem in Model.PurchaseItems)
+                    {
+                        //Html.RenderPartial("PurchaseItemEntry",  new  PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
+                        Html.RenderPartial("PurchaseItemEntry", poitem);
+                    }
+                }
+            </tbody>
+        </table>
+
+        <a id="addAnother" href="#">Add another</a>
+
+        //Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
+
+        <script src="@Url.Content("~/Scripts/jQuery.tmpl.min.js")" type="text/javascript"></script>
+
+        <script type="text/x-jquery-tmpl" id="movieTemplate">
+            @Html.CollectionItemJQueryTemplate("PurchaseItemEntry", new PurchaseItem()) //agedPurchaseModel() { PageSize = 10, TotalRows = 10 })
+        </script>
 
     </fieldset>
     
     <p>
         <input type="submit" value="Create" />
+        <a href="/">Cancel</a>
     </p>
    
 }
@@ -149,5 +164,18 @@
                 });
             });
         });
+        var viewModel = {
+            addNew: function () {
+                $("#itemEditor").append($("#movieTemplate").tmpl({ index: viewModel._generateGuid() }));
+            },
+
+            _generateGuid: function () {
+                // Source: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/105074#105074
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+        };
     </script>
 }

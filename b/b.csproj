@@ -325,6 +325,10 @@
     <Compile Include="Migrations\201306121141417_mig_salesitem.Designer.cs">
       <DependentUpon>201306121141417_mig_salesitem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306130609500_mig_pi_amonut.cs" />
+    <Compile Include="Migrations\201306130609500_mig_pi_amonut.Designer.cs">
+      <DependentUpon>201306130609500_mig_pi_amonut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -570,7 +574,7 @@
     <Content Include="Views\MasterStore\Edit.cshtml" />
     <Content Include="Views\MasterStore\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
-    <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
+    <Content Include="Views\Purchase\PurchaseItemEntry1.cshtml" />
     <Content Include="Views\SalesOrder\SOItemEntry.cshtml" />
     <Content Include="Views\MasterSublocation\Index.cshtml" />
     <Content Include="Views\MasterSublocation\Details.cshtml" />
@@ -589,6 +593,7 @@
     <Content Include="Views\StoreTransfer\Create.cshtml" />
     <Content Include="Views\StoreTransfer\Edit.cshtml" />
     <Content Include="Views\StoreTransfer\Delete.cshtml" />
+    <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -610,6 +615,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306121141417_mig_salesitem.resx">
       <DependentUpon>201306121141417_mig_salesitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306130609500_mig_pi_amonut.resx">
+      <DependentUpon>201306130609500_mig_pi_amonut.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

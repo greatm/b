@@ -14,5 +14,6 @@ namespace b.Models
         public int ProductID { get; set; }
         public int Qty { get; set; }
         public Decimal Rate { get; set; }
+        public Decimal Amount { get; set; }
     }
 }

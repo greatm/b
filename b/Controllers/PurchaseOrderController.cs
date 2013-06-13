@@ -36,7 +36,6 @@ namespace b.Controllers
                               ;
             return View(DisplayItems.ToList());
         }
-
         public ActionResult Details(int id = 0, int version = 0)
         {
             //PurchaseOrder purchaseorder = db.PurchaseOrders.Find(id, version);
@@ -47,6 +46,7 @@ namespace b.Controllers
             }
             return View(purchaseorder);
         }
+
         public ActionResult Create()
         {
             PurchaseOrder newPO = new PurchaseOrder { Date = DateTime.Today, POItems = new List<POItem>() };
@@ -97,6 +97,7 @@ namespace b.Controllers
             foreach (POItem poItem in purchaseorder.POItems) CreateProductsList(poItem);
             return View(purchaseorder);
         }
+
         public ActionResult POItemEntryRow()
         {
             CreateProductsList(new POItem());
@@ -140,6 +141,7 @@ namespace b.Controllers
             //CreateProductsList();
             return View(purchaseorder);
         }
+
         public ActionResult PrintPO(int id = 0, int version = 0)
         {
             return new PdfResult();
