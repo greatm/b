@@ -53,9 +53,6 @@ namespace b.Controllers
             CreateProductsList();
             POItem poitem = null;
             var lastVersions = rb.AllV<Product>();
-            //from n in db.Products
-            //                   group n by n.ID into g
-            //                   select g.OrderByDescending(t => t.Version).FirstOrDefault();
             foreach (Product prd in lastVersions)
             {
                 if (prd.RoL > 5)
