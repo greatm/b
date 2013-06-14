@@ -329,6 +329,10 @@
     <Compile Include="Migrations\201306130609500_mig_pi_amonut.Designer.cs">
       <DependentUpon>201306130609500_mig_pi_amonut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306140525308_mig_pi_product.cs" />
+    <Compile Include="Migrations\201306140525308_mig_pi_product.Designer.cs">
+      <DependentUpon>201306140525308_mig_pi_product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\bDBContext.cs" />
@@ -618,6 +622,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306130609500_mig_pi_amonut.resx">
       <DependentUpon>201306130609500_mig_pi_amonut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306140525308_mig_pi_product.resx">
+      <DependentUpon>201306140525308_mig_pi_product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
