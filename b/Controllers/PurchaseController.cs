@@ -18,7 +18,7 @@ namespace b.Controllers
         protected Vendor curVendor;
         public ActionResult Index()
         {
-            X.Msg.Alert("great","creating data").Show();
+            X.Msg.Alert("great", "creating data").Show();
             var lastVersions = from n in db.Purchases
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
