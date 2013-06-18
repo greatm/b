@@ -4,11 +4,28 @@
 @using MvcContrib.UI.Grid;
 @using MvcContrib.Sorting;
 @using MvcJqGrid
+@using Ext.Net
 
 @model Purchase
 
 @{
     ViewBag.Title = "Purchase Create";
+}
+
+
+@section example{
+    <h1>form panel</h1>
+    @(
+ Html.X(this).FormPanelFor(m => m)
+    .BodyPadding(5)
+            .DefaultAnchor("100%")
+            .Width(300)
+            .Buttons(Html.X().Button()
+                .Text("Submit")
+                .DirectClickUrl(Url.Action("Submit"))
+            )
+    )
+
 }
 
 <h2>Purchase Create</h2>
@@ -76,7 +93,12 @@
     <fieldset>
         <legend>Purchase Items</legend>
 
-        <style type="text/css">
+
+
+
+
+
+        @*  <style type="text/css">
             input {
                 border: 1px solid #e2e2e2;
                 background: #fff;
@@ -118,15 +140,13 @@
             </tbody>
         </table>
 
-        <a id="addAnother" href="#">Add another</a>
+        <a id="addAnother" href="#">Add another</a>*@
 
-        //Html.RenderPartial("PurchaseItemEntry", new PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
-
-        <script src="@Url.Content("~/Scripts/jQuery.tmpl.min.js")" type="text/javascript"></script>
+        @*  <script src="@Url.Content("~/Scripts/jQuery.tmpl.min.js")" type="text/javascript"></script>
 
         <script type="text/x-jquery-tmpl" id="movieTemplate">
             @Html.CollectionItemJQueryTemplate("PurchaseItemEntry", new PurchaseItem()) //agedPurchaseModel() { PageSize = 10, TotalRows = 10 })
-        </script>
+        </script>*@
 
     </fieldset>
     

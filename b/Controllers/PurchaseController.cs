@@ -1,17 +1,14 @@
-﻿using System;
+﻿using b.Filters;
+using b.Models;
+using Ext.Net;
+using MvcJqGrid;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
-using System.Web.Mvc;
-using b.ViewModels;
-using b.Models;
-using b.Filters;
-using MvcJqGrid;
 using System.Reflection;
+using System.Web.Mvc;
 
 namespace b.Controllers
 {
@@ -21,10 +18,13 @@ namespace b.Controllers
         protected Vendor curVendor;
         public ActionResult Index()
         {
+            X.Msg.Alert("great","creating data").Show();
             var lastVersions = from n in db.Purchases
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
-            return View(lastVersions.ToList());
+            X.Msg.Notify("great", "loading to view").Show();
+            return View();
+            //return View(lastVersions.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
