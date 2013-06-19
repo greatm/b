@@ -123,5 +123,5 @@ namespace b.Controllers
             curVendor = GetPOVendor(curPO.VendorID);
             return Json(curVendor, JsonRequestBehavior.AllowGet);
         }
-     }
-  }
+    }
+}
