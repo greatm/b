@@ -1,8 +1,21 @@
-﻿@model b.Models.StoreTransfer
+﻿@using MvcJqGrid
+
+@model b.Models.StoreTransfer
 
 @{
     ViewBag.Title = "store transfer create";
 }
+
+@{
+    MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
+    jsonReader.RepeatItems = false;
+    jsonReader.Id = "dataJson";
+}
+@(Html.Grid("GridDataBasic")
+.AddColumn(new MvcJqGrid.Column("Name"))
+.SetWidth(650)
+.SetRowNum(10)
+)
 
 <h2>Store Transfer Create</h2>
 
