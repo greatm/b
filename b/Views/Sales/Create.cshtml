@@ -65,6 +65,25 @@
     </fieldset>
     
     <fieldset>
+        <legend>syncfusion grid</legend>
+        @{Html.Syncfusion().Grid<SalesItem>("Filter_Grid")
+              .Datasource(Model.SalesItems)
+              .Caption("Sale items")
+              .Column(col =>
+              {
+                  col.Add(c => c.ProductID);
+                  col.Add(c => c.Qty);
+                  col.Add(c => c.Rate);
+                  col.Add(c => c.Amount);
+              })
+              .EnablePaging()
+              .EnableFiltering()
+              .AutoFormat(Skins.Marble)
+              .Render()
+            ;
+        }
+    </fieldset>
+    <fieldset>
         <legend>Sales Items</legend>
 
         <style type="text/css">
