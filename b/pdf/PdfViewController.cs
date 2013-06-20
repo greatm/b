@@ -7,7 +7,7 @@ using b.Controllers;
 
 namespace b.pdf
 {
-    public class PdfViewController : BaseController2
+    public class PdfViewController : RepoBaseController
     {
         private readonly HtmlViewRenderer htmlViewRenderer;
         private readonly StandardPdfRenderer standardPdfRenderer;

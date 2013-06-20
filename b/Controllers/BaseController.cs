@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace b.Controllers
 {
-    public class BaseController2 : Controller
+    public class RepoBaseController : Controller
     {
         Repository repository;
         public Repository rb

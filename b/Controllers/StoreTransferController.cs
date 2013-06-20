@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace b.Controllers
 {
-    public class StoreTransferController : BaseController2
+    public class StoreTransferController : RepoBaseController
     {
         public ActionResult Index()
         {

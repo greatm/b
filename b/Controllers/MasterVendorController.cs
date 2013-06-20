@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace b.Controllers
 {
-    public class MasterVendorController : BaseController2
+    public class MasterVendorController : RepoBaseController
     {
         public ActionResult Index()
         {

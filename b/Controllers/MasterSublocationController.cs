@@ -9,7 +9,7 @@ using System;
 
 namespace b.Controllers
 {
-    public class MasterSublocationController : BaseController2
+    public class MasterSublocationController : RepoBaseController
     {
         public ActionResult Index()
         {

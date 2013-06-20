@@ -13,7 +13,7 @@ using b.pdf;
 
 namespace b.Controllers
 {
-    public class PurchaseOrderController : BaseController2
+    public class PurchaseOrderController : RepoBaseController
     {
         public ActionResult Index()
         {
