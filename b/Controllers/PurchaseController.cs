@@ -22,8 +22,8 @@ namespace b.Controllers
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //X.Msg.Notify("great", "loading to view").Show();
-            return View();
-            //return View(lastVersions.ToList());
+            // return View();
+           return View(lastVersions.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {

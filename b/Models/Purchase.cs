@@ -14,6 +14,7 @@ namespace b.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
+
         public PurchaseOrder PO { get; set; }
         public int POID { get; set; }
         //public int VendorID { get; set; }
