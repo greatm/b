@@ -57,7 +57,8 @@ namespace b.Filters
                 if (filterContext.HttpContext.Request.UrlReferrer == null)
                     throw new System.Web.HttpException("Invalid submission");
 #if !DEBUG
-                if ( filterContext.HttpContext.Request.UrlReferrer.Host != "b.esamadhan.net")
+                if (filterContext.HttpContext.Request.UrlReferrer.Host != "b.esamadhan.net"
+                    || filterContext.HttpContext.Request.UrlReferrer.Host != "198.38.85.58")
                     throw new System.Web.HttpException
                     ("This form wasn't submitted from this site!");
 #endif
