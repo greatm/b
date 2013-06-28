@@ -8,6 +8,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Web.Mvc;
+using System.Linq;
+using System.Web.Mvc;
+using Syncfusion.Mvc.Grid;
+using Syncfusion.Mvc.Shared;
 
 namespace b.Controllers
 {
@@ -23,7 +27,7 @@ namespace b.Controllers
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //X.Msg.Notify("great", "loading to view").Show();
             // return View();
-           return View(lastVersions.ToList());
+            return View(lastVersions.ToList());
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
@@ -124,6 +128,20 @@ namespace b.Controllers
             curPO = GetPO(id);
             curVendor = GetPOVendor(curPO.VendorID);
             return Json(curVendor, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult FlatGrid()
+        {
+            GridPropertiesModel<PurchaseItem> model = new GridPropertiesModel<PurchaseItem>()
+            {
+                DataSource = curPO.POItems,// new NorthwindDataContext().Orders.Take(20).ToList(),
+                //ShowCaption = false,
+                AutoFormat = Syncfusion.Mvc.Shared.Skins.Marble
+
+            };
+
+            ViewData["GridModel"] = model;
+            return View();
+
         }
     }
 }

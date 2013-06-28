@@ -199,3 +199,13 @@
         };
     </script>
 }
+
+<div style="width: 100%" class="sample-panel-margin">
+    @(Html.Syncfusion().Grid<POItem>("Simple_Grid", "GridModel", column =>
+        {
+            column.Add(p => p.ProductID).HeaderText("Order ID").TextAlign(TextAlignment.Right).Width(100);
+            column.Add(p => p.Qty).HeaderText("Employee ID").TextAlign(TextAlignment.Right).Width(100);
+            column.Add(p => p.Rate).HeaderText("Customer ID").Width(170);
+            column.Add(P => P.Amount).HeaderText("Ship Country");
+        }))
+</div>

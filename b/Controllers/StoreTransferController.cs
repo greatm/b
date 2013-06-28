@@ -90,14 +90,13 @@ namespace b.Controllers
             return RedirectToAction("Index");
         }
 
-
         public ActionResult GridDataBasic(GridSettings grid)
         {
             IRepositoryUser _repository = new IRepositoryUser();
             var query = _repository.Users();
 
             //sorting
-            query = query.OrderBy<User>(grid.SortColumn, grid.SortOrder);
+            query = query.OrderBy<StoreTransferItem>(grid.SortColumn, grid.SortOrder);
 
             //count
             var count = query.Count();
@@ -113,11 +112,10 @@ namespace b.Controllers
                 rows = (from UserInfo in data
                         select new
                         {
-                            AdminID = UserInfo.AdminID.ToString(),
-                            Email = UserInfo.Email,
-                            NoTel = UserInfo.Tel,
-                            Role = UserInfo.Role,
-                            Active = UserInfo.Active,
+                            AdminID = UserInfo.ProductID.ToString(),
+                            Email = UserInfo.Qty,
+                            NoTel = UserInfo.Rate,
+                            Role = UserInfo.Amount,
                         }).ToArray()
             };
 
@@ -126,25 +124,24 @@ namespace b.Controllers
     }
     class IRepositoryUser
     {
-        public IQueryable<User> Users()
+        public IQueryable<StoreTransferItem> Users()
         {
-            return new List<User>()
+            return new List<StoreTransferItem>()
             {
-                new User { AdminID = "John", Tel="010-99002202", Role="Administrator", Email="John@gmail.com" , Active="Active"},
-                new User { AdminID = "Johny", Tel="010-99002202", Role="Administrator", Email="Johny@gmail.com" , Active="Active"},
-                new User { AdminID = "samuel", Tel="010-99002202", Role="Super Administrator", Email="samuel@gmail.com" , Active="Active"},
+                new StoreTransferItem { ProductID = 1, Qty=25,Rate=2,Amount=50},
+                new StoreTransferItem { ProductID = 2, Qty=25,Rate=4,Amount=100},
             }.AsQueryable();
 
         }
     }
-    public class User
-    {
-        public string AdminID { get; set; }
-        public string Email { get; set; }
-        public string Tel { get; set; }
-        public string Role { get; set; }
-        public string Active { get; set; }
-    }
+    //public class Transfer
+    //{
+    //    public string ProductID { get; set; }
+    //    public string Email { get; set; }
+    //    public string Tel { get; set; }
+    //    public string Role { get; set; }
+    //    public string Active { get; set; }
+    //}
     public enum WhereOperation
     {
         [StringValue("eq")]
@@ -164,7 +161,7 @@ namespace b.Controllers
         {
             if (sortColumn == "")
             {
-                sortColumn = "AdminID";
+                sortColumn = "ProductID";
             }
 
             string methodName = string.Format("OrderBy{0}",

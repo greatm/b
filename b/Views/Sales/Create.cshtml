@@ -66,8 +66,8 @@
     
     <fieldset>
         <legend>syncfusion grid</legend>
-        @{Html.Syncfusion().Grid<SalesItem>("Filter_Grid")
-              .Datasource(Model.SalesItems)
+        @{Html.Syncfusion().Grid<SalesItem>("Sale")
+              .Datasource((IEnumerable<SalesItem>)Model.SalesItems)
               .Caption("Sale items")
               .Column(col =>
               {
@@ -76,10 +76,13 @@
                   col.Add(c => c.Rate);
                   col.Add(c => c.Amount);
               })
-              .EnablePaging()
-              .EnableFiltering()
+              //.EnablePaging()
+              //.EnableFiltering()
+              .Width(100)
+              .Height(100)
               .AutoFormat(Skins.Marble)
               .Render()
+
             ;
         }
     </fieldset>
