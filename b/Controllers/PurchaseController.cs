@@ -3,8 +3,8 @@ using b.Models;
 using Syncfusion.Mvc.Grid;
 using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace b.Controllers
 {

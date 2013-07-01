@@ -5,6 +5,7 @@
 @using MvcContrib.Sorting;
 @using MvcJqGrid*@
 @*@using Ext.Net*@
+@using MvcJqGrid
 
 @model Purchase
 
@@ -93,12 +94,12 @@
     <fieldset>
         <legend>Purchase Items</legend>
 
-
-         MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
+        @{
+    MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
     jsonReader.RepeatItems = false;
     jsonReader.Id = "dataJson";
     
-    @(Html.Grid("GridDataBasic")
+            @(Html.Grid("GridDataBasic")
     .SetCaption("transfer items")
 .AddColumn(new MvcJqGrid.Column("ProductID"))
 .AddColumn(new MvcJqGrid.Column("Quantity"))
@@ -111,8 +112,8 @@
 .SetDataType(MvcJqGrid.Enums.DataType.Json)
 
 .SetJsonReader(jsonReader)
-
-
+)
+        }
 
 
         @*  <style type="text/css">
