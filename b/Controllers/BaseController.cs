@@ -99,7 +99,7 @@ namespace b.Controllers
             return vendor;
         }
 
-       
+
         //protected void CreateCustomersList(SalesOrder workSO)
         //{
         //    var customers = db.Customers;

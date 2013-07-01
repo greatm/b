@@ -112,10 +112,10 @@ namespace b.Controllers
                 rows = (from UserInfo in data
                         select new
                         {
-                            AdminID = UserInfo.ProductID.ToString(),
-                            Email = UserInfo.Qty,
-                            NoTel = UserInfo.Rate,
-                            Role = UserInfo.Amount,
+                            ProductID = UserInfo.ProductID.ToString(),
+                            Quantity = UserInfo.Qty,
+                            Rate = UserInfo.Rate,
+                            Amount = UserInfo.Amount,
                         }).ToArray()
             };
 

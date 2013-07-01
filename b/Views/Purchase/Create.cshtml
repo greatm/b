@@ -94,6 +94,23 @@
         <legend>Purchase Items</legend>
 
 
+         MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
+    jsonReader.RepeatItems = false;
+    jsonReader.Id = "dataJson";
+    
+    @(Html.Grid("GridDataBasic")
+    .SetCaption("transfer items")
+.AddColumn(new MvcJqGrid.Column("ProductID"))
+.AddColumn(new MvcJqGrid.Column("Quantity"))
+.AddColumn(new MvcJqGrid.Column("Rate"))
+.AddColumn(new MvcJqGrid.Column("Amount"))
+.SetWidth(650)
+.SetRowNum(10)
+.SetUrl("/StoreTransfer/GridDataBasic")
+.SetAutoEncode(true)
+.SetDataType(MvcJqGrid.Enums.DataType.Json)
+
+.SetJsonReader(jsonReader)
 
 
 

@@ -25,7 +25,7 @@ namespace b.Controllers
         public ActionResult Details(int id = 0, int version = 0)
         {
             //Purchase purchase = db.Purchases.Find(id, version);
-            Purchase purchase= rb.Find<Purchase>(id, version);
+            Purchase purchase = rb.Find<Purchase>(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
