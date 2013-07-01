@@ -1,28 +1,21 @@
 ﻿using b.Filters;
 using b.Models;
-//using Ext.Net;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Web.Mvc;
-using System.Linq;
-using System.Web.Mvc;
 using Syncfusion.Mvc.Grid;
-using Syncfusion.Mvc.Shared;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using System.Linq;
 
 namespace b.Controllers
 {
-    public class PurchaseController : BaseController
+    public class PurchaseController : RepoBaseController
     {
         protected PurchaseOrder curPO;
         protected Vendor curVendor;
         public ActionResult Index()
         {
             //X.Msg.Alert("great", "creating data").Show();
-            var lastVersions = from n in db.Purchases
+            var lastVersions = from n in rb.AllV<Purchase>() // db.Purchases
                                group n by n.ID into g
                                select g.OrderByDescending(t => t.Version).FirstOrDefault();
             //X.Msg.Notify("great", "loading to view").Show();
@@ -31,7 +24,8 @@ namespace b.Controllers
         }
         public ActionResult Details(int id = 0, int version = 0)
         {
-            Purchase purchase = db.Purchases.Find(id, version);
+            //Purchase purchase = db.Purchases.Find(id, version);
+            Purchase purchase= rb.Find<Purchase>(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -59,17 +53,18 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                int iId = 1;
-                try
-                {
-                    iId = db.Purchases.Max(t => t.ID) + 1;
-                }
-                catch { }
-                purchase.ID = iId;
-                purchase.Version = 1;
-                purchase.EntryDate = DateTime.Now;
-                db.Purchases.Add(purchase);
-                db.SaveChanges();
+                //int iId = 1;
+                //try
+                //{
+                //    iId = db.Purchases.Max(t => t.ID) + 1;
+                //}
+                //catch { }
+                //purchase.ID = iId;
+                //purchase.Version = 1;
+                //purchase.EntryDate = DateTime.Now;
+                //db.Purchases.Add(purchase);
+                //db.SaveChanges();
+                rb.Create<Purchase>(purchase);
                 return RedirectToAction("Index");
             }
 
@@ -79,7 +74,8 @@ namespace b.Controllers
 
         public ActionResult Edit(int id = 0, int version = 0)
         {
-            Purchase purchase = db.Purchases.Find(id, version);
+            Purchase purchase = rb.Find<Purchase>(id, version);
+            //Purchase purchase = db.Purchases.Find(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -92,11 +88,12 @@ namespace b.Controllers
         {
             if (ModelState.IsValid)
             {
-                Purchase newItem = purchase;
-                newItem.Version = purchase.Version + 1;
-                newItem.EntryDate = DateTime.Now;
-                db.Purchases.Add(newItem);
-                db.SaveChanges();
+                //Purchase newItem = purchase;
+                //newItem.Version = purchase.Version + 1;
+                //newItem.EntryDate = DateTime.Now;
+                //db.Purchases.Add(newItem);
+                //db.SaveChanges();
+                rb.Edit<Purchase>(purchase);
                 return RedirectToAction("Index");
             }
             return View(purchase);
@@ -104,7 +101,8 @@ namespace b.Controllers
 
         public ActionResult Delete(int id = 0, int version = 0)
         {
-            Purchase purchase = db.Purchases.Find(id, version);
+            Purchase purchase = rb.Find<Purchase>(id, version);
+            //Purchase purchase = db.Purchases.Find(id, version);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -115,12 +113,13 @@ namespace b.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, int version = 0)
         {
-            var itemsToDelete = db.Purchases.Where(t => t.ID == id);
-            foreach (var item in itemsToDelete)
-            {
-                if (item != null) db.Purchases.Remove(item);
-            }
-            db.SaveChanges();
+            //var itemsToDelete = db.Purchases.Where(t => t.ID == id);
+            //foreach (var item in itemsToDelete)
+            //{
+            //    if (item != null) db.Purchases.Remove(item);
+            //}
+            //db.SaveChanges();
+            rb.Delete<Purchase>(t => t.ID == id);
             return RedirectToAction("Index");
         }
         public ActionResult ChangePO(int id)
