@@ -359,6 +359,8 @@
     <Compile Include="pdf\Renderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Extensions.cs" />
+    <Compile Include="Repository\GridModelBinder.cs" />
+    <Compile Include="Repository\GridSettings.cs" />
     <Compile Include="Repository\ModelRepository.cs" />
     <Compile Include="Validations\MaxWordsAttribute.cs" />
     <Compile Include="ViewModels\CustomerSummary.cs" />
