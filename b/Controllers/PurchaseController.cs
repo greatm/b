@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using MvcJqGrid;
 
 namespace b.Controllers
 {
@@ -141,6 +142,37 @@ namespace b.Controllers
             ViewData["GridModel"] = model;
             return View();
 
+        }
+        public ActionResult piGrid(GridSettings grid)
+        {
+            IRepositoryUser _repository = new IRepositoryUser();
+            var query = _repository.Users();
+
+            //sorting
+            query = query.OrderBy<StoreTransferItem>(grid.SortColumn, grid.SortOrder);
+
+            //count
+            var count = query.Count();
+
+            //paging
+            var data = query.Skip((grid.PageIndex - 1) * grid.PageSize).Take(grid.PageSize).ToArray();
+
+            var result = new
+            {
+                total = (int)Math.Ceiling((double)count / grid.PageSize),
+                page = grid.PageIndex,
+                records = count,
+                rows = (from UserInfo in data
+                        select new
+                        {
+                            ProductID = UserInfo.ProductID.ToString(),
+                            Quantity = UserInfo.Qty,
+                            Rate = UserInfo.Rate,
+                            Amount = UserInfo.Amount,
+                        }).ToArray()
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

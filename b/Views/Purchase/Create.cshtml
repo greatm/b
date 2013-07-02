@@ -1,10 +1,4 @@
 ﻿@using b.Models;
-@*@using MvcContrib;
-@using MvcContrib.UI;
-@using MvcContrib.UI.Grid;
-@using MvcContrib.Sorting;
-@using MvcJqGrid*@
-@*@using Ext.Net*@
 @using MvcJqGrid
 
 @model Purchase
@@ -12,22 +6,6 @@
 @{
     ViewBag.Title = "Purchase Create";
 }
-
-
-@*@section example{
-    <h1>form panel</h1>
-    @(
- Html.X(this).FormPanelFor(m => m)
-    .BodyPadding(5)
-            .DefaultAnchor("100%")
-            .Width(300)
-            .Buttons(Html.X().Button()
-                .Text("Submit")
-                .DirectClickUrl(Url.Action("Submit"))
-            )
-    )
-
-}*@
 
 <h2>Purchase Create</h2>
 
@@ -99,72 +77,22 @@
     jsonReader.RepeatItems = false;
     jsonReader.Id = "dataJson";
     
-            @(Html.Grid("GridDataBasic")
-    .SetCaption("transfer items")
+            @(Html.Grid("piGrid")
+    .SetCaption("purchase items")
 .AddColumn(new MvcJqGrid.Column("ProductID"))
-.AddColumn(new MvcJqGrid.Column("Quantity"))
+.AddColumn(new MvcJqGrid.Column("Qty"))
 .AddColumn(new MvcJqGrid.Column("Rate"))
 .AddColumn(new MvcJqGrid.Column("Amount"))
 .SetWidth(650)
 .SetRowNum(10)
-.SetUrl("/StoreTransfer/GridDataBasic")
+.SetUrl("/Purchase/piGrid")
 .SetAutoEncode(true)
 .SetDataType(MvcJqGrid.Enums.DataType.Json)
 
 .SetJsonReader(jsonReader)
+.SetToolbar(true)
 )
         }
-
-
-        @*  <style type="text/css">
-            input {
-                border: 1px solid #e2e2e2;
-                background: #fff;
-                color: #333;
-                font-size: 1.2em;
-                margin: 5px 0 6px 0;
-                padding: 5px;
-                width: 150px;
-            }
-        </style>
-
-        <table id="tblPurchaseItems">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th style="width: 100px">Product</th>
-                    <th style="width: 100px">Rate</th>
-                    <th style="width: 100px">Quantity</th>
-                    <th style="width: 100px">Amount</th>
-                    <th style="width: 100px"></th>
-                </tr>
-            </thead>
-
-            <tbody id="itemEditor">
-                @if (Model == null || Model.PurchaseItems == null || Model.PurchaseItems.Count() == 0)
-                {
-                    <tr>
-                        <td>None.</td>
-                    </tr>  
-                }
-                @if (Model != null && Model.PurchaseItems != null)
-                {
-                    foreach (PurchaseItem poitem in Model.PurchaseItems)
-                    {
-                        //Html.RenderPartial("PurchaseItemEntry",  new  PagedPurchaseModel { PageSize = 10, PurchaseItems = Model.PurchaseItems, TotalRows = 10 });
-                        Html.RenderPartial("PurchaseItemEntry", poitem);
-                    }
-                }
-            </tbody>
-        </table>
-
-        <a id="addAnother" href="#">Add another</a>*@
-
-        @*  <script src="@Url.Content("~/Scripts/jQuery.tmpl.min.js")" type="text/javascript"></script>
-
-        <script type="text/x-jquery-tmpl" id="movieTemplate">
-            @Html.CollectionItemJQueryTemplate("PurchaseItemEntry", new PurchaseItem()) //agedPurchaseModel() { PageSize = 10, TotalRows = 10 })
-        </script>*@
 
     </fieldset>
     
@@ -179,9 +107,51 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
+@{
+    int pageSize = 20;
+    if (Session["VisitorLogGridSettings"] != null)
+    {
+        // Get from cache the last page zise selected by the user. 
+        GridSettings grid = new GridSettings();//(string)Session["VisitorLogGridSettings"]);
+        pageSize = grid.PageSize;
+    }
+    // Restore the last search params from cache.
+    string startDate = (Session["StartDate"] == null
+        ? string.Empty
+        : ((DateTime)Session["StartDate"]).ToShortDateString());
+    string endDate = (Session["EndDate"] == null
+        ? string.Empty
+        : ((DateTime)Session["EndDate"]).ToShortDateString());
+}
+
+<div id="jqGrid">
+    @Html.Partial("PurchaseItems")
+</div>
+<script type="text/javascript">
+    var paramFromView = {
+        @*DeleteAllCaption: '@Resources.Resource.VisitorLogDeleteAllCaption',
+        ClearGridUrl: '@Url.Content("~/VisitorLog/ClearGridData")',
+        DeleteAllConfirmationMessage: '@Resources.Resource.VisitorLogDeleteAllDataConfirmation',
+        Url: '@Url.Content("~/VisitorLog/GetData")',*@
+        Width: 790,
+        Height: 464,
+      @*  Caption: '@Resources.Resource.VisitorLogIndexTitle',
+        VisitorName: '@Resources.Resource.VisitorLogIndexVisitorName',
+        StartDate: '@Resources.Resource.VisitorLogIndexStartDate',
+        EndDate: '@Resources.Resource.VisitorLogIndexEndDate',
+        WasTimeOut: '@Resources.Resource.VisitorLogIndexWasTimeOut',
+        Actions: '@Resources.Resource.VisitorLogIndexActions',*@
+        PageSize: @pageSize
+        }
+</script>
 @section Scripts {
+    @Scripts.Render("~/Scripts/My_pigrid.js");
     <script type="text/javascript">
         $(function () {
+
+
+            showGrid();
             $("#PO_Vendor_Name").attr("disabled", "disabled");
             $("#POID").combobox({
                 select: function (event, ui) {
@@ -217,13 +187,3 @@
         };
     </script>
 }
-
-<div style="width: 100%" class="sample-panel-margin">
-    @(Html.Syncfusion().Grid<POItem>("Simple_Grid", "GridModel", column =>
-        {
-            column.Add(p => p.ProductID).HeaderText("Order ID").TextAlign(TextAlignment.Right).Width(100);
-            column.Add(p => p.Qty).HeaderText("Employee ID").TextAlign(TextAlignment.Right).Width(100);
-            column.Add(p => p.Rate).HeaderText("Customer ID").Width(170);
-            column.Add(P => P.Amount).HeaderText("Ship Country");
-        }))
-</div>
