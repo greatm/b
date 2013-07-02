@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Objects;
 
-namespace b.Models
+namespace b.Models2
 {
     [ModelBinder(typeof(GridModelBinder))]
     [Serializable]
@@ -90,8 +90,10 @@ namespace b.Models
             var query = dataSource;
             //
             // Sorting and Paging by using the current grid settings.
-            //
-            query = query.OrderBy<T>(this.SortColumn, this.SortOrder);
+            
+            
+            //UNCOMMENT THIS
+            //query = query.OrderBy<T>(this.SortColumn, this.SortOrder);
             count = query.Count();
             //
             if (this.PageIndex < 1)
