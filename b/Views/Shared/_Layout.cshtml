@@ -21,7 +21,6 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jqgrid")
     <script src="~/Scripts/jquery.jgrowl.min.js"></script>
-    @*<script src="~/Scripts/jquery.jqGrid.js" type="text/javascript"></script>*@
     <script src="~/Scripts/MyScript.js"></script>
     @Scripts.Render("~/bundles/ajax")
 </head>
@@ -74,7 +73,8 @@
             <p>@Html.ActionLink("Users", "PrintUsers", "ReportUsers")</p>
             <p>@*@Html.ActionLink("Users", "ViewReport", "ReportUsers")*@</p>
             <hr />
-            <p>@Html.ActionLink("Purchase Orders", "PrintPO", "ReportPO")</p>
+            <p>@Html.ActionLink("Purchase Orders", "PrintPOgrid", "ReportPO")</p>
+            @*<p>@Html.ActionLink("Purchase Orders", "PrintPO", "ReportPO")</p>*@
             @*<p>@Html.ActionLink("Purchase Orders", "ReportPO", "ASPX")</p>*@
             <p>@Html.ActionLink("Purchase", "ViewReport", "ReportPurchase")</p>
             <hr />

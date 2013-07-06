@@ -161,7 +161,7 @@ namespace b.Controllers
         {
             if (sortColumn == "")
             {
-                sortColumn = "ProductID";
+                sortColumn = "ID";
             }
 
             string methodName = string.Format("OrderBy{0}",

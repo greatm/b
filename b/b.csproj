@@ -620,6 +620,7 @@
     <Content Include="Views\StoreTransfer\Delete.cshtml" />
     <Content Include="Views\Purchase\PurchaseItemEntry.cshtml" />
     <Content Include="Views\Purchase\PurchaseItems.cshtml" />
+    <Content Include="Views\ReportPO\PrintPOgrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

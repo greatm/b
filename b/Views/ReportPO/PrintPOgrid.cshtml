@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "po report";
+}
+
+<h2>Purchase Order Report</h2>
+
+@{
+    MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
+    jsonReader.RepeatItems = false;
+    jsonReader.Id = "dataJson";
+    
+    @(Html.Grid("poGrid")
+    .SetCaption("purchase orders")
+.AddColumn(new MvcJqGrid.Column("ID"))
+.AddColumn(new MvcJqGrid.Column("Vendor"))
+.AddColumn(new MvcJqGrid.Column("POItems"))
+.SetWidth(650)
+.SetRowNum(10)
+.SetUrl("/ReportPO/poGrid")
+.SetAutoEncode(true)
+.SetDataType(MvcJqGrid.Enums.DataType.Json)
+.SetJsonReader(jsonReader)
+.SetToolbar(true)
+
+)
+}
