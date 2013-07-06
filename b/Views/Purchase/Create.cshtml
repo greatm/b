@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Purchase Create";
 }
-
 <h2>Purchase Create</h2>
 
 @using (Html.BeginForm())
@@ -81,7 +80,7 @@
 
 )
         }
-@{
+        @{
     int pageSize = 20;
     if (Session["VisitorLogGridSettings"] != null)
     {
@@ -96,28 +95,28 @@
     string endDate = (Session["EndDate"] == null
         ? string.Empty
         : ((DateTime)Session["EndDate"]).ToShortDateString());
-}
+        }
 
-<div id="jqGrid">
-    @Html.Partial("PurchaseItems")
-</div>
-<script type="text/javascript">
-    var paramFromView = {
+        <div id="jqGrid">
+            @Html.Partial("PurchaseItems")
+        </div>
+        <script type="text/javascript">
+            var paramFromView = {
         @*DeleteAllCaption: '@Resources.Resource.VisitorLogDeleteAllCaption',
         ClearGridUrl: '@Url.Content("~/VisitorLog/ClearGridData")',
         DeleteAllConfirmationMessage: '@Resources.Resource.VisitorLogDeleteAllDataConfirmation',
         Url: '@Url.Content("~/VisitorLog/GetData")',*@
-        Width: 790,
-        Height: 464,
+                Width: 790,
+                Height: 464,
       @*  Caption: '@Resources.Resource.VisitorLogIndexTitle',
         VisitorName: '@Resources.Resource.VisitorLogIndexVisitorName',
         StartDate: '@Resources.Resource.VisitorLogIndexStartDate',
         EndDate: '@Resources.Resource.VisitorLogIndexEndDate',
         WasTimeOut: '@Resources.Resource.VisitorLogIndexWasTimeOut',
         Actions: '@Resources.Resource.VisitorLogIndexActions',*@
-        PageSize: @pageSize
-        }
-</script>
+                PageSize: @pageSize
+                }
+        </script>
     </fieldset>
     
     <p>
@@ -125,46 +124,49 @@
         <a href="/">Cancel</a>
         @Html.ActionLink("Back to List", "Index")
     </p>
-   
 }
 
 @section Scripts {
     @Scripts.Render("~/Scripts/My_pigrid.js");
     <script type="text/javascript">
         $(function () {
-            //showGrid();
-        //    $("#PO_Vendor_Name").attr("disabled", "disabled");
-        //    $("#POID").combobox({
-        //        select: function (event, ui) {
-        //            var po_id = $(this).val();
-        //            $.ajax({
-        //                url: "ChangePO/" + po_id,
-        //                success: function (curVendor) {
-        //                    $("#PO_Vendor_Name").val(curVendor.Name);
-        //                }
-        //            });
-        //        }
-        //    });
-        //    $("#VendorID").combobox();
-        //    $("#itemEditor").sortable();
-        //    $("#addAnother").click(function () {
-        //        $.get('/Purchase/PurchaseItemEntry', function (template) {
-        //            $("#itemEditor").append(template);
-        //        });
-        //    });
-        //});
-        //var viewModel = {
-        //    addNew: function () {
-        //        $("#itemEditor").append($("#movieTemplate").tmpl({ index: viewModel._generateGuid() }));
-        //    },
 
-        //    _generateGuid: function () {
-        //        // Source: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/105074#105074
-        //        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        //            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        //            return v.toString(16);
-        //        });
-        //    }
-        };
+
+
+
+            //showGrid();
+            //    $("#PO_Vendor_Name").attr("disabled", "disabled");
+            //    $("#POID").combobox({
+            //        select: function (event, ui) {
+            //            var po_id = $(this).val();
+            //            $.ajax({
+            //                url: "ChangePO/" + po_id,
+            //                success: function (curVendor) {
+            //                    $("#PO_Vendor_Name").val(curVendor.Name);
+            //                }
+            //            });
+            //        }
+            //    });
+            //    $("#VendorID").combobox();
+            //    $("#itemEditor").sortable();
+            //    $("#addAnother").click(function () {
+            //        $.get('/Purchase/PurchaseItemEntry', function (template) {
+            //            $("#itemEditor").append(template);
+            //        });
+            //    });
+            //});
+            //var viewModel = {
+            //    addNew: function () {
+            //        $("#itemEditor").append($("#movieTemplate").tmpl({ index: viewModel._generateGuid() }));
+            //    },
+
+            //    _generateGuid: function () {
+            //        // Source: http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/105074#105074
+            //        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            //            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            //            return v.toString(16);
+            //        });
+            //    }
+        });
     </script>
 }
