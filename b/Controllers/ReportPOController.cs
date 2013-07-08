@@ -41,7 +41,7 @@ namespace b.Controllers
                         select new
                         {
                             ID = curPO.ID.ToString(),
-                            Vendor =curPO.Vendor==null ?"": curPO.Vendor.Name ,
+                            Vendor = curPO.Vendor == null ? "" : curPO.Vendor.Name,
                             POItems = curPO.POItems,
                         }).ToArray()
             };
