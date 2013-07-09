@@ -126,6 +126,7 @@ namespace b.Controllers
         public ActionResult ChangePO(int id)
         {
             curPO = GetPO(id);
+            ViewData["curPO"] = curPO;
             curVendor = GetPOVendor(curPO.VendorID);
             return Json(curVendor, JsonRequestBehavior.AllowGet);
         }
@@ -143,13 +144,14 @@ namespace b.Controllers
             return View();
 
         }
-        public ActionResult piGrid(GridSettings grid)
+        public ActionResult piGrid(GridSettings grid, PurchaseOrder curPO)
         {
-            IRepositoryUser _repository = new IRepositoryUser();
-            var query = _repository.Users();
+            if (curPO == null || curPO.POItems == null) return null;
+            //IRepositoryUser _repository = new IRepositoryUser();
+            var query = curPO.POItems.AsQueryable();// _repository.Users();
 
             //sorting
-            query = query.OrderBy<StoreTransferItem>(grid.SortColumn, grid.SortOrder);
+            query = query.OrderBy<POItem>(grid.SortColumn, grid.SortOrder);
 
             //count
             var count = query.Count();
