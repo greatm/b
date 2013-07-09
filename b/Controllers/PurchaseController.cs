@@ -146,8 +146,9 @@ namespace b.Controllers
         }
         public ActionResult piGrid(GridSettings grid, PurchaseOrder curPO)
         {
-            if (curPO == null || curPO.POItems == null) return null;
+            if (curPO == null ) return null;
             //IRepositoryUser _repository = new IRepositoryUser();
+            //db.Entry(po).Reference(t => t.Vendor).Load();
             var query = curPO.POItems.AsQueryable();// _repository.Users();
 
             //sorting
