@@ -69,6 +69,8 @@ namespace b.Models
     public class Repository : IRepository
     {
         private bDBContext db;
+        public bDBContext DB { get { return db; } }
+
         public Repository()
         {
             db = new bDBContext();

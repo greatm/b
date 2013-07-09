@@ -148,7 +148,8 @@ namespace b.Controllers
         {
             if (curPO == null) return null;
             //IRepositoryUser _repository = new IRepositoryUser();
-            rb.LoadCollection<PurchaseOrder>(curPO, "POItems");// db.Entry(po).Reference(t => t.Vendor).Load();
+            //rb.LoadCollection<PurchaseOrder>(curPO, "POItems");// db.Entry(po).Reference(t => t.Vendor).Load();
+            rb.DB.Entry(curPO).Collection(t => t.POItems).Load();
             if (curPO.POItems == null) return null;
             var query = curPO.POItems.AsQueryable();// _repository.Users();
 
