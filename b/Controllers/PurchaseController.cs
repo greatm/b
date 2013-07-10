@@ -126,7 +126,7 @@ namespace b.Controllers
         public ActionResult ChangePO(int id)
         {
             curPO = GetPO(id);
-            ViewData["curPO"] = curPO;
+            ViewData["curPOid"] = curPO.ID;
             curVendor = GetPOVendor(curPO.VendorID);
             return Json(curVendor, JsonRequestBehavior.AllowGet);
         }
@@ -144,12 +144,16 @@ namespace b.Controllers
             return View();
 
         }
-        public ActionResult piGrid(GridSettings grid, PurchaseOrder curPO)
+        public ActionResult piGrid(GridSettings grid, string curPOid)
         {
-            if (curPO == null) return null;
+            if (curPOid == null) return null;
+            PurchaseOrder curPO = rb.Find<PurchaseOrder>(curPOid);
+            if (curPO == null || curPO.ID < 1) return null;
             //IRepositoryUser _repository = new IRepositoryUser();
+            rb.LoadCollection<PurchaseOrder>(curPO, "POItems");
             //rb.LoadCollection<PurchaseOrder>(curPO, "POItems");// db.Entry(po).Reference(t => t.Vendor).Load();
-            rb.DB.Entry(curPO).Collection(t => t.POItems).Load();
+            //rb.DB.Entry(curPO).Collection(t => t.POItems).Load();
+            //rb.DB.Entry(curPO).Collection(t => t.POItems).Load();
             if (curPO.POItems == null) return null;
             var query = curPO.POItems.AsQueryable();// _repository.Users();
 

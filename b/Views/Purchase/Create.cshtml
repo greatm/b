@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Purchase Create";
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
 }
 <h2>Purchase Create</h2>
 
@@ -71,7 +72,7 @@
             .AddColumn(new MvcJqGrid.Column("Amount"))
             .SetWidth(650)
             .SetRowNum(10)
-            .SetUrl(Url.Action("piGrid", "Purchase", new { curPO = ViewData["curPO"] }))
+            .SetUrl(Url.Action("piGrid", "Purchase"))
             .SetAutoEncode(true)
             .SetDataType(MvcJqGrid.Enums.DataType.Json)
             .SetJsonReader(jsonReader)
@@ -110,6 +111,8 @@
 @section Scripts {
     @*@Scripts.Render("~/Scripts/My_pigrid.js")*@
     <script type="text/javascript">
+        var gridDataUrl = '/Purchase/piGrid';
+        var curPOid = '"@ViewData["curPOid"]"';
         $(function () {
             $("#PO_Vendor_Name").attr("disabled", "disabled");
             $("#POID").combobox({
@@ -119,11 +122,16 @@
                         url: "ChangePO/" + po_id,
                         success: function (curVendor) {
                             $("#PO_Vendor_Name").val(curVendor.Name);
-                            $("#piGrid").trigger("reloadGrid");
+                            setGridUrl();
                         }
                     });
                 }
             });
         })
+        function setGridUrl() {
+            var newGridDataUrl = gridDataUrl + '?curPOid=' + po_id;
+            $('#piGrid').jqGrid('setGridParam', { url: newGridDataUrl }).trigger("reloadGrid");
+        }
+
     </script>
 }
