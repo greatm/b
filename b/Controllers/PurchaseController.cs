@@ -183,7 +183,7 @@ namespace b.Controllers
                 rows = (from poitem in data
                         select new
                         {
-                            ProductID = poitem.ProductID.ToString(),
+                            ProductID = poitem.ProductID,//.ToString(),
                             Quantity = poitem.Qty,
                             Rate = poitem.Rate,
                             Amount = poitem.Amount,

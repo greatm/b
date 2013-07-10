@@ -63,7 +63,6 @@
         mvcJqGrid.demo.buttonize = function (cellvalue, options, rowobject) {
             return '<a onclick="return mvcJqGrid.demo.edit(' + options.rowId + ')" href="#"><div class="ui-icon ui-icon-pencil" style="display:inline-block"></div></a>' +
                    '<a onclick="return mvcJqGrid.demo.delete(' + options.rowId + ')" href="#"><div class="ui-icon ui-icon-trash" style="display:inline-block"></div></a>';
-
         }
 
         mvcJqGrid.demo.edit = function (id) {
@@ -95,7 +94,9 @@
             .SetJsonReader(jsonReader)
             .SetSearchToolbar(true).SetSearchOnEnter(false)
             .SetViewRecords(true)
+            .SetPager("pager")
     .SetRowList(new[] { 10, 15, 20, 50 })
+    //.SetRequestType(MvcJqGrid.Enums.RequestType.Post)
 
 
             )
