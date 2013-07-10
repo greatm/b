@@ -144,40 +144,32 @@ namespace b.Controllers
             return View();
 
         }
-        public ActionResult piGrid(GridSettings grid, string curPOid)
+        public ActionResult piGrid(GridSettings grid, int curPOid)
         {
             if (curPOid == null) return null;
-            PurchaseOrder curPO = rb.Find<PurchaseOrder>(curPOid);
+            PurchaseOrder curPO = rb.AllV<PurchaseOrder>().FirstOrDefault(t => t.ID == curPOid);
             if (curPO == null || curPO.ID < 1) return null;
-            //IRepositoryUser _repository = new IRepositoryUser();
             rb.LoadCollection<PurchaseOrder>(curPO, "POItems");
-            //rb.LoadCollection<PurchaseOrder>(curPO, "POItems");// db.Entry(po).Reference(t => t.Vendor).Load();
-            //rb.DB.Entry(curPO).Collection(t => t.POItems).Load();
-            //rb.DB.Entry(curPO).Collection(t => t.POItems).Load();
             if (curPO.POItems == null) return null;
-            var query = curPO.POItems.AsQueryable();// _repository.Users();
-
+            var query = curPO.POItems.AsQueryable();
             //sorting
             query = query.OrderBy<POItem>(grid.SortColumn, grid.SortOrder);
-
             //count
             var count = query.Count();
-
             //paging
             var data = query.Skip((grid.PageIndex - 1) * grid.PageSize).Take(grid.PageSize).ToArray();
-
             var result = new
             {
                 total = (int)Math.Ceiling((double)count / grid.PageSize),
                 page = grid.PageIndex,
                 records = count,
-                rows = (from UserInfo in data
+                rows = (from poitem in data
                         select new
                         {
-                            ProductID = UserInfo.ProductID.ToString(),
-                            Quantity = UserInfo.Qty,
-                            Rate = UserInfo.Rate,
-                            Amount = UserInfo.Amount,
+                            ProductID = poitem.ProductID.ToString(),
+                            Quantity = poitem.Qty,
+                            Rate = poitem.Rate,
+                            Amount = poitem.Amount,
                         }).ToArray()
             };
 
