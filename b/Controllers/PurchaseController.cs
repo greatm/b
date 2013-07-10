@@ -152,6 +152,16 @@ namespace b.Controllers
             rb.LoadCollection<PurchaseOrder>(curPO, "POItems");
             if (curPO.POItems == null) return null;
             var query = curPO.POItems.AsQueryable();
+
+            //search
+            if (grid.IsSearch) {
+                foreach (var rule in grid.Where.rules) {
+                    switch (rule.field){
+                        case "Amount":
+                            query = query.Where(t=>t.Amount.ToString().Contains(rule.data));// rule.data.Contains(rule.field));
+                            break;
+                }}
+            }
             //sorting
             query = query.OrderBy<POItem>(grid.SortColumn, grid.SortOrder);
             //count
