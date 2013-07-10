@@ -144,7 +144,7 @@ namespace b.Controllers
             return View();
 
         }
-        public ActionResult piGrid(GridSettings grid, int curPOid)
+        public ActionResult piGrid(GridSettings grid, int curPOid = 0)
         {
             if (curPOid < 1) return null;
             PurchaseOrder curPO = rb.AllV<PurchaseOrder>().FirstOrDefault(t => t.ID == curPOid);

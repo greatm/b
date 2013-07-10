@@ -57,39 +57,36 @@
 
     </fieldset> 
     
-        <script type="text/javascript">
-            var mvcJqGrid = { demo: {} };
+    <script type="text/javascript">
+        var mvcJqGrid = { demo: {} };
 
-            mvcJqGrid.demo.buttonize = function (cellvalue, options, rowobject) {
-                return '<a onclick="return mvcJqGrid.demo.edit(' + options.rowId + ')" href="#"><div class="ui-icon ui-icon-pencil" style="display:inline-block"></div></a>' +
-                       '<a onclick="return mvcJqGrid.demo.delete(' + options.rowId + ')" href="#"><div class="ui-icon ui-icon-trash" style="display:inline-block"></div></a>';
+        mvcJqGrid.demo.buttonize = function (cellvalue, options, rowobject) {
+            return '<a onclick="return mvcJqGrid.demo.edit(' + options.rowId + ')" href="#"><div class="ui-icon ui-icon-pencil" style="display:inline-block"></div></a>' +
+                   '<a onclick="return mvcJqGrid.demo.delete(' + options.rowId + ')" href="#"><div class="ui-icon ui-icon-trash" style="display:inline-block"></div></a>';
 
-            }
+        }
 
-            mvcJqGrid.demo.edit = function (id) {
-                alert("Edit for customerId " + id);
-                return false;
-            }
+        mvcJqGrid.demo.edit = function (id) {
+            alert("Edit for customerId " + id);
+            return false;
+        }
 
-            mvcJqGrid.demo.delete = function (id) {
-                alert("Delete for customerId " + id);
-                return false;
-            }
-        </script>
-        @{
+        mvcJqGrid.demo.delete = function (id) {
+            alert("Delete for customerId " + id);
+            return false;
+        }
+    </script>
     MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
     jsonReader.RepeatItems = false;
     jsonReader.Id = "dataJson";
             
-            @(Html.Grid("piGrid")
+    @(Html.Grid("piGrid")
             .SetCaption("purchase items")
             .AddColumn(new MvcJqGrid.Column("ProductID"))
             .AddColumn(new MvcJqGrid.Column("Quantity"))
             .AddColumn(new MvcJqGrid.Column("Rate"))
             .AddColumn(new MvcJqGrid.Column("Amount"))
-            .AddColumn(new Column("&nbsp;").SetSearch(false).SetCustomFormatter("mvcJqGrid.demo.buttonize")
-                                    .SetWidth(50))
-        //.SetAlign(Align.Right))
+            .AddColumn(new Column("&nbsp;").SetSearch(false).SetCustomFormatter("mvcJqGrid.demo.buttonize").SetWidth(50))
             .SetWidth(675)
             .SetRowNum(10)
             .SetUrl(Url.Action("piGrid", "Purchase"))
@@ -98,12 +95,10 @@
             .SetJsonReader(jsonReader)
             .SetSearchToolbar(true).SetSearchOnEnter(false)
             .SetViewRecords(true)
+    .SetRowList(new[] { 10, 15, 20, 50 })
 
 
             )
-        }
-
-        @{
     int pageSize = 20;
     if (Session["VisitorLogGridSettings"] != null)
     {
@@ -118,7 +113,6 @@
     string endDate = (Session["EndDate"] == null
         ? string.Empty
         : ((DateTime)Session["EndDate"]).ToShortDateString());
-        }
 
     <p>
         <input type="submit" value="Create" />
