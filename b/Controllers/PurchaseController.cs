@@ -146,7 +146,7 @@ namespace b.Controllers
         }
         public ActionResult piGrid(GridSettings grid, int curPOid)
         {
-            if (curPOid == null) return null;
+            if (curPOid < 1) return null;
             PurchaseOrder curPO = rb.AllV<PurchaseOrder>().FirstOrDefault(t => t.ID == curPOid);
             if (curPO == null || curPO.ID < 1) return null;
             rb.LoadCollection<PurchaseOrder>(curPO, "POItems");
@@ -154,13 +154,20 @@ namespace b.Controllers
             var query = curPO.POItems.AsQueryable();
 
             //search
-            if (grid.IsSearch) {
-                foreach (var rule in grid.Where.rules) {
-                    switch (rule.field){
-                        case "Amount":
-                            query = query.Where(t=>t.Amount.ToString().Contains(rule.data));// rule.data.Contains(rule.field));
+            if (grid.IsSearch)
+            {
+                foreach (var rule in grid.Where.rules)
+                {
+                    switch (rule.field)
+                    {
+                        case "ProductID":
+                            query = query.Where(t => t.ProductID.ToString().Contains(rule.data));
                             break;
-                }}
+                        case "Amount":
+                            query = query.Where(t => t.Amount.ToString().Contains(rule.data));
+                            break;
+                    }
+                }
             }
             //sorting
             query = query.OrderBy<POItem>(grid.SortColumn, grid.SortOrder);
