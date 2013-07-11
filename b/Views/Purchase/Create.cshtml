@@ -74,23 +74,23 @@
             alert("Delete for customerId " + id);
             return false;
         }
-  
+
         var updateDialog = {
             url: '@Url.Action("Update", "Contact")'
         , closeAfterAdd: true
         , closeAfterEdit: true
-        //, afterShowForm: function (formId) {
-        //    $("#PhoneNumber").mask("(999) 999-9999");
-        //    $("#DateOfBirth").datepicker();
-        //}
-        //, afterclickPgButtons: function (whichbutton, formid, rowid) {
-        //    $("#PhoneNumber").mask("(999) 999-9999");
-        //}
+            //, afterShowForm: function (formId) {
+            //    $("#PhoneNumber").mask("(999) 999-9999");
+            //    $("#DateOfBirth").datepicker();
+            //}
+            //, afterclickPgButtons: function (whichbutton, formid, rowid) {
+            //    $("#PhoneNumber").mask("(999) 999-9999");
+            //}
         , modal: true
         , width: "400"
         };
 
-        </script>
+    </script>
     MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
     jsonReader.RepeatItems = false;
     jsonReader.Id = "dataJson";
@@ -115,7 +115,7 @@
         //.SetRequestType(MvcJqGrid.Enums.RequestType.Post)
         .SetToolbarPosition(MvcJqGrid.Enums.ToolbarPosition.Top)
         .SetToolbar(true)
-        
+
             )
     int pageSize = 20;
     if (Session["VisitorLogGridSettings"] != null)
@@ -144,7 +144,10 @@
         var gridDataUrl = '/Purchase/piGrid';
         var curPOid = '"@ViewData["curPOid"]"';
         $(function () {
-            $('#piGrid') .jqGrid() .trigger("reloadGrid");
+            alert("welcome, please choose po");
+            //$('#piGrid').jqGrid({
+            //    caption:"from js code"
+            //});
             $("#PO_Vendor_Name").attr("disabled", "disabled");
             $("#POID").combobox({
                 select: function (event, ui) {
