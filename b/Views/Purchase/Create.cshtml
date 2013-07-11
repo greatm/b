@@ -74,7 +74,23 @@
             alert("Delete for customerId " + id);
             return false;
         }
-    </script>
+  
+        var updateDialog = {
+            url: '@Url.Action("Update", "Contact")'
+        , closeAfterAdd: true
+        , closeAfterEdit: true
+        //, afterShowForm: function (formId) {
+        //    $("#PhoneNumber").mask("(999) 999-9999");
+        //    $("#DateOfBirth").datepicker();
+        //}
+        //, afterclickPgButtons: function (whichbutton, formid, rowid) {
+        //    $("#PhoneNumber").mask("(999) 999-9999");
+        //}
+        , modal: true
+        , width: "400"
+        };
+
+        </script>
     MvcJqGrid.DataReaders.JsonReader jsonReader = new MvcJqGrid.DataReaders.JsonReader();
     jsonReader.RepeatItems = false;
     jsonReader.Id = "dataJson";
@@ -96,8 +112,9 @@
             .SetViewRecords(true)
             .SetPager("pager")
     .SetRowList(new[] { 10, 15, 20, 50 })
-    //.SetRequestType(MvcJqGrid.Enums.RequestType.Post)
-
+        //.SetRequestType(MvcJqGrid.Enums.RequestType.Post)
+        .SetToolbarPosition(MvcJqGrid.Enums.ToolbarPosition.Top)
+        .SetToolbar(true)
 
             )
     int pageSize = 20;
