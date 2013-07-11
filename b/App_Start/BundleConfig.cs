@@ -46,8 +46,12 @@ namespace b
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            //bundles.Add(new ScriptBundle("~/bundles/jqgrid").Include(
+            //         "~/Scripts/jquery.jqGrid*"));
             bundles.Add(new ScriptBundle("~/bundles/jqgrid").Include(
-                     "~/Scripts/jquery.jqGrid*"));
+                 "~/Scripts/i18n/grid*",
+                 "~/Scripts/jquery.jqGrid*"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
