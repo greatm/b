@@ -3,8 +3,14 @@
 @{
     ViewBag.Title = "Purchase Create";
     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    <style>
+        a.test {
+            font-weight: bold;
+        }
+    </style>
 }
 <h2>Purchase Create</h2>
+
 
 @using (Html.BeginForm())
 {
@@ -145,6 +151,10 @@
         var curPOid = '"@ViewData["curPOid"]"';
         $(function () {
             alert("welcome, please choose po");
+            $("a").addClass("test");
+
+
+
             //$('#piGrid').jqGrid({
             //    caption:"from js code"
             //});
