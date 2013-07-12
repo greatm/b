@@ -11,7 +11,6 @@
 }
 <h2>Purchase Create</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -149,9 +148,17 @@
     <script type="text/javascript">
         var gridDataUrl = '/Purchase/piGrid';
         var curPOid = '"@ViewData["curPOid"]"';
+        function withoutParameter() {
+            alert("it is without parameter");
+        }
+
+        function withParameter(str) {
+            alert("it is with parameter: "+str );
+        }
+
         $(function () {
-            alert("welcome, please choose po");
-            $("a").addClass("test");
+            //alert("welcome, please choose po");
+            //$("a").addClass("test");
 
 
 
