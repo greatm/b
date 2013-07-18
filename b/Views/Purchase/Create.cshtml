@@ -149,7 +149,6 @@
         var gridDataUrl = '/Purchase/piGrid';
         var curPOid = '"@ViewData["curPOid"]"';
 
-        $("").on(eve, .click(function (event) { });
         function withoutParameter() {
             alert("it is without parameter");
         }
@@ -166,6 +165,12 @@
         //    alert("window loaded");
         //});
         $(function () {
+            $('#piGrid').on("change", function (event) {
+                alert(event + " on " + this);
+            });
+
+            //$("#PO_Vendor_Name").is(":visible") && $("#PO_Vendor_Name").hide;
+
             //$.get("Home", withoutParameter);
             alert("welcome, please choose po");
 
@@ -178,13 +183,14 @@
             $("#POID").combobox({
                 select: function (event, ui) {
                     var po_id = $(this).val();
+                    //alert("val:" + po_id);
+                    //var po_text = $(this).find("option:selected").text();
+                    //alert("po_text:" + po_text);
                     $.ajax({
                         url: "ChangePO/" + po_id,
                         success: function (curVendor) {
                             $("#PO_Vendor_Name").val(curVendor.Name);
                             setGridUrl(po_id);
-                            alert($("#piGrid").position().left);
-
                         }
                     });
                 }
