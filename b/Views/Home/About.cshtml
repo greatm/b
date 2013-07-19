@@ -78,18 +78,107 @@ new AjaxOptions
                 $results.find("span.search_term").text(term);
                 $.each(["refresh", "populate", "remove", "collapse", "expand"], function (i, ev) {
                     $results.on(ev, {
-                        term:term
-                    },$.fn.twitterResult.events[ev]);
+                        term: term
+                    }, $.fn.twitterResult.events[ev]);
                 });
 
                 $a.find("li").click(function () {
-                    $results.trigger($(this).attr("class"),[$(this)]);
+                    $results.trigger($(this).attr("class"), [$(this)]);
                 });
             });
         };
 
         $.fn.twitterResult.createActions = function () {
-
+            return $("<ul class='actions' />").append(
+                "<li class='refresh'>Refresh</li>" +
+                "<li class='remove'>Remove</li>" +
+                "<li class='collapse'>Collapse</li>"
+                );
         };
+
+        $.fn.twitterResult.events = {
+            refresh: function (e) {
+                var $this = $(this).addClass("refreshing");
+                $this.find("p.tweet").remove();
+                $results.append("<p class='loading'>Loading...</p>");
+
+                $.getJSON("http://search.twitter.com/search.json?q=" + escape(e.data.term) + "&rpp=5&callback=?", function (json) {
+                    $this.trigger("populate", [json]);
+                });
+            },
+            populate: function (e, json) {
+                var results = json.results;
+                var $this = $(this);
+                $this.find("p.loading").remove();
+                $.each(results, function (i, result) {
+                    var tweet = "<p class='tweet'>" +
+                        "<a href='http://twitter.com/" + result.from_user + "'>" + result.from_user + "</a>:" +
+                        result.text + "<span class='date'>" + result.created_at + "</span>" + "</p>";
+                    $this.append(tweet);
+                });
+                $this.removeClass("refreshing");
+            },
+            remove: function (e, force) {
+                if (!force && !confirm("Remove panel for term " + e.data.term + "?")) { return; }
+                $(this).remove();
+                search_terms[e.data.term] = 0;
+            },
+            collapse: function (e) {
+                $(this).find("li.collapse")
+                .removeClass("collapse")
+                .addClass("expand")
+                .text("Expand");
+
+                $(this).addClass("collapsed");
+            },
+            expand: function (e) {
+                $(this).find("li.expand")
+                .removeClass("expand")
+                .addClass("collapse")
+                .text("Collapse");
+
+                $(this).removeClass("collapsed");
+            }
+        };
+        $("#twitter").on("getResults", function (e, term) {
+            if (!search_terms[term]) {
+                var $this = $(this);
+                var $template = $this.find("div.template");
+                $results = $template.clone()
+                .removeClass("template")
+                .insertBefore($this.find("div:first"))
+                .twitterResult({
+                    "term": term
+                });
+
+                $results.trigger("refresh");
+                search_terms[term] = 1;
+            }
+        }).on("getTrends", function (e) {
+            var $this = $(this);
+            $.getJSON("http://search.twitter.com/trends.json?callback=?", function (json) {
+                var trends = json.trends;
+                $.each(trends, function (i, trend) {
+                    $this.trigger("getResults", [trend.name]);
+                });
+            });
+        });
+
+        $("form").submit(function (event) {
+            var term = $("#search_term").val();
+            $("#twitter").trigger("getResults", [term]);
+            event.preventDefault();
+        });
+        $.each(["refresh", "expand", "collapse"], function (i, ev) {
+            $("#" + ev).click(function (e) {
+                $("#twitter div.results").trigger(ev);
+            });
+        });
+
+        $("#remove").click(function (e) {
+            if (confirm("Remove all results?")) {
+                $("#twitter div.results").trigger("remove", [true]);
+            }
+        });
     </script>
-    }
+}
