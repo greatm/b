@@ -157,6 +157,12 @@
             alert("it is with parameter: " + str);
         }
 
+        var a = function (event) {
+            alert("a");
+        }
+        function b(event) {
+            alert("target " + event.target + ", " + event.pageY);
+        }
         //$(document).ready(function () {
         //    alert("document loaded");
         //});
@@ -165,9 +171,8 @@
         //    alert("window loaded");
         //});
         $(function () {
-            $('#piGrid').on("change", function (event) {
-                alert(event + " on " + this);
-            });
+            //$('body').on("mouseclick click", b);
+            //$('#piGrid').on("change click", b).on("change click", a);
 
             //$("#PO_Vendor_Name").is(":visible") && $("#PO_Vendor_Name").hide;
 
@@ -183,7 +188,7 @@
             $("#POID").combobox({
                 select: function (event, ui) {
                     var po_id = $(this).val();
-                    //alert("val:" + po_id);
+                    //alert("event:" + event.Name);
                     //var po_text = $(this).find("option:selected").text();
                     //alert("po_text:" + po_text);
                     $.ajax({
