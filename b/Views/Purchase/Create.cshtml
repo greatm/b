@@ -174,10 +174,12 @@
             //$('body').on("mouseclick click", b);
             //$('#piGrid').on("change click", b).on("change click", a);
 
-            //$("#PO_Vendor_Name").is(":visible") && $("#PO_Vendor_Name").hide;
+            $("#PO_Vendor_Name").is(":visible") && $("#PO_Vendor_Name").toggle(13000, function () {
+                $(this).toggle(13000);
+            });
 
             //$.get("Home", withoutParameter);
-            alert("welcome, please choose po");
+            //alert("welcome, please choose po");
 
             //$("a").html("href");
 
