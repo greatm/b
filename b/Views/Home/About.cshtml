@@ -180,5 +180,13 @@ new AjaxOptions
                 $("#twitter div.results").trigger("remove", [true]);
             }
         });
+
+        $("input").attr({
+            type: "button",
+            value: "Stop All Animations"
+        }).on("click", function () {
+            $("body *").filter(":animated").stop();
+        }).appendTo(document.body);
+
     </script>
 }
