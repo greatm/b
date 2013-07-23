@@ -449,6 +449,7 @@
     <None Include="Properties\PublishProfiles\b.esamadhan.net.pubxml" />
     <Content Include="App_Data\employee.rdl" />
     <Content Include="App_Data\ReportPurchase.rdl" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\biosg.jpg" />
     <Content Include="Images\draggable-icon.png" />
     <Content Include="NuGet.exe" />

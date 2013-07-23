@@ -1,4 +1,20 @@
-﻿
+﻿(function ($) {
+    $.fn.greenify = function () {
+        this.css("color", "green");
+    };
+}(jQuery));
+(function ($) {
+
+    $.fn.showLinkLocation = function () {
+
+        return this.filter("a").each(function () {
+            $(this).append(" (" + $(this).attr("href") + ")");
+        });
+
+    };
+
+}(jQuery));
+
 function CalPOItemAmount() {
     var nrate = $(this).attr("name");
     //alert(nrate);
@@ -233,4 +249,11 @@ $(function () {
     $(".title").mouseover(function () {
         $(this).effect("bounce", { time: 3, distance: 40 });
     });
+
+    $("#loading_indicator").ajaxStart(function () {
+        $(this).show();
+    }).ajaxStop(function () {
+        $(this).hide();
+    });
+
 });
