@@ -175,7 +175,7 @@
         //.SetRequestType(MvcJqGrid.Enums.RequestType.Post)
         .SetToolbarPosition(MvcJqGrid.Enums.ToolbarPosition.Top)
         .SetToolbar(true)
-        
+
             )
     
     
@@ -223,7 +223,7 @@
         }
         $(function () {
 
-            $("#piGrid").jqGrid('navButtonAdd', "#customer_grid_pager", {
+            $("#piGrid").jqGrid('navButtonAdd', "pager", {
                 caption: "Add Customer", title: "Add Customer", buttonicon: 'ui-icon-plus',
                 onClickButton: function () {
                     alert("hi");
