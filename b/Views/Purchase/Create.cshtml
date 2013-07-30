@@ -175,8 +175,11 @@
         //.SetRequestType(MvcJqGrid.Enums.RequestType.Post)
         .SetToolbarPosition(MvcJqGrid.Enums.ToolbarPosition.Top)
         .SetToolbar(true)
-
+        
             )
+    
+    
+    
     int pageSize = 20;
     if (Session["VisitorLogGridSettings"] != null)
     {
@@ -218,30 +221,22 @@
         function b(event) {
             alert("target " + event.target + ", " + event.pageY);
         }
-        //$(document).ready(function () {
-        //    alert("document loaded");
-        //});
-
-        //$(window).load(function () {
-        //    alert("window loaded");
-        //});
         $(function () {
-            //$("a").showLinkLocation();
-            //$('body').on("mouseclick click", b);
-            //$('#piGrid').greenify();
+
+            $("#piGrid").jqGrid('navButtonAdd', "#customer_grid_pager", {
+                caption: "Add Customer", title: "Add Customer", buttonicon: 'ui-icon-plus',
+                onClickButton: function () {
+                    alert("hi");
+                }
+            });
+
 
             $("#PO_Vendor_Name").is(":visible") && $("#PO_Vendor_Name").toggle(13000, function () {
                 $(this).toggle(13000);
             });
 
-            //$.get("Home", withoutParameter);
             alert("welcome, please choose po");
 
-            //$("a").html("href");
-
-            //$('#piGrid').jqGrid({
-            //    caption:"from js code"
-            //});
             $("#PO_Vendor_Name").attr("disabled", "disabled");
             $("#POID").combobox({
                 select: function (event, ui) {
@@ -259,30 +254,24 @@
                 }
             });
 
-            alert("2");
-            //$("dialog").dialog();
-            alert("3");
+            $("dialog").dialog("open");
 
-            $("#btnShowSimple").click(function (e)
-            {
+            $("#btnShowSimple").click(function (e) {
                 ShowDialog(false);
                 e.preventDefault();
             });
 
-            $("#btnShowModal").click(function (e)
-            {
+            $("#btnShowModal").click(function (e) {
                 ShowDialog(true);
                 e.preventDefault();
             });
 
-            $("#btnClose").click(function (e)
-            {
+            $("#btnClose").click(function (e) {
                 HideDialog();
                 e.preventDefault();
             });
 
-            $("#btnSubmit").click(function (e)
-            {
+            $("#btnSubmit").click(function (e) {
                 var brand = $("#brands input:radio:checked").val();
                 $("#output").html("<b>Your favorite mobile brand: </b>" + brand);
                 HideDialog();
@@ -291,29 +280,24 @@
 
         });
 
-        function ShowDialog(modal)
-        {
+        function ShowDialog(modal) {
             $("#overlay").show();
             $("#dialog").fadeIn(300);
 
-            if (modal)
-            {
+            if (modal) {
                 $("#overlay").unbind("click");
             }
-            else
-            {
-                $("#overlay").click(function (e)
-                {
+            else {
+                $("#overlay").click(function (e) {
                     HideDialog();
                 });
             }
         }
 
-        function HideDialog()
-        {
+        function HideDialog() {
             $("#overlay").hide();
             $("#dialog").fadeOut(300);
-        } 
+        }
 
         function setGridUrl(po_id) {
             var newGridDataUrl = gridDataUrl + '?curPOid=' + po_id;
