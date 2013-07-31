@@ -49,7 +49,7 @@ namespace b
             //bundles.Add(new ScriptBundle("~/bundles/jqgrid").Include(
             //         "~/Scripts/jquery.jqGrid*"));
             bundles.Add(new ScriptBundle("~/bundles/jqgrid").Include(
-                 "~/Scripts/i18n/grid*",
+                 "~/Scripts/i18n/grid.locale-en*",
                  "~/Scripts/jquery.jqGrid*"
                 ));
 
