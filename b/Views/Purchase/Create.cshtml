@@ -1,4 +1,5 @@
-﻿@model Purchase
+﻿
+@model Purchase
 
 @{
     ViewBag.Title = "Purchase Create";
@@ -223,7 +224,7 @@
         }
         $(function () {
 
-            $("#piGrid") .jqGrid('navButtonAdd', "pager", {
+            $("#piGrid").jqGrid('navButtonAdd', "pager", {
                 caption: "Add Customer", title: "Add Customer", buttonicon: 'ui-icon-plus',
                 onClickButton: function () {
                     alert("hi");
