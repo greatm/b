@@ -9,6 +9,7 @@ namespace b
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/bundles/jqgrid").Include("~/Content/jquery.jqGrid/ui.jqgrid.css"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 
